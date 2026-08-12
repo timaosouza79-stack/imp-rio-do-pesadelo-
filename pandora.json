@@ -1,0 +1,134 @@
+[
+  {
+    "texto": "Erro no Banco do Multiverso a seu favor! Receba 200",
+    "valor_alteracao": 200
+  },
+  {
+    "texto": "Você sobreviveu a uma noite no Hotel Overlook. Receba 100",
+    "valor_alteracao": 100
+  },
+  {
+    "texto": "Sucesso total de vendas no site de doces da Suzany! Receba 100",
+    "valor_alteracao": 100
+  },
+  {
+    "texto": "Homer esqueceu o troco da cerveja Duff com você. Receba 20",
+    "valor_alteracao": 20
+  },
+  {
+    "texto": "Ganhou o torneio de Gran Turismo 7 no volante. Receba 150",
+    "valor_alteracao": 150
+  },
+  {
+    "texto": "O novo mini-mercado deu lucro neste mês. Receba 100",
+    "valor_alteracao": 100
+  },
+  {
+    "texto": "Seu Border Collie achou uma nota de dinheiro enterrada no quintal. Receba 25",
+    "valor_alteracao": 25
+  },
+  {
+    "texto": "Fabricio devolveu o dinheiro que te devia. Receba 30",
+    "valor_alteracao": 30
+  },
+  {
+    "texto": "Eduardo e André pagaram a parte deles no churrasco. Receba 40",
+    "valor_alteracao": 40
+  },
+  {
+    "texto": "Bônus por operação impecável na prensa da Amarsul. Receba 100",
+    "valor_alteracao": 100
+  },
+  {
+    "texto": "As ações da fabricante do DeLorean subiram. Receba 50",
+    "valor_alteracao": 50
+  },
+  {
+    "texto": "Você venceu a temporada como treinador de futebol. Receba 200",
+    "valor_alteracao": 200
+  },
+  {
+    "texto": "Vendeu todos os ingressos para o campeonato da categoria Benjamins. Receba 50",
+    "valor_alteracao": 50
+  },
+  {
+    "texto": "Achou dinheiro esquecido na caixa do PS5. Receba 10",
+    "valor_alteracao": 10
+  },
+  {
+    "texto": "Recebeu os direitos autorais das suas músicas criadas com IA. Receba 25",
+    "valor_alteracao": 25
+  },
+  {
+    "texto": "O projeto do jogo Souzafoot encontrou um investidor. Receba 150",
+    "valor_alteracao": 150
+  },
+  {
+    "texto": "Jason te perseguiu no acampamento e você perdeu a carteira. Pague 50",
+    "valor_alteracao": -50
+  },
+  {
+    "texto": "Annabelle quebrou a televisão da sala com fenômenos paranormais. Pague 100",
+    "valor_alteracao": -100
+  },
+  {
+    "texto": "Homer bebeu todo o estoque do seu mini-mercado. Pague 75",
+    "valor_alteracao": -75
+  },
+  {
+    "texto": "Multa por excesso de velocidade temporal no DeLorean. Pague 50",
+    "valor_alteracao": -50
+  },
+  {
+    "texto": "O pneu do carro furou a caminho do treino de futebol. Pague 40",
+    "valor_alteracao": -40
+  },
+  {
+    "texto": "Gastos não planejados com a instalação do piso flutuante. Pague 150",
+    "valor_alteracao": -150
+  },
+  {
+    "texto": "A Mufetada dos amigos ficou bem mais cara que o esperado. Pague 60",
+    "valor_alteracao": -60
+  },
+  {
+    "texto": "Comprou um grande estoque de ração premium para o Border Collie. Pague 80",
+    "valor_alteracao": -80
+  },
+  {
+    "texto": "Taxa de manutenção de maquinário de triagem. Pague 50",
+    "valor_alteracao": -50
+  },
+  {
+    "texto": "Pagou por novos jogos e atualizações do PlayStation VR2. Pague 30",
+    "valor_alteracao": -30
+  },
+  {
+    "texto": "Imposto de renda do Multiverso retido na fonte. Pague 100",
+    "valor_alteracao": -100
+  },
+  {
+    "texto": "Consulta psiquiátrica após visita ao Asilo Arkham. Pague 150",
+    "valor_alteracao": -150
+  },
+  {
+    "texto": "Renovou a mensalidade do domínio e servidor da confeitaria. Pague 25",
+    "valor_alteracao": -25
+  },
+  {
+    "texto": "O Asilo Arkham cobrou uma taxa extra de segurança. Pague 50",
+    "valor_alteracao": -50
+  },
+  {
+    "texto": "Reparos estruturais na Casa do Homer Simpson. Pague 75",
+    "valor_alteracao": -75
+  },
+  {
+    "texto": "Perdeu o processo contra o Acampamento Crystal Lake. Pague 200",
+    "valor_alteracao": -200
+  },
+  {
+    "texto": "O boneco Chucky sabotou os freios do seu carro e fugiu! Pague 100 pelo conserto.",
+    "valor_alteracao": -100
+  }
+]

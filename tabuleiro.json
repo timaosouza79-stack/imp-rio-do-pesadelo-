@@ -1,0 +1,528 @@
+[
+  {
+    "nome": "Portal do Multiverso",
+    "tipo": "especial"
+  },
+  {
+    "nome": "Quarto de Arte - Annabelle",
+    "tipo": "propriedade",
+    "preco": 60,
+    "alugueis": [
+      2,
+      10,
+      30,
+      90,
+      160,
+      250
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Símbolos Ocultos",
+    "preco_melhoria": 50,
+    "dono": null
+  },
+  {
+    "nome": "Caixa de Pandora",
+    "tipo": "especial"
+  },
+  {
+    "nome": "Fábrica Good Guys - Chucky",
+    "tipo": "propriedade",
+    "preco": 60,
+    "alugueis": [
+      4,
+      20,
+      60,
+      180,
+      320,
+      450
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Caixas de Bonecos",
+    "preco_melhoria": 50,
+    "dono": null
+  },
+  {
+    "nome": "Imposto de Renda",
+    "tipo": "imposto",
+    "valor": 200
+  },
+  {
+    "nome": "Máquina do Tempo DeLorean",
+    "tipo": "transporte",
+    "preco": 200,
+    "alugueis": [
+      25,
+      50,
+      100,
+      200,
+      200,
+      200
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Capacitores",
+    "preco_melhoria": 50,
+    "dono": null
+  },
+  {
+    "nome": "Bates Motel - Psicose",
+    "tipo": "propriedade",
+    "preco": 100,
+    "alugueis": [
+      6,
+      30,
+      90,
+      270,
+      400,
+      550
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Chaves de Quarto",
+    "preco_melhoria": 50,
+    "dono": null
+  },
+  {
+    "nome": "Caixa de Pandora",
+    "tipo": "especial"
+  },
+  {
+    "nome": "Cabana na Floresta - Evil Dead",
+    "tipo": "propriedade",
+    "preco": 100,
+    "alugueis": [
+      6,
+      30,
+      90,
+      270,
+      400,
+      550
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Motosserras",
+    "preco_melhoria": 50,
+    "dono": null
+  },
+  {
+    "nome": "Silent Hill",
+    "tipo": "propriedade",
+    "preco": 120,
+    "alugueis": [
+      8,
+      40,
+      100,
+      300,
+      450,
+      600
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Rádios com Estática",
+    "preco_melhoria": 50,
+    "dono": null
+  },
+  {
+    "nome": "Asilo Arkham",
+    "tipo": "prisao"
+  },
+  {
+    "nome": "Laboratório Hawkins - Stranger Things",
+    "tipo": "propriedade",
+    "preco": 140,
+    "alugueis": [
+      10,
+      50,
+      150,
+      450,
+      625,
+      750
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Fitas K7",
+    "preco_melhoria": 100,
+    "dono": null
+  },
+  {
+    "nome": "Companhia de Energia Elétrica",
+    "tipo": "servico",
+    "preco": 150,
+    "alugueis": [
+      10,
+      25,
+      50,
+      100,
+      150,
+      200
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Geradores",
+    "preco_melhoria": 75,
+    "dono": null
+  },
+  {
+    "nome": "Mundo Invertido - Stranger Things",
+    "tipo": "propriedade",
+    "preco": 140,
+    "alugueis": [
+      10,
+      50,
+      150,
+      450,
+      625,
+      750
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Demogorgons",
+    "preco_melhoria": 100,
+    "dono": null
+  },
+  {
+    "nome": "Castelo do Drácula",
+    "tipo": "propriedade",
+    "preco": 160,
+    "alugueis": [
+      12,
+      60,
+      180,
+      500,
+      700,
+      900
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Estacas de Madeira",
+    "preco_melhoria": 100,
+    "dono": null
+  },
+  {
+    "nome": "Carro Ecto-1 - Caça-Fantasmas",
+    "tipo": "transporte",
+    "preco": 200,
+    "alugueis": [
+      25,
+      50,
+      100,
+      200,
+      200,
+      200
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Mochilas de Prótons",
+    "preco_melhoria": 50,
+    "dono": null
+  },
+  {
+    "nome": "Nave Nostromo - Alien",
+    "tipo": "propriedade",
+    "preco": 180,
+    "alugueis": [
+      14,
+      70,
+      200,
+      550,
+      750,
+      950
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Ovos de Xenomorfo",
+    "preco_melhoria": 100,
+    "dono": null
+  },
+  {
+    "nome": "Caixa de Pandora",
+    "tipo": "especial"
+  },
+  {
+    "nome": "Jurassic Park",
+    "tipo": "propriedade",
+    "preco": 180,
+    "alugueis": [
+      14,
+      70,
+      200,
+      550,
+      750,
+      950
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Cercas Elétricas",
+    "preco_melhoria": 100,
+    "dono": null
+  },
+  {
+    "nome": "Ilha da Caveira - King Kong",
+    "tipo": "propriedade",
+    "preco": 200,
+    "alugueis": [
+      16,
+      80,
+      220,
+      600,
+      800,
+      1000
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Sinalizadores",
+    "preco_melhoria": 100,
+    "dono": null
+  },
+  {
+    "nome": "Estacionamento Livre",
+    "tipo": "especial"
+  },
+  {
+    "nome": "Casa dos Myers - Michael Myers",
+    "tipo": "propriedade",
+    "preco": 220,
+    "alugueis": [
+      18,
+      90,
+      250,
+      700,
+      875,
+      1050
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Máscaras Brancas",
+    "preco_melhoria": 150,
+    "dono": null
+  },
+  {
+    "nome": "Caixa de Pandora",
+    "tipo": "especial"
+  },
+  {
+    "nome": "Esgotos de Derry - Pennywise",
+    "tipo": "propriedade",
+    "preco": 220,
+    "alugueis": [
+      18,
+      90,
+      250,
+      700,
+      875,
+      1050
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Balões Vermelhos",
+    "preco_melhoria": 150,
+    "dono": null
+  },
+  {
+    "nome": "Banheiro Abandonado - Jigsaw",
+    "tipo": "propriedade",
+    "preco": 240,
+    "alugueis": [
+      20,
+      100,
+      300,
+      750,
+      925,
+      1100
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Fitas Cassete",
+    "preco_melhoria": 150,
+    "dono": null
+  },
+  {
+    "nome": "Impala 1967 - Supernatural",
+    "tipo": "transporte",
+    "preco": 200,
+    "alugueis": [
+      25,
+      50,
+      100,
+      200,
+      200,
+      200
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Sal Grosso",
+    "preco_melhoria": 50,
+    "dono": null
+  },
+  {
+    "nome": "Rua Elm - Freddy Krueger",
+    "tipo": "propriedade",
+    "preco": 260,
+    "alugueis": [
+      22,
+      110,
+      330,
+      800,
+      975,
+      1150
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Pesadelos",
+    "preco_melhoria": 150,
+    "dono": null
+  },
+  {
+    "nome": "Mansão Spencer - Resident Evil",
+    "tipo": "propriedade",
+    "preco": 260,
+    "alugueis": [
+      22,
+      110,
+      330,
+      800,
+      975,
+      1150
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Vírus-T",
+    "preco_melhoria": 150,
+    "dono": null
+  },
+  {
+    "nome": "Companhia de Água",
+    "tipo": "servico",
+    "preco": 150,
+    "alugueis": [
+      15,
+      30,
+      60,
+      120,
+      150,
+      200
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Encanamentos",
+    "preco_melhoria": 75,
+    "dono": null
+  },
+  {
+    "nome": "Floresta de Blair - A Bruxa de Blair",
+    "tipo": "propriedade",
+    "preco": 280,
+    "alugueis": [
+      24,
+      120,
+      360,
+      850,
+      1025,
+      1200
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Totens de Madeira",
+    "preco_melhoria": 150,
+    "dono": null
+  },
+  {
+    "nome": "Transporte de Prisioneiros",
+    "tipo": "va_para_prisao"
+  },
+  {
+    "nome": "Bar do Moe - Os Simpsons",
+    "tipo": "propriedade",
+    "preco": 300,
+    "alugueis": [
+      26,
+      130,
+      390,
+      900,
+      1100,
+      1275
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Canecas de Chopp",
+    "preco_melhoria": 200,
+    "dono": null
+  },
+  {
+    "nome": "Casa do Homer Simpson",
+    "tipo": "propriedade",
+    "preco": 300,
+    "alugueis": [
+      26,
+      130,
+      390,
+      900,
+      1100,
+      1275
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Fardos de Duff",
+    "preco_melhoria": 200,
+    "dono": null
+  },
+  {
+    "nome": "Caixa de Pandora",
+    "tipo": "especial"
+  },
+  {
+    "nome": "Usina Nuclear de Springfield",
+    "tipo": "propriedade",
+    "preco": 320,
+    "alugueis": [
+      28,
+      150,
+      450,
+      1000,
+      1200,
+      1400
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Barras de Urânio",
+    "preco_melhoria": 200,
+    "dono": null
+  },
+  {
+    "nome": "Expresso de Hogwarts - Harry Potter",
+    "tipo": "transporte",
+    "preco": 200,
+    "alugueis": [
+      25,
+      50,
+      100,
+      200,
+      200,
+      200
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Varinhas",
+    "preco_melhoria": 50,
+    "dono": null
+  },
+  {
+    "nome": "Caixa de Pandora",
+    "tipo": "especial"
+  },
+  {
+    "nome": "Taxa de Luxo",
+    "tipo": "imposto",
+    "valor": 100
+  },
+  {
+    "nome": "Hotel Overlook - Jack Torrance",
+    "tipo": "propriedade",
+    "preco": 350,
+    "alugueis": [
+      35,
+      175,
+      500,
+      1100,
+      1300,
+      1500
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Machados",
+    "preco_melhoria": 200,
+    "dono": null
+  },
+  {
+    "nome": "Acampamento Crystal Lake - Jason Voorhees",
+    "tipo": "propriedade",
+    "preco": 400,
+    "alugueis": [
+      50,
+      200,
+      600,
+      1400,
+      1700,
+      2000
+    ],
+    "melhorias": 0,
+    "nome_melhoria": "Armadilhas de Urso",
+    "preco_melhoria": 200,
+    "dono": null
+  }
+]

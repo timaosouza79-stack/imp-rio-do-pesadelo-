@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Império dos Pesadelos - Monopoly Multiverso 2D</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Modal de Setup Inicial e Seleção de Personagens -->
+    <div id="setup-modal" class="modal">
+        <div class="modal-content glass setup-modal-large">
+            <h1>Império dos Pesadelos</h1>
+            <p>Conquista do Multiverso — Escolha seu Campeão</p>
+
+            <!-- Grid de Seleção de Personagens -->
+            <div class="char-select-section">
+                <label class="select-title">🎭 Escolha seu Avatar</label>
+                <div id="char-select-grid" class="char-select-grid">
+                    <!-- Injetado via JS -->
+                </div>
+            </div>
+
+            <div class="setup-inputs-row">
+                <div class="input-group">
+                    <label>👤 Humanos:</label>
+                    <input type="number" id="in-hum" value="1" min="1" max="4">
+                </div>
+                <div class="input-group">
+                    <label>🤖 CPUs:</label>
+                    <input type="number" id="in-cpu" value="3" min="0" max="4">
+                </div>
+            </div>
+
+            <button id="btn-start" class="btn-primary">INICIAR CONQUISTA</button>
+        </div>
+    </div>
+
+    <div id="ui-container" style="display: none;">
+        
+        <!-- PAINEL ESQUERDO -->
+        <div id="left-sidebar">
+            
+            <!-- Feed de Logs (Histórico) -->
+            <div id="log-feed" class="glass">
+                <div class="log-title-container">
+                    <h3 class="log-title">📜 HISTÓRICO DA PARTIDA</h3>
+                </div>
+                <!-- Injetado via JS -->
+            </div>
+        </div>
+
+        <!-- CENTRO: Tabuleiro 2D Grid -->
+        <div id="board-container">
+            <div id="board-grid">
+                <!-- As 40 casas + Centro serão renderizados via JS -->
+            </div>
+        </div>
+        
+        <!-- PAINEL DIREITO -->
+        <div id="right-sidebar">
+            
+            <!-- HUD Lateral - Jogadores -->
+            <div id="top-panel" class="glass">
+                <h2 id="current-player" class="neon-text">Turno: -</h2>
+                <div class="players-header">JOGADORES</div>
+                <div id="players-list">
+                    <!-- Injetado via JS -->
+                </div>
+            </div>
+
+            <!-- Painel de Controles -->
+            <div id="controls-panel">
+                <button id="btn-rolar" class="btn-action pulse" style="display: none;">🎲 ROLAR DADOS</button>
+                <button id="btn-test-chucky" class="btn-action btn-orange">📜 TESTAR CARTA DO CHUCKY</button>
+                <button id="btn-test-video" class="btn-action btn-red">▶ TESTAR VÍDEO ESGOTOS DE DERRY</button>
+            </div>
+        </div>
+
+        <!-- Modal de Decisão Dinâmico (Cartão de Propriedade/Sorte) -->
+        <div id="property-card" class="modal" style="display: none;">
+            <div class="modal-content glass property-modal-compact">
+                <!-- Header Colorido -->
+                <div id="pc-header">
+                    <h2 id="pc-title">NOME</h2>
+                </div>
+                <!-- Corpo do Card -->
+                <div class="pc-body">
+                    <img id="pc-img" src="" alt="Imagem da Casa">
+                    <p id="pc-msg">Você deseja comprar esta propriedade?</p>
+                    <div class="decision-buttons">
+                        <button id="btn-pc-yes" class="btn-primary">SIM</button>
+                        <button id="btn-pc-no" class="btn-secondary">NÃO</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Vídeo -->
+        <div id="video-modal" class="modal" style="display: none;">
+            <div class="modal-content glass video-modal-content">
+                <div class="video-modal-header">
+                    <button id="btn-close-video" class="btn-close">✖ FECHAR</button>
+                </div>
+                <div class="video-container">
+                    <video id="house-video" controls autoplay>
+                        <source id="house-video-src" src="" type="video/mp4">
+                        Seu navegador não suporta vídeos.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
