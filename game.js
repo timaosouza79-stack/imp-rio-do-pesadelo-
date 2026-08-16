@@ -1440,6 +1440,195 @@ function initApp() {
     renderCharSelectMenu();
     renderBoardHTML();
     initListeners();
+    // Inicializa o layout de app mobile se necessário
+    if (window.innerWidth <= 900) {
+        initMobileApp();
+    }
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 900 && !document.getElementById('mobile-nav-bar')) {
+            initMobileApp();
+        }
+    });
+}
+
+/* ================================================================
+   APP MOBILE — Nav Bar + Painéis Deslizantes
+   Cria a barra de navegação inferior estilo iOS e os painéis
+   slide-up para Jogadores e Histórico.
+   ================================================================ */
+function initMobileApp() {
+    // Evita duplicação
+    if (document.getElementById('mobile-nav-bar')) return;
+
+    /* ── 1. CRIAR O PAINEL DE JOGADORES (slide-up) ── */
+    const playersPanel = document.createElement('div');
+    playersPanel.id = 'mobile-players-panel';
+    playersPanel.innerHTML = `
+        <div class="panel-drag-handle"></div>
+        <div class="panel-title">⚔️ JOGADORES</div>
+        <div class="panel-inner" id="mobile-players-list"></div>
+    `;
+    document.body.appendChild(playersPanel);
+
+    /* ── 2. CRIAR A NAV BAR ── */
+    const navBar = document.createElement('div');
+    navBar.id = 'mobile-nav-bar';
+    navBar.innerHTML = `
+        <button class="nav-tab active" id="nav-board" aria-label="Tabuleiro">
+            <span class="nav-icon">🗺️</span>
+            <span>Tabuleiro</span>
+        </button>
+        <button class="nav-tab nav-tab-dice" id="nav-dice" aria-label="Rolar Dados">
+            <div class="nav-dice-btn disabled" id="nav-dice-btn">🎲</div>
+            <span class="nav-label">Rolar</span>
+        </button>
+        <button class="nav-tab" id="nav-players" aria-label="Jogadores">
+            <span class="nav-icon">👥</span>
+            <span>Jogadores</span>
+        </button>
+        <button class="nav-tab" id="nav-log" aria-label="Histórico">
+            <span class="nav-icon">📜</span>
+            <span>Histórico</span>
+        </button>
+    `;
+    document.body.appendChild(navBar);
+
+    /* ── 3. ADICIONAR HANDLE de arraste ao log-feed ── */
+    const leftSidebar = document.getElementById('left-sidebar');
+    if (leftSidebar) {
+        const handle = document.createElement('div');
+        handle.className = 'panel-drag-handle';
+        const title = document.createElement('div');
+        title.className = 'panel-title';
+        title.textContent = '📜 HISTÓRICO DA PARTIDA';
+        leftSidebar.prepend(title);
+        leftSidebar.prepend(handle);
+    }
+
+    /* ── 4. LÓGICA DE ABAS ── */
+    let activePanel = null; // 'log' | 'players' | null
+
+    function closeAllPanels() {
+        if (leftSidebar) leftSidebar.classList.remove('mobile-panel-open');
+        playersPanel.classList.remove('mobile-panel-open');
+        activePanel = null;
+        // Remove overlay se existir
+        const overlay = document.getElementById('mobile-overlay');
+        if (overlay) overlay.remove();
+    }
+
+    function openPanel(which) {
+        // Cria overlay semitransparente para fechar ao clicar fora
+        let overlay = document.getElementById('mobile-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.id = 'mobile-overlay';
+            overlay.style.cssText = `
+                position:fixed;inset:0;z-index:499;
+                background:rgba(0,0,0,0.5);
+                backdrop-filter:blur(2px);
+            `;
+            overlay.addEventListener('click', closeAllPanels);
+            document.body.appendChild(overlay);
+        }
+
+        if (which === 'log') {
+            closeAllPanels();
+            // Re-criar overlay após closeAllPanels o removeu
+            const ov2 = document.createElement('div');
+            ov2.id = 'mobile-overlay';
+            ov2.style.cssText = `position:fixed;inset:0;z-index:499;background:rgba(0,0,0,0.5);backdrop-filter:blur(2px);`;
+            ov2.addEventListener('click', closeAllPanels);
+            document.body.appendChild(ov2);
+            if (leftSidebar) leftSidebar.classList.add('mobile-panel-open');
+            activePanel = 'log';
+        } else if (which === 'players') {
+            closeAllPanels();
+            const ov2 = document.createElement('div');
+            ov2.id = 'mobile-overlay';
+            ov2.style.cssText = `position:fixed;inset:0;z-index:499;background:rgba(0,0,0,0.5);backdrop-filter:blur(2px);`;
+            ov2.addEventListener('click', closeAllPanels);
+            document.body.appendChild(ov2);
+            // Sincroniza jogadores no painel expandido
+            syncMobilePlayersPanel();
+            playersPanel.classList.add('mobile-panel-open');
+            activePanel = 'players';
+        }
+    }
+
+    // Botão Tabuleiro → fecha painéis
+    document.getElementById('nav-board').addEventListener('click', () => {
+        closeAllPanels();
+        setNavActive('nav-board');
+    });
+
+    // Botão Jogadores
+    document.getElementById('nav-players').addEventListener('click', () => {
+        if (activePanel === 'players') {
+            closeAllPanels();
+            setNavActive('nav-board');
+        } else {
+            openPanel('players');
+            setNavActive('nav-players');
+        }
+    });
+
+    // Botão Histórico
+    document.getElementById('nav-log').addEventListener('click', () => {
+        if (activePanel === 'log') {
+            closeAllPanels();
+            setNavActive('nav-board');
+        } else {
+            openPanel('log');
+            setNavActive('nav-log');
+        }
+    });
+
+    // Botão Rolar Dados na nav bar
+    const navDiceBtn = document.getElementById('nav-dice-btn');
+    navDiceBtn.addEventListener('click', () => {
+        if (estado === 'AGUARDANDO_ROLO') {
+            closeAllPanels();
+            rolarDados();
+        }
+    });
+
+    /* ── 5. SINCRONIZAR estado do botão Rolar com a nav bar ── */
+    // Observer para detectar quando o btn-rolar original muda de display
+    const btnRolarOriginal = document.getElementById('btn-rolar');
+    if (btnRolarOriginal) {
+        const observer = new MutationObserver(() => {
+            const visible = btnRolarOriginal.style.display !== 'none';
+            navDiceBtn.classList.toggle('disabled', !visible);
+        });
+        observer.observe(btnRolarOriginal, { attributes: true, attributeFilter: ['style'] });
+        // Verifica estado inicial
+        navDiceBtn.classList.toggle('disabled', btnRolarOriginal.style.display === 'none');
+    }
+
+    /* ── 6. Sincronizar painel de jogadores expandido ── */
+    function syncMobilePlayersPanel() {
+        const originalList = document.getElementById('players-list');
+        const mobileList = document.getElementById('mobile-players-list');
+        if (originalList && mobileList) {
+            mobileList.innerHTML = originalList.innerHTML;
+        }
+    }
+
+    /* ── 7. Observer para atualizar painel de jogadores ao mudar ── */
+    const playersList = document.getElementById('players-list');
+    if (playersList) {
+        const playersObserver = new MutationObserver(() => {
+            if (activePanel === 'players') syncMobilePlayersPanel();
+        });
+        playersObserver.observe(playersList, { childList: true, subtree: true, characterData: true });
+    }
+}
+
+function setNavActive(tabId) {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    const tab = document.getElementById(tabId);
+    if (tab) tab.classList.add('active');
 }
 
 if (document.readyState === 'loading') {

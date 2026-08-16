@@ -1230,163 +1230,190 @@ button:active {
 }
 
 /* ================================================================
-   RESPONSIVO MOBILE UNIFICADO — max-width: 900px
-   Resolve scroll horizontal, nomes cortados, dados/cartas grandes,
-   tabuleiro espremido e botão cobrindo conteúdo.
+   APP MOBILE — max-width: 900px
+   Layout de app nativo com header fixo, abas e nav bar inferior.
+   O tabuleiro ocupa a tela toda. Jogadores e Log ficam em abas.
    ================================================================ */
 @media (max-width: 900px) {
 
-    /* ── ROOT: Bloqueia qualquer overflow horizontal ── */
+    /* ── ROOT ── */
     html, body {
-        overflow-x: hidden !important;
-        overflow-y: auto !important;
-        width: 100% !important;
+        overflow: hidden !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        height: 100dvh !important; /* Dynamic viewport height — iPhone */
         max-width: 100vw !important;
+        position: fixed !important; /* Evita bounce scroll no iOS */
+        touch-action: manipulation;
     }
 
-    /* ── CONTAINER PRINCIPAL: coluna única ── */
+    /* ── CONTAINER PRINCIPAL: ocupa tela toda como app ── */
     #ui-container {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        height: 100dvh !important;
         flex-direction: column !important;
         justify-content: flex-start !important;
-        align-items: center !important;
-        height: auto !important;
-        min-height: 100vh;
-        width: 100% !important;
-        max-width: 100vw !important;
-        padding: 8px !important;
-        padding-bottom: 90px !important; /* Espaço para botão fixo */
+        align-items: stretch !important;
+        padding: 0 !important;
+        overflow: hidden !important;
         box-sizing: border-box !important;
-        overflow-x: hidden !important;
+        background: #0a0a1c url('assets/fundo_castelo.jpg') no-repeat center center;
+        background-size: cover;
+        background-attachment: scroll;
     }
 
-    /* Ocultar o boneco 3D lateral */
+    /* ── OCULTAR boneco 3D lateral ── */
     #character-display {
         display: none !important;
     }
 
-    /* ── PAINEL DIREITO (jogadores) — topo ── */
+    /* ================================================================
+       HEADER FIXO DO APP (topo)
+       Mostra: avatar do jogador ativo + nome + dinheiro + turno
+       ================================================================ */
     #right-sidebar {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: auto !important;
         order: 1;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    #top-panel {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 10px 12px;
-        border-radius: 12px;
-        margin: 0;
-        max-height: none;
-    }
-
-    .neon-text {
-        font-size: 13px;
-        margin-bottom: 8px;
-    }
-
-    .players-header {
-        font-size: 10px;
-        letter-spacing: 2px;
-        margin-bottom: 8px;
-    }
-
-    /* Grid 2×2 de jogadores */
-    #players-list {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 6px !important;
-    }
-
-    /* Card de jogador: sem largura em % (quebraria o grid) */
-    .player-stat {
         width: 100% !important;
-        margin-bottom: 0;
-        padding: 6px 8px;
-        gap: 6px;
-        box-sizing: border-box;
+        height: 56px !important;
+        min-height: 56px !important;
+        flex-shrink: 0 !important;
+        padding: 0 !important;
+        background: rgba(8, 4, 18, 0.97) !important;
+        border-bottom: 1px solid rgba(255, 0, 85, 0.4) !important;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.8) !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 0 14px !important;
+        box-sizing: border-box !important;
+        z-index: 200 !important;
+        /* Safe area top para iPhone com notch */
+        padding-top: env(safe-area-inset-top) !important;
+        height: calc(56px + env(safe-area-inset-top)) !important;
     }
 
-    /* Avatar menor */
-    .player-stat .player-avatar-wrap {
-        width: 32px;
-        height: 32px;
+    /* Painel de jogadores: vira header horizontal compacto */
+    #top-panel {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        max-height: unset !important;
+        overflow: hidden !important;
+        gap: 8px;
+    }
+
+    /* Título do turno — no header */
+    #current-player {
+        font-size: 11px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border-bottom: none !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 120px;
         flex-shrink: 0;
     }
 
-    /* Nome: permitir quebra de linha — sem reticências */
-    .player-stat .player-name-tag {
-        font-size: 11px;
-        white-space: normal !important;
-        overflow: visible !important;
-        text-overflow: clip !important;
-        word-break: break-word;
-        line-height: 1.2;
+    /* Label "JOGADORES" — ocultar no header */
+    .players-header {
+        display: none !important;
     }
 
-    .player-stat .player-char-tag {
-        font-size: 9px;
-        white-space: normal;
+    /* Lista de jogadores: avatares circulares no header */
+    #players-list {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 6px !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        flex: 1;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    #players-list::-webkit-scrollbar { display: none; }
+
+    /* Cards de jogador: só avatar + dinheiro, miniaturizados */
+    .player-stat {
+        width: auto !important;
+        min-width: 0 !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 3px 5px !important;
+        gap: 2px !important;
+        border-radius: 10px !important;
+        background: rgba(255,255,255,0.06) !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
+        transform: none !important;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .player-stat.active-player {
+        border-color: #ff00aa !important;
+        background: rgba(255, 0, 170, 0.15) !important;
+        box-shadow: 0 0 8px rgba(255,0,170,0.5) !important;
+        transform: none !important;
+        animation: none !important;
+    }
+
+    .player-stat .player-avatar-wrap {
+        width: 28px !important;
+        height: 28px !important;
+        border-width: 1px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .player-stat .player-info {
+        display: none !important; /* Oculta nome e personagem no header */
     }
 
     .player-stat .player-money-tag {
-        font-size: 11px;
+        font-size: 9px !important;
+        font-weight: 900 !important;
+        color: #00ff88 !important;
+        white-space: nowrap;
     }
 
-    /* Painel de controle fixo — sem ocupar espaço no flow */
-    #controls-panel {
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        z-index: 1000 !important;
-        padding: 10px 16px !important;
-        border-radius: 0 !important;
-        margin: 0 !important;
-        background: rgba(10, 5, 20, 0.97) !important;
-        border-top: 2px solid #ff0055 !important;
-        box-shadow: 0 -8px 24px rgba(0,0,0,0.85) !important;
-        display: flex !important;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
-    }
-
-    #btn-rolar {
-        width: 90%;
-        max-width: 360px;
-        padding: 14px 20px;
-        font-size: 18px;
-        letter-spacing: 1.5px;
-    }
-
-    /* ── TABULEIRO — container com scroll interno ── */
+    /* ================================================================
+       ÁREA CENTRAL: tabuleiro em tela cheia
+       Ocupa todo o espaço entre o header e a nav bar
+       ================================================================ */
     #board-container {
-        order: 2;
-        /* Largura visível = viewport, altura quadrada igual à largura */
-        width: calc(100vw - 16px) !important;
-        height: calc(100vw - 16px) !important;
-        max-width: 540px;
-        max-height: 540px;
-        /* Scroll interno: o jogador arrasta para ver o tabuleiro */
+        order: 2 !important;
+        flex: 1 1 auto !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: none !important;
+        max-height: none !important;
         overflow: auto !important;
         -webkit-overflow-scrolling: touch;
         padding: 4px !important;
-        margin: 8px 0;
-        border-radius: 12px;
+        margin: 0 !important;
+        border-radius: 0 !important;
         box-sizing: border-box !important;
-        background: rgba(5,3,12,0.98) !important;
-        border: 1px solid rgba(138,43,226,0.5) !important;
-        box-shadow: 0 0 20px rgba(138,43,226,0.3) !important;
-        flex-shrink: 0;
+        background: rgba(3, 3, 8, 0.96) !important;
+        border: none !important;
+        box-shadow: none !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
-    /* Grid interno: tamanho mínimo real para que as casas não esmaguem.
-       620px dá ~87px por casa de canto (14%) e ~49px por casa lateral (1fr) —
-       suficiente para ler o texto. O container rola internamente. */
+    /* Grid do tabuleiro: 620×620 com swipe interno */
     #board-grid {
         width: 620px !important;
         height: 620px !important;
@@ -1394,12 +1421,11 @@ button:active {
         min-height: 620px !important;
         max-width: none !important;
         aspect-ratio: unset !important;
-        /* Colunas e linhas com tamanho mínimo absoluto protegem as bordas */
         grid-template-columns: minmax(50px, 14%) repeat(9, minmax(30px, 1fr)) minmax(50px, 14%) !important;
         grid-template-rows: minmax(50px, 14%) repeat(9, minmax(30px, 1fr)) minmax(50px, 14%) !important;
-        border-radius: 8px;
-        margin: 0 !important;
-        flex-shrink: 0;
+        border-radius: 10px !important;
+        margin: auto !important;
+        flex-shrink: 0 !important;
     }
 
     /* Casas do tabuleiro */
@@ -1407,14 +1433,12 @@ button:active {
         font-size: 6.5px !important;
         line-height: 1.1 !important;
     }
-
     .tile-price {
         font-size: 7px !important;
     }
 
-    /* ── ÁREA CENTRAL: contida, nunca estoura o grid ── */
+    /* Área central do tabuleiro contida */
     #center-area {
-        /* Ocupa só o espaço que o grid reserva para ela — sem forçar mais */
         width: 100% !important;
         height: 100% !important;
         max-width: 100% !important;
@@ -1422,7 +1446,6 @@ button:active {
         overflow: hidden !important;
         padding: 4px !important;
         box-sizing: border-box !important;
-        /* Flex contido: itens encolhem para caber */
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-evenly !important;
@@ -1430,116 +1453,244 @@ button:active {
         gap: 0 !important;
     }
 
-    /* Título do centro */
-    .center-title-container {
-        margin-top: 0;
-        flex-shrink: 1;
-    }
+    .center-title-container { margin-top: 0; flex-shrink: 1; }
+    .crown-icon { font-size: 22px; margin-bottom: -6px; }
+    .center-title-main { font-size: 10px; letter-spacing: 0.5px; margin-bottom: 2px; line-height: 1.1; }
+    .center-subtitle { font-size: 7px; letter-spacing: 1px; margin-bottom: 2px; }
 
-    .crown-icon {
-        font-size: 22px;
-        margin-bottom: -8px;
-    }
-
-    .center-title-main {
-        font-size: 10px;
-        letter-spacing: 0.5px;
-        margin-bottom: 2px;
-        line-height: 1.1;
-    }
-
-    .center-subtitle {
-        font-size: 7px;
-        letter-spacing: 1px;
-        margin-bottom: 2px;
-    }
-
-    /* Dados: encolhem para caber no centro */
-    #dice-container {
-        gap: 8px;
-        margin: 2px 0;
-        flex-shrink: 1;
-    }
-
-    .dice-cube {
-        width: 44px;
-        height: 44px;
-        padding: 6px;
-        border-radius: 8px;
-        border-width: 2px;
-    }
-
-    .pip {
-        width: 6px;
-        height: 6px;
-    }
-
-    /* Cartas: encolhem para caber */
-    .center-decks {
-        gap: 8px;
-        margin-top: 2px;
-        flex-shrink: 1;
-    }
-
-    .deck-card {
-        width: 58px;
-        height: 82px;
-        padding: 5px;
-        border-radius: 8px;
-        border-width: 2px;
-    }
-
-    .deck-card .card-icon {
-        font-size: 18px;
-        margin-bottom: 3px;
-    }
-
-    .deck-card .card-name {
-        font-size: 7px;
-        line-height: 1.0;
-    }
+    #dice-container { gap: 8px; margin: 2px 0; flex-shrink: 1; }
+    .dice-cube { width: 44px; height: 44px; padding: 6px; border-radius: 8px; border-width: 2px; }
+    .pip { width: 6px; height: 6px; }
+    .center-decks { gap: 8px; margin-top: 2px; flex-shrink: 1; }
+    .deck-card { width: 58px; height: 82px; padding: 5px; border-radius: 8px; border-width: 2px; }
+    .deck-card .card-icon { font-size: 18px; margin-bottom: 3px; }
+    .deck-card .card-name { font-size: 7px; line-height: 1.0; }
 
     /* Peões menores */
-    .player-figurine-standalone {
-        width: 38px;
-        height: 50px;
-    }
+    .player-figurine-standalone { width: 38px; height: 50px; }
+    .figurine-cutout { height: 40px !important; max-width: 34px !important; }
+    .figurine-pedestal-3d { width: 32px; height: 10px; }
 
-    .figurine-cutout {
-        height: 40px !important;
-        max-width: 34px !important;
-    }
-
-    .figurine-pedestal-3d {
-        width: 32px;
-        height: 10px;
-    }
-
-    /* ── PAINEL ESQUERDO (Histórico) — rodapé ── */
+    /* ================================================================
+       PAINEL ESQUERDO (Histórico): OCULTO por padrão
+       Aparece como painel deslizante quando clicado na nav bar
+       ================================================================ */
     #left-sidebar {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: auto !important;
-        order: 3;
-        padding: 0;
-        box-sizing: border-box;
+        order: 3 !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        background: rgba(6, 3, 14, 0.98) !important;
+        border-top: 2px solid rgba(0, 255, 255, 0.3) !important;
+        border-radius: 20px 20px 0 0 !important;
+        z-index: 500 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        /* Empurra acima da nav bar */
+        padding-bottom: calc(70px + env(safe-area-inset-bottom)) !important;
+    }
+
+    /* Quando aberto via JS */
+    #left-sidebar.mobile-panel-open {
+        height: 50vh !important;
     }
 
     #log-feed {
         width: 100%;
-        box-sizing: border-box;
-        height: 180px;
-        font-size: 10px;
-        padding: 10px 12px;
-        border-radius: 12px;
+        height: 100%;
+        font-size: 11px;
+        padding: 16px 16px 8px;
+        border-radius: 0;
         margin: 0;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        overflow-y: auto;
     }
 
-    .log-title {
-        font-size: 12px;
+    .log-title { font-size: 13px; }
+
+    /* ================================================================
+       PAINEL DE JOGADORES EXPANDIDO: slide-up ao clicar na aba
+       ================================================================ */
+    #mobile-players-panel {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        background: rgba(6, 3, 14, 0.98) !important;
+        border-top: 2px solid rgba(255, 0, 85, 0.4) !important;
+        border-radius: 20px 20px 0 0 !important;
+        z-index: 500 !important;
+        box-sizing: border-box !important;
+        padding-bottom: calc(70px + env(safe-area-inset-bottom)) !important;
     }
 
-    /* ── MODAIS ── */
+    #mobile-players-panel.mobile-panel-open {
+        height: 55vh !important;
+    }
+
+    #mobile-players-panel .panel-inner {
+        padding: 16px;
+        overflow-y: auto;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    #mobile-players-panel .player-stat {
+        width: 100% !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        padding: 10px 12px !important;
+        gap: 10px !important;
+        border-radius: 12px !important;
+        margin-bottom: 8px !important;
+    }
+
+    #mobile-players-panel .player-stat .player-avatar-wrap {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    #mobile-players-panel .player-stat .player-info {
+        display: flex !important;
+    }
+
+    #mobile-players-panel .player-stat .player-name-tag {
+        font-size: 13px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    #mobile-players-panel .player-stat .player-money-tag {
+        font-size: 13px !important;
+    }
+
+    /* ================================================================
+       BOTÃO ROLAR DADOS + BARRA DE NAVEGAÇÃO INFERIOR
+       Nav bar estilo iOS com 3 abas: Tabuleiro | Jogadores | Histórico
+       ================================================================ */
+    #controls-panel {
+        display: none !important; /* O botão é movido para dentro da nav bar */
+    }
+
+    /* Nav bar criada via CSS + HTML injetado pelo JS */
+    #mobile-nav-bar {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: calc(64px + env(safe-area-inset-bottom)) !important;
+        padding-bottom: env(safe-area-inset-bottom) !important;
+        background: rgba(6, 3, 14, 0.98) !important;
+        border-top: 1px solid rgba(255, 0, 85, 0.35) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        justify-content: space-around !important;
+        z-index: 1000 !important;
+        box-shadow: 0 -4px 24px rgba(0,0,0,0.8) !important;
+        padding-top: 6px !important;
+        box-sizing: border-box !important;
+    }
+
+    .nav-tab {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        padding: 4px 0;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        color: rgba(255,255,255,0.45);
+        font-family: 'Outfit', sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: color 0.2s, transform 0.15s;
+        border-radius: 0;
+        text-transform: uppercase;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-tab .nav-icon {
+        font-size: 22px;
+        line-height: 1;
+        transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .nav-tab:active .nav-icon {
+        transform: scale(0.85);
+    }
+
+    .nav-tab.active {
+        color: #ff0055;
+    }
+
+    .nav-tab.active .nav-icon {
+        transform: scale(1.15);
+        filter: drop-shadow(0 0 6px rgba(255,0,85,0.8));
+    }
+
+    /* Aba central: botão Rolar Dados destacado */
+    .nav-tab-dice {
+        flex: 1.4;
+        position: relative;
+    }
+
+    .nav-tab-dice .nav-dice-btn {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ff00aa, #8a2be2);
+        border: 2px solid rgba(255,0,170,0.6);
+        box-shadow: 0 0 20px rgba(255,0,170,0.5), inset 0 0 8px rgba(255,255,255,0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        cursor: pointer;
+        transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+        margin-bottom: 2px;
+        animation: pulse 2.5s infinite;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-tab-dice .nav-dice-btn:active {
+        transform: scale(0.9);
+        box-shadow: 0 0 10px rgba(255,0,170,0.3);
+    }
+
+    .nav-tab-dice .nav-dice-btn.disabled {
+        opacity: 0.3;
+        animation: none;
+        pointer-events: none;
+    }
+
+    .nav-tab-dice .nav-label {
+        font-size: 9px;
+        color: rgba(255,255,255,0.45);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* ================================================================
+       MODAIS — tela cheia no mobile como sheets
+       ================================================================ */
     .setup-modal-large,
     .video-modal-content,
     .props-modal-content,
@@ -1547,9 +1698,10 @@ button:active {
         width: 96% !important;
         max-width: 96% !important;
         margin: 10px auto !important;
-        max-height: 90vh !important;
+        max-height: 88vh !important;
         overflow-y: auto !important;
         box-sizing: border-box !important;
+        border-radius: 20px !important;
     }
 
     .setup-modal-large {
@@ -1561,9 +1713,7 @@ button:active {
         gap: 8px;
     }
 
-    .char-img-wrap {
-        height: 70px;
-    }
+    .char-img-wrap { height: 70px; }
 
     .char-card-name {
         font-size: 10px;
@@ -1571,13 +1721,29 @@ button:active {
         word-break: break-word;
     }
 
-    #pc-title {
-        font-size: 16px;
+    #pc-title { font-size: 16px; }
+    #pc-img { width: 90px; height: 90px; }
+
+    /* Handle de arraste dos painéis */
+    .panel-drag-handle {
+        width: 36px;
+        height: 4px;
+        background: rgba(255,255,255,0.25);
+        border-radius: 2px;
+        margin: 10px auto 12px;
+        flex-shrink: 0;
     }
 
-    #pc-img {
-        width: 90px;
-        height: 90px;
+    .panel-title {
+        font-size: 13px;
+        font-weight: 900;
+        color: #ff0055;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 0 16px 12px;
+        border-bottom: 1px solid rgba(255,0,85,0.2);
+        flex-shrink: 0;
     }
 }
 
