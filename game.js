@@ -1084,8 +1084,8 @@ function animateAndMove(d1, d2) {
         if (d1El) d1El.classList.remove('rolling');
         if (d2El) d2El.classList.remove('rolling');
 
-        renderDice(d1El, d1);
-        renderDice(d2El, d2);
+        if (d1El) d1El.innerHTML = renderDiceFaceHTML(d1);
+        if (d2El) d2El.innerHTML = renderDiceFaceHTML(d2);
 
         const total = d1 + d2;
         const duplas = d1 === d2;
