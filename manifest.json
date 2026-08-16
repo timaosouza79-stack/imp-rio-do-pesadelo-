@@ -1,0 +1,27 @@
+{
+  "name": "Império dos Pesadelos",
+  "short_name": "Pesadelos",
+  "description": "Jogo de tabuleiro horror — Monopoly do Multiverso",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a1c",
+  "theme_color": "#ff0055",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["games", "entertainment"]
+}
