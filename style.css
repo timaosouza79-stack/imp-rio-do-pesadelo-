@@ -1413,8 +1413,8 @@ button:active {
         border: none !important;
         box-shadow: none !important;
         display: flex !important;
-        align-items: flex-start !important;
-        justify-content: center !important;
+        align-items: center !important;
+        justify-content: flex-start !important; /* Evita corte à esquerda quando transborda */
     }
 
     /* Grid do tabuleiro: 620×620 com swipe interno */
