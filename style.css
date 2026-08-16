@@ -73,8 +73,10 @@ body, html {
 
 #board-grid {
     display: grid !important;
-    grid-template-columns: 14% repeat(9, 1fr) 14% !important;
-    grid-template-rows: 14% repeat(9, 1fr) 14% !important;
+    /* minmax(0,14%) garante que as casas de canto/borda NUNCA encolham abaixo de 0
+       enquanto mantém a proporção 14% no desktop. No mobile será sobrescrito abaixo. */
+    grid-template-columns: minmax(0, 14%) repeat(9, 1fr) minmax(0, 14%) !important;
+    grid-template-rows: minmax(0, 14%) repeat(9, 1fr) minmax(0, 14%) !important;
     width: 100% !important;
     max-width: 1000px !important;
     aspect-ratio: 1 / 1 !important;
@@ -1356,36 +1358,43 @@ button:active {
         letter-spacing: 1.5px;
     }
 
-    /* ── TABULEIRO — centro ── */
+    /* ── TABULEIRO — container com scroll interno ── */
     #board-container {
         order: 2;
-        /* Quadrado que cabe exatamente na viewport sem overflow */
+        /* Largura visível = viewport, altura quadrada igual à largura */
         width: calc(100vw - 16px) !important;
         height: calc(100vw - 16px) !important;
-        max-width: 560px;
-        max-height: 560px;
+        max-width: 540px;
+        max-height: 540px;
+        /* Scroll interno: o jogador arrasta para ver o tabuleiro */
         overflow: auto !important;
         -webkit-overflow-scrolling: touch;
         padding: 4px !important;
         margin: 8px 0;
         border-radius: 12px;
         box-sizing: border-box !important;
-        /* Remove bordas que causam overflow */
         background: rgba(5,3,12,0.98) !important;
         border: 1px solid rgba(138,43,226,0.5) !important;
         box-shadow: 0 0 20px rgba(138,43,226,0.3) !important;
+        flex-shrink: 0;
     }
 
-    /* Grid interno: tamanho fixo, scroll interno no container */
+    /* Grid interno: tamanho mínimo real para que as casas não esmaguem.
+       620px dá ~87px por casa de canto (14%) e ~49px por casa lateral (1fr) —
+       suficiente para ler o texto. O container rola internamente. */
     #board-grid {
-        /* 540px é confortável para ler as casas com swipe */
-        width: 540px !important;
-        height: 540px !important;
-        min-width: unset !important;
-        min-height: unset !important;
+        width: 620px !important;
+        height: 620px !important;
+        min-width: 620px !important;
+        min-height: 620px !important;
         max-width: none !important;
+        aspect-ratio: unset !important;
+        /* Colunas e linhas com tamanho mínimo absoluto protegem as bordas */
+        grid-template-columns: minmax(50px, 14%) repeat(9, minmax(30px, 1fr)) minmax(50px, 14%) !important;
+        grid-template-rows: minmax(50px, 14%) repeat(9, minmax(30px, 1fr)) minmax(50px, 14%) !important;
         border-radius: 8px;
         margin: 0 !important;
+        flex-shrink: 0;
     }
 
     /* Casas do tabuleiro */
@@ -1398,63 +1407,91 @@ button:active {
         font-size: 7px !important;
     }
 
-    /* Dados e cartas do centro */
+    /* ── ÁREA CENTRAL: contida, nunca estoura o grid ── */
+    #center-area {
+        /* Ocupa só o espaço que o grid reserva para ela — sem forçar mais */
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        overflow: hidden !important;
+        padding: 4px !important;
+        box-sizing: border-box !important;
+        /* Flex contido: itens encolhem para caber */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-evenly !important;
+        align-items: center !important;
+        gap: 0 !important;
+    }
+
+    /* Título do centro */
+    .center-title-container {
+        margin-top: 0;
+        flex-shrink: 1;
+    }
+
+    .crown-icon {
+        font-size: 22px;
+        margin-bottom: -8px;
+    }
+
+    .center-title-main {
+        font-size: 10px;
+        letter-spacing: 0.5px;
+        margin-bottom: 2px;
+        line-height: 1.1;
+    }
+
+    .center-subtitle {
+        font-size: 7px;
+        letter-spacing: 1px;
+        margin-bottom: 2px;
+    }
+
+    /* Dados: encolhem para caber no centro */
     #dice-container {
-        gap: 12px;
-        margin: 6px 0;
+        gap: 8px;
+        margin: 2px 0;
+        flex-shrink: 1;
     }
 
     .dice-cube {
-        width: 58px;
-        height: 58px;
-        padding: 8px;
-        border-radius: 12px;
+        width: 44px;
+        height: 44px;
+        padding: 6px;
+        border-radius: 8px;
         border-width: 2px;
     }
 
     .pip {
-        width: 8px;
-        height: 8px;
+        width: 6px;
+        height: 6px;
     }
 
+    /* Cartas: encolhem para caber */
     .center-decks {
-        gap: 12px;
-        margin-top: 4px;
+        gap: 8px;
+        margin-top: 2px;
+        flex-shrink: 1;
     }
 
     .deck-card {
-        width: 75px;
-        height: 105px;
-        padding: 8px;
-        border-radius: 10px;
+        width: 58px;
+        height: 82px;
+        padding: 5px;
+        border-radius: 8px;
         border-width: 2px;
     }
 
     .deck-card .card-icon {
-        font-size: 26px;
-        margin-bottom: 5px;
+        font-size: 18px;
+        margin-bottom: 3px;
     }
 
     .deck-card .card-name {
-        font-size: 8.5px;
-        line-height: 1.1;
-    }
-
-    .crown-icon { font-size: 28px; }
-
-    .center-title-main {
-        font-size: clamp(11px, 2.8vw, 20px);
-        letter-spacing: 1px;
-    }
-
-    .center-subtitle {
-        font-size: clamp(7px, 1.6vw, 11px);
-        letter-spacing: 2px;
-        margin-bottom: 6px;
-    }
-
-    #center-area {
-        padding: 6px;
+        font-size: 7px;
+        line-height: 1.0;
     }
 
     /* Peões menores */
