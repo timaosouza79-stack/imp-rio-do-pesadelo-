@@ -977,7 +977,26 @@ function iniciarJogo(humanos, cpus, chosenHumanChars, chosenHumanNames) {
     }
     
     document.getElementById('setup-modal').style.display = 'none';
-    document.getElementById('ui-container').style.display = 'flex';
+        document.getElementById('ui-container').style.display = 'flex';
+        
+        setTimeout(() => {
+            const boardContainer = document.getElementById('board-container');
+            const boardGrid = document.getElementById('board-grid');
+            if (boardContainer && boardGrid) {
+                boardContainer.scrollLeft = (boardGrid.offsetWidth - boardContainer.clientWidth) / 2;
+                boardContainer.scrollTop = (boardGrid.offsetHeight - boardContainer.clientHeight) / 2;
+            }
+        }, 100);
+    
+    // Centraliza o scroll do tabuleiro no mobile
+    setTimeout(() => {
+        const boardContainer = document.getElementById('board-container');
+        const boardGrid = document.getElementById('board-grid');
+        if (boardContainer && boardGrid) {
+            boardContainer.scrollLeft = (boardGrid.offsetWidth - boardContainer.clientWidth) / 2;
+            boardContainer.scrollTop = (boardGrid.offsetHeight - boardContainer.clientHeight) / 2;
+        }
+    }, 100);
     
     logMsg(`🎮 Partida iniciada com ${humanos} Humano(s) e ${cpus} CPU(s)!`);
     idxJogador = 0;
@@ -1864,6 +1883,15 @@ function handleHostMessage(data) {
         
         document.getElementById('setup-modal').style.display = 'none';
         document.getElementById('ui-container').style.display = 'flex';
+        
+        setTimeout(() => {
+            const boardContainer = document.getElementById('board-container');
+            const boardGrid = document.getElementById('board-grid');
+            if (boardContainer && boardGrid) {
+                boardContainer.scrollLeft = (boardGrid.offsetWidth - boardContainer.clientWidth) / 2;
+                boardContainer.scrollTop = (boardGrid.offsetHeight - boardContainer.clientHeight) / 2;
+            }
+        }, 100);
         
         updateUI();
     }
