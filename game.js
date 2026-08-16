@@ -831,6 +831,7 @@ class Jogador {
 let jogadores = [];
 let idxJogador = 0;
 let estado = "INIT";
+let currentPandoraIdx = 0;
 
 function logMsg(msg) {
     const feed = document.getElementById('log-feed');
@@ -948,27 +949,31 @@ function updateUI() {
 
 function iniciarJogo(humanos, cpus, chosenHumanChars, chosenHumanNames) {
     jogadores = [];
-    
     const pool = [...PERSONAGENS_JOGADORES];
     
-    // Create Humans
     let count = 0;
     for(let i=0; i<humanos; i++) {
-        // Find the chosen char object by original index
         const originalChar = PERSONAGENS_JOGADORES[chosenHumanChars[i]];
-        // Remove it from the pool so CPUs don't pick it
         const poolIndex = pool.findIndex(c => c.charNome === originalChar.charNome);
         if (poolIndex > -1) pool.splice(poolIndex, 1);
-        
         const playerName = (chosenHumanNames && chosenHumanNames[i]) ? chosenHumanNames[i] : `Jogador ${i+1}`;
         jogadores.push(new Jogador(playerName, false, originalChar, count++));
     }
     
-    // Create CPUs from remaining pool
     for(let i=0; i<cpus; i++) {
-        // shuffle or just pick the next available
         const char = pool.length > 0 ? pool.shift() : PERSONAGENS_JOGADORES[count % PERSONAGENS_JOGADORES.length];
         jogadores.push(new Jogador(`CPU ${i+1}`, true, char, count++));
+    }
+
+    if (isOnline && isHost) {
+        clientConnections.forEach((conn, index) => {
+            conn.send({
+                type: 'GAME_START',
+                myPlayerIdx: index + 1,
+                jogadores: jogadores,
+                tabuleiro: TABULEIRO
+            });
+        });
     }
     
     document.getElementById('setup-modal').style.display = 'none';
@@ -1045,8 +1050,28 @@ function initListeners() {
 function rolarDados() {
     const btnRolar = document.getElementById('btn-rolar');
     if (btnRolar) btnRolar.style.display = 'none';
-    const j = jogadores[idxJogador];
 
+    if (isOnline) {
+        if (isHost && idxJogador === myPlayerIdx) {
+            const d1 = Math.floor(Math.random() * 6) + 1;
+            const d2 = Math.floor(Math.random() * 6) + 1;
+            const pIdx = Math.floor(Math.random() * CARTAS_PANDORA.length);
+            currentPandoraIdx = pIdx;
+            broadcastToClients({ type: 'DICE_ROLL', d1, d2, pandoraIdx: pIdx });
+            currentPandoraIdx = Math.floor(Math.random() * CARTAS_PANDORA.length);
+        animateAndMove(d1, d2);
+        } else if (!isHost && idxJogador === myPlayerIdx) {
+            hostConnection.send({ type: 'REQUEST_ROLL' });
+        }
+    } else {
+        const d1 = Math.floor(Math.random() * 6) + 1;
+        const d2 = Math.floor(Math.random() * 6) + 1;
+        animateAndMove(d1, d2);
+    }
+}
+
+function animateAndMove(d1, d2) {
+    const j = jogadores[idxJogador];
     const diceContainer = document.getElementById('dice-container');
     const d1El = document.getElementById('dice-1');
     const d2El = document.getElementById('dice-2');
@@ -1055,29 +1080,31 @@ function rolarDados() {
     if (d1El) d1El.classList.add('rolling');
     if (d2El) d2El.classList.add('rolling');
 
-    const d1 = Math.floor(Math.random() * 6) + 1;
-    const d2 = Math.floor(Math.random() * 6) + 1;
-    const total = d1 + d2;
-    const duplas = (d1 === d2);
+    setTimeout(() => {
+        if (d1El) d1El.classList.remove('rolling');
+        if (d2El) d2El.classList.remove('rolling');
 
-    let rolls = 0;
-    const interval = setInterval(() => {
-        const temp1 = Math.floor(Math.random() * 6) + 1;
-        const temp2 = Math.floor(Math.random() * 6) + 1;
-        if (d1El) d1El.innerHTML = renderDiceFaceHTML(temp1);
-        if (d2El) d2El.innerHTML = renderDiceFaceHTML(temp2);
-        rolls++;
-        if (rolls >= 12) {
-            clearInterval(interval);
-            if (d1El) {
-                d1El.innerHTML = renderDiceFaceHTML(d1);
-                d1El.classList.remove('rolling');
-            }
-            if (d2El) {
-                d2El.innerHTML = renderDiceFaceHTML(d2);
-                d2El.classList.remove('rolling');
-            }
+        renderDice(d1El, d1);
+        renderDice(d2El, d2);
 
+        const total = d1 + d2;
+        const duplas = d1 === d2;
+
+        if (duplas) {
+            j.duplas_seguidas = (j.duplas_seguidas || 0) + 1;
+        } else {
+            j.duplas_seguidas = 0;
+        }
+
+        if (j.duplas_seguidas === 3) {
+            logMsg(`🚓 3 DUPLAS SEGUIDAS! ${j.nome} foi para o Arkham!`);
+            j.duplas_seguidas = 0;
+            j.posicao = INDICE_PRISAO;
+            j.preso = true;
+            j.turnos_preso = 0;
+            updateUI();
+            encerrarTurno();
+        } else {
             logMsg(`🎲 ${j.nome} (${j.charNome}) rolou ${d1} + ${d2} = ${total}`);
             
             if (j.preso) {
@@ -1215,7 +1242,7 @@ function aplicarRegraRestante(j, casa) {
             encerrarTurno();
         }
     } else if (casa.tipo === "especial" && casa.nome === "Caixa de Pandora") {
-        const c = CARTAS_PANDORA[Math.floor(Math.random() * CARTAS_PANDORA.length)];
+        const c = CARTAS_PANDORA[currentPandoraIdx];
         j.dinheiro += c.valor_alteracao;
         logMsg(`📦 Carta de Pandora: ${c.texto}`);
         
@@ -1339,12 +1366,22 @@ function mostrarPropertyCard(casa, msg, onYes, onNo, btnYesText, btnNoText) {
     const btnNo = document.getElementById('btn-pc-no');
     
     btnYes.textContent = btnYesText;
-    btnYes.onclick = () => { div.style.display='none'; onYes(); };
+    btnYes.onclick = () => { 
+        div.style.display='none'; 
+        if (sendSyncAction({ type: 'PC_YES' })) return;
+        onYes(); 
+        if (isHost) setTimeout(broadcastState, 100);
+    };
     
     if (btnNoText) {
         btnNo.style.display = 'inline-block';
         btnNo.textContent = btnNoText;
-        btnNo.onclick = () => { div.style.display='none'; onNo(); };
+        btnNo.onclick = () => { 
+        div.style.display='none'; 
+        if (sendSyncAction({ type: 'PC_NO' })) return;
+        onNo(); 
+        if (isHost) setTimeout(broadcastState, 100);
+    };
     } else {
         btnNo.style.display = 'none';
     }
@@ -1437,6 +1474,43 @@ function loopLogica() {
 }
 
 function initApp() {
+    // Esconde UI principal e Setup inicialmente
+    document.getElementById('ui-container').style.display = 'none';
+    const setupModal = document.getElementById('setup-modal');
+    if (setupModal) setupModal.style.display = 'none';
+    const lobbyModal = document.getElementById('lobby-modal');
+    if (lobbyModal) lobbyModal.style.display = 'flex';
+
+    // Eventos do Menu de Lobby
+    const btnOffline = document.getElementById('btn-mode-offline');
+    if (btnOffline) {
+        btnOffline.onclick = () => {
+            isOnline = false;
+            lobbyModal.style.display = 'none';
+            if (setupModal) setupModal.style.display = 'flex';
+            renderCharSelectMenu();
+        };
+    }
+
+    const btnHost = document.getElementById('btn-mode-host');
+    if (btnHost) btnHost.onclick = setupHost;
+
+    const btnJoin = document.getElementById('btn-mode-join');
+    if (btnJoin) {
+        btnJoin.onclick = () => {
+            const menuOptions = document.getElementById('lobby-menu-options');
+            const joinPanel = document.getElementById('join-panel');
+            if (menuOptions) menuOptions.style.display = 'none';
+            if (joinPanel) joinPanel.style.display = 'block';
+        };
+    }
+
+    const btnJoinRoom = document.getElementById('btn-join-room');
+    if (btnJoinRoom) btnJoinRoom.onclick = connectToHost;
+
+    const btnHostStart = document.getElementById('btn-host-start');
+    if (btnHostStart) btnHostStart.onclick = startHostGame;
+
     renderCharSelectMenu();
     renderBoardHTML();
     initListeners();
@@ -1635,4 +1709,217 @@ if (document.readyState === 'loading') {
     window.addEventListener('DOMContentLoaded', initApp);
 } else {
     initApp();
+}
+
+// ================================================================
+//   MULTIPLAYER LOGIC (PeerJS)
+// ================================================================
+let isOnline = false;
+let isHost = false;
+let myPeerId = null;
+let peer = null;
+let hostConnection = null;
+let clientConnections = [];
+let lobbyClients = [];
+let myPlayerIdx = 0; 
+
+function setupHost() {
+    isOnline = true;
+    isHost = true;
+    document.getElementById('lobby-menu-options').style.display = 'none';
+    document.getElementById('host-panel').style.display = 'block';
+
+    const peerId = Math.random().toString(36).substring(2, 6).toUpperCase();
+    document.getElementById('room-code-display').innerText = peerId;
+
+    peer = new Peer(peerId);
+    
+    peer.on('open', (id) => {
+        console.log('Host criado: ' + id);
+    });
+
+    peer.on('connection', (conn) => {
+        clientConnections.push(conn);
+        lobbyClients.push({ conn: conn, name: 'Jogador ' + (clientConnections.length + 1) });
+        updateHostPlayerList();
+        
+        conn.on('data', (data) => {
+            handleClientMessage(data, conn);
+        });
+        
+        conn.on('close', () => {
+            clientConnections = clientConnections.filter(c => c !== conn);
+            lobbyClients = lobbyClients.filter(c => c.conn !== conn);
+            updateHostPlayerList();
+        });
+    });
+}
+
+function updateHostPlayerList() {
+    const list = document.getElementById('host-players-list');
+    list.innerHTML = \`Amigos Conectados: \${clientConnections.length}\`;
+    const btnStart = document.getElementById('btn-host-start');
+    if (clientConnections.length > 0) {
+        btnStart.style.opacity = '1';
+        btnStart.style.pointerEvents = 'auto';
+        btnStart.innerText = \`INICIAR COM \${clientConnections.length + 1} JOGADORES\`;
+    } else {
+        btnStart.style.opacity = '0.5';
+        btnStart.style.pointerEvents = 'none';
+        btnStart.innerText = \`AGUARDANDO JOGADORES...\`;
+    }
+}
+
+function connectToHost() {
+    const roomId = document.getElementById('join-room-input').value.trim().toUpperCase();
+    if (!roomId || roomId.length !== 4) {
+        alert("Digite o código de 4 letras.");
+        return;
+    }
+    
+    document.getElementById('btn-join-room').innerText = "CONECTANDO...";
+    
+    peer = new Peer();
+    peer.on('open', () => {
+        hostConnection = peer.connect(roomId);
+        
+        hostConnection.on('open', () => {
+            document.getElementById('btn-join-room').style.display = 'none';
+            document.getElementById('join-status').style.display = 'block';
+            isOnline = true;
+            isHost = false;
+        });
+        
+        hostConnection.on('data', (data) => {
+            handleHostMessage(data);
+        });
+        
+        hostConnection.on('error', (err) => {
+            alert("Erro de conexão.");
+            document.getElementById('btn-join-room').innerText = "CONECTAR";
+        });
+    });
+}
+
+function startHostGame() {
+    document.getElementById('lobby-modal').style.display = 'none';
+    const setupModal = document.getElementById('setup-modal');
+    if (setupModal) setupModal.style.display = 'flex';
+    
+    document.getElementById('offline-settings-row').style.display = 'none';
+    const numPlayers = clientConnections.length + 1;
+    document.getElementById('in-hum').value = numPlayers;
+    document.getElementById('in-cpu').value = 4 - numPlayers;
+    
+    // Broadcast LOBBY_WAIT so clients show waiting message
+    broadcastToClients({ type: 'LOBBY_WAIT' });
+}
+
+function handleClientMessage(data, conn) {
+    if (data.type === 'REQUEST_ROLL') {
+        if (idxJogador === clientConnections.indexOf(conn) + 1) {
+            const d1 = Math.floor(Math.random() * 6) + 1;
+            const d2 = Math.floor(Math.random() * 6) + 1;
+            broadcastToClients({ type: 'DICE_ROLL', d1, d2 });
+            animateAndMove(d1, d2);
+        }
+    }
+    else if (data.type === 'SYNC_ACTION') {
+        // Execute the action locally (host) and broadcast state
+        executeSyncAction(data.action);
+        broadcastState();
+    }
+}
+
+function handleHostMessage(data) {
+    if (data.type === 'LOBBY_WAIT') {
+        document.getElementById('lobby-modal').style.display = 'none';
+        const setupModal = document.getElementById('setup-modal');
+        if (setupModal) setupModal.style.display = 'flex';
+        document.getElementById('offline-settings-row').style.display = 'none';
+        document.getElementById('btn-start').style.display = 'none';
+        document.getElementById('char-select-grid').style.display = 'none';
+        document.getElementById('player-name-section').style.display = 'none';
+        document.getElementById('setup-subtitle').style.display = 'none';
+        document.querySelector('.select-title').style.display = 'none';
+        document.getElementById('client-waiting-msg').style.display = 'block';
+    }
+    else if (data.type === 'GAME_START') {
+        myPlayerIdx = data.myPlayerIdx;
+        
+        // Re-instantiate Jogadores to keep class methods
+        jogadores = data.jogadores.map(j => {
+            const char = PERSONAGENS_JOGADORES.find(p => p.charNome === j.charNome);
+            const obj = new Jogador(j.nome, j.is_cpu, char, j.id);
+            Object.assign(obj, j);
+            return obj;
+        });
+        
+        data.tabuleiro.forEach((t, i) => {
+            TABULEIRO[i] = Object.assign(TABULEIRO[i], t);
+        });
+        
+        idxJogador = 0;
+        estado = "INICIO_TURNO";
+        
+        document.getElementById('setup-modal').style.display = 'none';
+        document.getElementById('ui-container').style.display = 'flex';
+        
+        updateUI();
+    }
+    else if (data.type === 'DICE_ROLL') {
+        currentPandoraIdx = data.pandoraIdx || 0;
+        animateAndMove(data.d1, data.d2);
+    }
+    else if (data.type === 'STATE_SYNC') {
+        jogadores = data.jogadores.map(j => {
+            const char = PERSONAGENS_JOGADORES.find(p => p.charNome === j.charNome);
+            const obj = new Jogador(j.nome, j.is_cpu, char, j.id);
+            Object.assign(obj, j);
+            return obj;
+        });
+        data.tabuleiro.forEach((t, i) => {
+            TABULEIRO[i] = Object.assign(TABULEIRO[i], t);
+        });
+        idxJogador = data.idxJogador;
+        estado = data.estado;
+        updateUI();
+        renderBoardHTML();
+    }
+}
+
+function broadcastToClients(msg) {
+    if (isHost && clientConnections.length > 0) {
+        clientConnections.forEach(c => c.send(msg));
+    }
+}
+
+function broadcastState() {
+    if (isHost) {
+        broadcastToClients({
+            type: 'STATE_SYNC',
+            jogadores: jogadores,
+            tabuleiro: TABULEIRO,
+            idxJogador: idxJogador,
+            estado: estado
+        });
+    }
+}
+
+function sendSyncAction(actionData) {
+    if (isOnline && !isHost) {
+        hostConnection.send({ type: 'SYNC_ACTION', action: actionData });
+        return true; // Sent to host
+    }
+    return false; // I am host or offline
+}
+
+function executeSyncAction(action) {
+    if (action.type === 'PC_YES') {
+        const btn = document.getElementById('btn-pc-yes');
+        if (btn) btn.click();
+    } else if (action.type === 'PC_NO') {
+        const btn = document.getElementById('btn-pc-no');
+        if (btn) btn.click();
+    }
 }
