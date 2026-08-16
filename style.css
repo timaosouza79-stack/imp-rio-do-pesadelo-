@@ -1317,15 +1317,17 @@ button:active {
 
     /* Título do turno — no header */
     #current-player {
-        font-size: 11px !important;
+        font-size: 9px !important;
         margin: 0 !important;
-        padding: 0 !important;
+        padding: 2px 0 !important;
         border-bottom: none !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        max-width: 120px;
-        flex-shrink: 0;
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        max-width: 140px;
+        flex-shrink: 1;
+        line-height: 1.2 !important;
+        word-break: break-word;
     }
 
     /* Label "JOGADORES" — ocultar no header */
@@ -1402,6 +1404,8 @@ button:active {
         overflow: auto !important;
         -webkit-overflow-scrolling: touch;
         padding: 4px !important;
+        /* Padding inferior garante que a nav bar não cubra a linha de baixo */
+        padding-bottom: calc(100px + env(safe-area-inset-bottom)) !important;
         margin: 0 !important;
         border-radius: 0 !important;
         box-sizing: border-box !important;
@@ -1409,7 +1413,7 @@ button:active {
         border: none !important;
         box-shadow: none !important;
         display: flex !important;
-        align-items: center !important;
+        align-items: flex-start !important;
         justify-content: center !important;
     }
 
