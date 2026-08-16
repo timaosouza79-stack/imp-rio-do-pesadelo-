@@ -48,19 +48,27 @@ body, html {
     pointer-events: none;
 }
 
+#left-sidebar {
+    width: 210px; /* Largura reduzida para o Histórico da Partida */
+}
+
 #left-sidebar > *, #right-sidebar > * {
     pointer-events: auto;
 }
 
 /* Tabuleiro Container Premium e Grid 11x11 */
 #board-container {
-    width: min(96vh, 96vw); /* Expandido para aproveitar melhor a tela */
-    height: min(96vh, 96vw);
-    padding: 10px;
-    background: rgba(8, 5, 15, 0.95);
-    border-radius: 22px;
-    box-shadow: 0 0 50px rgba(0, 240, 255, 0.15), 0 0 100px rgba(255, 0, 85, 0.1), inset 0 0 30px rgba(138, 43, 226, 0.2);
-    border: 2px solid rgba(138, 43, 226, 0.4);
+    width: min(92vh, 92vw);
+    height: min(92vh, 92vw);
+    padding: 8px;
+    background: rgba(5, 3, 12, 0.98);
+    border-radius: 20px;
+    box-shadow:
+        0 0 0 1px rgba(138, 43, 226, 0.6),
+        0 0 50px rgba(138, 43, 226, 0.4),
+        0 0 100px rgba(255, 0, 85, 0.2),
+        inset 0 0 50px rgba(8, 3, 22, 0.95);
+    border: 2px solid rgba(138, 43, 226, 0.75);
 }
 
 #board-grid {
@@ -70,159 +78,178 @@ body, html {
     width: 100% !important;
     max-width: 1000px !important;
     aspect-ratio: 1 / 1 !important;
-    gap: 3px;
-    background: #05050a;
+    gap: 2px;
+    background: #030308;
     border-radius: 14px;
     overflow: hidden;
     position: relative;
+    box-shadow: inset 0 0 60px rgba(5, 0, 20, 0.95);
 }
 
-/* ===== Layout das Casas do Tabuleiro ===== */
+/* ===== Layout das Casas do Tabuleiro (Grid Professional Web-Optimized) ===== */
 
-/* Base comum a todas as casas (Padronizada Quadrada) */
+/* Base comum a todas as casas */
 .tile {
-    /* Estilos Visuais Preservados */
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, #181830 0%, #0d0d1a 100%);
-    border: 1px solid rgba(138, 43, 226, 0.5); /* Borda Roxo/Magenta */
-    border-radius: 8px;
+    background: linear-gradient(135deg, #141428 0%, #0a0a18 100%);
+    border: 1px solid rgba(100, 30, 180, 0.35);
+    border-radius: 5px;
     position: relative;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: inset 0 0 12px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.5);
+    display: flex;
+    overflow: hidden;
+    transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.2s, border-color 0.2s;
+}
 
-    /* Base preservada */
-    overflow: hidden !important;
-    box-sizing: border-box !important;
-    text-align: center !important;
-
-    /* Estado padrao de flexbox restaurado (conteudo espremido se necessario) */
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
-    align-items: center !important;
-    padding: 2px !important;
+.tile:hover {
+    border-color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.5), inset 0 0 10px rgba(0, 240, 255, 0.2);
+    transform: scale(1.04);
+    z-index: 10;
 }
 
 .tile-body {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
+    height: 100%;
+    padding: 3px;
+    z-index: 1;
+    text-align: center;
 }
 
-
-.tile:hover {
-    border-color: #ff0055;
-    box-shadow: 0 0 20px rgba(255, 0, 85, 0.6), inset 0 0 15px rgba(255, 0, 85, 0.2);
-    transform: scale(1.02);
-    z-index: 2;
-}
-
-/* ---- Barra de cor no topo da casa ---- */
+/* ---- Barra de cor voltada para o centro ---- */
 .tile-color-bar {
-    width: calc(100% + 8px);
-    height: 10px;
-    flex-shrink: 0;
-    border-radius: 3px 3px 0 0;
-    box-shadow: inset 0 -2px 5px rgba(0,0,0,0.7);
-    border-bottom: 1px solid rgba(255,255,255,0.15);
     position: absolute;
-    top: 0;
-    left: 0;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
+    z-index: 1;
 }
 
 .tile-color-bar::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 50%);
     pointer-events: none;
 }
 
-/* Empurra o conteúdo abaixo da barra colorida absoluta */
-.tile::before {
-    content: '';
-    display: block;
-    height: 6px;
-    width: 100%;
-    flex-shrink: 0;
+/* --- Base (Linha de Baixo, virado para cima) --- */
+.tile-bottom { flex-direction: column; }
+.tile-bottom .tile-color-bar {
+    top: 0; left: 0; width: 100%; height: 24%;
+    border-bottom: 2px solid rgba(0,0,0,0.5);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
+.tile-bottom .tile-color-bar::after { background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 60%); }
+.tile-bottom .tile-body { padding-top: 25%; }
 
-/* ---- Imagens por Orientação ---- */
+/* --- Topo (Linha de Cima, virado para baixo) --- */
+.tile-top { flex-direction: column; } 
+.tile-top .tile-color-bar {
+    bottom: 0; left: 0; width: 100%; height: 24%;
+    border-top: 2px solid rgba(0,0,0,0.5);
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.4);
+}
+.tile-top .tile-color-bar::after { background: linear-gradient(0deg, rgba(255,255,255,0.4) 0%, transparent 60%); }
+.tile-top .tile-body { padding-bottom: 25%; }
+
+/* --- Lateral Esquerda (virado para a direita) --- */
+.tile-left { flex-direction: row; }
+.tile-left .tile-color-bar {
+    top: 0; right: 0; width: 22%; height: 100%;
+    border-left: 2px solid rgba(0,0,0,0.4);
+}
+.tile-left .tile-color-bar::after { background: linear-gradient(270deg, rgba(255,255,255,0.4) 0%, transparent 60%); }
+.tile-left .tile-body { padding-right: 25%; flex-direction: row; justify-content: space-around; align-items: center; }
+
+/* --- Lateral Direita (virado para a esquerda) --- */
+.tile-right { flex-direction: row; }
+.tile-right .tile-color-bar {
+    top: 0; left: 0; width: 22%; height: 100%;
+    border-right: 2px solid rgba(0,0,0,0.4);
+}
+.tile-right .tile-color-bar::after { background: linear-gradient(90deg, rgba(255,255,255,0.4) 0%, transparent 60%); }
+.tile-right .tile-body { padding-left: 25%; flex-direction: row; justify-content: space-around; align-items: center; }
+
+/* --- Corners --- */
+.tile-corner .tile-color-bar { display: none; }
+.tile-corner .tile-body { justify-content: center; }
+
+/* ---- Imagens (Background) ---- */
 .tile img:not(.pawn):not(.figurine-cutout) {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
     width: 100% !important;
-    height: 45% !important;
+    height: 100% !important;
     object-fit: cover !important;
-    margin-bottom: 2px !important;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.8));
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-/* ---- Ajustes Específicos para as Casas Laterais ---- */
-.tile-left, .tile-right {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    padding: 6px 3px !important;
-}
-
-.tile-right img:not(.pawn):not(.figurine-cutout) {
-    display: none !important; /* Remove a imagem apenas das casas da direita */
-}
-
-/* Tamanho de fonte e alinhamento ajustado para as laterais (já que não têm imagem) */
-.tile-left .tile-body, .tile-right .tile-body {
-    justify-content: center !important;
-    align-items: center !important;
-}
-
-.tile-left .tile-name, .tile-right .tile-name {
-    font-size: 10px !important;
-    -webkit-line-clamp: 2 !important;
-}
-
-.tile-left .tile-price, .tile-right .tile-price {
-    font-size: 11px !important;
-    margin-top: 2px !important;
-}
-
-
-/* ---- Tipografia ---- */
-.tile-name { 
-    font-size: 7px !important; 
-    line-height: 1.1 !important; 
-    word-wrap: break-word !important; 
-    
-    /* Visuais adicionais preservados */
-    color: #f1f5f9;
-    font-weight: 800;
-    width: 100%;
     margin: 0 !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
-    overflow: hidden !important;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+    filter: brightness(0.55) saturate(1.4) contrast(1.1) !important;
+    border-radius: 0 !important;
+    z-index: 0 !important;
+    pointer-events: none;
+}
+
+.tile-left img:not(.pawn):not(.figurine-cutout), .tile-right img:not(.pawn):not(.figurine-cutout) {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+}
+
+/* ---- Tipografia Premium ---- */
+.tile-name { 
+    position: relative;
+    z-index: 2;
+    font-size: 8px !important; 
+    line-height: 1.15 !important; 
+    color: #ffffff;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow:
+        0 0 4px rgba(0,0,0,1),
+        1px 1px 0 rgba(0,0,0,1),
+        -1px -1px 0 rgba(0,0,0,1),
+        0 0 12px rgba(0,0,0,0.9) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    word-wrap: break-word !important; 
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+/* Ajustes para Lateral (Texto Horizontal em layout largo) */
+.tile-left .tile-name, .tile-right .tile-name {
+    font-size: 8px !important;
+    text-align: left;
+    justify-content: flex-start;
 }
 
 .tile-price { 
+    position: relative;
+    z-index: 2;
     font-size: 9px !important; 
-    color: #00ff00 !important; 
-    font-weight: bold !important; 
-    
-    /* Visuais adicionais preservados */
-    margin-top: auto !important; /* Empurra o preço para a base no vertical */
-    margin-bottom: 2px !important;
-    text-shadow: 0 0 5px rgba(0, 255, 0, 0.7), 0 1px 2px #000;
+    color: #00ffcc !important; 
+    font-weight: 900 !important; 
+    text-shadow: 0 0 8px rgba(0, 255, 204, 1), 1px 1px 0 rgba(0,0,0,1), -1px -1px 0 rgba(0,0,0,1);
     white-space: nowrap;
-    width: 100%;
+    background: rgba(0,0,0,0.55);
+    border-radius: 3px;
+    padding: 0 2px;
 }
 
+/* Margens de preço dependendo da orientação */
+.tile-bottom .tile-price, .tile-top .tile-price, .tile-corner .tile-price {
+    margin-top: auto !important; 
+}
 
+.tile-left .tile-price, .tile-right .tile-price {
+    margin-left: auto !important;
+    padding-left: 4px;
+}
 
 /* Peões Estatueta Limpos (Fundo Transparente & Sem Moldura Branca) */
 .player-figurine-standalone {
@@ -294,20 +321,20 @@ body, html {
     width: 100% !important;
     height: 100% !important;
     overflow: hidden !important;
+    box-sizing: border-box !important;
     z-index: 1 !important;
-    /* Fundo escuro com nevoeiro na imagem */
-    background: url('assets/center_board_background.jpg') no-repeat center center;
+    background: url('assets/fundo_castelo.jpg') no-repeat center center;
     background-size: cover;
     border: 2px solid rgba(255, 0, 85, 0.5);
     border-radius: 12px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     padding: 16px;
     text-align: center;
     position: relative;
-    box-shadow: inset 0 0 60px rgba(10, 10, 25, 0.95), 0 0 30px rgba(255, 0, 85, 0.2);
+    box-shadow: inset 0 0 80px rgba(5, 5, 15, 0.92), 0 0 30px rgba(255, 0, 85, 0.2);
     min-height: 0;
     min-width: 0;
 }
@@ -350,6 +377,8 @@ body, html {
     margin-bottom: 8px;
     z-index: 1;
     animation: titleGlow 3s ease-in-out infinite alternate;
+    text-align: center;
+    line-height: 1.2;
 }
 
 @keyframes titleGlow {
@@ -376,20 +405,22 @@ body, html {
 /* Container de Dados Animação Neon com Pips 3x3 */
 #dice-container {
     display: flex;
-    gap: 24px;
-    margin: 16px 0;
+    gap: 32px;
+    margin: 20px 0;
     z-index: 10;
     perspective: 1000px;
 }
 
 .dice-cube {
-    width: 64px;
-    height: 64px;
-    background: linear-gradient(135deg, #121226 0%, #080815 100%);
-    border: 2px solid #00f0ff;
-    border-radius: 14px;
-    padding: 8px;
-    box-shadow: 0 0 25px rgba(0, 240, 255, 0.5), inset 0 0 15px rgba(0, 240, 255, 0.3);
+    width: 96px;
+    height: 96px;
+    max-height: 120px;
+    object-fit: contain;
+    background: linear-gradient(135deg, #0a0a20 0%, #050510 100%);
+    border: 3px solid #00f0ff;
+    border-radius: 18px;
+    padding: 12px;
+    box-shadow: 0 0 35px rgba(0, 240, 255, 0.6), inset 0 0 25px rgba(0, 240, 255, 0.35);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     justify-content: center;
@@ -408,17 +439,17 @@ body, html {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    gap: 3px;
+    gap: 4px;
     align-items: center;
     justify-items: center;
 }
 
 .pip {
-    width: 10px;
-    height: 10px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background: #00f0ff;
-    box-shadow: 0 0 10px #00f0ff, 0 0 20px rgba(0, 240, 255, 0.9);
+    box-shadow: 0 0 12px #00f0ff, 0 0 25px rgba(0, 240, 255, 0.9);
     transition: all 0.2s ease;
 }
 
@@ -453,12 +484,14 @@ body, html {
 }
 
 .deck-card {
-    width: 90px;
-    height: 130px;
-    background: linear-gradient(135deg, #1b0a2a, #ff0055);
-    border-radius: 12px;
-    border: 3px solid rgba(255, 0, 85, 0.8);
-    box-shadow: 0 8px 30px rgba(255,0,85,0.4), inset 0 0 10px rgba(255,255,255,0.2);
+    width: 125px;
+    height: 175px;
+    max-height: 180px;
+    object-fit: contain;
+    background: linear-gradient(160deg, #2a0a1f, #ff0055);
+    border-radius: 16px;
+    border: 3px solid rgba(255, 0, 85, 0.9);
+    box-shadow: 0 10px 40px rgba(255,0,85,0.6), inset 0 0 18px rgba(255,255,255,0.2);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -466,22 +499,22 @@ body, html {
     transform: rotate(-4deg) translateY(0);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
-    padding: 10px;
+    padding: 12px;
 }
 
 .deck-card .card-icon {
-    font-size: 40px;
-    margin-bottom: 8px;
-    filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+    font-size: 50px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
 }
 
 .deck-card .card-name {
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 800;
     color: white;
     text-align: center;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
-    line-height: 1.1;
+    text-shadow: 1px 1px 4px rgba(0,0,0,1);
+    line-height: 1.15;
 }
 
 .deck-card:hover {
@@ -493,9 +526,9 @@ body, html {
 
 .deck-card:last-child {
     transform: rotate(4deg) translateY(0);
-    background: linear-gradient(135deg, #0a1b2a, #00c6ff);
-    border: 3px solid rgba(0, 240, 255, 0.8);
-    box-shadow: 0 8px 30px rgba(0,240,255,0.4), inset 0 0 10px rgba(255,255,255,0.2);
+    background: linear-gradient(160deg, #091a2a, #0090cc);
+    border: 3px solid rgba(0, 200, 255, 0.9);
+    box-shadow: 0 8px 35px rgba(0,200,255,0.5), inset 0 0 14px rgba(255,255,255,0.15);
 }
 
 .deck-card:last-child:hover {
@@ -531,6 +564,8 @@ body, html {
     max-width: 700px !important;
     width: 95%;
     padding: 32px 28px 28px !important;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .setup-modal-large h1 {
@@ -549,6 +584,48 @@ body, html {
     font-size: 14px;
     letter-spacing: 1px;
     margin-bottom: 20px;
+}
+
+/* ── Player Name Input ──────────────────────────────────── */
+.player-name-section {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.player-name-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ff8800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.player-name-input {
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 136, 0, 0.5);
+    border-radius: 12px;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 18px;
+    text-align: center;
+    width: 260px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.player-name-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 400;
+}
+
+.player-name-input:focus {
+    border-color: #ff8800;
+    box-shadow: 0 0 14px rgba(255, 136, 0, 0.5);
 }
 
 .char-select-section {
@@ -632,6 +709,13 @@ body, html {
 .char-card.selected::before {
     opacity: 1;
     background: radial-gradient(ellipse at 50% 100%, rgba(0, 240, 255, 0.18) 0%, transparent 65%);
+}
+
+/* ── Disabled State – for characters already chosen ──────────────── */
+.char-card.disabled-char {
+    opacity: 0.3;
+    pointer-events: none;
+    filter: grayscale(100%);
 }
 
 .char-card.selected .char-img-wrap {
@@ -835,25 +919,26 @@ button:active {
 }
 
 .btn-action {
-    background: linear-gradient(135deg, #ff0055 0%, #8a2be2 100%);
-    border: 2px solid #00f0ff;
+    background: linear-gradient(135deg, #ff00aa 0%, #8a2be2 100%); /* Rosa/roxo brilhante */
+    border: 2px solid #ff00aa;
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 2px;
-    padding: 16px 32px;
-    border-radius: 40px;
-    box-shadow: 0 0 20px rgba(255, 0, 85, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
+    padding: 16px 20px;
+    border-radius: 50px; /* Pill buttons */
+    box-shadow: 0 0 20px rgba(255, 0, 170, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     pointer-events: auto;
     text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    width: 100%; /* Para preencher o painel */
 }
 
 .btn-action:hover {
-    transform: scale(1.1) translateY(-4px);
-    box-shadow: 0 0 40px rgba(0, 240, 255, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.5);
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 0 30px rgba(255, 0, 170, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.5);
     border-color: #fff;
 }
 
@@ -906,50 +991,158 @@ button:active {
 }
 
 .player-stat {
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 8px;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
     font-weight: 600;
-    padding: 6px 8px;
-    border-radius: 6px;
-    background: rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: all 0.3s ease;
+    padding: 7px 10px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: all 0.25s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.player-stat:hover {
+    background: rgba(255,255,255,0.07);
+}
+
+.player-stat .player-avatar-wrap {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.25);
+    background: #0a0a1a;
+    box-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
+.player-stat .player-avatar-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+}
+
+.player-stat .player-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+}
+
+.player-stat .player-name-tag {
+    font-weight: 800;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+}
+
+.player-stat .player-char-tag {
+    font-size: 10px;
+    opacity: 0.5;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.player-stat .player-money-tag {
+    font-size: 13px;
+    font-weight: 900;
+    color: #00ff88;
+    flex-shrink: 0;
 }
 
 .player-stat.bankrupt {
-    opacity: 0.4;
+    opacity: 0.35;
     text-decoration: line-through;
-    color: #ff4444;
 }
 
+
 .active-player {
-    border: 2px solid #00f0ff !important;
-    background: rgba(0, 240, 255, 0.1) !important;
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.4), inset 0 0 10px rgba(0, 240, 255, 0.2);
+    border: 2px solid #ff00aa !important; /* Borda neon fúcsia/rosa */
+    background: rgba(255, 0, 170, 0.1) !important;
+    box-shadow: 0 0 15px rgba(255, 0, 170, 0.4), inset 0 0 10px rgba(255, 0, 170, 0.2);
     transform: scale(1.03);
     animation: activePulse 2s infinite alternate;
 }
 
+.inactive-player {
+    box-shadow: 0 0 8px rgba(100, 100, 100, 0.5); /* Brilho cinza escuro */
+}
+
 @keyframes activePulse {
-    0% { box-shadow: 0 0 10px rgba(0, 240, 255, 0.3); }
-    100% { box-shadow: 0 0 25px rgba(0, 240, 255, 0.7); }
+    0% { box-shadow: 0 0 10px rgba(255, 0, 170, 0.3); }
+    100% { box-shadow: 0 0 25px rgba(255, 0, 170, 0.7); }
+}
+
+/* Container do Personagem em Destaque */
+#character-display {
+    position: relative;
+    width: 100%;
+    flex-grow: 1; /* Ocupa o espaço superior restante */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+}
+
+.light-base {
+    position: absolute;
+    bottom: 0px;
+    width: 180px;
+    height: 35px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(0, 240, 255, 0.7) 0%, rgba(0, 240, 255, 0.2) 40%, transparent 70%);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+    z-index: 1;
+    animation: pulseBase 3s infinite alternate;
+}
+
+@keyframes pulseBase {
+    0% { transform: scale(0.9); opacity: 0.8; }
+    100% { transform: scale(1.1); opacity: 1; }
+}
+
+#active-character-img {
+    position: relative;
+    z-index: 2;
+    max-height: 250px;
+    max-width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.8));
+    animation: floatChar 3s infinite ease-in-out;
+}
+
+@keyframes floatChar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
 }
 
 #log-feed {
     position: relative;
     width: 100%;
-    flex-grow: 1;
-    margin-top: 20px;
-    padding: 16px 20px;
+    height: 280px; /* Altura fixa bem menor */
+    flex-grow: 0; /* Não expande mais */
+    margin-top: auto; /* Fixa na base */
+    padding: 12px 14px; /* Padding reduzido */
     overflow-y: auto;
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 11px; /* Fonte reduzida */
+    line-height: 1.4;
     background: rgba(5, 5, 10, 0.85);
     border: 1px solid rgba(0, 255, 255, 0.5);
     box-shadow: 0 15px 35px rgba(0,0,0,0.9), inset 0 0 15px rgba(0,255,255,0.1);
-    border-radius: 16px;
+    border-radius: 12px; /* Borda um pouco menor */
 }
 
 #log-feed::-webkit-scrollbar {
@@ -997,6 +1190,12 @@ button:active {
     flex-direction: column;
     gap: 12px;
     margin-top: 20px;
+    padding: 24px 20px;
+    border-radius: 20px;
+    background: repeating-radial-gradient(circle at 50% 100%, #151520 0, #151520 4px, #0a0a10 5px, #0a0a10 9px);
+    box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 0, 170, 0.2);
+    border-top: 2px solid rgba(255, 0, 170, 0.5);
 }
 
 .btn-orange { background: linear-gradient(90deg, #ff8c00, #ff4500) !important; box-shadow: 0 0 15px rgba(255,136,0,0.5) !important; }
@@ -1027,28 +1226,127 @@ button:active {
 @media (max-width: 900px) {
     body, html {
         overflow-y: auto;
+        overflow-x: hidden;
     }
+    
     #ui-container {
         flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
         overflow-y: visible;
         height: auto;
+        padding-bottom: 120px; /* Espaço para o botão fixo embaixo */
     }
-    #left-sidebar, #right-sidebar {
+
+    /* Ocultar o boneco 3D para economizar espaço */
+    #character-display {
+        display: none !important;
+    }
+
+    /* Top Panel (Turno e Jogadores) vai para cima de tudo */
+    #right-sidebar {
         width: 100%;
-        height: auto;
+        max-width: 600px;
+        order: 1; /* Força ficar no topo no flex-column */
+        padding: 10px;
     }
+    
+    #top-panel {
+        margin: 0;
+        border-radius: 12px;
+        padding: 12px;
+    }
+    
+    #players-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+    }
+    
+    .player-stat {
+        width: 48%; /* Ficam lado a lado */
+        margin-bottom: 0;
+    }
+
+    /* O Tabuleiro no meio, com scroll horizontal e vertical */
     #board-container {
-        width: 100vw;
-        height: 100vw;
-        border-radius: 0;
+        order: 2; /* Fica no meio */
+        width: 98vw;
+        max-width: 800px; 
+        height: 98vw;
+        max-height: 800px;
+        border-radius: 12px;
+        padding: 0;
+        overflow: auto; /* Permite deslizar o tabuleiro (swipe) */
+        -webkit-overflow-scrolling: touch;
+        background: transparent;
+        box-shadow: none;
         border: none;
-        padding: 5px;
+        margin: 10px 0;
     }
-    .tile-name {
-        font-size: 8px !important;
+    
+    /* O GRID do tabuleiro precisa manter um tamanho mínimo para não ficar minúsculo */
+    #board-grid {
+        min-width: 760px; /* Tamanho confortável para as casas no celular */
+        min-height: 760px;
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 auto;
+        border-radius: 8px;
     }
-    .tile-price {
-        font-size: 8px !important;
+
+    /* Left Sidebar (Histórico) vai para baixo */
+    #left-sidebar {
+        width: 100%;
+        max-width: 600px;
+        order: 3;
+        padding: 10px;
+    }
+    
+    #log-feed {
+        width: 100%;
+        height: 250px; /* Altura fixa para não tomar a tela toda */
+        margin: 0;
+        border-radius: 12px;
+    }
+
+    /* Botão de rolar dados FIXO na parte inferior da tela */
+    #controls-panel {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 5, 20, 0.95);
+        border-top: 2px solid #ff0055;
+        padding: 15px;
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 -10px 30px rgba(0,0,0,0.8);
+        border-radius: 0;
+        margin: 0;
+    }
+    
+    #btn-rolar {
+        width: 90%;
+        max-width: 400px;
+        padding: 18px 24px;
+        font-size: 22px;
+    }
+    
+    /* Ajustes Modais Mobile */
+    .setup-modal-large, .video-modal-content, .props-modal-content, .property-modal-compact {
+        width: 95% !important;
+        margin: 10px auto;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+    }
+    
+    .char-select-grid {
+        grid-template-columns: repeat(3, 1fr) !important; /* 3 colunas ao invés de 5 no mobile */
     }
 }
 
@@ -1100,3 +1398,117 @@ button:active {
     display: block;
     object-fit: contain;
 }
+
+/* ---- CUSTOMIZAÇÃO ÚNICA: CASA 34 (USINA NUCLEAR) ---- */
+.tile-custom-34 {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 4px !important; /* Adiciona padding para melhor visual */
+    justify-content: flex-start !important;
+    border: 1.5px solid #39ff14 !important; 
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.4), inset 0 0 10px rgba(57, 255, 20, 0.2) !important;
+    overflow: hidden;
+}
+
+.tile-custom-34 .tile-color-bar {
+    width: 100% !important;
+    height: 6% !important; /* Reduz ligeiramente a altura para dar mais espaço ao conteúdo */
+    position: relative !important; 
+    box-shadow: inset 0 -2px 5px rgba(0,0,0,0.5) !important;
+    border-radius: 6px 6px 0 0 !important;
+}
+
+/* ── Modal de Propriedades do Jogador ──────────────────────── */
+.props-modal-content {
+    width: 92%;
+    max-width: 680px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 20px;
+}
+.props-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 24px;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+    flex-shrink: 0;
+}
+.props-player-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.3);
+    object-fit: cover;
+    background: #000;
+}
+.props-player-name {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 2px;
+}
+.props-player-money {
+    font-size: 15px;
+    font-weight: 700;
+    color: #00ff88;
+}
+.props-list {
+    overflow-y: auto;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+.props-empty {
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 16px;
+    padding: 40px 0;
+}
+.prop-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 12px;
+    transition: background 0.2s;
+}
+.prop-item:hover { background: rgba(255,255,255,0.08); }
+.prop-item-img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+    background: #111;
+}
+.prop-item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.prop-item-name {
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+}
+.prop-item-type {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.prop-item-stars { font-size: 14px; letter-spacing: 2px; }
+.prop-item-rent { font-size: 13px; color: rgba(255,255,255,0.7); }
+.prop-item-rent strong { color: #00ff88; font-weight: 800; }
+.prop-item-upgrade { font-size: 11px; color: #ff8800; }
+.prop-item-upgrade.prop-maxed { color: #00ff88; }

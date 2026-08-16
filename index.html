@@ -15,6 +15,13 @@
             <h1>Império dos Pesadelos</h1>
             <p>Conquista do Multiverso — Escolha seu Campeão</p>
 
+            <!-- Campo de Nome do Jogador -->
+            <div id="player-name-section" class="player-name-section">
+                <label id="player-name-label" class="player-name-label">✏️ Nome do Jogador 1:</label>
+                <input type="text" id="player-name-input" class="player-name-input"
+                       maxlength="16" placeholder="Digite seu nome..." autocomplete="off">
+            </div>
+
             <!-- Grid de Seleção de Personagens -->
             <div class="char-select-section">
                 <label class="select-title">🎭 Escolha seu Avatar</label>
@@ -43,6 +50,12 @@
         <!-- PAINEL ESQUERDO -->
         <div id="left-sidebar">
             
+            <!-- Personagem em Destaque (Topo) -->
+            <div id="character-display">
+                <div class="light-base"></div>
+                <img id="active-character-img" src="" alt="Personagem Ativo">
+            </div>
+
             <!-- Feed de Logs (Histórico) -->
             <div id="log-feed" class="glass">
                 <div class="log-title-container">
@@ -74,8 +87,6 @@
             <!-- Painel de Controles -->
             <div id="controls-panel">
                 <button id="btn-rolar" class="btn-action pulse" style="display: none;">🎲 ROLAR DADOS</button>
-                <button id="btn-test-chucky" class="btn-action btn-orange">📜 TESTAR CARTA DO CHUCKY</button>
-                <button id="btn-test-video" class="btn-action btn-red">▶ TESTAR VÍDEO ESGOTOS DE DERRY</button>
             </div>
         </div>
 
@@ -109,6 +120,23 @@
                         <source id="house-video-src" src="" type="video/mp4">
                         Seu navegador não suporta vídeos.
                     </video>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Propriedades do Jogador -->
+        <div id="props-modal" class="modal" style="display: none;" onclick="this.style.display='none'">
+            <div class="modal-content glass props-modal-content" onclick="event.stopPropagation()">
+                <div id="props-modal-header" class="props-modal-header">
+                    <img id="props-player-avatar" src="" alt="" class="props-player-avatar">
+                    <div>
+                        <h2 id="props-player-name" class="props-player-name"></h2>
+                        <span id="props-player-money" class="props-player-money"></span>
+                    </div>
+                    <button class="btn-close" onclick="document.getElementById('props-modal').style.display='none'">✖</button>
+                </div>
+                <div id="props-list" class="props-list">
+                    <!-- Injetado via JS -->
                 </div>
             </div>
         </div>

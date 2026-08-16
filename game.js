@@ -7,14 +7,7 @@ const TABULEIRO = [
     "nome": "Quarto de Arte - Annabelle",
     "tipo": "propriedade",
     "preco": 60,
-    "alugueis": [
-      2,
-      10,
-      30,
-      90,
-      160,
-      250
-    ],
+    "alugueis": [2,10,30,90,160,250],
     "melhorias": 0,
     "nome_melhoria": "Símbolos Ocultos",
     "preco_melhoria": 50,
@@ -28,38 +21,24 @@ const TABULEIRO = [
     "nome": "Fábrica Good Guys - Chucky",
     "tipo": "propriedade",
     "preco": 60,
-    "alugueis": [
-      4,
-      20,
-      60,
-      180,
-      320,
-      450
-    ],
+    "alugueis": [4,20,60,180,320,450],
     "melhorias": 0,
     "nome_melhoria": "Caixas de Bonecos",
     "preco_melhoria": 50,
     "dono": null
   },
   {
-    "nome": "Imposto de Renda",
+    "nome": "Assalto no Beco do Crime",
     "tipo": "imposto",
-    "valor": 200
+    "valor": 180
   },
   {
-    "nome": "Máquina do Tempo DeLorean",
+    "nome": "Shopping Center - Madrugada dos Mortos",
     "tipo": "transporte",
     "preco": 200,
-    "alugueis": [
-      25,
-      50,
-      100,
-      200,
-      200,
-      200
-    ],
+    "alugueis": [25,50,100,200,200,200],
     "melhorias": 0,
-    "nome_melhoria": "Capacitores",
+    "nome_melhoria": "Barricadas",
     "preco_melhoria": 50,
     "dono": null
   },
@@ -67,14 +46,7 @@ const TABULEIRO = [
     "nome": "Bates Motel - Psicose",
     "tipo": "propriedade",
     "preco": 100,
-    "alugueis": [
-      6,
-      30,
-      90,
-      270,
-      400,
-      550
-    ],
+    "alugueis": [6,30,90,270,400,550],
     "melhorias": 0,
     "nome_melhoria": "Chaves de Quarto",
     "preco_melhoria": 50,
@@ -85,72 +57,45 @@ const TABULEIRO = [
     "tipo": "especial"
   },
   {
-    "nome": "Cabana na Floresta - Evil Dead",
+    "nome": "Pânico",
     "tipo": "propriedade",
-    "preco": 100,
-    "alugueis": [
-      6,
-      30,
-      90,
-      270,
-      400,
-      550
-    ],
+    "preco": 120,
+    "alugueis": [8,40,100,300,450,600],
     "melhorias": 0,
-    "nome_melhoria": "Motosserras",
+    "nome_melhoria": "Máscaras Ghostface",
     "preco_melhoria": 50,
     "dono": null
   },
   {
-    "nome": "Silent Hill",
+    "nome": "Alexandria - The Walking Dead",
     "tipo": "propriedade",
     "preco": 120,
-    "alugueis": [
-      8,
-      40,
-      100,
-      300,
-      450,
-      600
-    ],
+    "alugueis": [8,40,100,300,450,600],
     "melhorias": 0,
-    "nome_melhoria": "Rádios com Estática",
+    "nome_melhoria": "Muros Fortificados",
     "preco_melhoria": 50,
     "dono": null
   },
   {
     "nome": "Asilo Arkham",
-    "tipo": "prisao"
+    "tipo": "prisao",
+    "preco": 200
   },
   {
     "nome": "Laboratório Hawkins - Stranger Things",
     "tipo": "propriedade",
     "preco": 140,
-    "alugueis": [
-      10,
-      50,
-      150,
-      450,
-      625,
-      750
-    ],
+    "alugueis": [10,50,150,450,625,750],
     "melhorias": 0,
     "nome_melhoria": "Fitas K7",
     "preco_melhoria": 100,
     "dono": null
   },
   {
-    "nome": "Companhia de Energia Elétrica",
+    "nome": "Laboratório de Frankenstein",
     "tipo": "servico",
     "preco": 150,
-    "alugueis": [
-      10,
-      25,
-      50,
-      100,
-      150,
-      200
-    ],
+    "alugueis": [10,25,50,100,150,200],
     "melhorias": 0,
     "nome_melhoria": "Geradores",
     "preco_melhoria": 75,
@@ -160,14 +105,7 @@ const TABULEIRO = [
     "nome": "Mundo Invertido - Stranger Things",
     "tipo": "propriedade",
     "preco": 140,
-    "alugueis": [
-      10,
-      50,
-      150,
-      450,
-      625,
-      750
-    ],
+    "alugueis": [10,50,150,450,625,750],
     "melhorias": 0,
     "nome_melhoria": "Demogorgons",
     "preco_melhoria": 100,
@@ -177,50 +115,29 @@ const TABULEIRO = [
     "nome": "Castelo do Drácula",
     "tipo": "propriedade",
     "preco": 160,
-    "alugueis": [
-      12,
-      60,
-      180,
-      500,
-      700,
-      900
-    ],
+    "alugueis": [12,60,180,500,700,900],
     "melhorias": 0,
     "nome_melhoria": "Estacas de Madeira",
     "preco_melhoria": 100,
     "dono": null
   },
   {
-    "nome": "Carro Ecto-1 - Caça-Fantasmas",
+    "nome": "Território do Predador",
     "tipo": "transporte",
     "preco": 200,
-    "alugueis": [
-      25,
-      50,
-      100,
-      200,
-      200,
-      200
-    ],
+    "alugueis": [25,50,100,200,200,200],
     "melhorias": 0,
-    "nome_melhoria": "Mochilas de Prótons",
+    "nome_melhoria": "Camuflagem Óptica",
     "preco_melhoria": 50,
     "dono": null
   },
   {
-    "nome": "Nave Nostromo - Alien",
+    "nome": "Armazém do Art - Terrifier",
     "tipo": "propriedade",
     "preco": 180,
-    "alugueis": [
-      14,
-      70,
-      200,
-      550,
-      750,
-      950
-    ],
+    "alugueis": [14,70,200,550,750,950],
     "melhorias": 0,
-    "nome_melhoria": "Ovos de Xenomorfo",
+    "nome_melhoria": "Sacos de Lixo Pretos",
     "preco_melhoria": 100,
     "dono": null
   },
@@ -232,14 +149,7 @@ const TABULEIRO = [
     "nome": "Jurassic Park",
     "tipo": "propriedade",
     "preco": 180,
-    "alugueis": [
-      14,
-      70,
-      200,
-      550,
-      750,
-      950
-    ],
+    "alugueis": [14,70,200,550,750,950],
     "melhorias": 0,
     "nome_melhoria": "Cercas Elétricas",
     "preco_melhoria": 100,
@@ -249,14 +159,7 @@ const TABULEIRO = [
     "nome": "Ilha da Caveira - King Kong",
     "tipo": "propriedade",
     "preco": 200,
-    "alugueis": [
-      16,
-      80,
-      220,
-      600,
-      800,
-      1000
-    ],
+    "alugueis": [16,80,220,600,800,1000],
     "melhorias": 0,
     "nome_melhoria": "Sinalizadores",
     "preco_melhoria": 100,
@@ -270,14 +173,7 @@ const TABULEIRO = [
     "nome": "Casa dos Myers - Michael Myers",
     "tipo": "propriedade",
     "preco": 220,
-    "alugueis": [
-      18,
-      90,
-      250,
-      700,
-      875,
-      1050
-    ],
+    "alugueis": [18,90,250,700,875,1050],
     "melhorias": 0,
     "nome_melhoria": "Máscaras Brancas",
     "preco_melhoria": 150,
@@ -291,14 +187,7 @@ const TABULEIRO = [
     "nome": "Esgotos de Derry - Pennywise",
     "tipo": "propriedade",
     "preco": 220,
-    "alugueis": [
-      18,
-      90,
-      250,
-      700,
-      875,
-      1050
-    ],
+    "alugueis": [18,90,250,700,875,1050],
     "melhorias": 0,
     "nome_melhoria": "Balões Vermelhos",
     "preco_melhoria": 150,
@@ -308,120 +197,72 @@ const TABULEIRO = [
     "nome": "Banheiro Abandonado - Jigsaw",
     "tipo": "propriedade",
     "preco": 240,
-    "alugueis": [
-      20,
-      100,
-      300,
-      750,
-      925,
-      1100
-    ],
+    "alugueis": [20,100,300,750,925,1100],
     "melhorias": 0,
     "nome_melhoria": "Fitas Cassete",
     "preco_melhoria": 150,
     "dono": null
   },
   {
-    "nome": "Impala 1967 - Supernatural",
-    "tipo": "transporte",
-    "preco": 200,
-    "alugueis": [
-      25,
-      50,
-      100,
-      200,
-      200,
-      200
-    ],
+    "nome": "Exorcista",
+    "tipo": "propriedade",
+    "preco": 300,
+    "alugueis": [26,130,390,900,1100,1275],
     "melhorias": 0,
-    "nome_melhoria": "Sal Grosso",
-    "preco_melhoria": 50,
+    "nome_melhoria": "Água Benta",
+    "preco_melhoria": 200,
     "dono": null
   },
   {
     "nome": "Rua Elm - Freddy Krueger",
     "tipo": "propriedade",
     "preco": 260,
-    "alugueis": [
-      22,
-      110,
-      330,
-      800,
-      975,
-      1150
-    ],
+    "alugueis": [22,110,330,800,975,1150],
     "melhorias": 0,
     "nome_melhoria": "Pesadelos",
     "preco_melhoria": 150,
     "dono": null
   },
   {
-    "nome": "Mansão Spencer - Resident Evil",
+    "nome": "Acampamento Crystal Lake - Jason Voorhees",
     "tipo": "propriedade",
     "preco": 260,
-    "alugueis": [
-      22,
-      110,
-      330,
-      800,
-      975,
-      1150
-    ],
+    "alugueis": [22,110,330,800,975,1150],
     "melhorias": 0,
-    "nome_melhoria": "Vírus-T",
-    "preco_melhoria": 150,
+    "nome_melhoria": "Armadilhas de Urso",
+    "preco_melhoria": 200,
     "dono": null
   },
   {
-    "nome": "Companhia de Água",
-    "tipo": "servico",
-    "preco": 150,
-    "alugueis": [
-      15,
-      30,
-      60,
-      120,
-      150,
-      200
-    ],
+    "nome": "Caminhão do Creeper - Olhos Famintos",
+    "tipo": "transporte",
+    "preco": 200,
+    "alugueis": [25,50,100,200,200,200],
     "melhorias": 0,
-    "nome_melhoria": "Encanamentos",
-    "preco_melhoria": 75,
+    "nome_melhoria": "Placas de Carro",
+    "preco_melhoria": 50,
     "dono": null
   },
   {
-    "nome": "Floresta de Blair - A Bruxa de Blair",
+    "nome": "O Massacre da Serra Elétrica",
     "tipo": "propriedade",
     "preco": 280,
-    "alugueis": [
-      24,
-      120,
-      360,
-      850,
-      1025,
-      1200
-    ],
+    "alugueis": [24,120,360,850,1025,1200],
     "melhorias": 0,
-    "nome_melhoria": "Totens de Madeira",
+    "nome_melhoria": "Serras Elétricas",
     "preco_melhoria": 150,
     "dono": null
   },
   {
     "nome": "Transporte de Prisioneiros",
-    "tipo": "va_para_prisao"
+    "tipo": "va_para_prisao",
+    "preco": 150
   },
   {
     "nome": "Bar do Moe - Os Simpsons",
     "tipo": "propriedade",
     "preco": 300,
-    "alugueis": [
-      26,
-      130,
-      390,
-      900,
-      1100,
-      1275
-    ],
+    "alugueis": [26,130,390,900,1100,1275],
     "melhorias": 0,
     "nome_melhoria": "Canecas de Chopp",
     "preco_melhoria": 200,
@@ -431,14 +272,7 @@ const TABULEIRO = [
     "nome": "Casa do Homer Simpson",
     "tipo": "propriedade",
     "preco": 300,
-    "alugueis": [
-      26,
-      130,
-      390,
-      900,
-      1100,
-      1275
-    ],
+    "alugueis": [26,130,390,900,1100,1275],
     "melhorias": 0,
     "nome_melhoria": "Fardos de Duff",
     "preco_melhoria": 200,
@@ -452,34 +286,20 @@ const TABULEIRO = [
     "nome": "Usina Nuclear de Springfield",
     "tipo": "propriedade",
     "preco": 320,
-    "alugueis": [
-      28,
-      150,
-      450,
-      1000,
-      1200,
-      1400
-    ],
+    "alugueis": [28,150,450,1000,1200,1400],
     "melhorias": 0,
     "nome_melhoria": "Barras de Urânio",
     "preco_melhoria": 200,
     "dono": null
   },
   {
-    "nome": "Expresso de Hogwarts - Harry Potter",
-    "tipo": "transporte",
-    "preco": 200,
-    "alugueis": [
-      25,
-      50,
-      100,
-      200,
-      200,
-      200
-    ],
+    "nome": "Sinal de TV - O Chamado",
+    "tipo": "servico",
+    "preco": 150,
+    "alugueis": [15,30,60,120,150,200],
     "melhorias": 0,
-    "nome_melhoria": "Varinhas",
-    "preco_melhoria": 50,
+    "nome_melhoria": "Fitas VHS",
+    "preco_melhoria": 75,
     "dono": null
   },
   {
@@ -487,41 +307,27 @@ const TABULEIRO = [
     "tipo": "especial"
   },
   {
-    "nome": "Taxa de Luxo",
+    "nome": "Oferenda Sobrenatural",
     "tipo": "imposto",
     "valor": 100
   },
   {
-    "nome": "Hotel Overlook - Jack Torrance",
+    "nome": "Casa de Cera - A Casa de Cera",
     "tipo": "propriedade",
     "preco": 350,
-    "alugueis": [
-      35,
-      175,
-      500,
-      1100,
-      1300,
-      1500
-    ],
+    "alugueis": [35,175,500,1100,1300,1500],
     "melhorias": 0,
-    "nome_melhoria": "Machados",
+    "nome_melhoria": "Estátuas de Cera",
     "preco_melhoria": 200,
     "dono": null
   },
   {
-    "nome": "Acampamento Crystal Lake - Jason Voorhees",
+    "nome": "Mansão da Família Addams",
     "tipo": "propriedade",
     "preco": 400,
-    "alugueis": [
-      50,
-      200,
-      600,
-      1400,
-      1700,
-      2000
-    ],
+    "alugueis": [50,200,600,1400,1700,2000],
     "melhorias": 0,
-    "nome_melhoria": "Armadilhas de Urso",
+    "nome_melhoria": "Plantas Carnívoras",
     "preco_melhoria": 200,
     "dono": null
   }
@@ -568,7 +374,7 @@ const CARTAS_PANDORA = [
     "valor_alteracao": 100
   },
   {
-    "texto": "As ações da fabricante do DeLorean subiram. Receba 50",
+    "texto": "Sua rota de fuga pelo Shopping funcionou perfeitamente. Receba 50",
     "valor_alteracao": 50
   },
   {
@@ -604,7 +410,7 @@ const CARTAS_PANDORA = [
     "valor_alteracao": -75
   },
   {
-    "texto": "Multa por excesso de velocidade temporal no DeLorean. Pague 50",
+    "texto": "Os zumbis invadiram sua loja no Shopping. Pague 50",
     "valor_alteracao": -50
   },
   {
@@ -665,26 +471,42 @@ const INDICE_PRISAO = TABULEIRO.findIndex(c => c.tipo === "prisao");
 // Mapeamento Direto pelos Nomes Exatos dos Ficheiros das Casas no Tabuleiro
 const URLS_IMAGENS = {
     'portal': 'assets/portal.png',
-    'pandora': 'assets/caixa_pandora.png',
-    'bar_moe': 'assets/Bar do Moe - Os Simpsons.webp',
-    'casa_homer': 'assets/casadohomer.png',
-    'impala': 'assets/Impala 1967 - Supernatural .jpg',
-    'mansao_spencer': 'assets/Mansão Spencer - Resident Evil .jpg',
-    'rua_elm': 'assets/Rua Elm - Freddy Krueger.jpg',
+    'pandora': 'assets/pandora.png',
+    'bar_moe': 'assets/bar_moe.png',
+    'casa_homer': 'assets/casa_homer.png',
+    'exorcista': 'assets/fotoexorcista.jpg',
+    'mansao_spencer': 'assets/mansao_spencer.png',
+    'addams': 'assets/familia_addams.jpg',
+    'rua_elm': 'assets/rua_elm.png',
     'prisao': 'assets/prisao.png',
-    'banheiro': 'assets/banehiro .jpeg',
-    'esgotos': 'assets/esgotos de derry.png',
-    'usina': 'assets/usina nuclear .jpeg',
-    'annabelle': 'assets/Quarto de Arte - Annabelle .jpeg',
+    'banheiro': 'assets/banheiro.png',
+    'esgotos': 'assets/esgotos.png',
+    'usina': 'assets/usina.png',
+    'annabelle': 'assets/annabelle.png',
     'transporte_prisioneiros': 'assets/Transporte de Prisioneiros.webp',
-    'chucky': 'assets/Fábrica Good Guys - Chucky .jpeg',
+    'chucky': 'assets/Fábrica Good Guys - Chucky .jpeg',
     'myers': 'assets/Casa dos Myers - Michael Myers .webp',
     'crystal_lake': 'assets/Acampamento Crystal Lake - Jason Voorhees .jpeg',
-    'dracula': 'assets/Castelo do Drácula .jpeg',
+    'dracula': 'assets/Castelo do Drácula .jpeg',
     'mundo_invertido': 'assets/Mundo Invertido - Stranger Things .jpeg',
     'jurassic': 'assets/Jurassic Park .jpeg',
     'king_kong': 'assets/Ilha da Caveira - King Kong .jpeg',
-    'bates_motel': 'assets/bates_motel_dummy.jpg', /* Apenas para mapeamento via getTileImgKey */
+    'chamado': 'assets/ochamado.jpg',
+    'bates_motel': 'assets/bates_motel.jpg',
+    'hawkins': 'assets/labohankins.jpg',
+    'arkham': 'assets/arkham.jpg',
+    'panico': 'assets/panico.jpg',
+    'terrifier': 'assets/terrifier.jpg',
+    'predador': 'assets/predador.jpg',
+    'walking_dead': 'assets/walking_dead.jpg',
+    'madrugada': 'assets/madrugada_mortos.jpg',
+    'assalto': 'assets/assalto_beco.jpg',
+    'cera': 'assets/casa_de_cera.jpg',
+    'oferenda': 'assets/oferenda.jpg',
+    'massacre': 'assets/fotomassacre.jpg',
+    'creeper': 'assets/fotoolhosfamintos.jpeg',
+    'frankenstein': 'assets/labofrankten.jpeg',
+    'estacionamento': 'assets/estacionamento_terror.png',
     'default': 'assets/default.png'
 };
 
@@ -697,8 +519,28 @@ const URLS_VIDEOS = {
     'mundo_invertido': 'assets/videomundoinvertido.MP4',
     'annabelle': 'assets/videoquartodeannabelle.MP4',
     'esgotos': 'assets/videoitacoisa.MP4',
-    'chucky': 'assets/chucksabotouos freios.MP4',
-    'bates_motel': 'assets/videobatesmotel.MP4'
+    'chucky': 'assets/videofabricachuck.MP4',
+    'bates_motel': 'assets/videobatesmotel.MP4',
+    'jurassic': 'assets/videojurrassic.MP4',
+    'dracula': 'assets/videodracula.MP4',
+    'king_kong': 'assets/videoilhadacaveira.MP4',
+    'massacre': 'assets/videomassacredaserra.MP4',
+    'bar_moe': 'assets/videomoe.MP4',
+    'usina': 'assets/videousina.MP4',
+    'exorcista': 'assets/exorcista.MP4',
+    'transporte_prisioneiros': 'assets/videoprisioneiros.MP4',
+    'hawkins': 'assets/videolaboratoriohankins.MP4',
+    'frankenstein': 'assets/videolaboratoriofrank.MP4',
+    'creeper': 'assets/videoolhosfamintos.MP4',
+    'estacionamento': 'assets/video estacionamento.mov',
+    'arkham': 'assets/videoasilo.MP4',
+    'madrugada': 'assets/videomadrugadamortos.MP4',
+    'panico': 'assets/videopanico.MP4',
+    'predador': 'assets/videopredador.MP4',
+    'assalto': 'assets/videosassaltonobeco.MP4',
+    'terrifier': 'assets/videoterrifier.MP4',
+    'walking_dead': 'assets/videotwd.MP4',
+    'chamado': 'assets/videochamado.MP4'
 };
 
 // Mapeamento Exato dos Ficheiros de Peões para Jogadores e CPUs
@@ -707,27 +549,47 @@ const PERSONAGENS_JOGADORES = [
     { charNome: "Jason", avatar: "assets/jasonpeao.png", cor: "#00f0ff" },
     { charNome: "Freddy", avatar: "assets/freddypeao.png", cor: "#ff8800" },
     { charNome: "Annabelle", avatar: "assets/annabellepeao.png", cor: "#ff00ff" },
-    { charNome: "Homer", avatar: "assets/homerpeao.png", cor: "#ffff00" }
+    { charNome: "Homer", avatar: "assets/homerpeao.png", cor: "#ffff00" },
+    { charNome: "Pennywise", avatar: "assets/peaoitacoisa.png", cor: "#ff0000" },
+    { charNome: "Jigsaw", avatar: "assets/peaojigsaw.png", cor: "#880000" },
+    { charNome: "Leatherface", avatar: "assets/peaomassacredaserra.png", cor: "#aa5500" },
+    { charNome: "Michael Myers", avatar: "assets/peaomichaelmyers.png", cor: "#444444" },
+    { charNome: "Predador", avatar: "assets/peaopredador.png", cor: "#00ff00" },
+    { charNome: "Terrifier", avatar: "assets/peaoterrifier.png", cor: "#ffffff" },
+    { charNome: "Zumbi", avatar: "assets/peaozumbi.png", cor: "#00ff88" }
 ];
 
 let selectedCharIndex = 0;
+let chosenHumanChars = [];
+let chosenHumanNames = [];
+let currentHumanPicking = 1;
 
 function renderCharSelectMenu() {
     const grid = document.getElementById('char-select-grid');
     if (!grid) return;
     grid.innerHTML = '';
 
+    // Update the player name label and clear input for each human
+    const nameLabel = document.getElementById('player-name-label');
+    const nameInput = document.getElementById('player-name-input');
+    if (nameLabel) nameLabel.textContent = `✏️ Nome do Jogador ${currentHumanPicking}:`;
+    if (nameInput) nameInput.value = chosenHumanNames[currentHumanPicking - 1] || '';
+
     PERSONAGENS_JOGADORES.forEach((p, idx) => {
         const card = document.createElement('div');
         card.className = `char-card${idx === selectedCharIndex ? ' selected' : ''}`;
         card.setAttribute('data-idx', idx);
         card.onclick = () => {
+            if (card.classList.contains('disabled-char')) return;
             selectedCharIndex = idx;
-            // Update classes without full re-render for snappier feel
             document.querySelectorAll('.char-card').forEach((c, i) => {
                 c.classList.toggle('selected', i === idx);
             });
         };
+        if (chosenHumanChars.includes(idx)) {
+            card.classList.add('disabled-char');
+            card.classList.remove('selected');
+        }
         card.innerHTML = `
             <div class="char-img-wrap">
                 <img src="${p.avatar}"
@@ -803,6 +665,7 @@ function getTileImgKey(casa, index) {
         if (index === 0) return 'portal';
         if (index === 10 || index === 30) return 'prisao';
         if (casa.nome.includes('Pandora')) return 'pandora';
+        if (casa.nome.includes('Estacionamento')) return 'estacionamento';
     }
     if (casa.tipo === 'va_para_prisao') return 'transporte_prisioneiros';
     const n = casa.nome.toLowerCase();
@@ -816,14 +679,64 @@ function getTileImgKey(casa, index) {
     if (n.includes('ilha da caveira') || n.includes('king kong')) return 'king_kong';
     if (n.includes('bar do moe')) return 'bar_moe';
     if (n.includes('casa do homer')) return 'casa_homer';
-    if (n.includes('impala')) return 'impala';
-    if (n.includes('mansão spencer') || n.includes('mansao spencer')) return 'mansao_spencer';
+    if (n.includes('exorcista')) return 'exorcista';
+    if (n.includes('addams')) return 'addams';
     if (n.includes('rua elm')) return 'rua_elm';
     if (n.includes('banheiro')) return 'banheiro';
     if (n.includes('esgoto')) return 'esgotos';
     if (n.includes('usina')) return 'usina';
+    if (n.includes('chamado')) return 'chamado';
     if (n.includes('bates motel')) return 'bates_motel';
+    if (n.includes('massacre') || n.includes('serra')) return 'massacre';
+    if (n.includes('creeper')) return 'creeper';
+    if (n.includes('hawkins')) return 'hawkins';
+    if (n.includes('frankenstein')) return 'frankenstein';
+    if (n.includes('oferenda')) return 'oferenda';
+    if (n.includes('cera')) return 'cera';
+    if (n.includes('assalto')) return 'assalto';
+    if (n.includes('madrugada')) return 'madrugada';
+    if (n.includes('alexandria') || n.includes('walking dead')) return 'walking_dead';
+    if (n.includes('panico') || n.includes('pânico')) return 'panico';
+    if (n.includes('terrifier') || n.includes('art')) return 'terrifier';
+    if (n.includes('predador')) return 'predador';
+    if (n.includes('arkham')) return 'arkham';
+    if (n.includes('hawkins')) return 'hawkins';
     return null;
+}
+
+function getFallbackSvg(casa) {
+    let emoji = '🏚️';
+    let color1 = '#333333';
+    let color2 = '#000000';
+    
+    const n = casa.nome.toLowerCase();
+    if (n.includes('chucky') || n.includes('good guys')) { emoji = '🔪'; color1 = '#cc8800'; color2 = '#8b0000'; }
+    else if (n.includes('myers')) { emoji = '🎃'; color1 = '#cc5500'; color2 = '#111111'; }
+    else if (n.includes('crystal lake') || n.includes('jason')) { emoji = '🪓'; color1 = '#002233'; color2 = '#001100'; }
+    else if (n.includes('dracula') || n.includes('drácula')) { emoji = '🦇'; color1 = '#4a0000'; color2 = '#0a0000'; }
+    else if (n.includes('mundo invertido')) { emoji = '🌌'; color1 = '#2d004d'; color2 = '#000000'; }
+    else if (n.includes('jurassic')) { emoji = '🦖'; color1 = '#004d1a'; color2 = '#001a00'; }
+    else if (n.includes('king kong') || n.includes('caveira')) { emoji = '🦍'; color1 = '#333333'; color2 = '#0d0d0d'; }
+    else if (n.includes('bates motel')) { emoji = '🚿'; color1 = '#404040'; color2 = '#1a1a00'; }
+    else if (n.includes('transporte') || n.includes('delorean') || casa.tipo === 'transporte') { emoji = '🚓'; color1 = '#003366'; color2 = '#000022'; }
+    else if (n.includes('imposto') || casa.tipo === 'imposto') { emoji = '💰'; color1 = '#333333'; color2 = '#111111'; }
+    else if (n.includes('destino') || n.includes('sorte') || n.includes('revés')) { emoji = '🔮'; color1 = '#660066'; color2 = '#1a001a'; }
+    else if (n.includes('companhia') || n.includes('usina') || casa.tipo === 'servico') { emoji = '☢️'; color1 = '#336600'; color2 = '#112200'; }
+    else if (n.includes('prisão') || n.includes('prisao') || casa.tipo === 'prisao') { emoji = '⛓️'; color1 = '#1a1a1a'; color2 = '#000000'; }
+    else { emoji = '🎲'; color1 = '#1a1a2e'; color2 = '#16213e'; }
+    
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+        <defs>
+            <radialGradient id="g" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="${color1}" />
+                <stop offset="100%" stop-color="${color2}" />
+            </radialGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#g)" />
+        <text x="50%" y="55%" font-size="200" text-anchor="middle" dominant-baseline="middle" opacity="0.15" filter="drop-shadow(0px 0px 10px rgba(0,0,0,0.8))">${emoji}</text>
+    </svg>`;
+    
+    return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
 
 function renderBoardHTML() {
@@ -852,17 +765,15 @@ function renderBoardHTML() {
         casa.topColor = color;
 
         const imgKey = getTileImgKey(casa, i);
-        casa.imgUrl = imgKey && URLS_IMAGENS[imgKey] ? URLS_IMAGENS[imgKey] : null;
+        let finalImgUrl = imgKey && URLS_IMAGENS[imgKey] ? URLS_IMAGENS[imgKey] : getFallbackSvg(casa);
+        casa.imgUrl = finalImgUrl;
 
-        let priceHtml = casa.preco ? `<div class="tile-price">$${casa.preco}</div>` : '';
         let colorBarHtml = `<div class="tile-color-bar" style="background: ${color};"></div>`;
-        let imgHtml = casa.imgUrl ? `<img class="tile-img" src="${casa.imgUrl}" alt="" onerror="this.style.display='none';">` : '';
+        let bodyContent = '';
+        let priceHtml = casa.preco ? `<div class="tile-price">$${casa.preco}</div>` : '';
+        let imgHtml = `<img class="tile-img" src="${finalImgUrl}" alt="">`;
 
-        if (orientClass === 'tile-right' || orientClass === 'tile-left') {
-            imgHtml = '';
-        }
-
-        const bodyContent = `${imgHtml}<div class="tile-name">${casa.nome}</div>${priceHtml}`;
+        bodyContent = `${imgHtml}<div class="tile-name">${casa.nome}</div>${priceHtml}`;
 
         tile.innerHTML = `
             ${colorBarHtml}
@@ -933,17 +844,37 @@ function logMsg(msg) {
 function updateUI() {
     const j = jogadores[idxJogador];
     const curP = document.getElementById('current-player');
-    if (curP) curP.textContent = `Turno: ${j ? `${j.nome} (${j.charNome})` : '-'}`;
+    if (curP) {
+        curP.textContent = `TURNO: ${j ? `${j.nome} (${j.charNome})`.toUpperCase() : '-'}`;
+        curP.style.color = '#ff0055';
+        curP.style.textShadow = '0 0 10px rgba(255, 0, 85, 0.8), 0 0 20px rgba(255, 0, 85, 0.4)';
+        curP.style.borderBottomColor = 'rgba(255, 0, 85, 0.3)';
+    }
+    
+    // Atualiza o personagem em destaque na barra lateral esquerda
+    const activeCharImg = document.getElementById('active-character-img');
+    if (activeCharImg && j) {
+        activeCharImg.src = j.avatar;
+        activeCharImg.style.display = 'block';
+    }
     
     let html = '';
     jogadores.forEach((p, idx) => {
         const isActive = (idx === idxJogador);
-        html += `<div class="player-stat ${!p.ativo ? 'bankrupt' : ''} ${isActive ? 'active-player' : ''}" style="color: ${p.cor};">
-            <div style="display: flex; align-items: center; gap: 8px;">
-                <img src="${p.avatar}" alt="Avatar" style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid ${p.cor}; object-fit: cover; background: #000;">
-                <span>${p.nome} (${p.charNome})</span>
+        const textColor = isActive ? '#ff0055' : '#cccccc';
+        const borderColor = isActive ? '#ff00aa' : '#333333';
+        
+        html += `<div class="player-stat ${!p.ativo ? 'bankrupt' : ''} ${isActive ? 'active-player' : 'inactive-player'}" 
+                      style="border-color: ${borderColor};"
+                      onclick="mostrarPropriedadesJogador(${idx})">
+            <div class="player-avatar-wrap" style="border-color: ${borderColor};">
+                <img src="${p.avatar}" alt="${p.charNome}" onerror="this.src='assets/default.png'">
             </div>
-            <span>$${p.dinheiro}</span>
+            <div class="player-info">
+                <span class="player-name-tag" style="color: ${textColor};">${p.nome}</span>
+                <span class="player-char-tag">${p.charNome}</span>
+            </div>
+            <span class="player-money-tag">$${p.dinheiro}</span>
         </div>`;
     });
     const pList = document.getElementById('players-list');
@@ -1015,20 +946,27 @@ function updateUI() {
     });
 }
 
-function iniciarJogo(humanos, cpus) {
+function iniciarJogo(humanos, cpus, chosenHumanChars, chosenHumanNames) {
     jogadores = [];
     
     const pool = [...PERSONAGENS_JOGADORES];
-    const player1Char = pool.splice(selectedCharIndex, 1)[0];
     
+    // Create Humans
     let count = 0;
-    jogadores.push(new Jogador(`Humano 1`, false, player1Char, count++));
-    
-    for(let i=1; i<humanos; i++) {
-        const char = pool.length > 0 ? pool.shift() : PERSONAGENS_JOGADORES[count % PERSONAGENS_JOGADORES.length];
-        jogadores.push(new Jogador(`Humano ${i+1}`, false, char, count++));
+    for(let i=0; i<humanos; i++) {
+        // Find the chosen char object by original index
+        const originalChar = PERSONAGENS_JOGADORES[chosenHumanChars[i]];
+        // Remove it from the pool so CPUs don't pick it
+        const poolIndex = pool.findIndex(c => c.charNome === originalChar.charNome);
+        if (poolIndex > -1) pool.splice(poolIndex, 1);
+        
+        const playerName = (chosenHumanNames && chosenHumanNames[i]) ? chosenHumanNames[i] : `Jogador ${i+1}`;
+        jogadores.push(new Jogador(playerName, false, originalChar, count++));
     }
+    
+    // Create CPUs from remaining pool
     for(let i=0; i<cpus; i++) {
+        // shuffle or just pick the next available
         const char = pool.length > 0 ? pool.shift() : PERSONAGENS_JOGADORES[count % PERSONAGENS_JOGADORES.length];
         jogadores.push(new Jogador(`CPU ${i+1}`, true, char, count++));
     }
@@ -1036,7 +974,7 @@ function iniciarJogo(humanos, cpus) {
     document.getElementById('setup-modal').style.display = 'none';
     document.getElementById('ui-container').style.display = 'flex';
     
-    logMsg(`🎮 Partida iniciada! Você escolheu ${player1Char.charNome}!`);
+    logMsg(`🎮 Partida iniciada com ${humanos} Humano(s) e ${cpus} CPU(s)!`);
     idxJogador = 0;
     estado = "INICIO_TURNO";
     updateUI();
@@ -1047,9 +985,52 @@ function initListeners() {
     const btnStart = document.getElementById('btn-start');
     if (btnStart) {
         btnStart.onclick = () => {
-            const hum = parseInt(document.getElementById('in-hum').value) || 1;
-            const cpu = parseInt(document.getElementById('in-cpu').value) || 3;
-            iniciarJogo(hum, cpu);
+            const humVal = parseInt(document.getElementById('in-hum').value, 10);
+            const hum = isNaN(humVal) ? 1 : humVal;
+            const cpuVal = parseInt(document.getElementById('in-cpu').value, 10);
+            const cpu = isNaN(cpuVal) ? 3 : cpuVal;
+            
+            // Disable inputs after first click
+            document.getElementById('in-hum').disabled = true;
+            document.getElementById('in-cpu').disabled = true;
+            
+            // Validate if selectedCharIndex is valid (not already chosen)
+            if (chosenHumanChars.includes(selectedCharIndex)) {
+                return;
+            }
+
+            // Capture player name
+            const nameInput = document.getElementById('player-name-input');
+            const playerName = nameInput && nameInput.value.trim() !== ''
+                ? nameInput.value.trim()
+                : `Jogador ${currentHumanPicking}`;
+            chosenHumanNames[currentHumanPicking - 1] = playerName;
+            
+            chosenHumanChars.push(selectedCharIndex);
+            
+            if (currentHumanPicking < hum) {
+                currentHumanPicking++;
+                const title = document.querySelector('.select-title');
+                if (title) title.innerText = `🎭 Escolha o Avatar (Jogador ${currentHumanPicking})`;
+                
+                // Select the next available character automatically
+                for (let i = 0; i < PERSONAGENS_JOGADORES.length; i++) {
+                    if (!chosenHumanChars.includes(i)) {
+                        selectedCharIndex = i;
+                        break;
+                    }
+                }
+                
+                if (currentHumanPicking === hum) {
+                    btnStart.innerText = "INICIAR CONQUISTA";
+                } else {
+                    btnStart.innerText = `PRÓXIMO ▶`;
+                }
+                
+                renderCharSelectMenu();
+            } else {
+                iniciarJogo(hum, cpu, chosenHumanChars, chosenHumanNames);
+            }
         };
     }
 
@@ -1077,6 +1058,7 @@ function rolarDados() {
     const d1 = Math.floor(Math.random() * 6) + 1;
     const d2 = Math.floor(Math.random() * 6) + 1;
     const total = d1 + d2;
+    const duplas = (d1 === d2);
 
     let rolls = 0;
     const interval = setInterval(() => {
@@ -1098,6 +1080,18 @@ function rolarDados() {
 
             logMsg(`🎲 ${j.nome} (${j.charNome}) rolou ${d1} + ${d2} = ${total}`);
             
+            if (j.preso) {
+                if (duplas) {
+                    logMsg(`🔓 ${j.nome} tirou DUPLAS e escapou do Arkham!`);
+                    j.preso = false;
+                    j.turnos_preso = 0;
+                } else {
+                    logMsg(`🔒 ${j.nome} não tirou duplas e continua preso.`);
+                    setTimeout(encerrarTurno, 1000);
+                    return;
+                }
+            }
+
             let passos = total;
             const stepTimer = setInterval(() => {
                 j.posicao = (j.posicao + 1) % TABULEIRO.length;
@@ -1125,7 +1119,7 @@ function aplicarRegra() {
     const imgKey = getTileImgKey(casa, j.posicao);
     
     // Se a casa tiver um vídeo associado, reproduz antes de aplicar a regra
-    if (imgKey && URLS_VIDEOS[imgKey] && !j.is_cpu) { // Opcional: mostrar para CPU tbm, mas tirei j.is_cpu check
+    if (imgKey && URLS_VIDEOS[imgKey]) {
         mostrarVideoModal(URLS_VIDEOS[imgKey], () => {
              aplicarRegraRestante(j, casa);
         });
@@ -1171,7 +1165,18 @@ function aplicarRegraRestante(j, casa) {
             let dono = jogadores.find(x => x.nome === casa.dono);
             if(dono) dono.dinheiro += al;
             logMsg(`💸 ${j.nome} pagou $${al} de aluguel para ${casa.dono}!`);
-            encerrarTurno();
+            if (!j.is_cpu) {
+                const donoObj = jogadores.find(x => x.nome === casa.dono);
+                const donoAvatar = donoObj ? donoObj.avatar : null;
+                const dummyCasa = {
+                    nome: `💸 Pague $${al} para ${casa.dono}!`,
+                    topColor: donoObj ? donoObj.cor : '#cc0000',
+                    imgUrl: casa.imgUrl || null
+                };
+                mostrarPropertyCard(dummyCasa, `Você caiu em ${casa.nome} e deve pagar $${al} de aluguel para ${casa.dono}.`, encerrarTurno, encerrarTurno, "OK, PAGUEI", null);
+            } else {
+                encerrarTurno();
+            }
         } else {
             if ((casa.melhorias||0) < 5 && casa.preco_melhoria) {
                 let pm = casa.preco_melhoria;
@@ -1200,18 +1205,34 @@ function aplicarRegraRestante(j, casa) {
     } else if (casa.tipo === "imposto") {
         j.dinheiro -= casa.valor;
         logMsg(`🧾 ${j.nome} pagou $${casa.valor} de imposto.`);
-        encerrarTurno();
+        if (!j.is_cpu) {
+            const imgKey = getTileImgKey(casa, j.posicao);
+            const imgUrl = imgKey && URLS_IMAGENS[imgKey] ? URLS_IMAGENS[imgKey] : null;
+            const topColor = getTileColor(casa) || '#333333';
+            const dummyCasa = { nome: casa.nome, topColor: topColor, imgUrl: imgUrl };
+            mostrarPropertyCard(dummyCasa, `💸 Você perdeu $${casa.valor}! O crime compensa... para os outros.`, encerrarTurno, encerrarTurno, "ENTENDIDO", null);
+        } else {
+            encerrarTurno();
+        }
     } else if (casa.tipo === "especial" && casa.nome === "Caixa de Pandora") {
         const c = CARTAS_PANDORA[Math.floor(Math.random() * CARTAS_PANDORA.length)];
         j.dinheiro += c.valor_alteracao;
         logMsg(`📦 Carta de Pandora: ${c.texto}`);
         
-        if (j.is_cpu) {
-            encerrarTurno();
+        const finishPandora = () => {
+            if (j.is_cpu) {
+                encerrarTurno();
+            } else {
+                let pImg = URLS_IMAGENS['pandora'];
+                const dummyCasa = { nome: "Caixa de Pandora", topColor: "#ff8800", imgUrl: pImg };
+                mostrarPropertyCard(dummyCasa, c.texto, encerrarTurno, encerrarTurno, "ENTENDIDO", null);
+            }
+        };
+
+        if (c.texto.includes("Chucky sabotou")) {
+            mostrarVideoModal("assets/chucksabotouos freios.MP4", finishPandora);
         } else {
-            let pImg = URLS_IMAGENS['pandora'];
-            const dummyCasa = { nome: "Caixa de Pandora", topColor: "#ff8800", imgUrl: pImg };
-            mostrarPropertyCard(dummyCasa, c.texto, encerrarTurno, encerrarTurno, "ENTENDIDO", null);
+            finishPandora();
         }
     } else {
         logMsg(`👀 ${j.nome} visitou ${casa.nome}.`);
@@ -1244,14 +1265,54 @@ function mostrarVideoModal(videoSrc, callback) {
     };
 
     videoEl.onended = () => {
-        // Ao terminar o vídeo apenas mostra o botão e pausa. O usuário que clica para fechar, 
-        // ou fecha direto e continua.
-        // Já vamos deixar o usuário fechar manualmente pelo btnClose.
+        modal.style.display = 'none';
+        if(callback) callback();
     };
     
     videoEl.play().catch(e => {
         console.warn("Autoplay prevenido pelo navegador.", e);
     });
+}
+
+function mostrarPropriedadesJogador(idx) {
+    const p = jogadores[idx];
+    if (!p) return;
+
+    // Collect all properties owned by this player
+    const propriedades = TABULEIRO.filter(c => c.dono === p.nome);
+
+    document.getElementById('props-player-avatar').src = p.avatar;
+    document.getElementById('props-player-name').textContent = `${p.nome} (${p.charNome})`;
+    document.getElementById('props-player-money').textContent = `💰 $${p.dinheiro}`;
+    document.getElementById('props-modal-header').style.borderBottomColor = p.cor || '#ff0055';
+
+    const listEl = document.getElementById('props-list');
+    if (!listEl) return;
+
+    if (propriedades.length === 0) {
+        listEl.innerHTML = `<div class="props-empty">😱 Nenhuma propriedade ainda!</div>`;
+    } else {
+        listEl.innerHTML = propriedades.map(c => {
+            const nivel = c.melhorias || 0;
+            const aluguelAtual = c.alugueis ? c.alugueis[nivel] : Math.floor(c.preco * 0.2);
+            const estrelas = '⭐'.repeat(nivel) + (nivel < 5 ? '☆'.repeat(5 - nivel) : '');
+            const imgUrl = c.imgUrl || '';
+            const tipoLabel = c.tipo === 'transporte' ? '🚗 Transporte' : c.tipo === 'servico' ? '⚡ Serviço' : '🏠 Propriedade';
+            return `
+                <div class="prop-item" style="border-color: ${p.cor || '#ff0055'}22;">
+                    <img class="prop-item-img" src="${imgUrl}" alt="${c.nome}" onerror="this.style.display='none'">
+                    <div class="prop-item-info">
+                        <div class="prop-item-name">${c.nome}</div>
+                        <div class="prop-item-type">${tipoLabel}</div>
+                        <div class="prop-item-stars" title="Nível ${nivel}/5">${estrelas}</div>
+                        <div class="prop-item-rent">Aluguel atual: <strong>$${aluguelAtual}</strong></div>
+                        ${nivel < 5 && c.preco_melhoria ? `<div class="prop-item-upgrade">Próxima melhoria: $${c.preco_melhoria} → ${c.nome_melhoria || ''}</div>` : '<div class="prop-item-upgrade prop-maxed">✅ Nível máximo!</div>'}
+                    </div>
+                </div>`;
+        }).join('');
+    }
+
+    document.getElementById('props-modal').style.display = 'flex';
 }
 
 function mostrarPropertyCard(casa, msg, onYes, onNo, btnYesText, btnNoText) {
@@ -1323,29 +1384,44 @@ function loopLogica() {
     
     if (j.preso) {
         j.turnos_preso++;
-        if (j.is_cpu) {
+        if (j.turnos_preso > 3) {
+            logMsg(`🚨 ${j.nome} atingiu o limite de turnos e pagou $50 para sair do Arkham!`);
+            j.dinheiro -= 50;
+            j.preso = false;
+            j.turnos_preso = 0;
+            // Continua o turno normalmente para rolar os dados
+        } else if (j.is_cpu) {
             if (j.dinheiro >= 50) {
                 j.dinheiro -= 50;
                 j.preso = false;
                 j.turnos_preso = 0;
                 logMsg(`🤖 ${j.nome} (${j.charNome}) pagou $50 e saiu do Arkham!`);
             } else {
-                logMsg(`🤖 ${j.nome} (${j.charNome}) continua preso no Arkham!`);
-                encerrarTurno();
+                logMsg(`🤖 ${j.nome} (${j.charNome}) continua preso no Arkham (Turno ${j.turnos_preso}/3)!`);
+                estado = "AGUARDANDO_ROLO"; // Vai tentar os dados
+                setTimeout(rolarDados, 800);
                 return;
             }
         } else {
-            const dummyCasa = { nome: "Asilo Arkham", topColor: "#1a1a1a", imgUrl: URLS_IMAGENS['prisao'] };
-            mostrarPropertyCard(dummyCasa, "Pagar $50 para sair da prisão?", () => {
+            const dummyCasa = { nome: "Asilo Arkham", topColor: "#1a1a1a", imgUrl: URLS_IMAGENS['prisao'] || URLS_IMAGENS['arkham'] };
+            mostrarPropertyCard(dummyCasa, "Você está no Arkham! Pagar $50 para sair livremente ou tentar tirar duplas nos dados?", () => {
                 if (j.dinheiro >= 50) {
                     j.dinheiro -= 50; j.preso = false; j.turnos_preso = 0;
                     logMsg(`✅ Você pagou $50 e saiu da prisão!`);
-                    loopLogica();
+                    estado = "AGUARDANDO_ROLO";
+                    const btnRolar = document.getElementById('btn-rolar');
+                    if (btnRolar) btnRolar.style.display = 'block';
                 } else {
-                    logMsg(`❌ Dinheiro insuficiente!`);
-                    encerrarTurno();
+                    logMsg(`❌ Dinheiro insuficiente! Você deve tentar os dados.`);
+                    estado = "AGUARDANDO_ROLO";
+                    const btnRolar = document.getElementById('btn-rolar');
+                    if (btnRolar) btnRolar.style.display = 'block';
                 }
-            }, encerrarTurno, "PAGAR $50", "TENTAR DADOS");
+            }, () => {
+                estado = "AGUARDANDO_ROLO";
+                const btnRolar = document.getElementById('btn-rolar');
+                if (btnRolar) btnRolar.style.display = 'block';
+            }, "PAGAR $50", "TENTAR DADOS");
             return;
         }
     }

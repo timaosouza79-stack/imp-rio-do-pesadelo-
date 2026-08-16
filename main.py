@@ -17,7 +17,7 @@ TABULEIRO = [
     # 10 a 19
     {"nome": "Asilo Arkham", "tipo": "prisao"},
     {"nome": "Laboratório Hawkins - Stranger Things", "tipo": "propriedade", "preco": 140, "alugueis": [10, 50, 150, 450, 625, 750], "melhorias": 0, "nome_melhoria": "Fitas K7", "preco_melhoria": 100, "dono": None},
-    {"nome": "Companhia de Energia Elétrica", "tipo": "servico", "preco": 150, "alugueis": [10, 25, 50, 100, 150, 200], "melhorias": 0, "nome_melhoria": "Geradores", "preco_melhoria": 75, "dono": None},
+    {"nome": "Laboratório de Frankenstein", "tipo": "servico", "preco": 150, "alugueis": [10, 25, 50, 100, 150, 200], "melhorias": 0, "nome_melhoria": "Geradores", "preco_melhoria": 75, "dono": None},
     {"nome": "Mundo Invertido - Stranger Things", "tipo": "propriedade", "preco": 140, "alugueis": [10, 50, 150, 450, 625, 750], "melhorias": 0, "nome_melhoria": "Demogorgons", "preco_melhoria": 100, "dono": None},
     {"nome": "Castelo do Drácula", "tipo": "propriedade", "preco": 160, "alugueis": [12, 60, 180, 500, 700, 900], "melhorias": 0, "nome_melhoria": "Estacas de Madeira", "preco_melhoria": 100, "dono": None},
     {"nome": "Carro Ecto-1 - Caça-Fantasmas", "tipo": "transporte", "preco": 200, "alugueis": [25, 50, 100, 200, 200, 200], "melhorias": 0, "nome_melhoria": "Mochilas de Prótons", "preco_melhoria": 50, "dono": None},
@@ -32,11 +32,11 @@ TABULEIRO = [
     {"nome": "Caixa de Pandora", "tipo": "especial"},
     {"nome": "Esgotos de Derry - Pennywise", "tipo": "propriedade", "preco": 220, "alugueis": [18, 90, 250, 700, 875, 1050], "melhorias": 0, "nome_melhoria": "Balões Vermelhos", "preco_melhoria": 150, "dono": None},
     {"nome": "Banheiro Abandonado - Jigsaw", "tipo": "propriedade", "preco": 240, "alugueis": [20, 100, 300, 750, 925, 1100], "melhorias": 0, "nome_melhoria": "Fitas Cassete", "preco_melhoria": 150, "dono": None},
-    {"nome": "Impala 1967 - Supernatural", "tipo": "transporte", "preco": 200, "alugueis": [25, 50, 100, 200, 200, 200], "melhorias": 0, "nome_melhoria": "Sal Grosso", "preco_melhoria": 50, "dono": None},
+    {"nome": "Exorcista", "tipo": "propriedade", "preco": 350, "alugueis": [35, 175, 500, 1100, 1300, 1500], "melhorias": 0, "nome_melhoria": "Água Benta", "preco_melhoria": 200, "dono": None},
     {"nome": "Rua Elm - Freddy Krueger", "tipo": "propriedade", "preco": 260, "alugueis": [22, 110, 330, 800, 975, 1150], "melhorias": 0, "nome_melhoria": "Pesadelos", "preco_melhoria": 150, "dono": None},
     {"nome": "Mansão Spencer - Resident Evil", "tipo": "propriedade", "preco": 260, "alugueis": [22, 110, 330, 800, 975, 1150], "melhorias": 0, "nome_melhoria": "Vírus-T", "preco_melhoria": 150, "dono": None},
     {"nome": "Companhia de Água", "tipo": "servico", "preco": 150, "alugueis": [15, 30, 60, 120, 150, 200], "melhorias": 0, "nome_melhoria": "Encanamentos", "preco_melhoria": 75, "dono": None},
-    {"nome": "Floresta de Blair - A Bruxa de Blair", "tipo": "propriedade", "preco": 280, "alugueis": [24, 120, 360, 850, 1025, 1200], "melhorias": 0, "nome_melhoria": "Totens de Madeira", "preco_melhoria": 150, "dono": None},
+    {"nome": "O Massacre da Serra Elétrica", "tipo": "propriedade", "preco": 240, "alugueis": [20, 100, 300, 750, 925, 1100], "melhorias": 0, "nome_melhoria": "Serras Elétricas", "preco_melhoria": 150, "dono": None},
 
     # 30 a 39
     {"nome": "Transporte de Prisioneiros", "tipo": "va_para_prisao"},
@@ -44,7 +44,7 @@ TABULEIRO = [
     {"nome": "Casa do Homer Simpson", "tipo": "propriedade", "preco": 300, "alugueis": [26, 130, 390, 900, 1100, 1275], "melhorias": 0, "nome_melhoria": "Fardos de Duff", "preco_melhoria": 200, "dono": None},
     {"nome": "Caixa de Pandora", "tipo": "especial"},
     {"nome": "Usina Nuclear de Springfield", "tipo": "propriedade", "preco": 320, "alugueis": [28, 150, 450, 1000, 1200, 1400], "melhorias": 0, "nome_melhoria": "Barras de Urânio", "preco_melhoria": 200, "dono": None},
-    {"nome": "Expresso de Hogwarts - Harry Potter", "tipo": "transporte", "preco": 200, "alugueis": [25, 50, 100, 200, 200, 200], "melhorias": 0, "nome_melhoria": "Varinhas", "preco_melhoria": 50, "dono": None},
+    {"nome": "Caminhão do Creeper - Olhos Famintos", "tipo": "transporte", "preco": 200, "alugueis": [25, 50, 100, 200, 200, 200], "melhorias": 0, "nome_melhoria": "Placas de Carro", "preco_melhoria": 50, "dono": None},
     {"nome": "Caixa de Pandora", "tipo": "especial"},
     {"nome": "Taxa de Luxo", "tipo": "imposto", "valor": 100},
     {"nome": "Hotel Overlook - Jack Torrance", "tipo": "propriedade", "preco": 350, "alugueis": [35, 175, 500, 1100, 1300, 1500], "melhorias": 0, "nome_melhoria": "Machados", "preco_melhoria": 200, "dono": None},
@@ -67,7 +67,7 @@ def get_texture_path(casa, index):
         'pandora': 'assets/caixa_pandora.png',
         'bar_do_moe': 'assets/bar_do_moe.jpg', # Nome de arquivo assumido
         'casa_homer': 'assets/casadohomer.png',
-        'impala': 'assets/Impala 1967 - Supernatural .jpg',
+        'exorcista': 'assets/exorcista.jpg',
         'mansao_spencer': 'assets/Mansão Spencer - Resident Evil .jpg',
         'rua_elm': 'assets/Rua Elm - Freddy Krueger.jpg',
         'prisao': 'assets/prisao.png',
@@ -98,7 +98,7 @@ def get_texture_path(casa, index):
         'annabelle': 'annabelle', 'chucky': 'chucky', 'myers': 'myers',
         'crystal lake': 'crystal_lake', 'jason': 'crystal_lake', 'drácula': 'dracula',
         'mundo invertido': 'mundo_invertido', 'jurassic park': 'jurassic', 'king kong': 'king_kong',
-        'bar do moe': 'bar_do_moe', 'homer simpson': 'casa_homer', 'impala': 'impala',
+        'bar do moe': 'bar_do_moe', 'homer simpson': 'casa_homer', 'exorcista': 'exorcista',
         'mansão spencer': 'mansao_spencer', 'rua elm': 'rua_elm', 'jigsaw': 'banheiro',
         'pennywise': 'esgotos', 'usina nuclear': 'usina'
     }

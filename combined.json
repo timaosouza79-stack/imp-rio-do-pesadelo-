@@ -140,7 +140,7 @@
     "dono": null
   },
   {
-    "nome": "Companhia de Energia Elétrica",
+    "nome": "Laboratório de Frankenstein",
     "tipo": "servico",
     "preco": 150,
     "alugueis": [
@@ -390,19 +390,19 @@
     "dono": null
   },
   {
-    "nome": "Floresta de Blair - A Bruxa de Blair",
+    "nome": "O Massacre da Serra Elétrica",
     "tipo": "propriedade",
-    "preco": 280,
+    "preco": 240,
     "alugueis": [
-      24,
-      120,
-      360,
-      850,
-      1025,
-      1200
+      20,
+      100,
+      300,
+      750,
+      925,
+      1100
     ],
     "melhorias": 0,
-    "nome_melhoria": "Totens de Madeira",
+    "nome_melhoria": "Serras Elétricas",
     "preco_melhoria": 150,
     "dono": null
   },
@@ -466,7 +466,7 @@
     "dono": null
   },
   {
-    "nome": "Expresso de Hogwarts - Harry Potter",
+    "nome": "Caminhão do Creeper - Olhos Famintos",
     "tipo": "transporte",
     "preco": 200,
     "alugueis": [
@@ -478,7 +478,7 @@
       200
     ],
     "melhorias": 0,
-    "nome_melhoria": "Varinhas",
+    "nome_melhoria": "Placas de Carro",
     "preco_melhoria": 50,
     "dono": null
   },
