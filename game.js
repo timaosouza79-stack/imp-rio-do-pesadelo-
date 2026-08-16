@@ -1757,16 +1757,16 @@ function setupHost() {
 
 function updateHostPlayerList() {
     const list = document.getElementById('host-players-list');
-    list.innerHTML = \`Amigos Conectados: \${clientConnections.length}\`;
+    list.innerHTML = `Amigos Conectados: ${clientConnections.length}`;
     const btnStart = document.getElementById('btn-host-start');
     if (clientConnections.length > 0) {
         btnStart.style.opacity = '1';
         btnStart.style.pointerEvents = 'auto';
-        btnStart.innerText = \`INICIAR COM \${clientConnections.length + 1} JOGADORES\`;
+        btnStart.innerText = `INICIAR COM ${clientConnections.length + 1} JOGADORES`;
     } else {
         btnStart.style.opacity = '0.5';
         btnStart.style.pointerEvents = 'none';
-        btnStart.innerText = \`AGUARDANDO JOGADORES...\`;
+        btnStart.innerText = `AGUARDANDO JOGADORES...`;
     }
 }
 
