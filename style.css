@@ -14,6 +14,11 @@ body, html {
     background: #0a0a1c url('assets/fundo_castelo.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #fff;
+    /* PWA: respeita notch e home indicator do iPhone */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 /* Glassmorphism UI Premium */
