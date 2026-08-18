@@ -7,9 +7,22 @@ const TABULEIRO = [
     "nome": "Quarto de Arte - Annabelle",
     "tipo": "propriedade",
     "preco": 60,
-    "alugueis": [30,10,30,90,160,250],
+    "alugueis": [
+      30,
+      80,
+      130,
+      180,
+      230,
+      280
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Símbolos Ocultos","Boneca Amaldiçoada","Altar das Trevas","Possessão Demoníaca","Invocação Maligna"],
+    "nome_melhoria": [
+      "Símbolos Ocultos",
+      "Boneca Amaldiçoada",
+      "Altar das Trevas",
+      "Possessão Demoníaca",
+      "Invocação Maligna"
+    ],
     "preco_melhoria": 50,
     "dono": null
   },
@@ -21,9 +34,22 @@ const TABULEIRO = [
     "nome": "Fábrica Good Guys - Chucky",
     "tipo": "propriedade",
     "preco": 80,
-    "alugueis": [40,14,42,120,200,300],
+    "alugueis": [
+      40,
+      90,
+      140,
+      190,
+      240,
+      290
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Caixas de Bonecos","Facas Ensanguentadas","Oficina de Chucky","Feitiços Vudus","Fábrica de Pesadelos"],
+    "nome_melhoria": [
+      "Caixas de Bonecos",
+      "Facas Ensanguentadas",
+      "Oficina de Chucky",
+      "Feitiços Vudus",
+      "Fábrica de Pesadelos"
+    ],
     "preco_melhoria": 50,
     "dono": null
   },
@@ -36,9 +62,22 @@ const TABULEIRO = [
     "nome": "Shopping Center - Madrugada dos Mortos",
     "tipo": "transporte",
     "preco": 90,
-    "alugueis": [45,50,100,200,200,200],
+    "alugueis": [
+      45,
+      50,
+      100,
+      200,
+      200,
+      200
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Barricadas","Mortos-Vivos no Corredor","Horda Zumbi","Bunker Anti-Apocalipse","Fortaleza dos Mortos"],
+    "nome_melhoria": [
+      "Barricadas",
+      "Mortos-Vivos no Corredor",
+      "Horda Zumbi",
+      "Bunker Anti-Apocalipse",
+      "Fortaleza dos Mortos"
+    ],
     "preco_melhoria": 50,
     "dono": null
   },
@@ -46,9 +85,22 @@ const TABULEIRO = [
     "nome": "Bates Motel - Psicose",
     "tipo": "propriedade",
     "preco": 100,
-    "alugueis": [50,18,55,150,240,380],
+    "alugueis": [
+      50,
+      100,
+      150,
+      200,
+      250,
+      300
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Chaves de Quarto","Espreita no Chuveiro","Cacos de Espelho","Identidades Partidas","Motel dos Horrores"],
+    "nome_melhoria": [
+      "Chaves de Quarto",
+      "Espreita no Chuveiro",
+      "Cacos de Espelho",
+      "Identidades Partidas",
+      "Motel dos Horrores"
+    ],
     "preco_melhoria": 50,
     "dono": null
   },
@@ -60,9 +112,22 @@ const TABULEIRO = [
     "nome": "Pânico",
     "tipo": "propriedade",
     "preco": 120,
-    "alugueis": [60,22,65,180,280,450],
+    "alugueis": [
+      60,
+      110,
+      160,
+      210,
+      260,
+      310
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Máscaras Ghostface","Facas do Pânico","Câmeras de Vigilância","Armadilhas Mortais","Maldição de Woodsboro"],
+    "nome_melhoria": [
+      "Máscaras Ghostface",
+      "Facas do Pânico",
+      "Câmeras de Vigilância",
+      "Armadilhas Mortais",
+      "Maldição de Woodsboro"
+    ],
     "preco_melhoria": 50,
     "dono": null
   },
@@ -70,9 +135,22 @@ const TABULEIRO = [
     "nome": "Alexandria - The Walking Dead",
     "tipo": "propriedade",
     "preco": 140,
-    "alugueis": [70,26,80,210,320,500],
+    "alugueis": [
+      70,
+      120,
+      170,
+      220,
+      270,
+      320
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Muros Fortificados","Torres de Guarda","Arame Farpado","Armas Anti-Zumbi","Bastião da Sobrevivência"],
+    "nome_melhoria": [
+      "Muros Fortificados",
+      "Torres de Guarda",
+      "Arame Farpado",
+      "Armas Anti-Zumbi",
+      "Bastião da Sobrevivência"
+    ],
     "preco_melhoria": 50,
     "dono": null
   },
@@ -85,9 +163,22 @@ const TABULEIRO = [
     "nome": "Laboratório Hawkins - Stranger Things",
     "tipo": "propriedade",
     "preco": 160,
-    "alugueis": [80,30,90,240,370,580],
+    "alugueis": [
+      80,
+      180,
+      280,
+      380,
+      480,
+      580
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Fitas K7","Laboratório de Experimentos","Portal do Avesso","Mente Colmeia","Domínio do Demogorgon"],
+    "nome_melhoria": [
+      "Fitas K7",
+      "Laboratório de Experimentos",
+      "Portal do Avesso",
+      "Mente Colmeia",
+      "Domínio do Demogorgon"
+    ],
     "preco_melhoria": 100,
     "dono": null
   },
@@ -95,9 +186,22 @@ const TABULEIRO = [
     "nome": "Laboratório de Frankenstein",
     "tipo": "servico",
     "preco": 170,
-    "alugueis": [85,25,50,100,150,200],
+    "alugueis": [
+      85,
+      25,
+      50,
+      100,
+      150,
+      200
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Geradores Elétricos","Mesa de Experimentos","Cérebro Artificial","Relâmpagos Controlados","Monstro de Frankenstein"],
+    "nome_melhoria": [
+      "Geradores Elétricos",
+      "Mesa de Experimentos",
+      "Cérebro Artificial",
+      "Relâmpagos Controlados",
+      "Monstro de Frankenstein"
+    ],
     "preco_melhoria": 75,
     "dono": null
   },
@@ -105,9 +209,22 @@ const TABULEIRO = [
     "nome": "Casa do Sorria",
     "tipo": "propriedade",
     "preco": 180,
-    "alugueis": [90,36,105,270,420,650],
+    "alugueis": [
+      90,
+      190,
+      290,
+      390,
+      490,
+      590
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Sorriso Perturbador","Visões Malditas","Espírito do Sorriso","Maldição Transmitida","Entidade das Trevas"],
+    "nome_melhoria": [
+      "Sorriso Perturbador",
+      "Visões Malditas",
+      "Espírito do Sorriso",
+      "Maldição Transmitida",
+      "Entidade das Trevas"
+    ],
     "preco_melhoria": 100,
     "dono": null
   },
@@ -115,9 +232,22 @@ const TABULEIRO = [
     "nome": "Castelo do Drácula",
     "tipo": "propriedade",
     "preco": 200,
-    "alugueis": [100,40,120,300,470,730],
+    "alugueis": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Estacas de Madeira","Caixões de Prata","Morcegos Guardiões","Bruma Carmesim","Trono de Drácula"],
+    "nome_melhoria": [
+      "Estacas de Madeira",
+      "Caixões de Prata",
+      "Morcegos Guardiões",
+      "Bruma Carmesim",
+      "Trono de Drácula"
+    ],
     "preco_melhoria": 100,
     "dono": null
   },
@@ -125,9 +255,22 @@ const TABULEIRO = [
     "nome": "Território do Predador",
     "tipo": "transporte",
     "preco": 210,
-    "alugueis": [105,50,100,200,200,200],
+    "alugueis": [
+      105,
+      50,
+      100,
+      200,
+      200,
+      200
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Camuflagem Óptica","Lasers de Plasma","Crânios de Troféu","Armadura Alienígena","Canhão de Plasma"],
+    "nome_melhoria": [
+      "Camuflagem Óptica",
+      "Lasers de Plasma",
+      "Crânios de Troféu",
+      "Armadura Alienígena",
+      "Canhão de Plasma"
+    ],
     "preco_melhoria": 50,
     "dono": null
   },
@@ -135,9 +278,22 @@ const TABULEIRO = [
     "nome": "Armazém do Art - Terrifier",
     "tipo": "propriedade",
     "preco": 220,
-    "alugueis": [110,46,135,340,520,800],
+    "alugueis": [
+      110,
+      210,
+      310,
+      410,
+      510,
+      610
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Sacos de Lixo Pretos","Maquiagem Aterrorizante","Foices do Art","Palhaço de Sangue","Matadouro do Terrifier"],
+    "nome_melhoria": [
+      "Sacos de Lixo Pretos",
+      "Maquiagem Aterrorizante",
+      "Foices do Art",
+      "Palhaço de Sangue",
+      "Matadouro do Terrifier"
+    ],
     "preco_melhoria": 100,
     "dono": null
   },
@@ -149,9 +305,22 @@ const TABULEIRO = [
     "nome": "Jurassic Park",
     "tipo": "propriedade",
     "preco": 240,
-    "alugueis": [120,52,150,370,560,870],
+    "alugueis": [
+      120,
+      220,
+      320,
+      420,
+      520,
+      620
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Cercas Elétricas","Ovos de Dinossauro","Laboratório de DNA","T-Rex Solto","Parque do Caos"],
+    "nome_melhoria": [
+      "Cercas Elétricas",
+      "Ovos de Dinossauro",
+      "Laboratório de DNA",
+      "T-Rex Solto",
+      "Parque do Caos"
+    ],
     "preco_melhoria": 100,
     "dono": null
   },
@@ -159,9 +328,22 @@ const TABULEIRO = [
     "nome": "Ilha da Caveira - King Kong",
     "tipo": "propriedade",
     "preco": 260,
-    "alugueis": [130,56,165,400,600,940],
+    "alugueis": [
+      130,
+      230,
+      330,
+      430,
+      530,
+      630
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Sinalizadores de Perigo","Bunkers Subterrâneos","Ninho de Kong","Guardiões da Ilha","Rugido de King Kong"],
+    "nome_melhoria": [
+      "Sinalizadores de Perigo",
+      "Bunkers Subterrâneos",
+      "Ninho de Kong",
+      "Guardiões da Ilha",
+      "Rugido de King Kong"
+    ],
     "preco_melhoria": 100,
     "dono": null
   },
@@ -173,9 +355,22 @@ const TABULEIRO = [
     "nome": "Casa dos Myers - Michael Myers",
     "tipo": "propriedade",
     "preco": 280,
-    "alugueis": [140,60,180,440,660,1000],
+    "alugueis": [
+      140,
+      290,
+      440,
+      590,
+      740,
+      890
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Facas de Cozinha","Máscara de Halloween","Porão dos Horrores","Sombra de Myers","A Forma nas Trevas"],
+    "nome_melhoria": [
+      "Facas de Cozinha",
+      "Máscara de Halloween",
+      "Porão dos Horrores",
+      "Sombra de Myers",
+      "A Forma nas Trevas"
+    ],
     "preco_melhoria": 150,
     "dono": null
   },
@@ -187,9 +382,22 @@ const TABULEIRO = [
     "nome": "Esgotos de Derry - Pennywise",
     "tipo": "propriedade",
     "preco": 300,
-    "alugueis": [150,65,195,470,700,1050],
+    "alugueis": [
+      150,
+      300,
+      450,
+      600,
+      750,
+      900
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Balões Vermelhos","Galerias dos Esgotos","Risos do Pennywise","Câmara do Medo","Palhaço Primordial"],
+    "nome_melhoria": [
+      "Balões Vermelhos",
+      "Galerias dos Esgotos",
+      "Risos do Pennywise",
+      "Câmara do Medo",
+      "Palhaço Primordial"
+    ],
     "preco_melhoria": 150,
     "dono": null
   },
@@ -197,9 +405,22 @@ const TABULEIRO = [
     "nome": "Banheiro Abandonado - Jigsaw",
     "tipo": "propriedade",
     "preco": 320,
-    "alugueis": [160,72,210,510,740,1110],
+    "alugueis": [
+      160,
+      310,
+      460,
+      610,
+      760,
+      910
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Fitas Cassete","Serras Enferrujadas","Câmaras de Tortura","Jogos Mortais","Julgamento de Jigsaw"],
+    "nome_melhoria": [
+      "Fitas Cassete",
+      "Serras Enferrujadas",
+      "Câmaras de Tortura",
+      "Jogos Mortais",
+      "Julgamento de Jigsaw"
+    ],
     "preco_melhoria": 150,
     "dono": null
   },
@@ -207,9 +428,22 @@ const TABULEIRO = [
     "nome": "Exorcista",
     "tipo": "propriedade",
     "preco": 340,
-    "alugueis": [170,78,225,550,800,1160],
+    "alugueis": [
+      170,
+      320,
+      470,
+      620,
+      770,
+      920
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Água Benta","Crucifixo Sagrado","Pentagramas Invertidos","Possessão Total","Exorcismo Final"],
+    "nome_melhoria": [
+      "Água Benta",
+      "Crucifixo Sagrado",
+      "Pentagramas Invertidos",
+      "Possessão Total",
+      "Exorcismo Final"
+    ],
     "preco_melhoria": 150,
     "dono": null
   },
@@ -217,9 +451,22 @@ const TABULEIRO = [
     "nome": "Rua Elm - Freddy Krueger",
     "tipo": "propriedade",
     "preco": 360,
-    "alugueis": [180,84,245,590,860,1220],
+    "alugueis": [
+      180,
+      330,
+      480,
+      630,
+      780,
+      930
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Pesadelos Recorrentes","Garras Afiadas","Caldeira do Inferno","Sonho Mortal","Freddy no Seu Sono"],
+    "nome_melhoria": [
+      "Pesadelos Recorrentes",
+      "Garras Afiadas",
+      "Caldeira do Inferno",
+      "Sonho Mortal",
+      "Freddy no Seu Sono"
+    ],
     "preco_melhoria": 150,
     "dono": null
   },
@@ -227,9 +474,22 @@ const TABULEIRO = [
     "nome": "Acampamento Crystal Lake - Jason Voorhees",
     "tipo": "propriedade",
     "preco": 380,
-    "alugueis": [190,90,260,630,920,1280],
+    "alugueis": [
+      190,
+      340,
+      490,
+      640,
+      790,
+      940
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Armadilhas de Urso","Machado Ensanguentado","Máscara de Hóquei","Lago das Almas","Vingança de Jason"],
+    "nome_melhoria": [
+      "Armadilhas de Urso",
+      "Machado Ensanguentado",
+      "Máscara de Hóquei",
+      "Lago das Almas",
+      "Vingança de Jason"
+    ],
     "preco_melhoria": 150,
     "dono": null
   },
@@ -237,9 +497,22 @@ const TABULEIRO = [
     "nome": "Caminhão do Creeper - Olhos Famintos",
     "tipo": "transporte",
     "preco": 390,
-    "alugueis": [195,50,100,200,200,200],
+    "alugueis": [
+      195,
+      50,
+      100,
+      200,
+      200,
+      200
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Placas de Carro","Garras do Creeper","Asas Cortantes","Faro de Sangue","Terror nos Céus"],
+    "nome_melhoria": [
+      "Placas de Carro",
+      "Garras do Creeper",
+      "Asas Cortantes",
+      "Faro de Sangue",
+      "Terror nos Céus"
+    ],
     "preco_melhoria": 50,
     "dono": null
   },
@@ -247,9 +520,22 @@ const TABULEIRO = [
     "nome": "O Massacre da Serra Elétrica",
     "tipo": "propriedade",
     "preco": 400,
-    "alugueis": [200,100,280,680,980,1350],
+    "alugueis": [
+      200,
+      350,
+      500,
+      650,
+      800,
+      950
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Serras Elétricas","Ganchos de Açougue","Poço de Sangue","Família Sawyer","Matadouro de Leatherface"],
+    "nome_melhoria": [
+      "Serras Elétricas",
+      "Ganchos de Açougue",
+      "Poço de Sangue",
+      "Família Sawyer",
+      "Matadouro de Leatherface"
+    ],
     "preco_melhoria": 150,
     "dono": null
   },
@@ -262,9 +548,22 @@ const TABULEIRO = [
     "nome": "Bar do Moe - Os Simpsons",
     "tipo": "propriedade",
     "preco": 430,
-    "alugueis": [215,110,310,730,1050,1450],
+    "alugueis": [
+      215,
+      415,
+      615,
+      815,
+      1015,
+      1215
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Canecas de Chopp","Drinks Envenenados","Retratos de Terror","Fantasmas do Bar","Taverna Amaldiçoada"],
+    "nome_melhoria": [
+      "Canecas de Chopp",
+      "Drinks Envenenados",
+      "Retratos de Terror",
+      "Fantasmas do Bar",
+      "Taverna Amaldiçoada"
+    ],
     "preco_melhoria": 200,
     "dono": null
   },
@@ -272,9 +571,22 @@ const TABULEIRO = [
     "nome": "Casa do Homer Simpson",
     "tipo": "propriedade",
     "preco": 460,
-    "alugueis": [230,120,340,790,1120,1520],
+    "alugueis": [
+      230,
+      430,
+      630,
+      830,
+      1030,
+      1230
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Cervejas Duff Malditas","Porão Radioativo","Fantasmas de Springfield","Monstros da Vizinhança","Maldição de Homer"],
+    "nome_melhoria": [
+      "Cervejas Duff Malditas",
+      "Porão Radioativo",
+      "Fantasmas de Springfield",
+      "Monstros da Vizinhança",
+      "Maldição de Homer"
+    ],
     "preco_melhoria": 200,
     "dono": null
   },
@@ -286,9 +598,22 @@ const TABULEIRO = [
     "nome": "Usina Nuclear de Springfield",
     "tipo": "propriedade",
     "preco": 490,
-    "alugueis": [245,130,370,850,1200,1600],
+    "alugueis": [
+      245,
+      445,
+      645,
+      845,
+      1045,
+      1245
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Barras de Urânio","Vazamento Nuclear","Mutação Radioativa","Zona de Exclusão","Fusão do Reator"],
+    "nome_melhoria": [
+      "Barras de Urânio",
+      "Vazamento Nuclear",
+      "Mutação Radioativa",
+      "Zona de Exclusão",
+      "Fusão do Reator"
+    ],
     "preco_melhoria": 200,
     "dono": null
   },
@@ -296,9 +621,22 @@ const TABULEIRO = [
     "nome": "Sinal de TV - O Chamado",
     "tipo": "servico",
     "preco": 510,
-    "alugueis": [255,30,60,120,150,200],
+    "alugueis": [
+      255,
+      30,
+      60,
+      120,
+      150,
+      200
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Fitas VHS Malditas","Poço das Trevas","Sinal Amaldiçoado","Visão de Samara","Chamado da Morte"],
+    "nome_melhoria": [
+      "Fitas VHS Malditas",
+      "Poço das Trevas",
+      "Sinal Amaldiçoado",
+      "Visão de Samara",
+      "Chamado da Morte"
+    ],
     "preco_melhoria": 75,
     "dono": null
   },
@@ -315,9 +653,22 @@ const TABULEIRO = [
     "nome": "Casa de Cera - A Casa de Cera",
     "tipo": "propriedade",
     "preco": 530,
-    "alugueis": [265,150,420,920,1300,1700],
+    "alugueis": [
+      265,
+      465,
+      665,
+      865,
+      1065,
+      1265
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Estátuas de Cera","Câmara de Derreter","Cera Humana","Exposição Macabra","Museu do Horror"],
+    "nome_melhoria": [
+      "Estátuas de Cera",
+      "Câmara de Derreter",
+      "Cera Humana",
+      "Exposição Macabra",
+      "Museu do Horror"
+    ],
     "preco_melhoria": 200,
     "dono": null
   },
@@ -325,14 +676,26 @@ const TABULEIRO = [
     "nome": "Mansão da Família Addams",
     "tipo": "propriedade",
     "preco": 600,
-    "alugueis": [300,200,520,1100,1500,2000],
+    "alugueis": [
+      300,
+      500,
+      700,
+      900,
+      1100,
+      1300
+    ],
     "melhorias": 0,
-    "nome_melhoria": ["Plantas Carnívoras","Poção de Mortem","Mão Decepada","Espírito de Lurch","Família Addams Completa"],
+    "nome_melhoria": [
+      "Plantas Carnívoras",
+      "Poção de Mortem",
+      "Mão Decepada",
+      "Espírito de Lurch",
+      "Família Addams Completa"
+    ],
     "preco_melhoria": 200,
     "dono": null
   }
 ];
-
 
 const CARTAS_PANDORA = [
   // 16 CARTAS BOAS
