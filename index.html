@@ -31,11 +31,15 @@
         <div class="modal-content glass setup-modal-large">
             <h1>Império dos Pesadelos</h1>
             <p>Escolha o Modo de Jogo</p>
+            <h2 class="enzo-pietro-neon">ENZO E PIETRO FILHOS GAYS</h2>
+
 
             <div id="lobby-menu-options" class="lobby-menu">
                 <button id="btn-mode-offline" class="btn-primary" style="margin-bottom: 12px;">📱 JOGAR OFFLINE (Passar celular)</button>
                 <button id="btn-mode-host" class="btn-primary" style="margin-bottom: 12px;">👑 CRIAR SALA ONLINE (Host)</button>
-                <button id="btn-mode-join" class="btn-secondary">🔗 ENTRAR EM SALA ONLINE</button>
+                <button id="btn-mode-join" class="btn-secondary" style="margin-bottom: 12px;">🔗 ENTRAR EM SALA ONLINE</button>
+                <button id="btn-carregar-lobby" class="btn-load" style="display:none;">📂 CONTINUAR PARTIDA SALVA</button>
+                <button id="btn-apagar-lobby" class="btn-delete" style="display:none; background-color: #550000; color: white; border: 1px solid #ff0055; border-radius: 8px; padding: 10px; margin-bottom: 12px; font-weight: bold; cursor: pointer; font-family: 'Outfit', sans-serif;">🗑️ APAGAR PARTIDA SALVA</button>
             </div>
 
             <!-- Painel para Criar Sala -->
@@ -138,6 +142,11 @@
             <!-- Painel de Controles -->
             <div id="controls-panel">
                 <button id="btn-rolar" class="btn-action pulse" style="display: none;">🎲 ROLAR DADOS</button>
+            <div class="save-load-btns" style="display:none; flex-direction: column; gap: 10px;" id="save-load-btns">
+                <button id="btn-salvar" class="btn-save">💾 SALVAR JOGO</button>
+                <button id="btn-carregar" class="btn-load">📂 CARREGAR JOGO</button>
+                <button id="btn-apagar-salvo" class="btn-delete" style="background-color: #550000; color: white; border: 1px solid #ff0055; border-radius: 8px; padding: 10px; font-weight: bold; cursor: pointer; font-family: 'Outfit', sans-serif;">🗑️ APAGAR JOGO SALVO</button>
+            </div>
             </div>
         </div>
 
@@ -192,6 +201,17 @@
             </div>
         </div>
     </div>
+
+    <!-- Toast de Save/Load -->
+    <div id="save-toast" style="
+        display:none; position:fixed; bottom:30px; left:50%; transform:translateX(-50%);
+        background: linear-gradient(135deg,#1a001a,#2a0020);
+        border: 1px solid #ff0055; border-radius: 12px;
+        padding: 14px 28px; color:#fff; font-family:'Outfit',sans-serif;
+        font-size:15px; font-weight:600; z-index:9999;
+        box-shadow: 0 0 20px rgba(255,0,85,0.5), 0 4px 20px rgba(0,0,0,0.8);
+        text-align:center; pointer-events:none;
+    " id="save-toast"></div>
 
     <script src="game.js"></script>
 

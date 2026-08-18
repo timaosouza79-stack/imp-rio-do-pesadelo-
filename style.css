@@ -7,6 +7,27 @@
     user-select: none;
 }
 
+.enzo-pietro-neon {
+    font-size: 32px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    margin: 15px 0;
+    animation: neon-pisca 1.5s infinite alternate;
+}
+
+@keyframes neon-pisca {
+    0% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 40px #ff00ff, 0 0 80px #ff00ff;
+        color: #fff;
+    }
+    100% {
+        text-shadow: 0 0 2px #fff, 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+        color: #ffd1ff;
+    }
+}
+
 body, html {
     width: 100%;
     height: 100%;
@@ -923,6 +944,67 @@ button:active {
     width: 100%;
     margin-top: 8px;
     border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ===== SAVE / LOAD BUTTONS ===== */
+.save-load-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.btn-save {
+    background: linear-gradient(135deg, #003d1a 0%, #00aa55 100%);
+    border: 2px solid #00ff88;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 12px 16px;
+    border-radius: 50px;
+    box-shadow: 0 0 14px rgba(0,255,136,0.35), inset 0 0 8px rgba(0,0,0,0.4);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    width: 100%;
+}
+
+.btn-save:hover {
+    transform: scale(1.04) translateY(-1px);
+    box-shadow: 0 0 24px rgba(0,255,136,0.65), inset 0 0 14px rgba(255,255,255,0.1);
+    border-color: #00ffaa;
+}
+
+.btn-load {
+    background: linear-gradient(135deg, #1a003d 0%, #6a00cc 100%);
+    border: 2px solid #aa55ff;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 12px 16px;
+    border-radius: 50px;
+    box-shadow: 0 0 14px rgba(170,85,255,0.35), inset 0 0 8px rgba(0,0,0,0.4);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    width: 100%;
+    margin-top: 0;
+}
+
+.btn-load:hover {
+    transform: scale(1.04) translateY(-1px);
+    box-shadow: 0 0 24px rgba(170,85,255,0.65), inset 0 0 14px rgba(255,255,255,0.1);
+    border-color: #cc88ff;
+}
+
+/* Lobby load button spacing */
+#btn-carregar-lobby {
+    margin-top: 8px;
 }
 
 .btn-action {

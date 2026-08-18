@@ -7,9 +7,9 @@ const TABULEIRO = [
     "nome": "Quarto de Arte - Annabelle",
     "tipo": "propriedade",
     "preco": 60,
-    "alugueis": [2,10,30,90,160,250],
+    "alugueis": [30,10,30,90,160,250],
     "melhorias": 0,
-    "nome_melhoria": "Símbolos Ocultos",
+    "nome_melhoria": ["Símbolos Ocultos","Boneca Amaldiçoada","Altar das Trevas","Possessão Demoníaca","Invocação Maligna"],
     "preco_melhoria": 50,
     "dono": null
   },
@@ -20,10 +20,10 @@ const TABULEIRO = [
   {
     "nome": "Fábrica Good Guys - Chucky",
     "tipo": "propriedade",
-    "preco": 60,
-    "alugueis": [4,20,60,180,320,450],
+    "preco": 80,
+    "alugueis": [40,14,42,120,200,300],
     "melhorias": 0,
-    "nome_melhoria": "Caixas de Bonecos",
+    "nome_melhoria": ["Caixas de Bonecos","Facas Ensanguentadas","Oficina de Chucky","Feitiços Vudus","Fábrica de Pesadelos"],
     "preco_melhoria": 50,
     "dono": null
   },
@@ -35,10 +35,10 @@ const TABULEIRO = [
   {
     "nome": "Shopping Center - Madrugada dos Mortos",
     "tipo": "transporte",
-    "preco": 200,
-    "alugueis": [25,50,100,200,200,200],
+    "preco": 90,
+    "alugueis": [45,50,100,200,200,200],
     "melhorias": 0,
-    "nome_melhoria": "Barricadas",
+    "nome_melhoria": ["Barricadas","Mortos-Vivos no Corredor","Horda Zumbi","Bunker Anti-Apocalipse","Fortaleza dos Mortos"],
     "preco_melhoria": 50,
     "dono": null
   },
@@ -46,9 +46,9 @@ const TABULEIRO = [
     "nome": "Bates Motel - Psicose",
     "tipo": "propriedade",
     "preco": 100,
-    "alugueis": [6,30,90,270,400,550],
+    "alugueis": [50,18,55,150,240,380],
     "melhorias": 0,
-    "nome_melhoria": "Chaves de Quarto",
+    "nome_melhoria": ["Chaves de Quarto","Espreita no Chuveiro","Cacos de Espelho","Identidades Partidas","Motel dos Horrores"],
     "preco_melhoria": 50,
     "dono": null
   },
@@ -60,84 +60,84 @@ const TABULEIRO = [
     "nome": "Pânico",
     "tipo": "propriedade",
     "preco": 120,
-    "alugueis": [8,40,100,300,450,600],
+    "alugueis": [60,22,65,180,280,450],
     "melhorias": 0,
-    "nome_melhoria": "Máscaras Ghostface",
+    "nome_melhoria": ["Máscaras Ghostface","Facas do Pânico","Câmeras de Vigilância","Armadilhas Mortais","Maldição de Woodsboro"],
     "preco_melhoria": 50,
     "dono": null
   },
   {
     "nome": "Alexandria - The Walking Dead",
     "tipo": "propriedade",
-    "preco": 120,
-    "alugueis": [8,40,100,300,450,600],
+    "preco": 140,
+    "alugueis": [70,26,80,210,320,500],
     "melhorias": 0,
-    "nome_melhoria": "Muros Fortificados",
+    "nome_melhoria": ["Muros Fortificados","Torres de Guarda","Arame Farpado","Armas Anti-Zumbi","Bastião da Sobrevivência"],
     "preco_melhoria": 50,
     "dono": null
   },
   {
     "nome": "Asilo Arkham",
     "tipo": "prisao",
-    "preco": 200
+    "preco": 150
   },
   {
     "nome": "Laboratório Hawkins - Stranger Things",
     "tipo": "propriedade",
-    "preco": 140,
-    "alugueis": [10,50,150,450,625,750],
+    "preco": 160,
+    "alugueis": [80,30,90,240,370,580],
     "melhorias": 0,
-    "nome_melhoria": "Fitas K7",
+    "nome_melhoria": ["Fitas K7","Laboratório de Experimentos","Portal do Avesso","Mente Colmeia","Domínio do Demogorgon"],
     "preco_melhoria": 100,
     "dono": null
   },
   {
     "nome": "Laboratório de Frankenstein",
     "tipo": "servico",
-    "preco": 150,
-    "alugueis": [10,25,50,100,150,200],
+    "preco": 170,
+    "alugueis": [85,25,50,100,150,200],
     "melhorias": 0,
-    "nome_melhoria": "Geradores",
+    "nome_melhoria": ["Geradores Elétricos","Mesa de Experimentos","Cérebro Artificial","Relâmpagos Controlados","Monstro de Frankenstein"],
     "preco_melhoria": 75,
     "dono": null
   },
   {
-    "nome": "Mundo Invertido - Stranger Things",
+    "nome": "Casa do Sorria",
     "tipo": "propriedade",
-    "preco": 140,
-    "alugueis": [10,50,150,450,625,750],
+    "preco": 180,
+    "alugueis": [90,36,105,270,420,650],
     "melhorias": 0,
-    "nome_melhoria": "Demogorgons",
+    "nome_melhoria": ["Sorriso Perturbador","Visões Malditas","Espírito do Sorriso","Maldição Transmitida","Entidade das Trevas"],
     "preco_melhoria": 100,
     "dono": null
   },
   {
     "nome": "Castelo do Drácula",
     "tipo": "propriedade",
-    "preco": 160,
-    "alugueis": [12,60,180,500,700,900],
+    "preco": 200,
+    "alugueis": [100,40,120,300,470,730],
     "melhorias": 0,
-    "nome_melhoria": "Estacas de Madeira",
+    "nome_melhoria": ["Estacas de Madeira","Caixões de Prata","Morcegos Guardiões","Bruma Carmesim","Trono de Drácula"],
     "preco_melhoria": 100,
     "dono": null
   },
   {
     "nome": "Território do Predador",
     "tipo": "transporte",
-    "preco": 200,
-    "alugueis": [25,50,100,200,200,200],
+    "preco": 210,
+    "alugueis": [105,50,100,200,200,200],
     "melhorias": 0,
-    "nome_melhoria": "Camuflagem Óptica",
+    "nome_melhoria": ["Camuflagem Óptica","Lasers de Plasma","Crânios de Troféu","Armadura Alienígena","Canhão de Plasma"],
     "preco_melhoria": 50,
     "dono": null
   },
   {
     "nome": "Armazém do Art - Terrifier",
     "tipo": "propriedade",
-    "preco": 180,
-    "alugueis": [14,70,200,550,750,950],
+    "preco": 220,
+    "alugueis": [110,46,135,340,520,800],
     "melhorias": 0,
-    "nome_melhoria": "Sacos de Lixo Pretos",
+    "nome_melhoria": ["Sacos de Lixo Pretos","Maquiagem Aterrorizante","Foices do Art","Palhaço de Sangue","Matadouro do Terrifier"],
     "preco_melhoria": 100,
     "dono": null
   },
@@ -148,20 +148,20 @@ const TABULEIRO = [
   {
     "nome": "Jurassic Park",
     "tipo": "propriedade",
-    "preco": 180,
-    "alugueis": [14,70,200,550,750,950],
+    "preco": 240,
+    "alugueis": [120,52,150,370,560,870],
     "melhorias": 0,
-    "nome_melhoria": "Cercas Elétricas",
+    "nome_melhoria": ["Cercas Elétricas","Ovos de Dinossauro","Laboratório de DNA","T-Rex Solto","Parque do Caos"],
     "preco_melhoria": 100,
     "dono": null
   },
   {
     "nome": "Ilha da Caveira - King Kong",
     "tipo": "propriedade",
-    "preco": 200,
-    "alugueis": [16,80,220,600,800,1000],
+    "preco": 260,
+    "alugueis": [130,56,165,400,600,940],
     "melhorias": 0,
-    "nome_melhoria": "Sinalizadores",
+    "nome_melhoria": ["Sinalizadores de Perigo","Bunkers Subterrâneos","Ninho de Kong","Guardiões da Ilha","Rugido de King Kong"],
     "preco_melhoria": 100,
     "dono": null
   },
@@ -172,10 +172,10 @@ const TABULEIRO = [
   {
     "nome": "Casa dos Myers - Michael Myers",
     "tipo": "propriedade",
-    "preco": 220,
-    "alugueis": [18,90,250,700,875,1050],
+    "preco": 280,
+    "alugueis": [140,60,180,440,660,1000],
     "melhorias": 0,
-    "nome_melhoria": "Máscaras Brancas",
+    "nome_melhoria": ["Facas de Cozinha","Máscara de Halloween","Porão dos Horrores","Sombra de Myers","A Forma nas Trevas"],
     "preco_melhoria": 150,
     "dono": null
   },
@@ -186,95 +186,95 @@ const TABULEIRO = [
   {
     "nome": "Esgotos de Derry - Pennywise",
     "tipo": "propriedade",
-    "preco": 220,
-    "alugueis": [18,90,250,700,875,1050],
+    "preco": 300,
+    "alugueis": [150,65,195,470,700,1050],
     "melhorias": 0,
-    "nome_melhoria": "Balões Vermelhos",
+    "nome_melhoria": ["Balões Vermelhos","Galerias dos Esgotos","Risos do Pennywise","Câmara do Medo","Palhaço Primordial"],
     "preco_melhoria": 150,
     "dono": null
   },
   {
     "nome": "Banheiro Abandonado - Jigsaw",
     "tipo": "propriedade",
-    "preco": 240,
-    "alugueis": [20,100,300,750,925,1100],
+    "preco": 320,
+    "alugueis": [160,72,210,510,740,1110],
     "melhorias": 0,
-    "nome_melhoria": "Fitas Cassete",
+    "nome_melhoria": ["Fitas Cassete","Serras Enferrujadas","Câmaras de Tortura","Jogos Mortais","Julgamento de Jigsaw"],
     "preco_melhoria": 150,
     "dono": null
   },
   {
     "nome": "Exorcista",
     "tipo": "propriedade",
-    "preco": 300,
-    "alugueis": [26,130,390,900,1100,1275],
+    "preco": 340,
+    "alugueis": [170,78,225,550,800,1160],
     "melhorias": 0,
-    "nome_melhoria": "Água Benta",
-    "preco_melhoria": 200,
+    "nome_melhoria": ["Água Benta","Crucifixo Sagrado","Pentagramas Invertidos","Possessão Total","Exorcismo Final"],
+    "preco_melhoria": 150,
     "dono": null
   },
   {
     "nome": "Rua Elm - Freddy Krueger",
     "tipo": "propriedade",
-    "preco": 260,
-    "alugueis": [22,110,330,800,975,1150],
+    "preco": 360,
+    "alugueis": [180,84,245,590,860,1220],
     "melhorias": 0,
-    "nome_melhoria": "Pesadelos",
+    "nome_melhoria": ["Pesadelos Recorrentes","Garras Afiadas","Caldeira do Inferno","Sonho Mortal","Freddy no Seu Sono"],
     "preco_melhoria": 150,
     "dono": null
   },
   {
     "nome": "Acampamento Crystal Lake - Jason Voorhees",
     "tipo": "propriedade",
-    "preco": 260,
-    "alugueis": [22,110,330,800,975,1150],
+    "preco": 380,
+    "alugueis": [190,90,260,630,920,1280],
     "melhorias": 0,
-    "nome_melhoria": "Armadilhas de Urso",
-    "preco_melhoria": 200,
+    "nome_melhoria": ["Armadilhas de Urso","Machado Ensanguentado","Máscara de Hóquei","Lago das Almas","Vingança de Jason"],
+    "preco_melhoria": 150,
     "dono": null
   },
   {
     "nome": "Caminhão do Creeper - Olhos Famintos",
     "tipo": "transporte",
-    "preco": 200,
-    "alugueis": [25,50,100,200,200,200],
+    "preco": 390,
+    "alugueis": [195,50,100,200,200,200],
     "melhorias": 0,
-    "nome_melhoria": "Placas de Carro",
+    "nome_melhoria": ["Placas de Carro","Garras do Creeper","Asas Cortantes","Faro de Sangue","Terror nos Céus"],
     "preco_melhoria": 50,
     "dono": null
   },
   {
     "nome": "O Massacre da Serra Elétrica",
     "tipo": "propriedade",
-    "preco": 280,
-    "alugueis": [24,120,360,850,1025,1200],
+    "preco": 400,
+    "alugueis": [200,100,280,680,980,1350],
     "melhorias": 0,
-    "nome_melhoria": "Serras Elétricas",
+    "nome_melhoria": ["Serras Elétricas","Ganchos de Açougue","Poço de Sangue","Família Sawyer","Matadouro de Leatherface"],
     "preco_melhoria": 150,
     "dono": null
   },
   {
     "nome": "Transporte de Prisioneiros",
     "tipo": "va_para_prisao",
-    "preco": 150
+    "preco": 415
   },
   {
     "nome": "Bar do Moe - Os Simpsons",
     "tipo": "propriedade",
-    "preco": 300,
-    "alugueis": [26,130,390,900,1100,1275],
+    "preco": 430,
+    "alugueis": [215,110,310,730,1050,1450],
     "melhorias": 0,
-    "nome_melhoria": "Canecas de Chopp",
+    "nome_melhoria": ["Canecas de Chopp","Drinks Envenenados","Retratos de Terror","Fantasmas do Bar","Taverna Amaldiçoada"],
     "preco_melhoria": 200,
     "dono": null
   },
   {
     "nome": "Casa do Homer Simpson",
     "tipo": "propriedade",
-    "preco": 300,
-    "alugueis": [26,130,390,900,1100,1275],
+    "preco": 460,
+    "alugueis": [230,120,340,790,1120,1520],
     "melhorias": 0,
-    "nome_melhoria": "Fardos de Duff",
+    "nome_melhoria": ["Cervejas Duff Malditas","Porão Radioativo","Fantasmas de Springfield","Monstros da Vizinhança","Maldição de Homer"],
     "preco_melhoria": 200,
     "dono": null
   },
@@ -285,20 +285,20 @@ const TABULEIRO = [
   {
     "nome": "Usina Nuclear de Springfield",
     "tipo": "propriedade",
-    "preco": 320,
-    "alugueis": [28,150,450,1000,1200,1400],
+    "preco": 490,
+    "alugueis": [245,130,370,850,1200,1600],
     "melhorias": 0,
-    "nome_melhoria": "Barras de Urânio",
+    "nome_melhoria": ["Barras de Urânio","Vazamento Nuclear","Mutação Radioativa","Zona de Exclusão","Fusão do Reator"],
     "preco_melhoria": 200,
     "dono": null
   },
   {
     "nome": "Sinal de TV - O Chamado",
     "tipo": "servico",
-    "preco": 150,
-    "alugueis": [15,30,60,120,150,200],
+    "preco": 510,
+    "alugueis": [255,30,60,120,150,200],
     "melhorias": 0,
-    "nome_melhoria": "Fitas VHS",
+    "nome_melhoria": ["Fitas VHS Malditas","Poço das Trevas","Sinal Amaldiçoado","Visão de Samara","Chamado da Morte"],
     "preco_melhoria": 75,
     "dono": null
   },
@@ -314,24 +314,26 @@ const TABULEIRO = [
   {
     "nome": "Casa de Cera - A Casa de Cera",
     "tipo": "propriedade",
-    "preco": 350,
-    "alugueis": [35,175,500,1100,1300,1500],
+    "preco": 530,
+    "alugueis": [265,150,420,920,1300,1700],
     "melhorias": 0,
-    "nome_melhoria": "Estátuas de Cera",
+    "nome_melhoria": ["Estátuas de Cera","Câmara de Derreter","Cera Humana","Exposição Macabra","Museu do Horror"],
     "preco_melhoria": 200,
     "dono": null
   },
   {
     "nome": "Mansão da Família Addams",
     "tipo": "propriedade",
-    "preco": 400,
-    "alugueis": [50,200,600,1400,1700,2000],
+    "preco": 600,
+    "alugueis": [300,200,520,1100,1500,2000],
     "melhorias": 0,
-    "nome_melhoria": "Plantas Carnívoras",
+    "nome_melhoria": ["Plantas Carnívoras","Poção de Mortem","Mão Decepada","Espírito de Lurch","Família Addams Completa"],
     "preco_melhoria": 200,
     "dono": null
   }
 ];
+
+
 const CARTAS_PANDORA = [
   {
     "texto": "Erro no Banco do Multiverso a seu favor! Receba 200",
@@ -488,7 +490,7 @@ const URLS_IMAGENS = {
     'myers': 'assets/Casa dos Myers - Michael Myers .webp',
     'crystal_lake': 'assets/Acampamento Crystal Lake - Jason Voorhees .jpeg',
     'dracula': 'assets/Castelo do Drácula .jpeg',
-    'mundo_invertido': 'assets/Mundo Invertido - Stranger Things .jpeg',
+    'sorria': 'assets/sorria.jpg',
     'jurassic': 'assets/Jurassic Park .jpeg',
     'king_kong': 'assets/Ilha da Caveira - King Kong .jpeg',
     'chamado': 'assets/ochamado.jpg',
@@ -516,7 +518,7 @@ const URLS_VIDEOS = {
     'crystal_lake': 'assets/videocrystajason.MP4',
     'banheiro': 'assets/videojigsaw.MP4',
     'rua_elm': 'assets/viodefreddy.MP4',
-    'mundo_invertido': 'assets/videomundoinvertido.MP4',
+    'sorria': 'assets/videosorria.MP4',
     'annabelle': 'assets/videoquartodeannabelle.MP4',
     'esgotos': 'assets/videoitacoisa.MP4',
     'chucky': 'assets/videofabricachuck.MP4',
@@ -528,7 +530,7 @@ const URLS_VIDEOS = {
     'bar_moe': 'assets/videomoe.MP4',
     'usina': 'assets/videousina.MP4',
     'exorcista': 'assets/exorcista.MP4',
-    'transporte_prisioneiros': 'assets/videoprisioneiros.MP4',
+    'transporte_prisioneiros': 'assets/video prisao.MP4',
     'hawkins': 'assets/videolaboratoriohankins.MP4',
     'frankenstein': 'assets/videolaboratoriofrank.MP4',
     'creeper': 'assets/videoolhosfamintos.MP4',
@@ -540,7 +542,9 @@ const URLS_VIDEOS = {
     'assalto': 'assets/videosassaltonobeco.MP4',
     'terrifier': 'assets/videoterrifier.MP4',
     'walking_dead': 'assets/videotwd.MP4',
-    'chamado': 'assets/videochamado.MP4'
+    'chamado': 'assets/videochamado.MP4',
+    'cera': 'assets/videocasadecera.MP4',
+    'addams': 'assets/videofamiliaadans.MP4'
 };
 
 // Mapeamento Exato dos Ficheiros de Peões para Jogadores e CPUs
@@ -674,7 +678,7 @@ function getTileImgKey(casa, index) {
     if (n.includes('myers')) return 'myers';
     if (n.includes('crystal lake') || n.includes('jason voorhees')) return 'crystal_lake';
     if (n.includes('drácula') || n.includes('dracula')) return 'dracula';
-    if (n.includes('mundo invertido')) return 'mundo_invertido';
+    if (n.includes('sorria')) return 'sorria';
     if (n.includes('jurassic')) return 'jurassic';
     if (n.includes('ilha da caveira') || n.includes('king kong')) return 'king_kong';
     if (n.includes('bar do moe')) return 'bar_moe';
@@ -701,6 +705,7 @@ function getTileImgKey(casa, index) {
     if (n.includes('predador')) return 'predador';
     if (n.includes('arkham')) return 'arkham';
     if (n.includes('hawkins')) return 'hawkins';
+    if (n.includes('mundo invertido')) return 'mundo_invertido';
     return null;
 }
 
@@ -810,6 +815,21 @@ function renderBoardHTML() {
         </div>
     `;
     boardGrid.appendChild(center);
+}
+
+// Retorna o nome da melhoria para o próximo nível
+function getNomeMelhoria(casa) {
+    const nivel = casa.melhorias || 0;
+    if (Array.isArray(casa.nome_melhoria)) {
+        return casa.nome_melhoria[Math.min(nivel, casa.nome_melhoria.length - 1)];
+    }
+    return casa.nome_melhoria || 'Melhoria';
+}
+
+// Retorna o custo da próxima melhoria baseado no nível atual (escalonado)
+function getCustoMelhoria(casa) {
+    const nivel = casa.melhorias || 0;
+    return Math.round(casa.preco_melhoria * (nivel + 1));
 }
 
 class Jogador {
@@ -1001,9 +1021,162 @@ function iniciarJogo(humanos, cpus, chosenHumanChars, chosenHumanNames) {
     logMsg(`🎮 Partida iniciada com ${humanos} Humano(s) e ${cpus} CPU(s)!`);
     idxJogador = 0;
     estado = "INICIO_TURNO";
+    // Mostrar botões salvar/carregar
+    const saveLoadBtns = document.getElementById('save-load-btns');
+    if (saveLoadBtns) saveLoadBtns.style.display = 'flex';
     updateUI();
     loopLogica();
 }
+
+// ========= SAVE / LOAD =========
+
+function mostrarToast(msg, cor = '#ff0055') {
+    const toast = document.getElementById('save-toast');
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.style.borderColor = cor;
+    toast.style.boxShadow = `0 0 20px ${cor}88, 0 4px 20px rgba(0,0,0,0.8)`;
+    toast.style.display = 'block';
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(() => { toast.style.display = 'none'; }, 2800);
+}
+
+function salvarJogo() {
+    try {
+        // Snapshot das propriedades do tabuleiro (donos, melhorias)
+        const tabuleiroSnapshot = TABULEIRO.map(c => ({
+            dono:      c.dono      ?? null,
+            melhorias: c.melhorias ?? 0
+        }));
+
+        // Snapshot dos jogadores
+        const jogadoresSnapshot = jogadores.map(j => ({
+            id:          j.id,
+            nome:        j.nome,
+            is_cpu:      j.is_cpu,
+            charNome:    j.charNome,
+            avatar:      j.avatar,
+            cor:         j.cor,
+            dinheiro:    j.dinheiro,
+            posicao:     j.posicao,
+            preso:       j.preso,
+            turnos_preso: j.turnos_preso,
+            ativo:       j.ativo
+        }));
+
+        const save = {
+            version:           1,
+            savedAt:           new Date().toLocaleString('pt-BR'),
+            idxJogador,
+            currentPandoraIdx,
+            jogadores:         jogadoresSnapshot,
+            tabuleiro:         tabuleiroSnapshot
+        };
+
+        localStorage.setItem('imperioSave', JSON.stringify(save));
+        mostrarToast('💾 Jogo salvo com sucesso!', '#00ff88');
+    } catch(e) {
+        mostrarToast('❌ Erro ao salvar!', '#ff0055');
+        console.error('Erro ao salvar jogo:', e);
+    }
+}
+
+function carregarJogo() {
+    try {
+        const raw = localStorage.getItem('imperioSave');
+        if (!raw) {
+            mostrarToast('⚠️ Nenhum jogo salvo encontrado!', '#ff8800');
+            return false;
+        }
+
+        const save = JSON.parse(raw);
+
+        // Restaurar tabuleiro
+        save.tabuleiro.forEach((snap, i) => {
+            if (TABULEIRO[i]) {
+                TABULEIRO[i].dono      = snap.dono;
+                TABULEIRO[i].melhorias = snap.melhorias;
+            }
+        });
+
+        // Restaurar jogadores
+        jogadores = save.jogadores.map(snap => {
+            // Encontrar o charData correspondente
+            const charData = {
+                charNome: snap.charNome,
+                avatar:   snap.avatar,
+                cor:      snap.cor
+            };
+            const j = new Jogador(snap.nome, snap.is_cpu, charData, snap.id);
+            j.dinheiro    = snap.dinheiro;
+            j.posicao     = snap.posicao;
+            j.preso       = snap.preso;
+            j.turnos_preso = snap.turnos_preso;
+            j.ativo       = snap.ativo;
+            return j;
+        });
+
+        idxJogador        = save.idxJogador;
+        currentPandoraIdx = save.currentPandoraIdx || 0;
+        estado            = "INICIO_TURNO";
+
+        // Mostrar UI do jogo
+        document.getElementById('lobby-modal').style.display   = 'none';
+        document.getElementById('setup-modal').style.display   = 'none';
+        document.getElementById('ui-container').style.display  = 'flex';
+        const saveLoadBtns = document.getElementById('save-load-btns');
+        if (saveLoadBtns) saveLoadBtns.style.display = 'flex';
+
+        // Renderizar tabuleiro e UI
+        renderBoard();
+        updateUI();
+        logMsg(`📂 Partida carregada! Salvo em: ${save.savedAt}`);
+        mostrarToast('📂 Partida carregada!', '#aa55ff');
+
+        setTimeout(() => loopLogica(), 500);
+        return true;
+    } catch(e) {
+        mostrarToast('❌ Erro ao carregar!', '#ff0055');
+        console.error('Erro ao carregar jogo:', e);
+        return false;
+    }
+}
+
+function verificarSaveNoLobby() {
+    const raw = localStorage.getItem('imperioSave');
+    const btn = document.getElementById('btn-carregar-lobby');
+    const btnApagar = document.getElementById('btn-apagar-lobby');
+    if (raw && btn) {
+        try {
+            const save = JSON.parse(raw);
+            btn.style.display = 'block';
+            btn.textContent = `📂 CONTINUAR PARTIDA (${save.savedAt || 'salvo'})`;
+            if (btnApagar) btnApagar.style.display = 'block';
+        } catch(e) {
+            btn.style.display = 'none';
+            if (btnApagar) btnApagar.style.display = 'none';
+        }
+    } else {
+        if (btn) btn.style.display = 'none';
+        if (btnApagar) btnApagar.style.display = 'none';
+    }
+}
+
+function apagarJogoSalvo() {
+    if (confirm('⚠️ Tem certeza que deseja apagar o jogo salvo? Esta ação não pode ser desfeita.')) {
+        localStorage.removeItem('imperioSave');
+        mostrarToast('🗑️ Jogo salvo apagado com sucesso!', '#ff0055');
+        verificarSaveNoLobby();
+        
+        // Se estiver no jogo (e não no lobby), esconde os botões carregar/apagar
+        const btnCarregar = document.getElementById('btn-carregar');
+        const btnApagarSalvo = document.getElementById('btn-apagar-salvo');
+        if (btnCarregar) btnCarregar.style.display = 'none';
+        if (btnApagarSalvo) btnApagarSalvo.style.display = 'none';
+    }
+}
+
+// ========= FIM SAVE / LOAD =========
 
 function initListeners() {
     const btnStart = document.getElementById('btn-start');
@@ -1064,6 +1237,25 @@ function initListeners() {
             if (estado === "AGUARDANDO_ROLO") rolarDados();
         };
     }
+
+    const btnSalvar = document.getElementById('btn-salvar');
+    if (btnSalvar) btnSalvar.onclick = () => salvarJogo();
+
+    const btnCarregar = document.getElementById('btn-carregar');
+    if (btnCarregar) btnCarregar.onclick = () => {
+        if (confirm('⚠️ Carregar o jogo salvo vai substituir a partida atual. Continuar?')) {
+            carregarJogo();
+        }
+    };
+    
+    const btnApagarSalvo = document.getElementById('btn-apagar-salvo');
+    if (btnApagarSalvo) btnApagarSalvo.onclick = () => apagarJogoSalvo();
+
+    const btnCarregarLobby = document.getElementById('btn-carregar-lobby');
+    if (btnCarregarLobby) btnCarregarLobby.onclick = () => carregarJogo();
+    
+    const btnApagarLobby = document.getElementById('btn-apagar-lobby');
+    if (btnApagarLobby) btnApagarLobby.onclick = () => apagarJogoSalvo();
 }
 
 function rolarDados() {
@@ -1085,6 +1277,7 @@ function rolarDados() {
     } else {
         const d1 = Math.floor(Math.random() * 6) + 1;
         const d2 = Math.floor(Math.random() * 6) + 1;
+        currentPandoraIdx = Math.floor(Math.random() * CARTAS_PANDORA.length);
         animateAndMove(d1, d2);
     }
 }
@@ -1165,7 +1358,7 @@ function aplicarRegra() {
     const imgKey = getTileImgKey(casa, j.posicao);
     
     // Se a casa tiver um vídeo associado, reproduz antes de aplicar a regra
-    if (imgKey && URLS_VIDEOS[imgKey]) {
+    if (imgKey && URLS_VIDEOS[imgKey] && !j.is_cpu) {
         mostrarVideoModal(URLS_VIDEOS[imgKey], () => {
              aplicarRegraRestante(j, casa);
         });
@@ -1225,20 +1418,22 @@ function aplicarRegraRestante(j, casa) {
             }
         } else {
             if ((casa.melhorias||0) < 5 && casa.preco_melhoria) {
-                let pm = casa.preco_melhoria;
+                const nivelAtual = casa.melhorias || 0;
+                const pm = getCustoMelhoria(casa);
                 if (j.is_cpu) {
                     if (j.dinheiro >= pm) {
                         j.dinheiro -= pm;
-                        casa.melhorias = (casa.melhorias||0) + 1;
-                        logMsg(`🔧 ${j.nome} comprou ${casa.nome_melhoria} em ${casa.nome}!`);
+                        casa.melhorias = nivelAtual + 1;
+                        logMsg(`🔧 ${j.nome} instalou ${getNomeMelhoria(casa)} (Nível ${casa.melhorias}) em ${casa.nome} por $${pm}!`);
                     }
                     encerrarTurno();
                 } else {
-                    mostrarPropertyCard(casa, `Comprar ${casa.nome_melhoria} por $${pm}?`, () => {
+                    mostrarPropertyCard(casa, `Comprar ${getNomeMelhoria(casa)} (Nível ${nivelAtual + 1}) por $${pm}?`, () => {
                         if (j.dinheiro >= pm) {
                             j.dinheiro -= pm;
-                            casa.melhorias = (casa.melhorias||0) + 1;
-                            logMsg(`✅ ${casa.nome_melhoria} instalada!`);
+                            const nomeInstalado = getNomeMelhoria(casa);
+                            casa.melhorias = nivelAtual + 1;
+                            logMsg(`✅ ${nomeInstalado} (Nível ${casa.melhorias}) instalada!`);
                         } else logMsg(`❌ Dinheiro insuficiente!`);
                         encerrarTurno();
                     }, encerrarTurno, "MELHORAR", "CANCELAR");
@@ -1275,7 +1470,7 @@ function aplicarRegraRestante(j, casa) {
             }
         };
 
-        if (c.texto.includes("Chucky sabotou")) {
+        if (c.texto.includes("Chucky sabotou") && !j.is_cpu) {
             mostrarVideoModal("assets/chucksabotouos freios.MP4", finishPandora);
         } else {
             finishPandora();
@@ -1352,7 +1547,7 @@ function mostrarPropriedadesJogador(idx) {
                         <div class="prop-item-type">${tipoLabel}</div>
                         <div class="prop-item-stars" title="Nível ${nivel}/5">${estrelas}</div>
                         <div class="prop-item-rent">Aluguel atual: <strong>$${aluguelAtual}</strong></div>
-                        ${nivel < 5 && c.preco_melhoria ? `<div class="prop-item-upgrade">Próxima melhoria: $${c.preco_melhoria} → ${c.nome_melhoria || ''}</div>` : '<div class="prop-item-upgrade prop-maxed">✅ Nível máximo!</div>'}
+                        ${nivel < 5 && c.preco_melhoria ? `<div class="prop-item-upgrade">Próxima melhoria Nível ${nivel + 1}: <strong>$${getCustoMelhoria(c)}</strong> → ${getNomeMelhoria(c)}</div>` : '<div class="prop-item-upgrade prop-maxed">✅ Nível máximo!</div>'}
                     </div>
                 </div>`;
         }).join('');
@@ -1533,6 +1728,7 @@ function initApp() {
     renderCharSelectMenu();
     renderBoardHTML();
     initListeners();
+    verificarSaveNoLobby(); // Mostrar botão de continuar partida se houver save
     // Inicializa o layout de app mobile se necessário
     if (window.innerWidth <= 900) {
         initMobileApp();
