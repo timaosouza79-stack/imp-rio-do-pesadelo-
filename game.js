@@ -1398,7 +1398,7 @@ function aplicarRegraRestante(j, casa) {
             }
         } else if (casa.dono !== j.nome) {
             let nivel = casa.melhorias || 0;
-            let al = casa.alugueis ? casa.alugueis[nivel] : Math.floor(casa.preco * 0.2);
+            let al = casa.alugueis ? casa.alugueis[nivel] : Math.floor(casa.preco * 0.5);
             j.dinheiro -= al;
             let dono = jogadores.find(x => x.nome === casa.dono);
             if(dono) dono.dinheiro += al;
@@ -1534,7 +1534,7 @@ function mostrarPropriedadesJogador(idx) {
     } else {
         listEl.innerHTML = propriedades.map(c => {
             const nivel = c.melhorias || 0;
-            const aluguelAtual = c.alugueis ? c.alugueis[nivel] : Math.floor(c.preco * 0.2);
+            const aluguelAtual = c.alugueis ? c.alugueis[nivel] : Math.floor(c.preco * 0.5);
             const estrelas = '⭐'.repeat(nivel) + (nivel < 5 ? '☆'.repeat(5 - nivel) : '');
             const imgUrl = c.imgUrl || '';
             const tipoLabel = c.tipo === 'transporte' ? '🚗 Transporte' : c.tipo === 'servico' ? '⚡ Serviço' : '🏠 Propriedade';
