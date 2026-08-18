@@ -335,137 +335,136 @@ const TABULEIRO = [
 
 
 const CARTAS_PANDORA = [
+  // 16 CARTAS BOAS
   {
-    "texto": "Erro no Banco do Multiverso a seu favor! Receba 200",
-    "valor_alteracao": 200
-  },
-  {
-    "texto": "Você sobreviveu a uma noite no Hotel Overlook. Receba 100",
-    "valor_alteracao": 100
-  },
-  {
-    "texto": "Sucesso total de vendas no site de doces da Suzany! Receba 100",
-    "valor_alteracao": 100
-  },
-  {
-    "texto": "Homer esqueceu o troco da cerveja Duff com você. Receba 20",
-    "valor_alteracao": 20
-  },
-  {
-    "texto": "Ganhou o torneio de Gran Turismo 7 no volante. Receba 150",
+    "texto": "Você vendeu ingressos VIP para uma tour segura na Ilha da Caveira. Receba $150",
     "valor_alteracao": 150
   },
   {
-    "texto": "O novo mini-mercado deu lucro neste mês. Receba 100",
+    "texto": "Drácula comprou sangue artificial do seu laboratório. Receba $100",
     "valor_alteracao": 100
   },
   {
-    "texto": "Seu Border Collie achou uma nota de dinheiro enterrada no quintal. Receba 25",
-    "valor_alteracao": 25
-  },
-  {
-    "texto": "Fabricio devolveu o dinheiro que te devia. Receba 30",
-    "valor_alteracao": 30
-  },
-  {
-    "texto": "Eduardo e André pagaram a parte deles no churrasco. Receba 40",
-    "valor_alteracao": 40
-  },
-  {
-    "texto": "Bônus por operação impecável na prensa da Amarsul. Receba 100",
-    "valor_alteracao": 100
-  },
-  {
-    "texto": "Sua rota de fuga pelo Shopping funcionou perfeitamente. Receba 50",
-    "valor_alteracao": 50
-  },
-  {
-    "texto": "Você venceu a temporada como treinador de futebol. Receba 200",
+    "texto": "A prefeitura de Hawkins pagou pelo seu silêncio sobre o Mundo Invertido. Receba $200",
     "valor_alteracao": 200
   },
   {
-    "texto": "Vendeu todos os ingressos para o campeonato da categoria Benjamins. Receba 50",
+    "texto": "Homer Simpson deixou cair dinheiro no Bar do Moe e você achou. Receba $50",
     "valor_alteracao": 50
   },
   {
-    "texto": "Achou dinheiro esquecido na caixa do PS5. Receba 10",
-    "valor_alteracao": 10
+    "texto": "Você cobrou pedágio no estacionamento do Bates Motel. Receba $80",
+    "valor_alteracao": 80
   },
   {
-    "texto": "Recebeu os direitos autorais das suas músicas criadas com IA. Receba 25",
-    "valor_alteracao": 25
+    "texto": "Vendeu uma fita de vídeo rara que não estava amaldiçoada pela Samara. Receba $120",
+    "valor_alteracao": 120
   },
   {
-    "texto": "O projeto do jogo Souzafoot encontrou um investidor. Receba 150",
+    "texto": "Encontrou suprimentos valiosos abandonados em Alexandria (The Walking Dead). Receba $100",
+    "valor_alteracao": 100
+  },
+  {
+    "texto": "A Família Addams pagou adiantado pela festa no cemitério. Receba $200",
+    "valor_alteracao": 200
+  },
+  {
+    "texto": "Você ganhou a aposta de sobrevivência na Madrugada dos Mortos (Shopping Center). Receba $150",
     "valor_alteracao": 150
   },
   {
-    "texto": "Jason te perseguiu no acampamento e você perdeu a carteira. Pague 50",
-    "valor_alteracao": -50
+    "texto": "Conseguiu capturar e vender um filhote de T-Rex do Jurassic Park. Receba $250",
+    "valor_alteracao": 250
   },
   {
-    "texto": "Annabelle quebrou a televisão da sala com fenômenos paranormais. Pague 100",
+    "texto": "Descobriu o esconderijo de armas do Predador e vendeu no mercado negro. Receba $180",
+    "valor_alteracao": 180
+  },
+  {
+    "texto": "A Usina Nuclear te pagou uma indenização por exposição à radiação. Receba $200",
+    "valor_alteracao": 200
+  },
+  {
+    "texto": "Você desativou a armadilha do Jigsaw e ficou com o prêmio oculto! Receba $150",
+    "valor_alteracao": 150
+  },
+  {
+    "texto": "O Vaticano te recompensou por ajudar no exorcismo de Regan. Receba $300",
+    "valor_alteracao": 300
+  },
+  {
+    "texto": "Escapou do Caminhão do Creeper e achou uma mala de dinheiro na fuga. Receba $100",
+    "valor_alteracao": 100
+  },
+  {
+    "texto": "Vendeu uma estátua hiper-realista da Casa de Cera para um colecionador. Receba $120",
+    "valor_alteracao": 120
+  },
+
+  // 16 CARTAS RUINS
+  {
+    "texto": "O boneco Chucky sabotou os freios do seu carro na Fábrica! Pague $100",
     "valor_alteracao": -100
   },
   {
-    "texto": "Homer bebeu todo o estoque do seu mini-mercado. Pague 75",
-    "valor_alteracao": -75
-  },
-  {
-    "texto": "Os zumbis invadiram sua loja no Shopping. Pague 50",
-    "valor_alteracao": -50
-  },
-  {
-    "texto": "O pneu do carro furou a caminho do treino de futebol. Pague 40",
-    "valor_alteracao": -40
-  },
-  {
-    "texto": "Gastos não planejados com a instalação do piso flutuante. Pague 150",
+    "texto": "Freddy Krueger invadiu seus sonhos e destruiu sua sanidade na Rua Elm. Pague $150",
     "valor_alteracao": -150
   },
   {
-    "texto": "A Mufetada dos amigos ficou bem mais cara que o esperado. Pague 60",
-    "valor_alteracao": -60
-  },
-  {
-    "texto": "Comprou um grande estoque de ração premium para o Border Collie. Pague 80",
+    "texto": "Jason Voorhees destruiu sua barraca no Acampamento Crystal Lake. Pague $80",
     "valor_alteracao": -80
   },
   {
-    "texto": "Taxa de manutenção de maquinário de triagem. Pague 50",
-    "valor_alteracao": -50
+    "texto": "Pennywise arrastou seus pertences para o esgoto de Derry. Pague $120",
+    "valor_alteracao": -120
   },
   {
-    "texto": "Pagou por novos jogos e atualizações do PlayStation VR2. Pague 30",
-    "valor_alteracao": -30
-  },
-  {
-    "texto": "Imposto de renda do Multiverso retido na fonte. Pague 100",
-    "valor_alteracao": -100
-  },
-  {
-    "texto": "Consulta psiquiátrica após visita ao Asilo Arkham. Pague 150",
-    "valor_alteracao": -150
-  },
-  {
-    "texto": "Renovou a mensalidade do domínio e servidor da confeitaria. Pague 25",
-    "valor_alteracao": -25
-  },
-  {
-    "texto": "O Asilo Arkham cobrou uma taxa extra de segurança. Pague 50",
-    "valor_alteracao": -50
-  },
-  {
-    "texto": "Reparos estruturais na Casa do Homer Simpson. Pague 75",
-    "valor_alteracao": -75
-  },
-  {
-    "texto": "Perdeu o processo contra o Acampamento Crystal Lake. Pague 200",
+    "texto": "Você foi pego no Assalto no Beco do Crime e perdeu sua carteira. Pague $200",
     "valor_alteracao": -200
   },
   {
-    "texto": "O boneco Chucky sabotou os freios do seu carro e fugiu! Pague 100 pelo conserto.",
+    "texto": "Annabelle causou atividade poltergeist e quebrou seus móveis caros. Pague $150",
+    "valor_alteracao": -150
+  },
+  {
+    "texto": "Art o Palhaço (Terrifier) vandalizou a fachada da sua casa. Pague $100",
     "valor_alteracao": -100
+  },
+  {
+    "texto": "Michael Myers arrombou a porta da sua casa na noite de Halloween. Pague $180",
+    "valor_alteracao": -180
+  },
+  {
+    "texto": "Sua visita ao Asilo Arkham terminou com você sedado e cobrado. Pague $200",
+    "valor_alteracao": -200
+  },
+  {
+    "texto": "A serra elétrica do Leatherface cortou a fiação da sua propriedade. Pague $150",
+    "valor_alteracao": -150
+  },
+  {
+    "texto": "Você olhou para a entidade na Casa do Sorria e precisou de terapia intensiva. Pague $100",
+    "valor_alteracao": -100
+  },
+  {
+    "texto": "O monstro do Laboratório de Frankenstein escapou e destruiu seu jardim. Pague $80",
+    "valor_alteracao": -80
+  },
+  {
+    "texto": "Você foi multado pelo transporte ilegal de prisioneiros. Pague $120",
+    "valor_alteracao": -120
+  },
+  {
+    "texto": "A Casa do Homer Simpson explodiu e os estilhaços atingiram seu telhado. Pague $250",
+    "valor_alteracao": -250
+  },
+  {
+    "texto": "Ghostface (Pânico) te ligou a cobrar e você caiu na pegadinha. Pague $50",
+    "valor_alteracao": -50
+  },
+  {
+    "texto": "O T-Rex do Jurassic Park amassou seu carro enquanto você fugia. Pague $200",
+    "valor_alteracao": -200
   }
 ];
 const INDICE_PRISAO = TABULEIRO.findIndex(c => c.tipo === "prisao");
