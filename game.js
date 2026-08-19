@@ -1817,23 +1817,7 @@ function aplicarRegraRestante(j, casa) {
                 }
             };
             
-            if (j.dinheiro < al) {
-                const patrimonioTotal = calcularPatrimonioVenda(j.nome);
-                if (j.dinheiro + patrimonioTotal >= al) {
-                    logMsg(`⚠️ ${j.nome} precisa vender propriedades para pagar o aluguel de $${al}!`);
-                    if (j.is_cpu) {
-                        cpuVenderBensParaPagar(j, al, pagarAluguelFinal);
-                    } else {
-                        mostrarModalVenda(j, al, pagarAluguelFinal);
-                    }
-                } else {
-                    // Falência inevitável
-                    logMsg(`💸 ${j.nome} não tem como pagar o aluguel e vai falir!`);
-                    pagarAluguelFinal(); // Vai deduzir, ficar negativo, e encerrarTurno() declara falência
-                }
-            } else {
-                pagarAluguelFinal();
-            }
+            cobrarDivida(j, al, pagarAluguelFinal);
         } else {
             if ((casa.melhorias||0) < 5 && casa.preco_melhoria) {
                 const nivelAtual = casa.melhorias || 0;
@@ -1862,31 +1846,46 @@ function aplicarRegraRestante(j, casa) {
             }
         }
     } else if (casa.tipo === "imposto") {
-        j.dinheiro -= casa.valor;
-        logMsg(`🧾 ${j.nome} pagou $${casa.valor} de imposto.`);
-        if (!j.is_cpu) {
-            const imgKey = getTileImgKey(casa, j.posicao);
-            const imgUrl = imgKey && URLS_IMAGENS[imgKey] ? URLS_IMAGENS[imgKey] : null;
-            const topColor = getTileColor(casa) || '#333333';
-            const dummyCasa = { nome: casa.nome, topColor: topColor, imgUrl: imgUrl };
-            mostrarPropertyCard(dummyCasa, `💸 Você perdeu $${casa.valor}! O crime compensa... para os outros.`, encerrarTurno, encerrarTurno, "ENTENDIDO", null);
-        } else {
-            encerrarTurno();
-        }
-    } else if (casa.tipo === "especial" && casa.nome === "Caixa de Pandora") {
-        const c = CARTAS_PANDORA[currentPandoraIdx];
-        j.dinheiro += c.valor_alteracao;
-        logMsg(`📦 Carta de Pandora: ${c.texto}`);
-        
-        const finishPandora = () => {
-            if (j.is_cpu) {
-                encerrarTurno();
+        const pagarImposto = () => {
+            j.dinheiro -= casa.valor;
+            logMsg(`🧾 ${j.nome} pagou $${casa.valor} de imposto.`);
+            if (!j.is_cpu) {
+                const imgKey = getTileImgKey(casa, j.posicao);
+                const imgUrl = imgKey && URLS_IMAGENS[imgKey] ? URLS_IMAGENS[imgKey] : null;
+                const topColor = getTileColor(casa) || '#333333';
+                const dummyCasa = { nome: casa.nome, topColor: topColor, imgUrl: imgUrl };
+                mostrarPropertyCard(dummyCasa, `💸 Você perdeu $${casa.valor}! O crime compensa... para os outros.`, encerrarTurno, encerrarTurno, "ENTENDIDO", null);
             } else {
-                let pImg = URLS_IMAGENS['pandora'];
-                const dummyCasa = { nome: "Caixa de Pandora", topColor: "#ff8800", imgUrl: pImg };
-                mostrarPropertyCard(dummyCasa, c.texto, encerrarTurno, encerrarTurno, "ENTENDIDO", null);
+                encerrarTurno();
             }
         };
+        cobrarDivida(j, casa.valor, pagarImposto);
+    } else if (casa.tipo === "especial" && casa.nome === "Caixa de Pandora") {
+        const c = CARTAS_PANDORA[currentPandoraIdx];
+        
+        const processarPandora = () => {
+            j.dinheiro += c.valor_alteracao;
+            logMsg(`📦 Carta de Pandora: ${c.texto}`);
+            
+            const finishPandora = () => {
+                if (j.is_cpu) {
+                    encerrarTurno();
+                } else {
+                    let pImg = URLS_IMAGENS['pandora'];
+                    const dummyCasa = { nome: "Caixa de Pandora", topColor: "#ff8800", imgUrl: pImg };
+                    mostrarPropertyCard(dummyCasa, c.texto, encerrarTurno, encerrarTurno, "ENTENDIDO", null);
+                }
+            };
+            
+            if (c.ir_prisao) { j.posicao = 10; j.is_preso = true; logMsg(`🚨 ${j.nome} foi para a Prisão!`); }
+            finishPandora();
+        };
+
+        if (c.valor_alteracao < 0) {
+            cobrarDivida(j, Math.abs(c.valor_alteracao), processarPandora);
+        } else {
+            processarPandora();
+        }
 
         if (c.texto.includes("Chucky sabotou") && !j.is_cpu) {
             mostrarVideoModal("assets/chucksabotouos freios.MP4", finishPandora);
@@ -2054,11 +2053,13 @@ function loopLogica() {
     if (j.preso) {
         j.turnos_preso++;
         if (j.turnos_preso > 3) {
-            logMsg(`🚨 ${j.nome} atingiu o limite de turnos e pagou $50 para sair do Arkham!`);
-            j.dinheiro -= 50;
-            j.preso = false;
-            j.turnos_preso = 0;
-            // Continua o turno normalmente para rolar os dados
+            logMsg(`🚨 ${j.nome} atingiu o limite de turnos e precisa pagar $50 para sair do Arkham!`);
+            cobrarDivida(j, 50, () => {
+                j.dinheiro -= 50;
+                j.preso = false;
+                j.turnos_preso = 0;
+                // Continua o turno normalmente para rolar os dados
+            });
         } else if (j.is_cpu) {
             if (j.dinheiro >= 50) {
                 j.dinheiro -= 50;
@@ -2662,4 +2663,23 @@ function mostrarModalVenda(j, divida, callback) {
     
     atualizarUIModal();
     modal.style.display = 'flex';
+}
+
+function cobrarDivida(j, valor, callbackPagamento) {
+    if (j.dinheiro >= valor) {
+        callbackPagamento();
+    } else {
+        const patrimonioTotal = calcularPatrimonioVenda(j.nome);
+        if (j.dinheiro + patrimonioTotal >= valor) {
+            logMsg(`⚠️ ${j.nome} precisa vender propriedades para quitar uma dívida de ${valor}!`);
+            if (j.is_cpu) {
+                cpuVenderBensParaPagar(j, valor, callbackPagamento);
+            } else {
+                mostrarModalVenda(j, valor, callbackPagamento);
+            }
+        } else {
+            logMsg(`💸 ${j.nome} não tem como pagar a dívida e vai falir!`);
+            callbackPagamento();
+        }
+    }
 }
