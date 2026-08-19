@@ -1999,6 +1999,17 @@ function mostrarPropertyCard(casa, msg, onYes, onNo, btnYesText, btnNoText) {
     document.getElementById('pc-header').style.backgroundColor = casa.topColor || '#222';
     document.getElementById('pc-title').textContent = casa.nome;
     
+    const pcBalance = document.getElementById('pc-player-balance');
+    if (pcBalance) {
+        const jAtual = (typeof idxJogador !== 'undefined' && typeof jogadores !== 'undefined' && jogadores[idxJogador]) ? jogadores[idxJogador] : null;
+        if (jAtual && typeof jAtual.dinheiro === 'number') {
+            pcBalance.innerHTML = `💵 Seu Saldo Atual: <strong>$${jAtual.dinheiro}</strong>`;
+            pcBalance.style.display = 'block';
+        } else {
+            pcBalance.style.display = 'none';
+        }
+    }
+    
     const pcImg = document.getElementById('pc-img');
     if (pcImg) {
         if (casa.imgUrl) {
@@ -2009,7 +2020,7 @@ function mostrarPropertyCard(casa, msg, onYes, onNo, btnYesText, btnNoText) {
         }
     }
     
-    document.getElementById('pc-msg').textContent = msg;
+    document.getElementById('pc-msg').innerHTML = msg.replace(/\n/g, '<br>');
     
     const pcDetails = document.getElementById('pc-details');
     if (pcDetails) {
