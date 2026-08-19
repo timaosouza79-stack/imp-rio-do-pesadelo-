@@ -1995,3 +1995,91 @@ button:active {
 .prop-item-rent strong { color: #00ff88; font-weight: 800; }
 .prop-item-upgrade { font-size: 11px; color: #ff8800; }
 .prop-item-upgrade.prop-maxed { color: #00ff88; }
+
+/* ---- Modal de Venda de Propriedades ---- */
+#sell-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+#sell-modal .modal-content {
+    background: #1a1a1a;
+    border: 2px solid #ff0055;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    color: white;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#sell-modal h2 { color: #ff0055; margin-bottom: 10px; }
+#sell-modal p { margin-bottom: 15px; font-size: 1.1rem; }
+.debt-amount { color: #ff0055; font-weight: bold; font-size: 1.3rem; }
+.current-money { color: #39ff14; font-weight: bold; font-size: 1.3rem; }
+
+#sell-properties-list {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    text-align: left;
+    background: #111;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.sell-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #222;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-left: 5px solid #555;
+}
+
+.sell-item .sell-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.sell-item .prop-name { font-weight: bold; font-size: 1.1rem; }
+.sell-item .prop-value { color: #ffaa00; font-size: 0.9rem; }
+
+.btn-sell {
+    background: #aa0000;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+.btn-sell:hover { background: #ff0000; }
+
+.btn-pay-rent {
+    background: #00aa00;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-pay-rent:hover { background: #00ff00; }
+.btn-pay-rent:disabled {
+    background: #555;
+    color: #999;
+    cursor: not-allowed;
+}

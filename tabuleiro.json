@@ -51,7 +51,7 @@
     "tipo": "transporte",
     "preco": 200,
     "alugueis": [
-      25,
+      100,
       50,
       100,
       200,
@@ -144,7 +144,7 @@
     "tipo": "servico",
     "preco": 150,
     "alugueis": [
-      10,
+      75,
       25,
       50,
       100,
@@ -195,7 +195,7 @@
     "tipo": "transporte",
     "preco": 200,
     "alugueis": [
-      25,
+      100,
       50,
       100,
       200,
@@ -326,7 +326,7 @@
     "tipo": "transporte",
     "preco": 200,
     "alugueis": [
-      25,
+      100,
       50,
       100,
       200,
@@ -377,7 +377,7 @@
     "tipo": "transporte",
     "preco": 200,
     "alugueis": [
-      25,
+      100,
       50,
       100,
       200,
@@ -470,7 +470,7 @@
     "tipo": "servico",
     "preco": 150,
     "alugueis": [
-      15,
+      75,
       30,
       60,
       120,

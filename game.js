@@ -875,6 +875,7 @@ const URLS_IMAGENS = {
 };
 
 const URLS_VIDEOS = {
+    'oferenda': 'assets/videooferendasobrenatural.MP4',
     'casa_homer': 'assets/videocasadohomer.MP4',
     'myers': 'assets/videocasadosmyers.MP4',
     'crystal_lake': 'assets/videocrystajason.MP4',
@@ -897,7 +898,7 @@ const URLS_VIDEOS = {
     'frankenstein': 'assets/videolaboratoriofrank.MP4',
     'creeper': 'assets/videoolhosfamintos.MP4',
     'estacionamento': 'assets/video estacionamento.mov',
-    'arkham': 'assets/videoasilo.MP4',
+    'arkham': 'assets/videoasiloarkham.MP4',
     'madrugada': 'assets/videomadrugadamortos.MP4',
     'panico': 'assets/videopanico.MP4',
     'predador': 'assets/videopredador.MP4',
@@ -911,18 +912,18 @@ const URLS_VIDEOS = {
 
 // Mapeamento Exato dos Ficheiros de Peões para Jogadores e CPUs
 const PERSONAGENS_JOGADORES = [
-    { charNome: "Chucky", avatar: "assets/chuckypeao.png", cor: "#ff0055" },
-    { charNome: "Jason", avatar: "assets/jasonpeao.png", cor: "#00f0ff" },
-    { charNome: "Freddy", avatar: "assets/freddypeao.png", cor: "#ff8800" },
-    { charNome: "Annabelle", avatar: "assets/annabellepeao.png", cor: "#ff00ff" },
-    { charNome: "Homer", avatar: "assets/homerpeao.png", cor: "#ffff00" },
-    { charNome: "Pennywise", avatar: "assets/peaoitacoisa.png", cor: "#ff0000" },
-    { charNome: "Jigsaw", avatar: "assets/peaojigsaw.png", cor: "#880000" },
-    { charNome: "Leatherface", avatar: "assets/peaomassacredaserra.png", cor: "#aa5500" },
-    { charNome: "Michael Myers", avatar: "assets/peaomichaelmyers.png", cor: "#444444" },
-    { charNome: "Predador", avatar: "assets/peaopredador.png", cor: "#00ff00" },
-    { charNome: "Terrifier", avatar: "assets/peaoterrifier.png", cor: "#ffffff" },
-    { charNome: "Zumbi", avatar: "assets/peaozumbi.png", cor: "#00ff88" }
+    { charNome: "Chucky", avatar: "assets/chuckypeao.png", cor: "#bfff00" }, // Verde Limão
+    { charNome: "Jason", avatar: "assets/jasonpeao.png", cor: "#00ffff" }, // Ciano (Azul Piscina)
+    { charNome: "Freddy", avatar: "assets/freddypeao.png", cor: "#9900ff" }, // Roxo
+    { charNome: "Annabelle", avatar: "assets/annabellepeao.png", cor: "#ff00ff" }, // Magenta
+    { charNome: "Homer", avatar: "assets/homerpeao.png", cor: "#00ff99" }, // Verde Menta
+    { charNome: "Pennywise", avatar: "assets/peaoitacoisa.png", cor: "#ffffff" }, // Branco
+    { charNome: "Jigsaw", avatar: "assets/peaojigsaw.png", cor: "#4b0082" }, // Índigo Escuro
+    { charNome: "Leatherface", avatar: "assets/peaomassacredaserra.png", cor: "#ff33cc" }, // Rosa Neon
+    { charNome: "Michael Myers", avatar: "assets/peaomichaelmyers.png", cor: "#cccccc" }, // Prateado
+    { charNome: "Predador", avatar: "assets/peaopredador.png", cor: "#00ced1" }, // Turquesa
+    { charNome: "Terrifier", avatar: "assets/peaoterrifier.png", cor: "#7df9ff" }, // Azul Gelo
+    { charNome: "Zumbi", avatar: "assets/peaozumbi.png", cor: "#c79fef" } // Lavanda (Lilás)
 ];
 
 let selectedCharIndex = 0;
@@ -1135,7 +1136,20 @@ function renderBoardHTML() {
         let finalImgUrl = imgKey && URLS_IMAGENS[imgKey] ? URLS_IMAGENS[imgKey] : getFallbackSvg(casa);
         casa.imgUrl = finalImgUrl;
 
-        let colorBarHtml = `<div class="tile-color-bar" style="background: ${color};"></div>`;
+        let activeColor = color;
+        if (casa.dono) {
+            // Wait, we need to check if 'jogadores' is defined here. It is a global variable.
+            if (typeof jogadores !== 'undefined') {
+                const donoObj = jogadores.find(x => x.nome === casa.dono);
+                if (donoObj) {
+                    activeColor = donoObj.cor;
+                    tile.style.borderColor = activeColor;
+                    tile.style.boxShadow = `inset 0 0 20px ${activeColor}88, 0 0 10px ${activeColor}`;
+                }
+            }
+        }
+
+        let colorBarHtml = `<div class="tile-color-bar" style="background: ${activeColor};"></div>`;
         let bodyContent = '';
         let priceHtml = casa.preco ? `<div class="tile-price">$${casa.preco}</div>` : '';
         let imgHtml = `<img class="tile-img" src="${finalImgUrl}" alt="">`;
@@ -1326,6 +1340,27 @@ function updateUI() {
         });
         
         pawnLayer.appendChild(virtualTile);
+    });
+
+    // Atualiza cor das casas compradas para a cor do jogador
+    TABULEIRO.forEach((casa, i) => {
+        const tile = document.getElementById(`tile-${i}`);
+        if (tile) {
+            if (casa.dono) {
+                const donoObj = jogadores.find(x => x.nome === casa.dono);
+                if (donoObj) {
+                    const colorBar = tile.querySelector('.tile-color-bar');
+                    if (colorBar) colorBar.style.background = donoObj.cor;
+                    tile.style.borderColor = donoObj.cor;
+                    tile.style.boxShadow = `inset 0 0 20px ${donoObj.cor}88, 0 0 10px ${donoObj.cor}`;
+                }
+            } else {
+                const colorBar = tile.querySelector('.tile-color-bar');
+                if (colorBar) colorBar.style.background = casa.topColor || getTileColor(casa, i);
+                tile.style.borderColor = '';
+                tile.style.boxShadow = '';
+            }
+        }
     });
 }
 
@@ -1762,21 +1797,42 @@ function aplicarRegraRestante(j, casa) {
         } else if (casa.dono !== j.nome) {
             let nivel = casa.melhorias || 0;
             let al = casa.alugueis ? casa.alugueis[nivel] : Math.floor(casa.preco * 0.5);
-            j.dinheiro -= al;
-            let dono = jogadores.find(x => x.nome === casa.dono);
-            if(dono) dono.dinheiro += al;
-            logMsg(`💸 ${j.nome} pagou $${al} de aluguel para ${casa.dono}!`);
-            if (!j.is_cpu) {
-                const donoObj = jogadores.find(x => x.nome === casa.dono);
-                const donoAvatar = donoObj ? donoObj.avatar : null;
-                const dummyCasa = {
-                    nome: `💸 Pague $${al} para ${casa.dono}!`,
-                    topColor: donoObj ? donoObj.cor : '#cc0000',
-                    imgUrl: casa.imgUrl || null
-                };
-                mostrarPropertyCard(dummyCasa, `Você caiu em ${casa.nome} e deve pagar $${al} de aluguel para ${casa.dono}.`, encerrarTurno, encerrarTurno, "OK, PAGUEI", null);
+            
+            const pagarAluguelFinal = () => {
+                j.dinheiro -= al;
+                let dono = jogadores.find(x => x.nome === casa.dono);
+                if(dono) dono.dinheiro += al;
+                logMsg(`💸 ${j.nome} pagou $${al} de aluguel para ${casa.dono}!`);
+                
+                if (!j.is_cpu) {
+                    const donoObj = jogadores.find(x => x.nome === casa.dono);
+                    const dummyCasa = {
+                        nome: `💸 Pague $${al} para ${casa.dono}!`,
+                        topColor: donoObj ? donoObj.cor : '#cc0000',
+                        imgUrl: casa.imgUrl || null
+                    };
+                    mostrarPropertyCard(dummyCasa, `Você caiu em ${casa.nome} e pagou $${al} de aluguel para ${casa.dono}.`, encerrarTurno, encerrarTurno, "OK", null);
+                } else {
+                    encerrarTurno();
+                }
+            };
+            
+            if (j.dinheiro < al) {
+                const patrimonioTotal = calcularPatrimonioVenda(j.nome);
+                if (j.dinheiro + patrimonioTotal >= al) {
+                    logMsg(`⚠️ ${j.nome} precisa vender propriedades para pagar o aluguel de $${al}!`);
+                    if (j.is_cpu) {
+                        cpuVenderBensParaPagar(j, al, pagarAluguelFinal);
+                    } else {
+                        mostrarModalVenda(j, al, pagarAluguelFinal);
+                    }
+                } else {
+                    // Falência inevitável
+                    logMsg(`💸 ${j.nome} não tem como pagar o aluguel e vai falir!`);
+                    pagarAluguelFinal(); // Vai deduzir, ficar negativo, e encerrarTurno() declara falência
+                }
             } else {
-                encerrarTurno();
+                pagarAluguelFinal();
             }
         } else {
             if ((casa.melhorias||0) < 5 && casa.preco_melhoria) {
@@ -2508,4 +2564,102 @@ function executeSyncAction(action) {
         const btn = document.getElementById('btn-pc-no');
         if (btn) btn.click();
     }
+}
+
+// --- Lógica de Venda de Propriedades ---
+
+function getValorVenda(casa) {
+    let valor = Math.floor(casa.preco / 2);
+    if (casa.melhorias && casa.preco_melhoria) {
+        valor += Math.floor((casa.melhorias * casa.preco_melhoria) / 2);
+    }
+    return valor;
+}
+
+function calcularPatrimonioVenda(jogadorNome) {
+    let total = 0;
+    TABULEIRO.forEach(casa => {
+        if (casa.dono === jogadorNome) {
+            total += getValorVenda(casa);
+        }
+    });
+    return total;
+}
+
+function venderPropriedade(j, indexCasa) {
+    const casa = TABULEIRO[indexCasa];
+    if (casa && casa.dono === j.nome) {
+        const valor = getValorVenda(casa);
+        j.dinheiro += valor;
+        casa.dono = null;
+        casa.melhorias = 0;
+        logMsg(`📈 ${j.nome} vendeu ${casa.nome} por $${valor}.`);
+        updateUI();
+    }
+}
+
+function cpuVenderBensParaPagar(j, divida, callback) {
+    // Vende propriedades da mais barata até cobrir a dívida
+    let casasObj = TABULEIRO.map((c, i) => ({ casa: c, index: i }))
+        .filter(x => x.casa.dono === j.nome)
+        .sort((a, b) => getValorVenda(a.casa) - getValorVenda(b.casa));
+        
+    for (const item of casasObj) {
+        if (j.dinheiro >= divida) break;
+        venderPropriedade(j, item.index);
+    }
+    
+    setTimeout(callback, 1000);
+}
+
+function mostrarModalVenda(j, divida, callback) {
+    const modal = document.getElementById('sell-modal');
+    if (!modal) return callback();
+    
+    const debtSpan = modal.querySelector('.debt-amount');
+    const moneySpan = modal.querySelector('.current-money');
+    const listDiv = document.getElementById('sell-properties-list');
+    const btnPay = document.getElementById('btn-pay-rent');
+    
+    const atualizarUIModal = () => {
+        debtSpan.textContent = `$${divida}`;
+        moneySpan.textContent = `$${j.dinheiro}`;
+        listDiv.innerHTML = '';
+        
+        let casasDono = TABULEIRO.map((c, i) => ({ casa: c, index: i }))
+            .filter(x => x.casa.dono === j.nome);
+            
+        casasDono.forEach(item => {
+            const val = getValorVenda(item.casa);
+            const div = document.createElement('div');
+            div.className = 'sell-item';
+            div.innerHTML = `
+                <div class="sell-info">
+                    <span class="prop-name">${item.casa.nome}</span>
+                    <span class="prop-value">Valor de Venda: $${val}</span>
+                </div>
+                <button class="btn-sell">Vender</button>
+            `;
+            div.querySelector('.btn-sell').onclick = () => {
+                venderPropriedade(j, item.index);
+                atualizarUIModal();
+            };
+            listDiv.appendChild(div);
+        });
+        
+        if (j.dinheiro >= divida) {
+            btnPay.disabled = false;
+            listDiv.querySelectorAll('.btn-sell').forEach(btn => btn.disabled = true);
+        } else {
+            btnPay.disabled = true;
+        }
+    };
+    
+    btnPay.onclick = () => {
+        modal.style.display = 'none';
+        callback();
+    };
+    
+    atualizarUIModal();
+    modal.style.display = 'flex';
 }
