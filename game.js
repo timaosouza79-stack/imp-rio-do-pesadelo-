@@ -907,7 +907,7 @@ const URLS_VIDEOS = {
     'walking_dead': 'assets/videotwd.MP4',
     'chamado': 'assets/videochamado.MP4',
     'cera': 'assets/videocasadecera.MP4',
-    'addams': 'assets/videofamiliaadans.MP4'
+    'addams': 'assets/videocasadafamiliaadans.MP4'
 };
 
 // Mapeamento Exato dos Ficheiros de Peões para Jogadores e CPUs
