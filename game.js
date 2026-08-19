@@ -912,18 +912,18 @@ const URLS_VIDEOS = {
 
 // Mapeamento Exato dos Ficheiros de Peões para Jogadores e CPUs
 const PERSONAGENS_JOGADORES = [
-    { charNome: "Chucky", avatar: "assets/chuckypeao.png", cor: "#bfff00" }, // Verde Limão
-    { charNome: "Jason", avatar: "assets/jasonpeao.png", cor: "#00ffff" }, // Ciano (Azul Piscina)
-    { charNome: "Freddy", avatar: "assets/freddypeao.png", cor: "#9900ff" }, // Roxo
-    { charNome: "Annabelle", avatar: "assets/annabellepeao.png", cor: "#ff00ff" }, // Magenta
-    { charNome: "Homer", avatar: "assets/homerpeao.png", cor: "#00ff99" }, // Verde Menta
-    { charNome: "Pennywise", avatar: "assets/peaoitacoisa.png", cor: "#ffffff" }, // Branco
-    { charNome: "Jigsaw", avatar: "assets/peaojigsaw.png", cor: "#4b0082" }, // Índigo Escuro
-    { charNome: "Leatherface", avatar: "assets/peaomassacredaserra.png", cor: "#ff33cc" }, // Rosa Neon
-    { charNome: "Michael Myers", avatar: "assets/peaomichaelmyers.png", cor: "#cccccc" }, // Prateado
-    { charNome: "Predador", avatar: "assets/peaopredador.png", cor: "#00ced1" }, // Turquesa
+    { charNome: "Chucky", avatar: "assets/chuckypeao.png", cor: "#bfff00" }, // Verde Limão Neon
+    { charNome: "Jason", avatar: "assets/jasonpeao.png", cor: "#00ffff" }, // Ciano Electric
+    { charNome: "Freddy", avatar: "assets/freddypeao.png", cor: "#ff007f" }, // Pink Neon
+    { charNome: "Annabelle", avatar: "assets/annabellepeao.png", cor: "#ff00ff" }, // Magenta Bright
+    { charNome: "Homer", avatar: "assets/homerpeao.png", cor: "#00ff99" }, // Menta Neon
+    { charNome: "Pennywise", avatar: "assets/peaoitacoisa.png", cor: "#ffd700" }, // Ouro Neon
+    { charNome: "Jigsaw", avatar: "assets/peaojigsaw.png", cor: "#bc13fe" }, // Violeta Neon
+    { charNome: "Leatherface", avatar: "assets/peaomassacredaserra.png", cor: "#ff6600" }, // Laranja Fogo Neon
+    { charNome: "Michael Myers", avatar: "assets/peaomichaelmyers.png", cor: "#00e5ff" }, // Azul Neon
+    { charNome: "Predador", avatar: "assets/peaopredador.png", cor: "#39ff14" }, // Verde Laser
     { charNome: "Terrifier", avatar: "assets/peaoterrifier.png", cor: "#7df9ff" }, // Azul Gelo
-    { charNome: "Zumbi", avatar: "assets/peaozumbi.png", cor: "#c79fef" } // Lavanda (Lilás)
+    { charNome: "Zumbi", avatar: "assets/peaozumbi.png", cor: "#ff3366" } // Coral Neon
 ];
 
 let selectedCharIndex = 0;
@@ -1136,28 +1136,25 @@ function renderBoardHTML() {
         let finalImgUrl = imgKey && URLS_IMAGENS[imgKey] ? URLS_IMAGENS[imgKey] : getFallbackSvg(casa);
         casa.imgUrl = finalImgUrl;
 
-        let activeColor = color;
-        if (casa.dono) {
-            // Wait, we need to check if 'jogadores' is defined here. It is a global variable.
-            if (typeof jogadores !== 'undefined') {
-                const donoObj = jogadores.find(x => x.nome === casa.dono);
-                if (donoObj) {
-                    activeColor = donoObj.cor;
-                    tile.style.borderColor = activeColor;
-                    tile.style.boxShadow = `inset 0 0 20px ${activeColor}88, 0 0 10px ${activeColor}`;
-                }
-            }
-        }
-
-        let colorBarHtml = `<div class="tile-color-bar" style="background: ${activeColor};"></div>`;
+        let colorBarHtml = `<div class="tile-color-bar" style="background: ${color};"></div>`;
         let bodyContent = '';
         let priceHtml = casa.preco ? `<div class="tile-price">$${casa.preco}</div>` : '';
         let imgHtml = `<img class="tile-img" src="${finalImgUrl}" alt="">`;
 
         bodyContent = `${imgHtml}<div class="tile-name">${casa.nome}</div>${priceHtml}`;
 
+        let ownerBadgeHtml = '';
+        if (casa.dono) {
+            const donoObj = (typeof jogadores !== 'undefined') ? jogadores.find(x => x.nome === casa.dono) : null;
+            const cor = donoObj ? donoObj.cor : '#ffd700';
+            ownerBadgeHtml = `<div class="owner-badge" style="background: ${cor}; color: #000; box-shadow: 0 0 10px ${cor};">👑 ${casa.dono}</div>`;
+            tile.style.borderColor = cor;
+            tile.style.boxShadow = `0 0 15px ${cor}, inset 0 0 12px ${cor}aa`;
+        }
+
         tile.innerHTML = `
             ${colorBarHtml}
+            ${ownerBadgeHtml}
             <div class="tile-body">
                 ${bodyContent}
             </div>
@@ -1342,23 +1339,40 @@ function updateUI() {
         pawnLayer.appendChild(virtualTile);
     });
 
-    // Atualiza cor das casas compradas para a cor do jogador
+    // Atualiza marcação e borda das casas compradas com Badge do Dono
     TABULEIRO.forEach((casa, i) => {
         const tile = document.getElementById(`tile-${i}`);
         if (tile) {
+            let ownerBadge = tile.querySelector('.owner-badge');
             if (casa.dono) {
                 const donoObj = jogadores.find(x => x.nome === casa.dono);
-                if (donoObj) {
-                    const colorBar = tile.querySelector('.tile-color-bar');
-                    if (colorBar) colorBar.style.background = donoObj.cor;
-                    tile.style.borderColor = donoObj.cor;
-                    tile.style.boxShadow = `inset 0 0 20px ${donoObj.cor}88, 0 0 10px ${donoObj.cor}`;
+                const cor = donoObj ? donoObj.cor : '#ffd700';
+                
+                // Restaura/Mantém a cor original do grupo na barra do topo!
+                const colorBar = tile.querySelector('.tile-color-bar');
+                if (colorBar) colorBar.style.background = casa.topColor || getTileColor(casa, i);
+                
+                // Aplica borda vibrante e brilho neon no tom do dono
+                tile.style.borderColor = cor;
+                tile.style.boxShadow = `0 0 15px ${cor}, inset 0 0 12px ${cor}aa`;
+                
+                // Cria ou atualiza o Badge do Dono com a cor neon dele
+                if (!ownerBadge) {
+                    ownerBadge = document.createElement('div');
+                    ownerBadge.className = 'owner-badge';
+                    tile.appendChild(ownerBadge);
                 }
+                ownerBadge.style.background = cor;
+                ownerBadge.style.color = '#000';
+                ownerBadge.style.boxShadow = `0 0 10px ${cor}`;
+                ownerBadge.innerHTML = `👑 ${casa.dono}`;
+                ownerBadge.style.display = 'block';
             } else {
                 const colorBar = tile.querySelector('.tile-color-bar');
                 if (colorBar) colorBar.style.background = casa.topColor || getTileColor(casa, i);
                 tile.style.borderColor = '';
                 tile.style.boxShadow = '';
+                if (ownerBadge) ownerBadge.style.display = 'none';
             }
         }
     });
