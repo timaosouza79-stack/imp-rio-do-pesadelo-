@@ -572,9 +572,9 @@ body, html {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(8px);
-    z-index: 100;
+    z-index: 999999 !important;
     display: flex;
     justify-content: center;
     align-items: center;

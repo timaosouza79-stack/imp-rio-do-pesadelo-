@@ -1795,7 +1795,7 @@ function aplicarRegraRestante(j, casa) {
                     logMsg(`🏠 ${j.nome} comprou ${casa.nome} por $${casa.preco}!`);
                     encerrarTurno();
                 } else {
-                    mostrarPropertyCard(casa, `💰 Você tem $${j.dinheiro}.\nDeseja comprar ${casa.nome} por $${casa.preco}?`, () => {
+                    mostrarPropertyCard(casa, `Deseja comprar ${casa.nome} por $${casa.preco}?`, () => {
                         if (j.dinheiro >= casa.preco) {
                             j.dinheiro -= casa.preco;
                             casa.dono = j.nome;
@@ -1844,7 +1844,7 @@ function aplicarRegraRestante(j, casa) {
                     }
                     encerrarTurno();
                 } else {
-                    mostrarPropertyCard(casa, `💰 Você tem $${j.dinheiro}.\nDeseja comprar ${getNomeMelhoria(casa)} (Nível ${nivelAtual + 1}) por $${pm}?`, () => {
+                    mostrarPropertyCard(casa, `Deseja comprar ${getNomeMelhoria(casa)} (Nível ${nivelAtual + 1}) por $${pm}?`, () => {
                         if (j.dinheiro >= pm) {
                             j.dinheiro -= pm;
                             const nomeInstalado = getNomeMelhoria(casa);
@@ -2025,15 +2025,23 @@ function mostrarPropertyCard(casa, msg, onYes, onNo, btnYesText, btnNoText) {
     const pcDetails = document.getElementById('pc-details');
     if (pcDetails) {
         if (casa.alugueis && Array.isArray(casa.alugueis) && casa.alugueis.length >= 6) {
+            let nArr = [];
+            if (typeof casa.nome_melhoria === 'string') {
+                nArr = casa.nome_melhoria.split(',').map(s => s.trim());
+            } else if (Array.isArray(casa.nome_melhoria)) {
+                nArr = casa.nome_melhoria;
+            }
+            const getN = (idx) => (nArr[idx - 1] ? ` (${nArr[idx - 1]})` : '');
+
             let html = `
                 <div class="pc-rent-box">
                     <div class="pc-rent-row"><span>Preço da Propriedade:</span> <strong>$${casa.preco}</strong></div>
-                    <div class="pc-rent-row"><span>Aluguel Base (Sem melhorias):</span> <strong>$${casa.alugueis[0]}</strong></div>
-                    <div class="pc-rent-row"><span>Nível 1 (${casa.nome_melhoria || 'Melhoria 1'}):</span> <strong>$${casa.alugueis[1]}</strong></div>
-                    <div class="pc-rent-row"><span>Nível 2:</span> <strong>$${casa.alugueis[2]}</strong></div>
-                    <div class="pc-rent-row"><span>Nível 3:</span> <strong>$${casa.alugueis[3]}</strong></div>
-                    <div class="pc-rent-row"><span>Nível 4:</span> <strong>$${casa.alugueis[4]}</strong></div>
-                    <div class="pc-rent-row"><span>Nível 5 (Máximo):</span> <strong>$${casa.alugueis[5]}</strong></div>
+                    <div class="pc-rent-row"><span>Aluguel Base:</span> <strong>$${casa.alugueis[0]}</strong></div>
+                    <div class="pc-rent-row"><span>Nível 1${getN(1)}:</span> <strong>$${casa.alugueis[1]}</strong></div>
+                    <div class="pc-rent-row"><span>Nível 2${getN(2)}:</span> <strong>$${casa.alugueis[2]}</strong></div>
+                    <div class="pc-rent-row"><span>Nível 3${getN(3)}:</span> <strong>$${casa.alugueis[3]}</strong></div>
+                    <div class="pc-rent-row"><span>Nível 4${getN(4)}:</span> <strong>$${casa.alugueis[4]}</strong></div>
+                    <div class="pc-rent-row"><span>Nível 5${getN(5)}:</span> <strong>$${casa.alugueis[5]}</strong></div>
                     ${casa.preco_melhoria ? `<div class="pc-rent-row pc-upgrade-cost"><span>Custo por Melhoria:</span> <strong>$${casa.preco_melhoria}</strong></div>` : ''}
                 </div>
             `;
@@ -2126,7 +2134,7 @@ function loopLogica() {
             }
         } else {
             const dummyCasa = { nome: "Asilo Arkham", topColor: "#1a1a1a", imgUrl: URLS_IMAGENS['prisao'] || URLS_IMAGENS['arkham'] };
-            mostrarPropertyCard(dummyCasa, `💰 Você tem $${j.dinheiro}.\nVocê está no Arkham! Pagar $50 para sair livremente ou tentar tirar duplas nos dados?`, () => {
+            mostrarPropertyCard(dummyCasa, "Você está no Arkham! Pagar $50 para sair livremente ou tentar tirar duplas nos dados?", () => {
                 if (j.dinheiro >= 50) {
                     j.dinheiro -= 50; j.preso = false; j.turnos_preso = 0;
                     logMsg(`✅ Você pagou $50 e saiu da prisão!`);
