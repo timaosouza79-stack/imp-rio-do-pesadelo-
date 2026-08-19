@@ -1279,7 +1279,7 @@ function updateUI() {
                       style="border-color: ${borderColor};"
                       onclick="mostrarPropriedadesJogador(${idx})">
             <div class="player-avatar-wrap" style="border-color: ${borderColor};">
-                <img src="${p.avatar}" alt="${p.charNome}" onerror="this.src='assets/default.png'">
+                <img src="${p.avatar}" alt="${p.charNome}" onerror="this.src='assets/portal.png'">
             </div>
             <div class="player-info">
                 <span class="player-name-tag" style="color: ${textColor};">${p.nome}</span>
@@ -1347,7 +1347,7 @@ function updateUI() {
             figurine.style.transform = 'translateX(-50%)';
             figurine.title = `${p.nome} (${p.charNome})`;
             figurine.innerHTML = `
-                <img class="figurine-cutout" src="${p.avatar}" alt="${p.charNome}" onerror="this.src='assets/default.png';">
+                <img class="figurine-cutout" src="${p.avatar}" alt="${p.charNome}" onerror="this.src='assets/portal.png';">
                 <div class="figurine-pedestal-3d"></div>
             `;
             virtualTile.appendChild(figurine);
@@ -1424,8 +1424,10 @@ function iniciarJogo(humanos, cpus, chosenHumanChars, chosenHumanNames) {
         });
     }
     
-    document.getElementById('setup-modal').style.display = 'none';
-        document.getElementById('ui-container').style.display = 'flex';
+    const setupM = document.getElementById('setup-modal');
+    if (setupM) setupM.style.display = 'none';
+    const uiC = document.getElementById('ui-container');
+    if (uiC) uiC.style.display = 'flex';
         
         setTimeout(() => {
             const boardContainer = document.getElementById('board-container');
@@ -1549,9 +1551,12 @@ function carregarJogo() {
         estado            = "INICIO_TURNO";
 
         // Mostrar UI do jogo
-        document.getElementById('lobby-modal').style.display   = 'none';
-        document.getElementById('setup-modal').style.display   = 'none';
-        document.getElementById('ui-container').style.display  = 'flex';
+        const lobbyM = document.getElementById('lobby-modal');
+        if (lobbyM) lobbyM.style.display = 'none';
+        const setupM = document.getElementById('setup-modal');
+        if (setupM) setupM.style.display = 'none';
+        const uiC = document.getElementById('ui-container');
+        if (uiC) uiC.style.display = 'flex';
         const saveLoadBtns = document.getElementById('save-load-btns');
         if (saveLoadBtns) saveLoadBtns.style.display = 'flex';
 
@@ -1610,14 +1615,16 @@ function initListeners() {
     const btnStart = document.getElementById('btn-start');
     if (btnStart) {
         btnStart.onclick = () => {
-            const humVal = parseInt(document.getElementById('in-hum').value, 10);
+            const inHum = document.getElementById('in-hum');
+            const humVal = inHum ? parseInt(inHum.value, 10) : 1;
             const hum = isNaN(humVal) ? 1 : humVal;
-            const cpuVal = parseInt(document.getElementById('in-cpu').value, 10);
+            const inCpu = document.getElementById('in-cpu');
+            const cpuVal = inCpu ? parseInt(inCpu.value, 10) : 3;
             const cpu = isNaN(cpuVal) ? 3 : cpuVal;
             
             // Disable inputs after first click
-            document.getElementById('in-hum').disabled = true;
-            document.getElementById('in-cpu').disabled = true;
+            if (inHum) inHum.disabled = true;
+            if (inCpu) inCpu.disabled = true;
             
             // Validate if selectedCharIndex is valid (not already chosen)
             if (chosenHumanChars.includes(selectedCharIndex)) {
@@ -1981,10 +1988,14 @@ function mostrarPropriedadesJogador(idx) {
     // Collect all properties owned by this player
     const propriedades = TABULEIRO.filter(c => c.dono === p.nome);
 
-    document.getElementById('props-player-avatar').src = p.avatar;
-    document.getElementById('props-player-name').textContent = `${p.nome} (${p.charNome})`;
-    document.getElementById('props-player-money').textContent = `💰 $${p.dinheiro}`;
-    document.getElementById('props-modal-header').style.borderBottomColor = p.cor || '#ff0055';
+    const avatarEl = document.getElementById('props-player-avatar');
+    if (avatarEl) avatarEl.src = p.avatar;
+    const nameEl = document.getElementById('props-player-name');
+    if (nameEl) nameEl.textContent = `${p.nome} (${p.charNome})`;
+    const moneyEl = document.getElementById('props-player-money');
+    if (moneyEl) moneyEl.textContent = `💰 $${p.dinheiro}`;
+    const headerEl = document.getElementById('props-modal-header');
+    if (headerEl) headerEl.style.borderBottomColor = p.cor || '#ff0055';
 
     const listEl = document.getElementById('props-list');
     if (!listEl) return;
@@ -2012,7 +2023,8 @@ function mostrarPropriedadesJogador(idx) {
         }).join('');
     }
 
-    document.getElementById('props-modal').style.display = 'flex';
+    const propsM = document.getElementById('props-modal');
+    if (propsM) propsM.style.display = 'flex';
 }
 
 function mostrarPropertyCard(casa, msg, onYes, onNo, btnYesText, btnNoText) {
@@ -2020,8 +2032,10 @@ function mostrarPropertyCard(casa, msg, onYes, onNo, btnYesText, btnNoText) {
     const div = document.getElementById('property-card');
     if (!div) return;
     
-    document.getElementById('pc-header').style.backgroundColor = casa.topColor || '#222';
-    document.getElementById('pc-title').textContent = casa.nome;
+    const pcHeader = document.getElementById('pc-header');
+    if (pcHeader) pcHeader.style.backgroundColor = casa.topColor || '#222';
+    const pcTitle = document.getElementById('pc-title');
+    if (pcTitle) pcTitle.textContent = casa.nome;
     
     const pcBalance = document.getElementById('pc-player-balance');
     if (pcBalance) {
@@ -2044,7 +2058,8 @@ function mostrarPropertyCard(casa, msg, onYes, onNo, btnYesText, btnNoText) {
         }
     }
     
-    document.getElementById('pc-msg').innerHTML = msg.replace(/\n/g, '<br>');
+    const pcMsg = document.getElementById('pc-msg');
+    if (pcMsg) pcMsg.innerHTML = msg.replace(/\n/g, '<br>');
     
     const pcDetails = document.getElementById('pc-details');
     if (pcDetails) {
@@ -2125,6 +2140,20 @@ function encerrarTurno() {
 function loopLogica() {
     if (estado !== "INICIO_TURNO") return;
     
+    const ativos = jogadores.filter(x => x.ativo);
+    if (ativos.length === 1 && jogadores.length > 1) {
+        const vencedor = ativos[0];
+        estado = "FIM_DE_JOGO";
+        logMsg(`🏆🎉 PARABÉNS! ${vencedor.nome} (${vencedor.charNome}) VENCEU O IMPÉRIO DOS PESADELOS!`);
+        const dummyCasa = { nome: `🏆 ${vencedor.nome} VENCEU!`, topColor: "#ffd700", imgUrl: vencedor.avatar };
+        mostrarPropertyCard(dummyCasa, `🎉 ${vencedor.nome} é o grande campeão da partida! O Multiverso é seu!`, () => { location.reload(); }, null, "REINICIAR JOGO", null);
+        return;
+    } else if (ativos.length === 0 && jogadores.length > 0) {
+        estado = "FIM_DE_JOGO";
+        logMsg(`💀 TODOS OS JOGADORES FALIRAM! Ninguém sobrou.`);
+        return;
+    }
+    
     const j = jogadores[idxJogador];
     updateUI();
     
@@ -2192,7 +2221,8 @@ function loopLogica() {
 
 function initApp() {
     // Esconde UI principal e Setup inicialmente
-    document.getElementById('ui-container').style.display = 'none';
+    const uiC = document.getElementById('ui-container');
+    if (uiC) uiC.style.display = 'none';
     const setupModal = document.getElementById('setup-modal');
     if (setupModal) setupModal.style.display = 'none';
     const lobbyModal = document.getElementById('lobby-modal');
@@ -2444,11 +2474,14 @@ let myPlayerIdx = 0;
 function setupHost() {
     isOnline = true;
     isHost = true;
-    document.getElementById('lobby-menu-options').style.display = 'none';
-    document.getElementById('host-panel').style.display = 'block';
+    const menuOpt = document.getElementById('lobby-menu-options');
+    if (menuOpt) menuOpt.style.display = 'none';
+    const hostP = document.getElementById('host-panel');
+    if (hostP) hostP.style.display = 'block';
 
     const peerId = Math.random().toString(36).substring(2, 6).toUpperCase();
-    document.getElementById('room-code-display').innerText = peerId;
+    const roomCodeDisplay = document.getElementById('room-code-display');
+    if (roomCodeDisplay) roomCodeDisplay.innerText = peerId;
 
     peer = new Peer(peerId);
     
@@ -2475,35 +2508,40 @@ function setupHost() {
 
 function updateHostPlayerList() {
     const list = document.getElementById('host-players-list');
-    list.innerHTML = `Amigos Conectados: ${clientConnections.length}`;
+    if (list) list.innerHTML = `Amigos Conectados: ${clientConnections.length}`;
     const btnStart = document.getElementById('btn-host-start');
-    if (clientConnections.length > 0) {
-        btnStart.style.opacity = '1';
-        btnStart.style.pointerEvents = 'auto';
-        btnStart.innerText = `INICIAR COM ${clientConnections.length + 1} JOGADORES`;
-    } else {
-        btnStart.style.opacity = '0.5';
-        btnStart.style.pointerEvents = 'none';
-        btnStart.innerText = `AGUARDANDO JOGADORES...`;
+    if (btnStart) {
+        if (clientConnections.length > 0) {
+            btnStart.style.opacity = '1';
+            btnStart.style.pointerEvents = 'auto';
+            btnStart.innerText = `INICIAR COM ${clientConnections.length + 1} JOGADORES`;
+        } else {
+            btnStart.style.opacity = '0.5';
+            btnStart.style.pointerEvents = 'none';
+            btnStart.innerText = `AGUARDANDO JOGADORES...`;
+        }
     }
 }
 
 function connectToHost() {
-    const roomId = document.getElementById('join-room-input').value.trim().toUpperCase();
+    const joinInput = document.getElementById('join-room-input');
+    const roomId = joinInput ? joinInput.value.trim().toUpperCase() : '';
     if (!roomId || roomId.length !== 4) {
         alert("Digite o código de 4 letras.");
         return;
     }
     
-    document.getElementById('btn-join-room').innerText = "CONECTANDO...";
+    const btnJoinR = document.getElementById('btn-join-room');
+    if (btnJoinR) btnJoinR.innerText = "CONECTANDO...";
     
     peer = new Peer();
     peer.on('open', () => {
         hostConnection = peer.connect(roomId);
         
         hostConnection.on('open', () => {
-            document.getElementById('btn-join-room').style.display = 'none';
-            document.getElementById('join-status').style.display = 'block';
+            if (btnJoinR) btnJoinR.style.display = 'none';
+            const joinStatus = document.getElementById('join-status');
+            if (joinStatus) joinStatus.style.display = 'block';
             isOnline = true;
             isHost = false;
         });
@@ -2514,20 +2552,24 @@ function connectToHost() {
         
         hostConnection.on('error', (err) => {
             alert("Erro de conexão.");
-            document.getElementById('btn-join-room').innerText = "CONECTAR";
+            if (btnJoinR) btnJoinR.innerText = "CONECTAR";
         });
     });
 }
 
 function startHostGame() {
-    document.getElementById('lobby-modal').style.display = 'none';
+    const lobbyM = document.getElementById('lobby-modal');
+    if (lobbyM) lobbyM.style.display = 'none';
     const setupModal = document.getElementById('setup-modal');
     if (setupModal) setupModal.style.display = 'flex';
     
-    document.getElementById('offline-settings-row').style.display = 'none';
+    const offRow = document.getElementById('offline-settings-row');
+    if (offRow) offRow.style.display = 'none';
     const numPlayers = clientConnections.length + 1;
-    document.getElementById('in-hum').value = numPlayers;
-    document.getElementById('in-cpu').value = 4 - numPlayers;
+    const inHum = document.getElementById('in-hum');
+    if (inHum) inHum.value = numPlayers;
+    const inCpu = document.getElementById('in-cpu');
+    if (inCpu) inCpu.value = 4 - numPlayers;
     
     // Broadcast LOBBY_WAIT so clients show waiting message
     broadcastToClients({ type: 'LOBBY_WAIT' });
@@ -2551,16 +2593,24 @@ function handleClientMessage(data, conn) {
 
 function handleHostMessage(data) {
     if (data.type === 'LOBBY_WAIT') {
-        document.getElementById('lobby-modal').style.display = 'none';
+        const lobbyM = document.getElementById('lobby-modal');
+        if (lobbyM) lobbyM.style.display = 'none';
         const setupModal = document.getElementById('setup-modal');
         if (setupModal) setupModal.style.display = 'flex';
-        document.getElementById('offline-settings-row').style.display = 'none';
-        document.getElementById('btn-start').style.display = 'none';
-        document.getElementById('char-select-grid').style.display = 'none';
-        document.getElementById('player-name-section').style.display = 'none';
-        document.getElementById('setup-subtitle').style.display = 'none';
-        document.querySelector('.select-title').style.display = 'none';
-        document.getElementById('client-waiting-msg').style.display = 'block';
+        const offRow = document.getElementById('offline-settings-row');
+        if (offRow) offRow.style.display = 'none';
+        const btnS = document.getElementById('btn-start');
+        if (btnS) btnS.style.display = 'none';
+        const charGrid = document.getElementById('char-select-grid');
+        if (charGrid) charGrid.style.display = 'none';
+        const nameSec = document.getElementById('player-name-section');
+        if (nameSec) nameSec.style.display = 'none';
+        const setupSub = document.getElementById('setup-subtitle');
+        if (setupSub) setupSub.style.display = 'none';
+        const selectTitle = document.querySelector('.select-title');
+        if (selectTitle) selectTitle.style.display = 'none';
+        const clientWait = document.getElementById('client-waiting-msg');
+        if (clientWait) clientWait.style.display = 'block';
     }
     else if (data.type === 'GAME_START') {
         myPlayerIdx = data.myPlayerIdx;
@@ -2580,8 +2630,10 @@ function handleHostMessage(data) {
         idxJogador = 0;
         estado = "INICIO_TURNO";
         
-        document.getElementById('setup-modal').style.display = 'none';
-        document.getElementById('ui-container').style.display = 'flex';
+        const setupM = document.getElementById('setup-modal');
+        if (setupM) setupM.style.display = 'none';
+        const uiC = document.getElementById('ui-container');
+        if (uiC) uiC.style.display = 'flex';
         
         setTimeout(() => {
             const boardContainer = document.getElementById('board-container');
