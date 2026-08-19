@@ -871,7 +871,7 @@ const URLS_IMAGENS = {
     'creeper': 'assets/fotoolhosfamintos.jpeg',
     'frankenstein': 'assets/labofrankten.jpeg',
     'estacionamento': 'assets/estacionamento_terror.png',
-    'default': 'assets/default.png'
+    'default': 'assets/portal.png'
 };
 
 const URLS_VIDEOS = {
@@ -897,12 +897,12 @@ const URLS_VIDEOS = {
     'hawkins': 'assets/videolaboratoriohankins.MP4',
     'frankenstein': 'assets/videolaboratoriofrank.MP4',
     'creeper': 'assets/videoolhosfamintos.MP4',
-    'estacionamento': 'assets/video estacionamento.mov',
+    'estacionamento': 'assets/video_estacionamento.mov',
     'arkham': 'assets/videoasiloarkham.MP4',
     'madrugada': 'assets/videomadrugadamortos.MP4',
     'panico': 'assets/videopanico.MP4',
     'predador': 'assets/videopredador.MP4',
-    'assalto': 'assets/videosassaltonobeco.MP4',
+    'assalto': 'assets/videoassaltonobeco.MP4',
     'terrifier': 'assets/videoterrifier.MP4',
     'walking_dead': 'assets/videotwd.MP4',
     'chamado': 'assets/videochamado.MP4',
