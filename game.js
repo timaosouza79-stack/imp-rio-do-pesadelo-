@@ -1863,34 +1863,32 @@ function aplicarRegraRestante(j, casa) {
     } else if (casa.tipo === "especial" && casa.nome === "Caixa de Pandora") {
         const c = CARTAS_PANDORA[currentPandoraIdx];
         
+        const finishPandora = () => {
+            if (j.is_cpu) {
+                encerrarTurno();
+            } else {
+                let pImg = URLS_IMAGENS['pandora'];
+                const dummyCasa = { nome: "Caixa de Pandora", topColor: "#ff8800", imgUrl: pImg };
+                mostrarPropertyCard(dummyCasa, c.texto, encerrarTurno, encerrarTurno, "ENTENDIDO", null);
+            }
+        };
+
         const processarPandora = () => {
             j.dinheiro += c.valor_alteracao;
             logMsg(`📦 Carta de Pandora: ${c.texto}`);
-            
-            const finishPandora = () => {
-                if (j.is_cpu) {
-                    encerrarTurno();
-                } else {
-                    let pImg = URLS_IMAGENS['pandora'];
-                    const dummyCasa = { nome: "Caixa de Pandora", topColor: "#ff8800", imgUrl: pImg };
-                    mostrarPropertyCard(dummyCasa, c.texto, encerrarTurno, encerrarTurno, "ENTENDIDO", null);
-                }
-            };
-            
             if (c.ir_prisao) { j.posicao = 10; j.is_preso = true; logMsg(`🚨 ${j.nome} foi para a Prisão!`); }
-            finishPandora();
+            
+            if (c.texto.includes("Chucky sabotou") && !j.is_cpu) {
+                mostrarVideoModal("assets/chucksabotouos freios.MP4", finishPandora);
+            } else {
+                finishPandora();
+            }
         };
 
         if (c.valor_alteracao < 0) {
             cobrarDivida(j, Math.abs(c.valor_alteracao), processarPandora);
         } else {
             processarPandora();
-        }
-
-        if (c.texto.includes("Chucky sabotou") && !j.is_cpu) {
-            mostrarVideoModal("assets/chucksabotouos freios.MP4", finishPandora);
-        } else {
-            finishPandora();
         }
     } else {
         logMsg(`👀 ${j.nome} visitou ${casa.nome}.`);
