@@ -220,14 +220,20 @@
 
     <script src="game.js"></script>
 
-    <!-- Registro do Service Worker (PWA) com Atualização Forçada -->
+    <!-- Registro do Service Worker (PWA) com Destruição de Cache do Xbox -->
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js').then(reg => {
-                    console.log('✅ SW registrado:', reg.scope);
-                    reg.update();
-                }).catch(err => console.warn('⚠️ SW erro:', err));
+                navigator.serviceWorker.getRegistrations().then(registrations => {
+                    for (let registration of registrations) {
+                        registration.update();
+                    }
+                    const v = 'pesadelos-v25';
+                    navigator.serviceWorker.register('./sw.js?v=' + v).then(reg => {
+                        console.log('✅ SW registrado:', reg.scope);
+                        reg.update();
+                    }).catch(err => console.warn('⚠️ SW erro:', err));
+                });
             });
         }
     </script>
