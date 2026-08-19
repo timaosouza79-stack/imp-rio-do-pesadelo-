@@ -1781,7 +1781,7 @@ function aplicarRegraRestante(j, casa) {
                     logMsg(`🏠 ${j.nome} comprou ${casa.nome} por $${casa.preco}!`);
                     encerrarTurno();
                 } else {
-                    mostrarPropertyCard(casa, `Deseja comprar ${casa.nome} por $${casa.preco}?`, () => {
+                    mostrarPropertyCard(casa, `💰 Você tem $${j.dinheiro}.\nDeseja comprar ${casa.nome} por $${casa.preco}?`, () => {
                         if (j.dinheiro >= casa.preco) {
                             j.dinheiro -= casa.preco;
                             casa.dono = j.nome;
@@ -1996,6 +1996,29 @@ function mostrarPropertyCard(casa, msg, onYes, onNo, btnYesText, btnNoText) {
     }
     
     document.getElementById('pc-msg').textContent = msg;
+    
+    const pcDetails = document.getElementById('pc-details');
+    if (pcDetails) {
+        if (casa.alugueis && Array.isArray(casa.alugueis) && casa.alugueis.length >= 6) {
+            let html = `
+                <div class="pc-rent-box">
+                    <div class="pc-rent-row"><span>Preço da Propriedade:</span> <strong>$${casa.preco}</strong></div>
+                    <div class="pc-rent-row"><span>Aluguel Base (Sem melhorias):</span> <strong>$${casa.alugueis[0]}</strong></div>
+                    <div class="pc-rent-row"><span>Nível 1 (${casa.nome_melhoria || 'Melhoria 1'}):</span> <strong>$${casa.alugueis[1]}</strong></div>
+                    <div class="pc-rent-row"><span>Nível 2:</span> <strong>$${casa.alugueis[2]}</strong></div>
+                    <div class="pc-rent-row"><span>Nível 3:</span> <strong>$${casa.alugueis[3]}</strong></div>
+                    <div class="pc-rent-row"><span>Nível 4:</span> <strong>$${casa.alugueis[4]}</strong></div>
+                    <div class="pc-rent-row"><span>Nível 5 (Máximo):</span> <strong>$${casa.alugueis[5]}</strong></div>
+                    ${casa.preco_melhoria ? `<div class="pc-rent-row pc-upgrade-cost"><span>Custo por Melhoria:</span> <strong>$${casa.preco_melhoria}</strong></div>` : ''}
+                </div>
+            `;
+            pcDetails.innerHTML = html;
+            pcDetails.style.display = 'block';
+        } else {
+            pcDetails.innerHTML = '';
+            pcDetails.style.display = 'none';
+        }
+    }
     
     const btnYes = document.getElementById('btn-pc-yes');
     const btnNo = document.getElementById('btn-pc-no');
