@@ -1844,7 +1844,7 @@ function aplicarRegraRestante(j, casa) {
                     }
                     encerrarTurno();
                 } else {
-                    mostrarPropertyCard(casa, `Comprar ${getNomeMelhoria(casa)} (Nível ${nivelAtual + 1}) por $${pm}?`, () => {
+                    mostrarPropertyCard(casa, `💰 Você tem $${j.dinheiro}.\nDeseja comprar ${getNomeMelhoria(casa)} (Nível ${nivelAtual + 1}) por $${pm}?`, () => {
                         if (j.dinheiro >= pm) {
                             j.dinheiro -= pm;
                             const nomeInstalado = getNomeMelhoria(casa);
@@ -2115,7 +2115,7 @@ function loopLogica() {
             }
         } else {
             const dummyCasa = { nome: "Asilo Arkham", topColor: "#1a1a1a", imgUrl: URLS_IMAGENS['prisao'] || URLS_IMAGENS['arkham'] };
-            mostrarPropertyCard(dummyCasa, "Você está no Arkham! Pagar $50 para sair livremente ou tentar tirar duplas nos dados?", () => {
+            mostrarPropertyCard(dummyCasa, `💰 Você tem $${j.dinheiro}.\nVocê está no Arkham! Pagar $50 para sair livremente ou tentar tirar duplas nos dados?`, () => {
                 if (j.dinheiro >= 50) {
                     j.dinheiro -= 50; j.preso = false; j.turnos_preso = 0;
                     logMsg(`✅ Você pagou $50 e saiu da prisão!`);
