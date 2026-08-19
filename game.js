@@ -2621,6 +2621,7 @@ function mostrarModalVenda(j, divida, callback) {
     const moneySpan = modal.querySelector('.current-money');
     const listDiv = document.getElementById('sell-properties-list');
     const btnPay = document.getElementById('btn-pay-rent');
+    const btnBankrupt = document.getElementById('btn-bankrupt');
     
     const atualizarUIModal = () => {
         debtSpan.textContent = `$${divida}`;
@@ -2658,6 +2659,13 @@ function mostrarModalVenda(j, divida, callback) {
     
     btnPay.onclick = () => {
         modal.style.display = 'none';
+        callback();
+    };
+    
+    btnBankrupt.onclick = () => {
+        // Falência voluntária ou forçada
+        modal.style.display = 'none';
+        j.dinheiro = -9999; // Força falência
         callback();
     };
     
