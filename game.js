@@ -876,29 +876,46 @@ const URLS_IMAGENS = {
 
 const URLS_VIDEOS = {
     'oferenda': 'assets/videooferendasobrenatural.MP4',
+    'supernatural': 'assets/videooferendasobrenatural.MP4',
+    'impala': 'assets/videooferendasobrenatural.MP4',
     'casa_homer': 'assets/videocasadohomer.MP4',
     'myers': 'assets/videocasadosmyers.MP4',
+    'michael': 'assets/videocasadosmyers.MP4',
+    'michael_myers': 'assets/videocasadosmyers.MP4',
     'crystal_lake': 'assets/videocrystajason.MP4',
+    'jason': 'assets/videocrystajason.MP4',
     'banheiro': 'assets/videojigsaw.MP4',
+    'jigsaw': 'assets/videojigsaw.MP4',
     'rua_elm': 'assets/viodefreddy.MP4',
+    'freddy': 'assets/viodefreddy.MP4',
     'sorria': 'assets/videosorria.MP4',
     'annabelle': 'assets/videoquartodeannabelle.MP4',
     'esgotos': 'assets/videoitacoisa.MP4',
+    'pennywise': 'assets/videoitacoisa.MP4',
     'chucky': 'assets/videofabricachuck.MP4',
+    'chuck': 'assets/videofabricachuck.MP4',
     'bates_motel': 'assets/videobatesmotel.MP4',
+    'psicose': 'assets/videobatesmotel.MP4',
     'jurassic': 'assets/videojurrassic.MP4',
+    'jurrassic': 'assets/videojurrassic.MP4',
     'dracula': 'assets/videodracula.MP4',
     'king_kong': 'assets/videoilhadacaveira.MP4',
+    'kingkong': 'assets/videoilhadacaveira.MP4',
+    'kong': 'assets/videoilhadacaveira.MP4',
     'massacre': 'assets/videomassacredaserra.MP4',
+    'leatherface': 'assets/videomassacredaserra.MP4',
     'bar_moe': 'assets/videomoe.MP4',
     'usina': 'assets/videousina.MP4',
     'exorcista': 'assets/exorcista.MP4',
-    'transporte_prisioneiros': 'assets/video prisao.MP4',
+    'transporte_prisioneiros': 'assets/video_prisao.MP4',
+    'prisao': 'assets/video_prisao.MP4',
     'hawkins': 'assets/videolaboratoriohankins.MP4',
+    'mundo_invertido': 'assets/videolaboratoriohankins.MP4',
     'frankenstein': 'assets/videolaboratoriofrank.MP4',
     'creeper': 'assets/videoolhosfamintos.MP4',
     'estacionamento': 'assets/video_estacionamento.mov',
     'arkham': 'assets/videoasiloarkham.MP4',
+    'asilo_arkham': 'assets/videoasiloarkham.MP4',
     'madrugada': 'assets/videomadrugadamortos.MP4',
     'panico': 'assets/videopanico.MP4',
     'predador': 'assets/videopredador.MP4',
@@ -1030,33 +1047,32 @@ function getTileColor(casa, index) {
 function getTileImgKey(casa, index) {
     if (casa.tipo === 'especial') {
         if (index === 0) return 'portal';
-        if (index === 10 || index === 30) return 'prisao';
         if (casa.nome.includes('Pandora')) return 'pandora';
         if (casa.nome.includes('Estacionamento')) return 'estacionamento';
     }
+    if (casa.tipo === 'prisao') return 'arkham';
     if (casa.tipo === 'va_para_prisao') return 'transporte_prisioneiros';
     const n = casa.nome.toLowerCase();
     if (n.includes('annabelle')) return 'annabelle';
-    if (n.includes('chucky') || n.includes('good guys')) return 'chucky';
-    if (n.includes('myers')) return 'myers';
-    if (n.includes('crystal lake') || n.includes('jason voorhees')) return 'crystal_lake';
+    if (n.includes('chucky') || n.includes('good guys') || n.includes('chuck')) return 'chucky';
+    if (n.includes('myers') || n.includes('michael')) return 'myers';
+    if (n.includes('crystal lake') || n.includes('jason')) return 'crystal_lake';
     if (n.includes('drácula') || n.includes('dracula')) return 'dracula';
     if (n.includes('sorria')) return 'sorria';
-    if (n.includes('jurassic')) return 'jurassic';
-    if (n.includes('ilha da caveira') || n.includes('king kong')) return 'king_kong';
+    if (n.includes('jurassic') || n.includes('jurrassic')) return 'jurassic';
+    if (n.includes('ilha da caveira') || n.includes('king kong') || n.includes('kong')) return 'king_kong';
     if (n.includes('bar do moe')) return 'bar_moe';
     if (n.includes('casa do homer')) return 'casa_homer';
     if (n.includes('exorcista')) return 'exorcista';
     if (n.includes('addams')) return 'addams';
-    if (n.includes('rua elm')) return 'rua_elm';
-    if (n.includes('banheiro')) return 'banheiro';
-    if (n.includes('esgoto')) return 'esgotos';
+    if (n.includes('rua elm') || n.includes('freddy')) return 'rua_elm';
+    if (n.includes('banheiro') || n.includes('jigsaw')) return 'banheiro';
+    if (n.includes('esgoto') || n.includes('pennywise') || n.includes('derry')) return 'esgotos';
     if (n.includes('usina')) return 'usina';
     if (n.includes('chamado')) return 'chamado';
-    if (n.includes('bates motel')) return 'bates_motel';
-    if (n.includes('massacre') || n.includes('serra')) return 'massacre';
+    if (n.includes('bates motel') || n.includes('psicose')) return 'bates_motel';
+    if (n.includes('massacre') || n.includes('serra') || n.includes('leatherface')) return 'massacre';
     if (n.includes('creeper')) return 'creeper';
-    if (n.includes('hawkins')) return 'hawkins';
     if (n.includes('frankenstein')) return 'frankenstein';
     if (n.includes('oferenda')) return 'oferenda';
     if (n.includes('cera')) return 'cera';
@@ -1069,6 +1085,7 @@ function getTileImgKey(casa, index) {
     if (n.includes('arkham')) return 'arkham';
     if (n.includes('hawkins')) return 'hawkins';
     if (n.includes('mundo invertido')) return 'mundo_invertido';
+    if (n.includes('impala') || n.includes('supernatural')) return 'supernatural';
     return null;
 }
 
@@ -1893,7 +1910,7 @@ function aplicarRegraRestante(j, casa) {
             if (c.ir_prisao) { j.posicao = 10; j.is_preso = true; logMsg(`🚨 ${j.nome} foi para a Prisão!`); }
             
             if (c.texto.includes("Chucky sabotou") && !j.is_cpu) {
-                mostrarVideoModal("assets/chucksabotouos freios.MP4", finishPandora);
+                mostrarVideoModal("assets/chuckfreios.MP4", finishPandora);
             } else {
                 finishPandora();
             }
@@ -1931,16 +1948,23 @@ function mostrarVideoModal(videoSrc, callback) {
     }
 
     sourceEl.src = videoSrc;
+    videoEl.src = videoSrc;
     videoEl.load();
     modal.style.display = 'flex';
 
     btnClose.onclick = () => {
-        videoEl.pause();
+        try { videoEl.pause(); } catch(e){}
         modal.style.display = 'none';
         executeCallback();
     };
 
     videoEl.onended = () => {
+        modal.style.display = 'none';
+        executeCallback();
+    };
+
+    videoEl.onerror = () => {
+        console.warn("Erro ao carregar o vídeo:", videoSrc);
         modal.style.display = 'none';
         executeCallback();
     };
