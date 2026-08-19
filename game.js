@@ -1903,8 +1903,16 @@ function mostrarVideoModal(videoSrc, callback) {
     const sourceEl = document.getElementById('house-video-src');
     const btnClose = document.getElementById('btn-close-video');
 
+    let cbCalled = false;
+    const executeCallback = () => {
+        if (!cbCalled) {
+            cbCalled = true;
+            if (callback) callback();
+        }
+    };
+
     if (!modal || !videoEl || !sourceEl) {
-        if(callback) callback();
+        executeCallback();
         return;
     }
 
@@ -1912,17 +1920,15 @@ function mostrarVideoModal(videoSrc, callback) {
     videoEl.load();
     modal.style.display = 'flex';
 
-    // Ao terminar o vídeo, tentar não fechar automaticamente (mas o usuário pode fechar)
-    // Se o usuário clicar no X
     btnClose.onclick = () => {
         videoEl.pause();
         modal.style.display = 'none';
-        if(callback) callback();
+        executeCallback();
     };
 
     videoEl.onended = () => {
         modal.style.display = 'none';
-        if(callback) callback();
+        executeCallback();
     };
     
     videoEl.play().catch(e => {
@@ -2675,17 +2681,17 @@ function cobrarDivida(j, valor, callbackPagamento) {
     if (j.dinheiro >= valor) {
         callbackPagamento();
     } else {
-        const patrimonioTotal = calcularPatrimonioVenda(j.nome);
-        if (j.dinheiro + patrimonioTotal >= valor) {
-            logMsg(`⚠️ ${j.nome} precisa vender propriedades para quitar uma dívida de ${valor}!`);
-            if (j.is_cpu) {
+        if (j.is_cpu) {
+            const patrimonioTotal = calcularPatrimonioVenda(j.nome);
+            if (j.dinheiro + patrimonioTotal >= valor) {
                 cpuVenderBensParaPagar(j, valor, callbackPagamento);
             } else {
-                mostrarModalVenda(j, valor, callbackPagamento);
+                logMsg(`💸 ${j.nome} não tem como pagar a dívida e vai falir!`);
+                callbackPagamento();
             }
         } else {
-            logMsg(`💸 ${j.nome} não tem como pagar a dívida e vai falir!`);
-            callbackPagamento();
+            logMsg(`⚠️ ${j.nome} precisa resolver uma dívida de $${valor}!`);
+            mostrarModalVenda(j, valor, callbackPagamento);
         }
     }
 }
