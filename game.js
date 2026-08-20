@@ -966,6 +966,19 @@ const SoundFX = {
 
     playDiceRoll() {
         if (this.muted) return;
+        try {
+            const diceAudio = new Audio('assets/som_dados.wav');
+            diceAudio.volume = 0.8;
+            diceAudio.play().catch(e => {
+                this.playDiceRollSynth();
+            });
+        } catch(e) {
+            this.playDiceRollSynth();
+        }
+    },
+
+    playDiceRollSynth() {
+        if (this.muted) return;
         this.init();
         if (!this.audioCtx) return;
 

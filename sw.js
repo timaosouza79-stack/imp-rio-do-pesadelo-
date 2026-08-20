@@ -1,11 +1,12 @@
-const CACHE_NAME = 'pesadelos-v31';
+const CACHE_NAME = 'pesadelos-v32';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './style.css',
   './game.js',
   './tabuleiro.json',
-  './manifest.json'
+  './manifest.json',
+  './assets/som_dados.wav'
 ];
 
 // Instala e força atualização imediata
