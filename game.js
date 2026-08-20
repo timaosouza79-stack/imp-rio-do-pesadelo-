@@ -927,6 +927,219 @@ const URLS_VIDEOS = {
     'addams': 'assets/videocasadafamiliaadans.MP4'
 };
 
+/* ================================================================
+   SISTEMA DE ÁUDIO E EFEITOS SONOROS (Web Audio API Synthesizer)
+   ================================================================ */
+const SoundFX = {
+    audioCtx: null,
+    muted: false,
+    bgmOsc: null,
+    bgmGain: null,
+
+    init() {
+        if (!this.audioCtx && typeof window !== 'undefined') {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (AudioContext) {
+                this.audioCtx = new AudioContext();
+            }
+        }
+        if (this.audioCtx && this.audioCtx.state === 'suspended') {
+            this.audioCtx.resume().catch(() => {});
+        }
+    },
+
+    toggleMute() {
+        this.muted = !this.muted;
+        const btn = document.getElementById('btn-audio-toggle');
+        if (btn) {
+            btn.innerHTML = this.muted ? '🔇 ÁUDIO: DESLIGADO' : '🔊 ÁUDIO: LIGADO';
+            btn.style.borderColor = this.muted ? '#ff0055' : '#00ffff';
+            btn.style.color = this.muted ? '#ff0055' : '#00ffff';
+        }
+        if (this.muted) {
+            this.stopBGM();
+        } else {
+            this.startBGM();
+        }
+        try { localStorage.setItem('pesadelos_audio_muted', this.muted ? '1' : '0'); } catch(e){}
+    },
+
+    playDiceRoll() {
+        if (this.muted) return;
+        this.init();
+        if (!this.audioCtx) return;
+
+        const now = this.audioCtx.currentTime;
+        for (let i = 0; i < 6; i++) {
+            const osc = this.audioCtx.createOscillator();
+            const gain = this.audioCtx.createGain();
+            osc.type = 'square';
+            const freq = 200 + Math.random() * 300;
+            osc.frequency.setValueAtTime(freq, now + i * 0.05);
+
+            gain.gain.setValueAtTime(0.08, now + i * 0.05);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.05 + 0.04);
+
+            osc.connect(gain);
+            gain.connect(this.audioCtx.destination);
+
+            osc.start(now + i * 0.05);
+            osc.stop(now + i * 0.05 + 0.04);
+        }
+    },
+
+    playBuy() {
+        if (this.muted) return;
+        this.init();
+        if (!this.audioCtx) return;
+
+        const now = this.audioCtx.currentTime;
+        const freqs = [523.25, 659.25, 783.99, 1046.50];
+        freqs.forEach((f, idx) => {
+            const osc = this.audioCtx.createOscillator();
+            const gain = this.audioCtx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(f, now + idx * 0.08);
+
+            gain.gain.setValueAtTime(0.12, now + idx * 0.08);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.2);
+
+            osc.connect(gain);
+            gain.connect(this.audioCtx.destination);
+
+            osc.start(now + idx * 0.08);
+            osc.stop(now + idx * 0.08 + 0.2);
+        });
+    },
+
+    playRent() {
+        if (this.muted) return;
+        this.init();
+        if (!this.audioCtx) return;
+
+        const now = this.audioCtx.currentTime;
+        const osc = this.audioCtx.createOscillator();
+        const gain = this.audioCtx.createGain();
+
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(180, now);
+        osc.frequency.exponentialRampToValueAtTime(60, now + 0.35);
+
+        gain.gain.setValueAtTime(0.15, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+
+        osc.connect(gain);
+        gain.connect(this.audioCtx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.35);
+    },
+
+    playPandora() {
+        if (this.muted) return;
+        this.init();
+        if (!this.audioCtx) return;
+
+        const now = this.audioCtx.currentTime;
+        [150, 212.13, 300].forEach(f => {
+            const osc = this.audioCtx.createOscillator();
+            const gain = this.audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(f, now);
+
+            gain.gain.setValueAtTime(0.12, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+
+            osc.connect(gain);
+            gain.connect(this.audioCtx.destination);
+
+            osc.start(now);
+            osc.stop(now + 0.8);
+        });
+    },
+
+    playJail() {
+        if (this.muted) return;
+        this.init();
+        if (!this.audioCtx) return;
+
+        const now = this.audioCtx.currentTime;
+        const osc = this.audioCtx.createOscillator();
+        const gain = this.audioCtx.createGain();
+
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(110, now);
+        osc.frequency.exponentialRampToValueAtTime(30, now + 0.4);
+
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+
+        osc.connect(gain);
+        gain.connect(this.audioCtx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.4);
+    },
+
+    playPortal() {
+        if (this.muted) return;
+        this.init();
+        if (!this.audioCtx) return;
+
+        const now = this.audioCtx.currentTime;
+        const notes = [261.63, 329.63, 392.00, 523.25, 659.25];
+        notes.forEach((f, i) => {
+            const osc = this.audioCtx.createOscillator();
+            const gain = this.audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(f, now + i * 0.06);
+
+            gain.gain.setValueAtTime(0.1, now + i * 0.06);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.06 + 0.25);
+
+            osc.connect(gain);
+            gain.connect(this.audioCtx.destination);
+
+            osc.start(now + i * 0.06);
+            osc.stop(now + i * 0.06 + 0.25);
+        });
+    },
+
+    startBGM() {
+        if (this.muted) return;
+        this.init();
+        if (!this.audioCtx) return;
+        if (this.bgmOsc) return;
+
+        try {
+            const now = this.audioCtx.currentTime;
+            this.bgmOsc = this.audioCtx.createOscillator();
+            this.bgmGain = this.audioCtx.createGain();
+
+            this.bgmOsc.type = 'sine';
+            this.bgmOsc.frequency.setValueAtTime(55, now);
+
+            this.bgmGain.gain.setValueAtTime(0.02, now);
+
+            this.bgmOsc.connect(this.bgmGain);
+            this.bgmGain.connect(this.audioCtx.destination);
+
+            this.bgmOsc.start(now);
+        } catch(e){}
+    },
+
+    stopBGM() {
+        if (this.bgmOsc) {
+            try {
+                this.bgmOsc.stop();
+                this.bgmOsc.disconnect();
+            } catch(e){}
+            this.bgmOsc = null;
+            this.bgmGain = null;
+        }
+    }
+};
+
 // Mapeamento Exato dos Ficheiros de Peões para Jogadores e CPUs
 const PERSONAGENS_JOGADORES = [
     { charNome: "Chucky", avatar: "assets/chuckypeao.png", cor: "#bfff00" }, // Verde Limão Neon
@@ -1691,6 +1904,12 @@ function initListeners() {
     
     const btnApagarLobby = document.getElementById('btn-apagar-lobby');
     if (btnApagarLobby) btnApagarLobby.onclick = () => apagarJogoSalvo();
+
+    const btnAudioToggle = document.getElementById('btn-audio-toggle');
+    if (btnAudioToggle) btnAudioToggle.onclick = () => SoundFX.toggleMute();
+    if (typeof document !== 'undefined' && typeof document.addEventListener === 'function') {
+        document.addEventListener('click', () => { SoundFX.init(); SoundFX.startBGM(); }, { once: true });
+    }
 }
 
 function rolarDados() {
@@ -1718,6 +1937,7 @@ function rolarDados() {
 }
 
 function animateAndMove(d1, d2) {
+    SoundFX.playDiceRoll();
     const j = jogadores[idxJogador];
     const diceContainer = document.getElementById('dice-container');
     const d1El = document.getElementById('dice-1');
@@ -1771,6 +1991,7 @@ function animateAndMove(d1, d2) {
                 j.posicao = (j.posicao + 1) % TABULEIRO.length;
                 if (j.posicao === 0) {
                     j.dinheiro += 200;
+                    SoundFX.playPortal();
                     logMsg(`🌀 ${j.nome} cruzou o Portal e recebeu $200!`);
                 }
                 updateUI();
@@ -1807,6 +2028,7 @@ function aplicarRegraRestante(j, casa) {
         j.posicao = INDICE_PRISAO;
         j.preso = true;
         j.turnos_preso = 0;
+        SoundFX.playJail();
         logMsg(`🚔 ${j.nome} foi enviado para o Asilo Arkham!`);
         updateUI();
         encerrarTurno();
@@ -1823,6 +2045,7 @@ function aplicarRegraRestante(j, casa) {
                         if (j.dinheiro >= casa.preco) {
                             j.dinheiro -= casa.preco;
                             casa.dono = j.nome;
+                            SoundFX.playBuy();
                             logMsg(`✅ Você comprou ${casa.nome}!`);
                         } else logMsg(`❌ Sem dinheiro suficiente!`);
                         encerrarTurno();
@@ -1873,6 +2096,7 @@ function aplicarRegraRestante(j, casa) {
                             j.dinheiro -= pm;
                             const nomeInstalado = getNomeMelhoria(casa);
                             casa.melhorias = nivelAtual + 1;
+                            SoundFX.playBuy();
                             logMsg(`✅ ${nomeInstalado} (Nível ${casa.melhorias}) instalada!`);
                         } else logMsg(`❌ Dinheiro insuficiente!`);
                         encerrarTurno();
@@ -1900,6 +2124,7 @@ function aplicarRegraRestante(j, casa) {
         cobrarDivida(j, casa.valor, pagarImposto);
     } else if (casa.tipo === "especial" && casa.nome === "Caixa de Pandora") {
         const c = CARTAS_PANDORA[currentPandoraIdx];
+        SoundFX.playPandora();
         
         const finishPandora = () => {
             if (j.is_cpu) {
