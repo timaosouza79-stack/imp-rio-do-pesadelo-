@@ -1954,8 +1954,10 @@ function mostrarVideoModal(videoSrc, callback) {
         return;
     }
 
-    sourceEl.src = videoSrc;
-    videoEl.src = videoSrc;
+    const safeSrc = encodeURI(videoSrc);
+
+    sourceEl.src = safeSrc;
+    videoEl.src = safeSrc;
     videoEl.load();
     modal.style.display = 'flex';
 
@@ -1970,14 +1972,14 @@ function mostrarVideoModal(videoSrc, callback) {
         executeCallback();
     };
 
-    videoEl.onerror = () => {
-        console.warn("Erro ao carregar o vídeo:", videoSrc);
+    videoEl.onerror = (e) => {
+        console.warn("Erro ao carregar o vídeo:", safeSrc, e);
         modal.style.display = 'none';
         executeCallback();
     };
     
     videoEl.play().catch(e => {
-        console.warn("Autoplay prevenido pelo navegador.", e);
+        console.warn("Autoplay prevenido pelo navegador ou interação necessária.", e);
     });
 }
 

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pesadelos-v28';
+const CACHE_NAME = 'pesadelos-v29';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -58,7 +58,13 @@ self.addEventListener('fetch', event => {
       })
     );
   } else {
-    // Cache First para mídias grandes (imagens, áudios, vídeos)
+    // Excluir vídeos da interceptação do Service Worker para permitir HTTP Range Requests (206 Partial Content) nativos do navegador
+    const lowerPath = url.pathname.toLowerCase();
+    if (lowerPath.endsWith('.mp4') || lowerPath.endsWith('.mov') || lowerPath.endsWith('.webm') || event.request.headers.has('range')) {
+      return; // Bypasses Service Worker, allowing native browser streaming
+    }
+
+    // Cache First para mídias grandes (imagens, áudios)
     event.respondWith(
       caches.match(event.request).then(cached => {
         if (cached) return cached;
@@ -73,3 +79,4 @@ self.addEventListener('fetch', event => {
     );
   }
 });
+
