@@ -187,12 +187,12 @@ const TABULEIRO = [
     "tipo": "servico",
     "preco": 170,
     "alugueis": [
-      85,
-      25,
+      20,
       50,
       100,
-      150,
-      200
+      200,
+      350,
+      500
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -620,14 +620,14 @@ const TABULEIRO = [
   {
     "nome": "Sinal de TV - O Chamado",
     "tipo": "servico",
-    "preco": 510,
+    "preco": 250,
     "alugueis": [
-      255,
       30,
-      60,
-      120,
-      150,
-      200
+      80,
+      180,
+      350,
+      550,
+      800
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -637,7 +637,7 @@ const TABULEIRO = [
       "Visão de Samara",
       "Chamado da Morte"
     ],
-    "preco_melhoria": 75,
+    "preco_melhoria": 100,
     "dono": null
   },
   {

@@ -142,14 +142,14 @@
   {
     "nome": "Laboratório de Frankenstein",
     "tipo": "servico",
-    "preco": 150,
+    "preco": 170,
     "alugueis": [
-      75,
-      175,
-      275,
-      375,
-      475,
-      575
+      20,
+      50,
+      100,
+      200,
+      350,
+      500
     ],
     "melhorias": 0,
     "nome_melhoria": "Geradores",
@@ -468,18 +468,18 @@
   {
     "nome": "Sinal de TV - O Chamado",
     "tipo": "servico",
-    "preco": 150,
+    "preco": 250,
     "alugueis": [
-      75,
-      175,
-      275,
-      375,
-      475,
-      575
+      30,
+      80,
+      180,
+      350,
+      550,
+      800
     ],
     "melhorias": 0,
     "nome_melhoria": "Fitas VHS",
-    "preco_melhoria": 75,
+    "preco_melhoria": 100,
     "dono": null
   },
   {
