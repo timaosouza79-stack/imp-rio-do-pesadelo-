@@ -898,7 +898,7 @@ const URLS_VIDEOS = {
     'psicose': 'assets/videobatesmotel.MP4',
     'jurassic': 'assets/videojurrassic.MP4',
     'jurrassic': 'assets/videojurrassic.MP4',
-    'dracula': 'assets/videodracula.MP4',
+    'dracula': 'assets/VIDEODRACULA.MP4',
     'king_kong': 'assets/videokingkong.MP4',
     'kingkong': 'assets/videokingkong.MP4',
     'kong': 'assets/videokingkong.MP4',
