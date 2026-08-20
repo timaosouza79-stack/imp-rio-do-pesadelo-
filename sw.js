@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pesadelos-v32';
+const CACHE_NAME = 'pesadelos-v33';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -6,7 +6,12 @@ const ASSETS_TO_CACHE = [
   './game.js',
   './tabuleiro.json',
   './manifest.json',
-  './assets/som_dados.wav'
+  './assets/som_dados.wav',
+  './assets/som_comprar.wav',
+  './assets/som_aluguel.wav',
+  './assets/som_pandora.wav',
+  './assets/som_prisao.wav',
+  './assets/som_portal.wav'
 ];
 
 // Instala e força atualização imediata

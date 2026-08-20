@@ -964,17 +964,21 @@ const SoundFX = {
         try { localStorage.setItem('pesadelos_audio_muted', this.muted ? '1' : '0'); } catch(e){}
     },
 
-    playDiceRoll() {
+    playFile(filePath, fallbackFn) {
         if (this.muted) return;
         try {
-            const diceAudio = new Audio('assets/som_dados.wav');
-            diceAudio.volume = 0.8;
-            diceAudio.play().catch(e => {
-                this.playDiceRollSynth();
+            const audio = new Audio(filePath);
+            audio.volume = 0.8;
+            audio.play().catch(e => {
+                if (fallbackFn) fallbackFn();
             });
         } catch(e) {
-            this.playDiceRollSynth();
+            if (fallbackFn) fallbackFn();
         }
+    },
+
+    playDiceRoll() {
+        this.playFile('assets/som_dados.wav', () => this.playDiceRollSynth());
     },
 
     playDiceRollSynth() {
@@ -1006,6 +1010,10 @@ const SoundFX = {
     },
 
     playBuy() {
+        this.playFile('assets/som_comprar.wav', () => this.playBuySynth());
+    },
+
+    playBuySynth() {
         if (this.muted) return;
         this.init();
         if (!this.audioCtx) return;
@@ -1030,6 +1038,10 @@ const SoundFX = {
     },
 
     playRent() {
+        this.playFile('assets/som_aluguel.wav', () => this.playRentSynth());
+    },
+
+    playRentSynth() {
         if (this.muted) return;
         this.init();
         if (!this.audioCtx) return;
@@ -1053,6 +1065,10 @@ const SoundFX = {
     },
 
     playPandora() {
+        this.playFile('assets/som_pandora.wav', () => this.playPandoraSynth());
+    },
+
+    playPandoraSynth() {
         if (this.muted) return;
         this.init();
         if (!this.audioCtx) return;
@@ -1076,6 +1092,10 @@ const SoundFX = {
     },
 
     playJail() {
+        this.playFile('assets/som_prisao.wav', () => this.playJailSynth());
+    },
+
+    playJailSynth() {
         if (this.muted) return;
         this.init();
         if (!this.audioCtx) return;
@@ -1099,6 +1119,10 @@ const SoundFX = {
     },
 
     playPortal() {
+        this.playFile('assets/som_portal.wav', () => this.playPortalSynth());
+    },
+
+    playPortalSynth() {
         if (this.muted) return;
         this.init();
         if (!this.audioCtx) return;
