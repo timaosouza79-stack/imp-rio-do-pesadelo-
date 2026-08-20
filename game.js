@@ -970,22 +970,26 @@ const SoundFX = {
         if (!this.audioCtx) return;
 
         const now = this.audioCtx.currentTime;
-        for (let i = 0; i < 6; i++) {
+        const bounces = [0.0, 0.05, 0.09, 0.13, 0.16, 0.18];
+        bounces.forEach((delay, idx) => {
             const osc = this.audioCtx.createOscillator();
             const gain = this.audioCtx.createGain();
-            osc.type = 'square';
-            const freq = 200 + Math.random() * 300;
-            osc.frequency.setValueAtTime(freq, now + i * 0.05);
+            
+            const baseFreq = 450 + Math.random() * 200 - (idx * 25);
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(baseFreq, now + delay);
+            osc.frequency.exponentialRampToValueAtTime(130, now + delay + 0.035);
 
-            gain.gain.setValueAtTime(0.08, now + i * 0.05);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.05 + 0.04);
+            const vol = 0.15 * Math.pow(0.7, idx);
+            gain.gain.setValueAtTime(vol, now + delay);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.035);
 
             osc.connect(gain);
             gain.connect(this.audioCtx.destination);
 
-            osc.start(now + i * 0.05);
-            osc.stop(now + i * 0.05 + 0.04);
-        }
+            osc.start(now + delay);
+            osc.stop(now + delay + 0.035);
+        });
     },
 
     playBuy() {
