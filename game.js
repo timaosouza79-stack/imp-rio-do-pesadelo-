@@ -1264,6 +1264,63 @@ function renderDiceFaceHTML(val) {
     return html;
 }
 
+function create3DCubeHTML(diceId, initialVal = 1) {
+    const renderFaceGrid = (num) => {
+        const pipsMap = {
+            1: [5],
+            2: [1, 9],
+            3: [1, 5, 9],
+            4: [1, 3, 7, 9],
+            5: [1, 3, 5, 7, 9],
+            6: [1, 3, 4, 6, 7, 9]
+        };
+        const active = pipsMap[num] || [5];
+        let html = '<div class="dice-grid-3d">';
+        for (let i = 1; i <= 9; i++) {
+            if (active.includes(i)) {
+                if (num === 1) {
+                    html += '<span class="pip-skull gold">💀</span>';
+                } else if (num <= 3) {
+                    html += '<span class="pip-skull red">💀</span>';
+                } else {
+                    html += '<span class="pip-skull cyan">💀</span>';
+                }
+            } else {
+                html += '<span class="pip-empty"></span>';
+            }
+        }
+        html += '</div>';
+        return html;
+    };
+
+    return `
+        <div class="dice-cube-3d" id="${diceId}" data-val="${initialVal}">
+            <div class="cube-face face-1">${renderFaceGrid(1)}</div>
+            <div class="cube-face face-2">${renderFaceGrid(2)}</div>
+            <div class="cube-face face-3">${renderFaceGrid(3)}</div>
+            <div class="cube-face face-4">${renderFaceGrid(4)}</div>
+            <div class="cube-face face-5">${renderFaceGrid(5)}</div>
+            <div class="cube-face face-6">${renderFaceGrid(6)}</div>
+        </div>
+    `;
+}
+
+function set3DCubeValue(el, val) {
+    if (!el) return;
+    el.classList.remove('rolling-3d');
+    el.classList.remove('rolling');
+    const rotations = {
+        1: 'rotateX(0deg) rotateY(0deg)',
+        2: 'rotateX(0deg) rotateY(-180deg)',
+        3: 'rotateX(0deg) rotateY(-90deg)',
+        4: 'rotateX(0deg) rotateY(90deg)',
+        5: 'rotateX(-90deg) rotateY(0deg)',
+        6: 'rotateX(90deg) rotateY(0deg)'
+    };
+    el.style.transform = rotations[val] || 'rotateX(0deg) rotateY(0deg)';
+    el.setAttribute('data-val', val);
+}
+
 function getGridArea(i) {
     if (i === 0) return { r: 11, c: 1 };
     if (i > 0 && i < 10) return { r: 11, c: i + 1 };
@@ -1444,8 +1501,8 @@ function renderBoardHTML() {
             <div class="center-subtitle">CONQUISTA DO MULTIVERSO</div>
         </div>
         <div id="dice-container" style="display: flex;">
-            <div class="dice-cube" id="dice-1">${renderDiceFaceHTML(1)}</div>
-            <div class="dice-cube" id="dice-2">${renderDiceFaceHTML(1)}</div>
+            ${create3DCubeHTML('dice-1', 1)}
+            ${create3DCubeHTML('dice-2', 1)}
         </div>
         <div class="center-decks">
             <div class="deck-card deck-pandora">
@@ -1985,15 +2042,12 @@ function animateAndMove(d1, d2) {
     const d2El = document.getElementById('dice-2');
 
     if (diceContainer) diceContainer.style.display = 'flex';
-    if (d1El) d1El.classList.add('rolling');
-    if (d2El) d2El.classList.add('rolling');
+    if (d1El) { d1El.classList.add('rolling-3d'); d1El.classList.add('rolling'); }
+    if (d2El) { d2El.classList.add('rolling-3d'); d2El.classList.add('rolling'); }
 
     setTimeout(() => {
-        if (d1El) d1El.classList.remove('rolling');
-        if (d2El) d2El.classList.remove('rolling');
-
-        if (d1El) d1El.innerHTML = renderDiceFaceHTML(d1);
-        if (d2El) d2El.innerHTML = renderDiceFaceHTML(d2);
+        if (d1El) set3DCubeValue(d1El, d1);
+        if (d2El) set3DCubeValue(d2El, d2);
 
         const total = d1 + d2;
         const duplas = d1 === d2;
