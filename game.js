@@ -978,7 +978,17 @@ const SoundFX = {
     },
 
     playDiceRoll() {
-        this.playFile('assets/som_dados.wav', () => this.playDiceRollSynth());
+        if (this.muted) return;
+        try {
+            const diceAudio = new Audio('assets/som_dados.wav');
+            diceAudio.volume = 0.9;
+            diceAudio.currentTime = 0;
+            diceAudio.play().catch(() => {
+                this.playDiceRollSynth();
+            });
+        } catch(e) {
+            this.playDiceRollSynth();
+        }
     },
 
     playDiceRollSynth() {
