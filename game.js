@@ -134,14 +134,14 @@ const TABULEIRO = [
   {
     "nome": "Alexandria - The Walking Dead",
     "tipo": "propriedade",
-    "preco": 140,
+    "preco": 120,
     "alugueis": [
-      70,
-      120,
-      170,
-      220,
-      270,
-      320
+      60,
+      110,
+      160,
+      210,
+      260,
+      310
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -254,14 +254,14 @@ const TABULEIRO = [
   {
     "nome": "Território do Predador",
     "tipo": "transporte",
-    "preco": 210,
+    "preco": 200,
     "alugueis": [
-      105,
-      50,
       100,
-      200,
-      200,
-      200
+      250,
+      400,
+      550,
+      700,
+      850
     ],
     "melhorias": 0,
     "nome_melhoria": [
