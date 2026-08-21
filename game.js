@@ -2212,6 +2212,7 @@ function mostrarVideoModal(videoSrc, callback) {
     estado = "AGUARDANDO_DECISAO"; // Pausa o jogo
     const modal = document.getElementById('video-modal');
     const videoEl = document.getElementById('house-video');
+    const sourceEl = document.getElementById('house-video-src');
     const btnClose = document.getElementById('btn-close-video');
 
     let cbCalled = false;
@@ -2222,67 +2223,38 @@ function mostrarVideoModal(videoSrc, callback) {
         }
     };
 
-    if (!modal || !videoEl) {
+    if (!modal || !videoEl || !sourceEl) {
         executeCallback();
         return;
     }
 
-    // Limpa callbacks antigos
-    videoEl.onended = null;
-    videoEl.onerror = null;
-
     const safeSrc = encodeURI(videoSrc);
 
-    // Evita conflitos com <source> removendo-o se existir
-    videoEl.innerHTML = '';
-    
-    // Configura o vídeo diretamente (garante que onerror dispare em caso de 404)
+    sourceEl.src = safeSrc;
     videoEl.src = safeSrc;
     videoEl.load();
     modal.style.display = 'flex';
-    
-    // Proteção contra carregamento infinito (ex: arquivo faltando, 404, internet lenta)
-    // Se não passar do status 0 (HAVE_NOTHING) em 5 segundos, pula o vídeo.
-    let fallbackTimeout = setTimeout(() => {
-        if (!cbCalled && videoEl.readyState < 2) {
-            console.warn("Timeout de vídeo acionado: Pulando vídeo para evitar travamento infinito.", safeSrc);
-            try { videoEl.pause(); } catch(e){}
-            modal.style.display = 'none';
-            executeCallback();
-        }
-    }, 5000);
-
-    const playPromise = videoEl.play();
-    if (playPromise !== undefined) {
-        playPromise.catch(error => {
-            console.warn("Autoplay prevenido pelo navegador. Pressione Play manualmente.", error);
-        });
-    }
 
     btnClose.onclick = () => {
-        clearTimeout(fallbackTimeout);
         try { videoEl.pause(); } catch(e){}
         modal.style.display = 'none';
         executeCallback();
     };
 
     videoEl.onended = () => {
-        clearTimeout(fallbackTimeout);
         modal.style.display = 'none';
         executeCallback();
     };
 
     videoEl.onerror = (e) => {
-        clearTimeout(fallbackTimeout);
         console.warn("Erro ao carregar o vídeo:", safeSrc, e);
         modal.style.display = 'none';
         executeCallback();
     };
     
-    // Se começar a tocar, limpa o timeout de segurança
-    videoEl.onplaying = () => {
-        clearTimeout(fallbackTimeout);
-    };
+    videoEl.play().catch(e => {
+        console.warn("Autoplay prevenido pelo navegador ou interação necessária.", e);
+    });
 }
 
 function mostrarPropriedadesJogador(idx) {
