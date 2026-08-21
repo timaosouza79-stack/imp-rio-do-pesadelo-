@@ -1184,7 +1184,12 @@ const PERSONAGENS_JOGADORES = [
     { charNome: "Zumbi", avatar: "assets/peaozumbi.png", cor: "#ff3366" }, // Coral Neon
     { charNome: "Eleven", avatar: "assets/peao11.png", cor: "#ff0055" }, // Vermelho Stranger
     { charNome: "Ghostface", avatar: "assets/peaopanico.png", cor: "#ffffff" }, // Branco Fantasma
-    { charNome: "King Kong", avatar: "assets/peaokingkong.png", cor: "#ffaa00" } // Laranja Kong
+    { charNome: "King Kong", avatar: "assets/peaokingkong.png", cor: "#ffaa00" }, // Laranja Kong
+    { charNome: "Meg", avatar: "assets/peaomeg.png", cor: "#ff99cc" }, // Rosa Chiclete
+    { charNome: "Mãozinha", avatar: "assets/peaomao.png", cor: "#dcdcdc" }, // Cinza Claro
+    { charNome: "Lisa", avatar: "assets/peaoliza.png", cor: "#ffcc00" }, // Amarelo Lisa
+    { charNome: "Marge", avatar: "assets/peaomarge.png", cor: "#3366ff" }, // Azul Marge
+    { charNome: "Bart", avatar: "assets/peaobart.png", cor: "#ff3300" } // Laranja Bart
 ];
 
 let selectedCharIndex = 0;
