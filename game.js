@@ -985,76 +985,15 @@ const SoundFX = {
     playDiceRoll() {
         if (this.muted) return;
         try {
-            const diceAudio = new Audio('assets/som_dados.wav');
+            const diceAudio = new Audio('assets/audiodados.mp3');
             diceAudio.volume = 0.95;
             diceAudio.currentTime = 0;
             diceAudio.play().catch(e => {
-                this.playDiceRollSynth();
+                console.log("Audio failed to play", e);
             });
         } catch(e) {
-            this.playDiceRollSynth();
+            console.log("Audio failed to play", e);
         }
-    },
-
-    playDiceRollSynth() {
-        if (this.muted) return;
-        this.init();
-        if (!this.audioCtx) return;
-
-        const now = this.audioCtx.currentTime;
-
-        // Fase 1: Chacoalhar no copo de madeira (0.00s a 0.16s)
-        [0.00, 0.04, 0.08, 0.12, 0.16].forEach((delay, idx) => {
-            const osc = this.audioCtx.createOscillator();
-            const gain = this.audioCtx.createGain();
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(1300 + idx * 100, now + delay);
-            gain.gain.setValueAtTime(0.08, now + delay);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.015);
-            osc.connect(gain);
-            gain.connect(this.audioCtx.destination);
-            osc.start(now + delay);
-            osc.stop(now + delay + 0.015);
-        });
-
-        // Fase 2: Duplo impacto na mesa de madeira maciça (0.22s e 0.255s)
-        [0.22, 0.255].forEach((delay, idx) => {
-            const oscWood = this.audioCtx.createOscillator();
-            const gainWood = this.audioCtx.createGain();
-            oscWood.type = 'sine';
-            oscWood.frequency.setValueAtTime(190 + idx * 20, now + delay);
-            gainWood.gain.setValueAtTime(0.20 - idx * 0.03, now + delay);
-            gainWood.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.045);
-            oscWood.connect(gainWood);
-            gainWood.connect(this.audioCtx.destination);
-            oscWood.start(now + delay);
-            oscWood.stop(now + delay + 0.045);
-
-            const oscClick = this.audioCtx.createOscillator();
-            const gainClick = this.audioCtx.createGain();
-            oscClick.type = 'triangle';
-            oscClick.frequency.setValueAtTime(1300 + idx * 150, now + delay);
-            gainClick.gain.setValueAtTime(0.12, now + delay);
-            gainClick.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.01);
-            oscClick.connect(gainClick);
-            gainClick.connect(this.audioCtx.destination);
-            oscClick.start(now + delay);
-            oscClick.stop(now + delay + 0.01);
-        });
-
-        // Fase 3: Rolar e quiques de madeira na mesa (0.33s, 0.39s, 0.44s)
-        [0.33, 0.39, 0.44].forEach((delay, idx) => {
-            const osc = this.audioCtx.createOscillator();
-            const gain = this.audioCtx.createGain();
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(230 + idx * 30, now + delay);
-            gain.gain.setValueAtTime(0.10 / (idx + 1), now + delay);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.02);
-            osc.connect(gain);
-            gain.connect(this.audioCtx.destination);
-            osc.start(now + delay);
-            osc.stop(now + delay + 0.02);
-        });
     },
 
     playBuy() {

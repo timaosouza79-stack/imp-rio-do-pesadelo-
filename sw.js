@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pesadelos-v47';
+const CACHE_NAME = 'pesadelos-v48';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -6,7 +6,7 @@ const ASSETS_TO_CACHE = [
   './game.js',
   './tabuleiro.json',
   './manifest.json',
-  './assets/som_dados.wav',
+  './assets/audiodados.mp3',
   './assets/som_comprar.wav',
   './assets/som_aluguel.wav',
   './assets/som_pandora.wav',
