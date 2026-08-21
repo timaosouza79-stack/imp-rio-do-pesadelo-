@@ -1486,6 +1486,18 @@ let jogadores = [];
 let idxJogador = 0;
 let estado = "INIT";
 let currentPandoraIdx = 0;
+let pandoraDeck = [];
+
+function drawPandoraCard() {
+    if (pandoraDeck.length === 0) {
+        pandoraDeck = Array.from({length: CARTAS_PANDORA.length}, (_, i) => i);
+        for (let i = pandoraDeck.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [pandoraDeck[i], pandoraDeck[j]] = [pandoraDeck[j], pandoraDeck[i]];
+        }
+    }
+    return pandoraDeck.pop();
+}
 
 function logMsg(msg) {
     const feed = document.getElementById('log-feed');
@@ -1743,6 +1755,7 @@ function salvarJogo() {
             savedAt:           new Date().toLocaleString('pt-BR'),
             idxJogador,
             currentPandoraIdx,
+            pandoraDeck,
             jogadores:         jogadoresSnapshot,
             tabuleiro:         tabuleiroSnapshot
         };
@@ -1792,6 +1805,7 @@ function carregarJogo() {
 
         idxJogador        = save.idxJogador;
         currentPandoraIdx = save.currentPandoraIdx || 0;
+        pandoraDeck       = save.pandoraDeck || [];
         estado            = "INICIO_TURNO";
 
         // Mostrar UI do jogo
@@ -1951,18 +1965,17 @@ function rolarDados() {
         if (isHost && idxJogador === myPlayerIdx) {
             const d1 = Math.floor(Math.random() * 6) + 1;
             const d2 = Math.floor(Math.random() * 6) + 1;
-            const pIdx = Math.floor(Math.random() * CARTAS_PANDORA.length);
+            const pIdx = drawPandoraCard();
             currentPandoraIdx = pIdx;
             broadcastToClients({ type: 'DICE_ROLL', d1, d2, pandoraIdx: pIdx });
-            currentPandoraIdx = Math.floor(Math.random() * CARTAS_PANDORA.length);
-        animateAndMove(d1, d2);
+            animateAndMove(d1, d2);
         } else if (!isHost && idxJogador === myPlayerIdx) {
             hostConnection.send({ type: 'REQUEST_ROLL' });
         }
     } else {
         const d1 = Math.floor(Math.random() * 6) + 1;
         const d2 = Math.floor(Math.random() * 6) + 1;
-        currentPandoraIdx = Math.floor(Math.random() * CARTAS_PANDORA.length);
+        currentPandoraIdx = drawPandoraCard();
         animateAndMove(d1, d2);
     }
 }
