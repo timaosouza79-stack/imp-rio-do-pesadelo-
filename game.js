@@ -622,12 +622,12 @@ const TABULEIRO = [
     "tipo": "servico",
     "preco": 250,
     "alugueis": [
-      30,
-      80,
-      180,
-      350,
-      550,
-      800
+      125,
+      275,
+      425,
+      575,
+      725,
+      875
     ],
     "melhorias": 0,
     "nome_melhoria": [
