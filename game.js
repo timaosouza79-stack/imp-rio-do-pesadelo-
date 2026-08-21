@@ -1242,7 +1242,10 @@ const PERSONAGENS_JOGADORES = [
     { charNome: "Michael Myers", avatar: "assets/peaomichaelmyers.png", cor: "#00e5ff" }, // Azul Neon
     { charNome: "Predador", avatar: "assets/peaopredador.png", cor: "#39ff14" }, // Verde Laser
     { charNome: "Terrifier", avatar: "assets/peaoterrifier.png", cor: "#7df9ff" }, // Azul Gelo
-    { charNome: "Zumbi", avatar: "assets/peaozumbi.png", cor: "#ff3366" } // Coral Neon
+    { charNome: "Zumbi", avatar: "assets/peaozumbi.png", cor: "#ff3366" }, // Coral Neon
+    { charNome: "Eleven", avatar: "assets/peao11.png", cor: "#ff0055" }, // Vermelho Stranger
+    { charNome: "Ghostface", avatar: "assets/peaopanico.png", cor: "#ffffff" }, // Branco Fantasma
+    { charNome: "King Kong", avatar: "assets/peaokingkong.png", cor: "#ffaa00" } // Laranja Kong
 ];
 
 let selectedCharIndex = 0;
