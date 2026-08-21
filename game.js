@@ -998,25 +998,47 @@ const SoundFX = {
         if (!this.audioCtx) return;
 
         const now = this.audioCtx.currentTime;
-        const bounces = [0.0, 0.05, 0.09, 0.13, 0.16, 0.18];
-        bounces.forEach((delay, idx) => {
+
+        // Fase 1: Chacoalhar no copo (0.00s a 0.16s)
+        [0.00, 0.04, 0.08, 0.12, 0.16].forEach((delay, idx) => {
             const osc = this.audioCtx.createOscillator();
             const gain = this.audioCtx.createGain();
-            
-            const baseFreq = 450 + Math.random() * 200 - (idx * 25);
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(baseFreq, now + delay);
-            osc.frequency.exponentialRampToValueAtTime(130, now + delay + 0.035);
-
-            const vol = 0.15 * Math.pow(0.7, idx);
-            gain.gain.setValueAtTime(vol, now + delay);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.035);
-
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(3500 + idx * 200, now + delay);
+            gain.gain.setValueAtTime(0.06 + idx * 0.01, now + delay);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.02);
             osc.connect(gain);
             gain.connect(this.audioCtx.destination);
-
             osc.start(now + delay);
-            osc.stop(now + delay + 0.035);
+            osc.stop(now + delay + 0.02);
+        });
+
+        // Fase 2: Duplo impacto na mesa de madeira/feltro (0.24s e 0.265s)
+        [0.24, 0.265].forEach((delay, idx) => {
+            const osc = this.audioCtx.createOscillator();
+            const gain = this.audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(140 + idx * 20, now + delay);
+            gain.gain.setValueAtTime(0.18 - idx * 0.03, now + delay);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.06);
+            osc.connect(gain);
+            gain.connect(this.audioCtx.destination);
+            osc.start(now + delay);
+            osc.stop(now + delay + 0.06);
+        });
+
+        // Fase 3: 3 quiques e desaceleração (0.34s, 0.41s, 0.46s)
+        [0.34, 0.41, 0.46].forEach((delay, idx) => {
+            const osc = this.audioCtx.createOscillator();
+            const gain = this.audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(220 + idx * 60, now + delay);
+            gain.gain.setValueAtTime(0.12 / (idx + 1), now + delay);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.03);
+            osc.connect(gain);
+            gain.connect(this.audioCtx.destination);
+            osc.start(now + delay);
+            osc.stop(now + delay + 0.03);
         });
     },
 
