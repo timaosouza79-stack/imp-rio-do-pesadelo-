@@ -2220,14 +2220,17 @@ function mostrarVideoModal(videoSrc, callback) {
         return;
     }
 
-    sourceEl.src = videoSrc;
+    // Em navegadores WebKit/Safari, alterar dinamicamente a tag <source> frequentemente trava o vídeo.
+    // A forma correta e recomendada pela MDN é setar o src diretamente na tag <video>.
+    videoEl.innerHTML = ''; 
+    videoEl.src = videoSrc;
     videoEl.load();
     modal.style.display = 'flex';
 
     // Ao terminar o vídeo, tentar não fechar automaticamente (mas o usuário pode fechar)
     // Se o usuário clicar no X
     btnClose.onclick = () => {
-        videoEl.pause();
+        try { videoEl.pause(); } catch(e){}
         modal.style.display = 'none';
         if(callback) callback();
     };
