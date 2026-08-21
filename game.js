@@ -2234,6 +2234,14 @@ function mostrarVideoModal(videoSrc, callback) {
     videoEl.src = safeSrc;
     videoEl.load();
     modal.style.display = 'flex';
+    
+    // Tenta forçar o play para evitar bloqueios de autoplay sem matar o buffer longo
+    const playPromise = videoEl.play();
+    if (playPromise !== undefined) {
+        playPromise.catch(error => {
+            console.warn("Autoplay prevenido. Aguardando interação do usuário.", error);
+        });
+    }
 
     btnClose.onclick = () => {
         try { videoEl.pause(); } catch(e){}
