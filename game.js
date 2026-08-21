@@ -2212,10 +2212,9 @@ function mostrarVideoModal(videoSrc, callback) {
     estado = "AGUARDANDO_DECISAO"; // Pausa o jogo
     const modal = document.getElementById('video-modal');
     const videoEl = document.getElementById('house-video');
-    const sourceEl = document.getElementById('house-video-src');
     const btnClose = document.getElementById('btn-close-video');
 
-    if (!modal || !videoEl || !sourceEl) {
+    if (!modal || !videoEl) {
         if(callback) callback();
         return;
     }
