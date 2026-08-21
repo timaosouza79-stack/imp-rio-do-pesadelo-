@@ -899,6 +899,9 @@ const URLS_VIDEOS = {
     'jurassic': 'assets/videojurrassic.MP4',
     'jurrassic': 'assets/videojurrassic.MP4',
     'dracula': 'assets/VIDEODRACULA.MP4',
+    'castelo_dracula': 'assets/VIDEODRACULA.MP4',
+    'castelo_do_dracula': 'assets/VIDEODRACULA.MP4',
+    'castelo': 'assets/VIDEODRACULA.MP4',
     'king_kong': 'assets/videokingkong.MP4',
     'kingkong': 'assets/videokingkong.MP4',
     'kong': 'assets/videokingkong.MP4',
@@ -1350,12 +1353,12 @@ function getTileImgKey(casa, index) {
     }
     if (casa.tipo === 'prisao') return 'arkham';
     if (casa.tipo === 'va_para_prisao') return 'transporte_prisioneiros';
-    const n = casa.nome.toLowerCase();
+    const n = casa.nome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     if (n.includes('annabelle')) return 'annabelle';
     if (n.includes('chucky') || n.includes('good guys') || n.includes('chuck')) return 'chucky';
     if (n.includes('myers') || n.includes('michael')) return 'myers';
     if (n.includes('crystal lake') || n.includes('jason')) return 'crystal_lake';
-    if (n.includes('drácula') || n.includes('dracula')) return 'dracula';
+    if (n.includes('dracula') || n.includes('castelo')) return 'dracula';
     if (n.includes('sorria')) return 'sorria';
     if (n.includes('jurassic') || n.includes('jurrassic')) return 'jurassic';
     if (n.includes('ilha da caveira') || n.includes('king kong') || n.includes('kong')) return 'king_kong';
