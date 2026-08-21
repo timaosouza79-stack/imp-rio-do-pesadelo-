@@ -3006,11 +3006,18 @@ function venderPropriedade(j, indexCasa) {
     }
 }
 
+function getPrioridadeVenda(casa) {
+    let score = getValorVenda(casa);
+    if (casa.tipo === 'propriedade') score += 5000; // Evita vender propriedades antes de serviços
+    if (casa.melhorias > 0) score += 10000;         // Evita vender casas com melhorias
+    return score;
+}
+
 function cpuVenderBensParaPagar(j, divida, callback) {
-    // Vende propriedades da mais barata até cobrir a dívida
+    // Vende propriedades da menos estratégica para a mais, até cobrir a dívida
     let casasObj = TABULEIRO.map((c, i) => ({ casa: c, index: i }))
         .filter(x => x.casa.dono === j.nome)
-        .sort((a, b) => getValorVenda(a.casa) - getValorVenda(b.casa));
+        .sort((a, b) => getPrioridadeVenda(a.casa) - getPrioridadeVenda(b.casa));
         
     for (const item of casasObj) {
         if (j.dinheiro >= divida) break;
@@ -3036,15 +3043,20 @@ function mostrarModalVenda(j, divida, callback) {
         listDiv.innerHTML = '';
         
         let casasDono = TABULEIRO.map((c, i) => ({ casa: c, index: i }))
-            .filter(x => x.casa.dono === j.nome);
+            .filter(x => x.casa.dono === j.nome)
+            .sort((a, b) => getPrioridadeVenda(a.casa) - getPrioridadeVenda(b.casa));
             
+        let runningTotal = 0;
         casasDono.forEach(item => {
             const val = getValorVenda(item.casa);
+            const isRecomendado = (j.dinheiro + runningTotal < divida);
+            runningTotal += val;
+            
             const div = document.createElement('div');
             div.className = 'sell-item';
             div.innerHTML = `
                 <div class="sell-info">
-                    <span class="prop-name">${item.casa.nome}</span>
+                    <span class="prop-name">${item.casa.nome} ${isRecomendado ? '<span style="color:#00ff88; font-size:12px; font-weight:bold; margin-left:10px;">💡 Recomendado</span>' : ''}</span>
                     <span class="prop-value">Valor de Venda: $${val}</span>
                 </div>
                 <button class="btn-sell">Vender</button>
