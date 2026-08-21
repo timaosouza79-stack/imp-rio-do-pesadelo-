@@ -2234,6 +2234,14 @@ function mostrarVideoModal(videoSrc, callback) {
     videoEl.src = safeSrc;
     videoEl.load();
     modal.style.display = 'flex';
+    
+    // Forçar reprodução ativa (navegadores frequentemente bloqueiam autoplay dinâmico)
+    const playPromise = videoEl.play();
+    if (playPromise !== undefined) {
+        playPromise.catch(error => {
+            console.warn("Autoplay prevenido pelo navegador. O usuário precisa iniciar manualmente.", error);
+        });
+    }
 
     btnClose.onclick = () => {
         try { videoEl.pause(); } catch(e){}
