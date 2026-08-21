@@ -2215,53 +2215,31 @@ function mostrarVideoModal(videoSrc, callback) {
     const sourceEl = document.getElementById('house-video-src');
     const btnClose = document.getElementById('btn-close-video');
 
-    let cbCalled = false;
-    const executeCallback = () => {
-        if (!cbCalled) {
-            cbCalled = true;
-            if (callback) callback();
-        }
-    };
-
     if (!modal || !videoEl || !sourceEl) {
-        executeCallback();
+        if(callback) callback();
         return;
     }
 
-    const safeSrc = encodeURI(videoSrc);
-
-    sourceEl.src = safeSrc;
-    videoEl.src = safeSrc;
+    sourceEl.src = videoSrc;
     videoEl.load();
     modal.style.display = 'flex';
-    
-    // Tenta forçar o play para evitar bloqueios de autoplay sem matar o buffer longo
-    const playPromise = videoEl.play();
-    if (playPromise !== undefined) {
-        playPromise.catch(error => {
-            console.warn("Autoplay prevenido. Aguardando interação do usuário.", error);
-        });
-    }
 
+    // Ao terminar o vídeo, tentar não fechar automaticamente (mas o usuário pode fechar)
+    // Se o usuário clicar no X
     btnClose.onclick = () => {
-        try { videoEl.pause(); } catch(e){}
+        videoEl.pause();
         modal.style.display = 'none';
-        executeCallback();
+        if(callback) callback();
     };
 
     videoEl.onended = () => {
-        modal.style.display = 'none';
-        executeCallback();
-    };
-
-    videoEl.onerror = (e) => {
-        console.warn("Erro ao carregar o vídeo:", safeSrc, e);
-        modal.style.display = 'none';
-        executeCallback();
+        // Ao terminar o vídeo apenas mostra o botão e pausa. O usuário que clica para fechar, 
+        // ou fecha direto e continua.
+        // Já vamos deixar o usuário fechar manualmente pelo btnClose.
     };
     
     videoEl.play().catch(e => {
-        console.warn("Autoplay prevenido pelo navegador ou interação necessária.", e);
+        console.warn("Autoplay prevenido pelo navegador.", e);
     });
 }
 
