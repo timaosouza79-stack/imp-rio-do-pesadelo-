@@ -2337,10 +2337,11 @@ function aplicarRegraRestante(j, casa) {
             }
         }
     } else if (casa.tipo === "imposto") {
+        let valorImposto = casa.valor;
+        let ofCtx = window.triggerPerk(j, 'onOferenda', { valorOriginal: valorImposto });
+        valorImposto = ofCtx.newCost !== undefined ? ofCtx.newCost : valorImposto;
+
         const pagarImposto = () => {
-            let valorImposto = casa.valor;
-            let ofCtx = window.triggerPerk(j, 'onOferenda', { valorOriginal: valorImposto });
-            valorImposto = ofCtx.newCost !== undefined ? ofCtx.newCost : valorImposto;
             SoundFX.playRent();
             j.dinheiro -= valorImposto;
             logMsg(`🧾 ${j.nome} pagou $${valorImposto} de imposto/oferenda.`);
@@ -2354,7 +2355,12 @@ function aplicarRegraRestante(j, casa) {
                 encerrarTurno();
             }
         };
-        cobrarDivida(j, casa.valor, pagarImposto);
+
+        if (valorImposto > 0) {
+            cobrarDivida(j, valorImposto, pagarImposto);
+        } else {
+            pagarImposto();
+        }
     } else if (casa.tipo === "especial" && casa.nome === "Caixa de Pandora") {
         const c = CARTAS_PANDORA[currentPandoraIdx];
         SoundFX.playPandora();
@@ -2369,11 +2375,11 @@ function aplicarRegraRestante(j, casa) {
             }
         };
 
+        let altVal = c.valor_alteracao;
+        let pCtx = window.triggerPerk(j, 'onDrawPandora', { valorAlteracao: altVal });
+        altVal = pCtx.valorAlteracao !== undefined ? pCtx.valorAlteracao : altVal;
+
         const processarPandora = () => {
-            let altVal = c.valor_alteracao;
-            let pCtx = window.triggerPerk(j, 'onDrawPandora', { valorAlteracao: altVal });
-            altVal = pCtx.valorAlteracao !== undefined ? pCtx.valorAlteracao : altVal;
-            
             if (altVal < 0) SoundFX.playRent();
             j.dinheiro += altVal;
             logMsg(`📦 Carta de Pandora: ${c.texto}`);
@@ -2386,8 +2392,8 @@ function aplicarRegraRestante(j, casa) {
             }
         };
 
-        if (c.valor_alteracao < 0) {
-            cobrarDivida(j, Math.abs(c.valor_alteracao), processarPandora);
+        if (altVal < 0) {
+            cobrarDivida(j, Math.abs(altVal), processarPandora);
         } else {
             processarPandora();
         }
