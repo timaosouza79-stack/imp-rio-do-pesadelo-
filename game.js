@@ -910,7 +910,7 @@ const URLS_VIDEOS = {
     'bar_moe': 'assets/VIDEOBARDOMOE.MP4',
     'chuckfreios': 'assets/chuckfreios.MP4',
     'usina': 'assets/videousina.MP4',
-    'exorcista': 'assets/exorcista.MP4',
+    'exorcista': 'assets/videoexorcista.MP4',
     'transporte_prisioneiros': 'assets/video_prisao.MP4',
     'prisao': 'assets/video_prisao.MP4',
     'hawkins': 'assets/videolaboratoriodehankings.MP4',
