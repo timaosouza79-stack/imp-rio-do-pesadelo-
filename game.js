@@ -1345,7 +1345,7 @@ function renderCharSelectMenu() {
             mostrarPropertyCard(dummy, msg, () => {
                 const pcard = document.getElementById('property-card-modal');
                 if(pcard) pcard.style.display = 'none';
-                estado = oldEstado;
+                if (estado === "AGUARDANDO_DECISAO") estado = oldEstado;
             }, null, "FECHAR", null);
         };
         if (chosenHumanChars.includes(idx)) {
@@ -1828,6 +1828,8 @@ function iniciarJogo(humanos, cpus, chosenHumanChars, chosenHumanNames) {
     
     const setupM = document.getElementById('setup-modal');
     if (setupM) setupM.style.display = 'none';
+    const propModal = document.getElementById('property-card-modal');
+    if (propModal) propModal.style.display = 'none';
     const uiC = document.getElementById('ui-container');
     if (uiC) uiC.style.display = 'flex';
         
