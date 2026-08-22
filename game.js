@@ -2109,6 +2109,7 @@ function aplicarRegraRestante(j, casa) {
             let al = casa.alugueis ? casa.alugueis[nivel] : Math.floor(casa.preco * 0.5);
             
             const pagarAluguelFinal = () => {
+                SoundFX.playRent();
                 j.dinheiro -= al;
                 let dono = jogadores.find(x => x.nome === casa.dono);
                 if(dono) dono.dinheiro += al;
@@ -2158,6 +2159,7 @@ function aplicarRegraRestante(j, casa) {
         }
     } else if (casa.tipo === "imposto") {
         const pagarImposto = () => {
+            SoundFX.playRent();
             j.dinheiro -= casa.valor;
             logMsg(`🧾 ${j.nome} pagou $${casa.valor} de imposto.`);
             if (!j.is_cpu) {
@@ -2186,6 +2188,7 @@ function aplicarRegraRestante(j, casa) {
         };
 
         const processarPandora = () => {
+            if (c.valor_alteracao < 0) SoundFX.playRent();
             j.dinheiro += c.valor_alteracao;
             logMsg(`📦 Carta de Pandora: ${c.texto}`);
             if (c.ir_prisao) { j.posicao = 10; j.is_preso = true; logMsg(`🚨 ${j.nome} foi para a Prisão!`); }
@@ -2437,6 +2440,7 @@ function loopLogica() {
         if (j.turnos_preso > 3) {
             logMsg(`🚨 ${j.nome} atingiu o limite de turnos e precisa pagar $50 para sair do Arkham!`);
             cobrarDivida(j, 50, () => {
+                SoundFX.playRent();
                 j.dinheiro -= 50;
                 j.preso = false;
                 j.turnos_preso = 0;
@@ -2444,6 +2448,7 @@ function loopLogica() {
             });
         } else if (j.is_cpu) {
             if (j.dinheiro >= 50) {
+                SoundFX.playRent();
                 j.dinheiro -= 50;
                 j.preso = false;
                 j.turnos_preso = 0;
@@ -2458,6 +2463,7 @@ function loopLogica() {
             const dummyCasa = { nome: "Asilo Arkham", topColor: "#1a1a1a", imgUrl: URLS_IMAGENS['prisao'] || URLS_IMAGENS['arkham'] };
             mostrarPropertyCard(dummyCasa, "Você está no Arkham! Pagar $50 para sair livremente ou tentar tirar duplas nos dados?", () => {
                 if (j.dinheiro >= 50) {
+                    SoundFX.playRent();
                     j.dinheiro -= 50; j.preso = false; j.turnos_preso = 0;
                     logMsg(`✅ Você pagou $50 e saiu da prisão!`);
                     estado = "AGUARDANDO_ROLO";
