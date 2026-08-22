@@ -9,11 +9,11 @@
     "preco": 60,
     "alugueis": [
       30,
-      80,
-      130,
-      180,
-      230,
-      280
+      60,
+      90,
+      120,
+      150,
+      180
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -23,7 +23,7 @@
       "Possessão Demoníaca",
       "Invocação Maligna"
     ],
-    "preco_melhoria": 50,
+    "preco_melhoria": 30,
     "dono": null
   },
   {
@@ -36,11 +36,11 @@
     "preco": 80,
     "alugueis": [
       40,
-      90,
-      140,
-      190,
-      240,
-      290
+      80,
+      120,
+      160,
+      200,
+      240
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -50,7 +50,7 @@
       "Feitiços Vudus",
       "Fábrica de Pesadelos"
     ],
-    "preco_melhoria": 50,
+    "preco_melhoria": 40,
     "dono": null
   },
   {
@@ -87,11 +87,11 @@
     "preco": 120,
     "alugueis": [
       60,
-      110,
-      160,
-      210,
-      260,
-      310
+      120,
+      180,
+      240,
+      300,
+      360
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -101,7 +101,7 @@
       "Identidades Partidas",
       "Motel dos Horrores"
     ],
-    "preco_melhoria": 50,
+    "preco_melhoria": 60,
     "dono": null
   },
   {
@@ -114,11 +114,11 @@
     "preco": 140,
     "alugueis": [
       70,
-      120,
-      170,
-      220,
-      270,
-      320
+      140,
+      210,
+      280,
+      350,
+      420
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -128,7 +128,7 @@
       "Armadilhas Mortais",
       "Maldição de Woodsboro"
     ],
-    "preco_melhoria": 50,
+    "preco_melhoria": 70,
     "dono": null
   },
   {
@@ -137,11 +137,11 @@
     "preco": 160,
     "alugueis": [
       80,
-      130,
-      180,
-      230,
-      280,
-      330
+      160,
+      240,
+      320,
+      400,
+      480
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -151,7 +151,7 @@
       "Armas Anti-Zumbi",
       "Bastião da Sobrevivência"
     ],
-    "preco_melhoria": 50,
+    "preco_melhoria": 80,
     "dono": null
   },
   {
@@ -188,11 +188,11 @@
     "preco": 220,
     "alugueis": [
       110,
-      185,
-      260,
-      335,
-      410,
-      485
+      220,
+      330,
+      440,
+      550,
+      660
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -202,7 +202,7 @@
       "Relâmpagos Controlados",
       "Monstro de Frankenstein"
     ],
-    "preco_melhoria": 75,
+    "preco_melhoria": 110,
     "dono": null
   },
   {
@@ -211,11 +211,11 @@
     "preco": 240,
     "alugueis": [
       120,
-      220,
-      320,
-      420,
-      520,
-      620
+      240,
+      360,
+      480,
+      600,
+      720
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -225,7 +225,7 @@
       "Maldição Transmitida",
       "Entidade das Trevas"
     ],
-    "preco_melhoria": 100,
+    "preco_melhoria": 120,
     "dono": null
   },
   {
@@ -234,11 +234,11 @@
     "preco": 260,
     "alugueis": [
       130,
-      230,
-      330,
-      430,
-      530,
-      630
+      260,
+      390,
+      520,
+      650,
+      780
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -248,7 +248,7 @@
       "Bruma Carmesim",
       "Trono de Drácula"
     ],
-    "preco_melhoria": 100,
+    "preco_melhoria": 130,
     "dono": null
   },
   {
@@ -257,11 +257,11 @@
     "preco": 280,
     "alugueis": [
       140,
-      190,
-      240,
-      290,
-      340,
-      390
+      280,
+      420,
+      560,
+      700,
+      840
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -271,7 +271,7 @@
       "Armadura Alienígena",
       "Canhão de Plasma"
     ],
-    "preco_melhoria": 50,
+    "preco_melhoria": 140,
     "dono": null
   },
   {
@@ -280,11 +280,11 @@
     "preco": 300,
     "alugueis": [
       150,
-      250,
-      350,
+      300,
       450,
-      550,
-      650
+      600,
+      750,
+      900
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -294,7 +294,7 @@
       "Palhaço de Sangue",
       "Matadouro do Terrifier"
     ],
-    "preco_melhoria": 100,
+    "preco_melhoria": 150,
     "dono": null
   },
   {
@@ -307,11 +307,11 @@
     "preco": 320,
     "alugueis": [
       160,
-      260,
-      360,
-      460,
-      560,
-      660
+      320,
+      480,
+      640,
+      800,
+      960
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -321,7 +321,7 @@
       "T-Rex Solto",
       "Parque do Caos"
     ],
-    "preco_melhoria": 100,
+    "preco_melhoria": 160,
     "dono": null
   },
   {
@@ -330,11 +330,11 @@
     "preco": 340,
     "alugueis": [
       170,
-      270,
-      370,
-      470,
-      570,
-      670
+      340,
+      510,
+      680,
+      850,
+      1020
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -344,7 +344,7 @@
       "Guardiões da Ilha",
       "Rugido de King Kong"
     ],
-    "preco_melhoria": 100,
+    "preco_melhoria": 170,
     "dono": null
   },
   {
@@ -357,11 +357,11 @@
     "preco": 360,
     "alugueis": [
       180,
-      330,
-      480,
-      630,
-      780,
-      930
+      360,
+      540,
+      720,
+      900,
+      1080
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -371,7 +371,7 @@
       "Sombra de Myers",
       "A Forma nas Trevas"
     ],
-    "preco_melhoria": 150,
+    "preco_melhoria": 180,
     "dono": null
   },
   {
@@ -384,11 +384,11 @@
     "preco": 380,
     "alugueis": [
       190,
-      340,
-      490,
-      640,
-      790,
-      940
+      380,
+      570,
+      760,
+      950,
+      1140
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -398,7 +398,7 @@
       "Câmara do Medo",
       "Palhaço Primordial"
     ],
-    "preco_melhoria": 150,
+    "preco_melhoria": 190,
     "dono": null
   },
   {
@@ -407,11 +407,11 @@
     "preco": 400,
     "alugueis": [
       200,
-      350,
-      500,
-      650,
+      400,
+      600,
       800,
-      950
+      1000,
+      1200
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -421,7 +421,7 @@
       "Jogos Mortais",
       "Julgamento de Jigsaw"
     ],
-    "preco_melhoria": 150,
+    "preco_melhoria": 200,
     "dono": null
   },
   {
@@ -430,11 +430,11 @@
     "preco": 420,
     "alugueis": [
       210,
-      360,
-      510,
-      660,
-      810,
-      960
+      420,
+      630,
+      840,
+      1050,
+      1260
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -444,7 +444,7 @@
       "Possessão Total",
       "Exorcismo Final"
     ],
-    "preco_melhoria": 150,
+    "preco_melhoria": 210,
     "dono": null
   },
   {
@@ -453,11 +453,11 @@
     "preco": 440,
     "alugueis": [
       220,
-      370,
-      520,
-      670,
-      820,
-      970
+      440,
+      660,
+      880,
+      1100,
+      1320
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -467,7 +467,7 @@
       "Sonho Mortal",
       "Freddy no Seu Sono"
     ],
-    "preco_melhoria": 150,
+    "preco_melhoria": 220,
     "dono": null
   },
   {
@@ -476,11 +476,11 @@
     "preco": 460,
     "alugueis": [
       230,
-      380,
-      530,
-      680,
-      830,
-      980
+      460,
+      690,
+      920,
+      1150,
+      1380
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -490,7 +490,7 @@
       "Lago das Almas",
       "Vingança de Jason"
     ],
-    "preco_melhoria": 150,
+    "preco_melhoria": 230,
     "dono": null
   },
   {
@@ -499,11 +499,11 @@
     "preco": 480,
     "alugueis": [
       240,
-      290,
-      340,
-      390,
-      440,
-      490
+      480,
+      720,
+      960,
+      1200,
+      1440
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -513,7 +513,7 @@
       "Faro de Sangue",
       "Terror nos Céus"
     ],
-    "preco_melhoria": 50,
+    "preco_melhoria": 240,
     "dono": null
   },
   {
@@ -522,11 +522,11 @@
     "preco": 500,
     "alugueis": [
       250,
-      400,
-      550,
-      700,
-      850,
-      1000
+      500,
+      750,
+      1000,
+      1250,
+      1500
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -536,7 +536,7 @@
       "Família Sawyer",
       "Matadouro de Leatherface"
     ],
-    "preco_melhoria": 150,
+    "preco_melhoria": 250,
     "dono": null
   },
   {
@@ -550,11 +550,11 @@
     "preco": 540,
     "alugueis": [
       270,
-      470,
-      670,
-      870,
-      1070,
-      1270
+      540,
+      810,
+      1080,
+      1350,
+      1620
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -564,7 +564,7 @@
       "Fantasmas do Bar",
       "Taverna Amaldiçoada"
     ],
-    "preco_melhoria": 200,
+    "preco_melhoria": 270,
     "dono": null
   },
   {
@@ -573,11 +573,11 @@
     "preco": 560,
     "alugueis": [
       280,
-      480,
-      680,
-      880,
-      1080,
-      1280
+      560,
+      840,
+      1120,
+      1400,
+      1680
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -587,7 +587,7 @@
       "Monstros da Vizinhança",
       "Maldição de Homer"
     ],
-    "preco_melhoria": 200,
+    "preco_melhoria": 280,
     "dono": null
   },
   {
@@ -600,11 +600,11 @@
     "preco": 580,
     "alugueis": [
       290,
-      490,
-      690,
-      890,
-      1090,
-      1290
+      580,
+      870,
+      1160,
+      1450,
+      1740
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -614,7 +614,7 @@
       "Zona de Exclusão",
       "Fusão do Reator"
     ],
-    "preco_melhoria": 200,
+    "preco_melhoria": 290,
     "dono": null
   },
   {
@@ -623,11 +623,11 @@
     "preco": 600,
     "alugueis": [
       300,
-      400,
-      500,
       600,
-      700,
-      800
+      900,
+      1200,
+      1500,
+      1800
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -637,7 +637,7 @@
       "Visão de Samara",
       "Chamado da Morte"
     ],
-    "preco_melhoria": 100,
+    "preco_melhoria": 300,
     "dono": null
   },
   {
@@ -655,11 +655,11 @@
     "preco": 620,
     "alugueis": [
       310,
-      510,
-      710,
-      910,
-      1110,
-      1310
+      620,
+      930,
+      1240,
+      1550,
+      1860
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -669,7 +669,7 @@
       "Exposição Macabra",
       "Museu do Horror"
     ],
-    "preco_melhoria": 200,
+    "preco_melhoria": 310,
     "dono": null
   },
   {
@@ -678,11 +678,11 @@
     "preco": 640,
     "alugueis": [
       320,
-      520,
-      720,
-      920,
-      1120,
-      1320
+      640,
+      960,
+      1280,
+      1600,
+      1920
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -692,7 +692,7 @@
       "Espírito de Lurch",
       "Família Addams Completa"
     ],
-    "preco_melhoria": 200,
+    "preco_melhoria": 320,
     "dono": null
   }
 ]
