@@ -63,12 +63,12 @@ const TABULEIRO = [
     "tipo": "transporte",
     "preco": 100,
     "alugueis": [
-      45,
       50,
       100,
+      150,
       200,
-      200,
-      200
+      250,
+      300
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -86,12 +86,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 120,
     "alugueis": [
-      50,
-      100,
-      150,
-      200,
-      250,
-      300
+      60,
+      110,
+      160,
+      210,
+      260,
+      310
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -113,12 +113,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 140,
     "alugueis": [
-      60,
-      110,
-      160,
-      210,
-      260,
-      310
+      70,
+      120,
+      170,
+      220,
+      270,
+      320
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -136,12 +136,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 160,
     "alugueis": [
-      60,
-      110,
-      160,
-      210,
-      260,
-      310
+      80,
+      130,
+      180,
+      230,
+      280,
+      330
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -164,12 +164,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 200,
     "alugueis": [
-      80,
-      180,
-      280,
-      380,
-      480,
-      580
+      100,
+      200,
+      300,
+      400,
+      500,
+      600
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -187,12 +187,12 @@ const TABULEIRO = [
     "tipo": "servico",
     "preco": 220,
     "alugueis": [
-      85,
+      110,
       185,
-      285,
-      385,
-      485,
-      585
+      260,
+      335,
+      410,
+      485
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -210,12 +210,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 240,
     "alugueis": [
-      90,
-      190,
-      290,
-      390,
-      490,
-      590
+      120,
+      220,
+      320,
+      420,
+      520,
+      620
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -233,12 +233,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 260,
     "alugueis": [
-      100,
-      200,
-      300,
-      400,
-      500,
-      600
+      130,
+      230,
+      330,
+      430,
+      530,
+      630
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -256,12 +256,12 @@ const TABULEIRO = [
     "tipo": "transporte",
     "preco": 280,
     "alugueis": [
-      100,
-      250,
-      400,
-      550,
-      700,
-      850
+      140,
+      190,
+      240,
+      290,
+      340,
+      390
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -279,12 +279,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 300,
     "alugueis": [
-      110,
-      210,
-      310,
-      410,
-      510,
-      610
+      150,
+      250,
+      350,
+      450,
+      550,
+      650
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -306,12 +306,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 320,
     "alugueis": [
-      120,
-      220,
-      320,
-      420,
-      520,
-      620
+      160,
+      260,
+      360,
+      460,
+      560,
+      660
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -329,12 +329,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 340,
     "alugueis": [
-      130,
-      230,
-      330,
-      430,
-      530,
-      630
+      170,
+      270,
+      370,
+      470,
+      570,
+      670
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -356,12 +356,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 360,
     "alugueis": [
-      140,
-      290,
-      440,
-      590,
-      740,
-      890
+      180,
+      330,
+      480,
+      630,
+      780,
+      930
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -383,12 +383,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 380,
     "alugueis": [
-      150,
-      300,
-      450,
-      600,
-      750,
-      900
+      190,
+      340,
+      490,
+      640,
+      790,
+      940
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -406,12 +406,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 400,
     "alugueis": [
-      160,
-      310,
-      460,
-      610,
-      760,
-      910
+      200,
+      350,
+      500,
+      650,
+      800,
+      950
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -429,12 +429,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 420,
     "alugueis": [
-      170,
-      320,
-      470,
-      620,
-      770,
-      920
+      210,
+      360,
+      510,
+      660,
+      810,
+      960
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -452,12 +452,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 440,
     "alugueis": [
-      180,
-      330,
-      480,
-      630,
-      780,
-      930
+      220,
+      370,
+      520,
+      670,
+      820,
+      970
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -475,12 +475,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 460,
     "alugueis": [
-      190,
-      340,
-      490,
-      640,
-      790,
-      940
+      230,
+      380,
+      530,
+      680,
+      830,
+      980
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -498,12 +498,12 @@ const TABULEIRO = [
     "tipo": "transporte",
     "preco": 480,
     "alugueis": [
-      195,
-      50,
-      100,
-      200,
-      200,
-      200
+      240,
+      290,
+      340,
+      390,
+      440,
+      490
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -521,12 +521,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 500,
     "alugueis": [
-      200,
-      350,
-      500,
-      650,
-      800,
-      950
+      250,
+      400,
+      550,
+      700,
+      850,
+      1000
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -549,12 +549,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 540,
     "alugueis": [
-      215,
-      415,
-      615,
-      815,
-      1015,
-      1215
+      270,
+      470,
+      670,
+      870,
+      1070,
+      1270
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -572,12 +572,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 560,
     "alugueis": [
-      230,
-      430,
-      630,
-      830,
-      1030,
-      1230
+      280,
+      480,
+      680,
+      880,
+      1080,
+      1280
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -599,12 +599,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 580,
     "alugueis": [
-      245,
-      445,
-      645,
-      845,
-      1045,
-      1245
+      290,
+      490,
+      690,
+      890,
+      1090,
+      1290
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -622,12 +622,12 @@ const TABULEIRO = [
     "tipo": "servico",
     "preco": 600,
     "alugueis": [
-      125,
-      275,
-      425,
-      575,
-      725,
-      875
+      300,
+      400,
+      500,
+      600,
+      700,
+      800
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -654,12 +654,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 620,
     "alugueis": [
-      265,
-      465,
-      665,
-      865,
-      1065,
-      1265
+      310,
+      510,
+      710,
+      910,
+      1110,
+      1310
     ],
     "melhorias": 0,
     "nome_melhoria": [
@@ -677,12 +677,12 @@ const TABULEIRO = [
     "tipo": "propriedade",
     "preco": 640,
     "alugueis": [
-      300,
-      500,
-      700,
-      900,
-      1100,
-      1300
+      320,
+      520,
+      720,
+      920,
+      1120,
+      1320
     ],
     "melhorias": 0,
     "nome_melhoria": [
