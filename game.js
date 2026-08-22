@@ -1338,6 +1338,15 @@ function renderCharSelectMenu() {
             document.querySelectorAll('.char-card').forEach((c, i) => {
                 c.classList.toggle('selected', i === idx);
             });
+            
+            let oldEstado = estado;
+            const dummy = { nome: p.charNome, topColor: p.cor, imgUrl: p.avatar };
+            const msg = `<div style="text-align:center;"><strong style="color:${p.cor}; font-size:1.2rem;">${p.perkNome}</strong><br><br><span style="font-size:1rem; color:#ccc;">${p.perkDesc}</span></div>`;
+            mostrarPropertyCard(dummy, msg, () => {
+                const pcard = document.getElementById('property-card-modal');
+                if(pcard) pcard.style.display = 'none';
+                estado = oldEstado;
+            }, null, "FECHAR", null);
         };
         if (chosenHumanChars.includes(idx)) {
             card.classList.add('disabled-char');
