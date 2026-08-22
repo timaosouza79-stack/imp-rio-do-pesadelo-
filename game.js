@@ -1314,8 +1314,8 @@ const PERSONAGENS_JOGADORES = [
         charNome: "Pietro",
         avatar: "assets/peaopietro.png",
         cor: "#4169e1",
-        perkNome: "Sorte Mística",
-        perkDesc: "Ganha $50 extras ao cair em uma casa de sorte ou na Partida."
+        perkNome: "Liderança de Capitão",
+        perkDesc: "Recebe 20% de desconto nos aluguéis que paga e tem 30% de chance de anular efeitos ruins da Pandora."
     }
 ];
 
