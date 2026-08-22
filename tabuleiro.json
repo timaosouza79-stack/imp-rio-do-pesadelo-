@@ -8,12 +8,12 @@
     "tipo": "propriedade",
     "preco": 60,
     "alugueis": [
+      2,
+      10,
       30,
-      80,
-      130,
-      180,
-      230,
-      280
+      90,
+      160,
+      250
     ],
     "melhorias": 0,
     "nome_melhoria": "Símbolos Ocultos",
@@ -29,12 +29,12 @@
     "tipo": "propriedade",
     "preco": 60,
     "alugueis": [
-      30,
-      80,
-      130,
+      4,
+      20,
+      60,
       180,
-      230,
-      280
+      320,
+      450
     ],
     "melhorias": 0,
     "nome_melhoria": "Caixas de Bonecos",
@@ -68,12 +68,12 @@
     "tipo": "propriedade",
     "preco": 100,
     "alugueis": [
-      50,
-      100,
-      150,
-      200,
-      250,
-      300
+      6,
+      30,
+      90,
+      270,
+      400,
+      550
     ],
     "melhorias": 0,
     "nome_melhoria": "Chaves de Quarto",
@@ -89,12 +89,12 @@
     "tipo": "propriedade",
     "preco": 100,
     "alugueis": [
-      50,
-      100,
-      150,
-      200,
-      250,
-      300
+      6,
+      30,
+      90,
+      270,
+      400,
+      550
     ],
     "melhorias": 0,
     "nome_melhoria": "Máscaras Ghostface",
@@ -106,12 +106,12 @@
     "tipo": "propriedade",
     "preco": 120,
     "alugueis": [
-      60,
-      110,
-      160,
-      210,
-      260,
-      310
+      8,
+      40,
+      100,
+      300,
+      450,
+      600
     ],
     "melhorias": 0,
     "nome_melhoria": "Muros Fortificados",
@@ -127,12 +127,12 @@
     "tipo": "propriedade",
     "preco": 140,
     "alugueis": [
-      70,
-      170,
-      270,
-      370,
-      470,
-      570
+      10,
+      50,
+      150,
+      450,
+      625,
+      750
     ],
     "melhorias": 0,
     "nome_melhoria": "Fitas K7",
@@ -161,12 +161,12 @@
     "tipo": "propriedade",
     "preco": 140,
     "alugueis": [
-      70,
-      170,
-      270,
-      370,
-      470,
-      570
+      10,
+      50,
+      150,
+      450,
+      625,
+      750
     ],
     "melhorias": 0,
     "nome_melhoria": "Demogorgons",
@@ -178,12 +178,12 @@
     "tipo": "propriedade",
     "preco": 160,
     "alugueis": [
-      80,
+      12,
+      60,
       180,
-      280,
-      380,
-      480,
-      580
+      500,
+      700,
+      900
     ],
     "melhorias": 0,
     "nome_melhoria": "Estacas de Madeira",
@@ -212,12 +212,12 @@
     "tipo": "propriedade",
     "preco": 180,
     "alugueis": [
-      90,
-      190,
-      290,
-      390,
-      490,
-      590
+      14,
+      70,
+      200,
+      550,
+      750,
+      950
     ],
     "melhorias": 0,
     "nome_melhoria": "Sacos de Lixo Pretos",
@@ -233,12 +233,12 @@
     "tipo": "propriedade",
     "preco": 180,
     "alugueis": [
-      90,
-      190,
-      290,
-      390,
-      490,
-      590
+      14,
+      70,
+      200,
+      550,
+      750,
+      950
     ],
     "melhorias": 0,
     "nome_melhoria": "Cercas Elétricas",
@@ -250,12 +250,12 @@
     "tipo": "propriedade",
     "preco": 200,
     "alugueis": [
-      100,
-      200,
-      300,
-      400,
-      500,
-      600
+      16,
+      80,
+      220,
+      600,
+      800,
+      1000
     ],
     "melhorias": 0,
     "nome_melhoria": "Sinalizadores",
@@ -271,12 +271,12 @@
     "tipo": "propriedade",
     "preco": 220,
     "alugueis": [
-      110,
-      260,
-      410,
-      560,
-      710,
-      860
+      18,
+      90,
+      250,
+      700,
+      875,
+      1050
     ],
     "melhorias": 0,
     "nome_melhoria": "Máscaras Brancas",
@@ -292,12 +292,12 @@
     "tipo": "propriedade",
     "preco": 220,
     "alugueis": [
-      110,
-      260,
-      410,
-      560,
-      710,
-      860
+      18,
+      90,
+      250,
+      700,
+      875,
+      1050
     ],
     "melhorias": 0,
     "nome_melhoria": "Balões Vermelhos",
@@ -309,12 +309,12 @@
     "tipo": "propriedade",
     "preco": 240,
     "alugueis": [
-      120,
-      270,
-      420,
-      570,
-      720,
-      870
+      20,
+      100,
+      300,
+      750,
+      925,
+      1100
     ],
     "melhorias": 0,
     "nome_melhoria": "Fitas Cassete",
@@ -343,12 +343,12 @@
     "tipo": "propriedade",
     "preco": 260,
     "alugueis": [
-      130,
-      280,
-      430,
-      580,
-      730,
-      880
+      22,
+      110,
+      330,
+      800,
+      975,
+      1150
     ],
     "melhorias": 0,
     "nome_melhoria": "Pesadelos",
@@ -358,48 +358,48 @@
   {
     "nome": "Acampamento Crystal Lake - Jason Voorhees",
     "tipo": "propriedade",
-    "preco": 400,
+    "preco": 260,
     "alugueis": [
-      200,
-      400,
-      600,
+      22,
+      110,
+      330,
       800,
-      1000,
-      1200
+      975,
+      1150
     ],
     "melhorias": 0,
     "nome_melhoria": "Armadilhas de Urso",
-    "preco_melhoria": 200,
+    "preco_melhoria": 150,
     "dono": null
   },
   {
     "nome": "Caminhão do Creeper - Olhos Famintos",
-    "tipo": "transporte",
-    "preco": 200,
+    "tipo": "servico",
+    "preco": 170,
     "alugueis": [
-      100,
-      250,
-      400,
-      550,
-      700,
-      850
+      85,
+      185,
+      285,
+      385,
+      485,
+      585
     ],
     "melhorias": 0,
     "nome_melhoria": "Placas de Carro",
-    "preco_melhoria": 50,
+    "preco_melhoria": 75,
     "dono": null
   },
   {
     "nome": "O Massacre da Serra Elétrica",
     "tipo": "propriedade",
-    "preco": 240,
+    "preco": 280,
     "alugueis": [
+      24,
       120,
-      270,
-      420,
-      570,
-      720,
-      870
+      360,
+      850,
+      1025,
+      1200
     ],
     "melhorias": 0,
     "nome_melhoria": "Serras Elétricas",
@@ -415,12 +415,12 @@
     "tipo": "propriedade",
     "preco": 300,
     "alugueis": [
-      150,
-      350,
-      550,
-      750,
-      950,
-      1150
+      26,
+      130,
+      390,
+      900,
+      1100,
+      1275
     ],
     "melhorias": 0,
     "nome_melhoria": "Canecas de Chopp",
@@ -432,12 +432,12 @@
     "tipo": "propriedade",
     "preco": 300,
     "alugueis": [
-      150,
-      350,
-      550,
-      750,
-      950,
-      1150
+      26,
+      130,
+      390,
+      900,
+      1100,
+      1275
     ],
     "melhorias": 0,
     "nome_melhoria": "Fardos de Duff",
@@ -453,12 +453,12 @@
     "tipo": "propriedade",
     "preco": 320,
     "alugueis": [
-      160,
-      360,
-      560,
-      760,
-      960,
-      1160
+      28,
+      150,
+      450,
+      1000,
+      1200,
+      1400
     ],
     "melhorias": 0,
     "nome_melhoria": "Barras de Urânio",
@@ -467,19 +467,19 @@
   },
   {
     "nome": "Sinal de TV - O Chamado",
-    "tipo": "servico",
-    "preco": 250,
+    "tipo": "transporte",
+    "preco": 200,
     "alugueis": [
-      125,
-      275,
-      425,
-      575,
-      725,
-      875
+      100,
+      250,
+      400,
+      550,
+      700,
+      850
     ],
     "melhorias": 0,
     "nome_melhoria": "Fitas VHS",
-    "preco_melhoria": 100,
+    "preco_melhoria": 50,
     "dono": null
   },
   {
@@ -496,12 +496,12 @@
     "tipo": "propriedade",
     "preco": 350,
     "alugueis": [
+      35,
       175,
-      375,
-      575,
-      775,
-      975,
-      1175
+      500,
+      1100,
+      1300,
+      1500
     ],
     "melhorias": 0,
     "nome_melhoria": "Estátuas de Cera",
@@ -511,18 +511,18 @@
   {
     "nome": "Mansão da Família Addams",
     "tipo": "propriedade",
-    "preco": 260,
+    "preco": 400,
     "alugueis": [
-      130,
-      280,
-      430,
-      580,
-      730,
-      880
+      50,
+      200,
+      600,
+      1400,
+      1700,
+      2000
     ],
     "melhorias": 0,
     "nome_melhoria": "Plantas Carnívoras",
-    "preco_melhoria": 150,
+    "preco_melhoria": 200,
     "dono": null
   }
 ]
