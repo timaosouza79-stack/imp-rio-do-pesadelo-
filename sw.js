@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pesadelos-v64';
+const CACHE_NAME = 'pesadelos-v65';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -7,11 +7,11 @@ const ASSETS_TO_CACHE = [
   './tabuleiro.json',
   './manifest.json',
   './assets/audiodados.mp3',
-  './assets/som_comprar.wav',
-  './assets/som_aluguel.wav',
+  './assets/som comprar.mp3',
+  './assets/somaluguel.mp3',
   './assets/som_pandora.wav',
-  './assets/som_prisao.wav',
-  './assets/som_portal.wav'
+  './assets/somprisao.mp3',
+  './assets/somportal.mp3'
 ];
 
 // Instala e força atualização imediata

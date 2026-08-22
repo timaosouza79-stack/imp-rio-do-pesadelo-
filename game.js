@@ -997,7 +997,7 @@ const SoundFX = {
     },
 
     playBuy() {
-        this.playFile('assets/som_comprar.wav', () => this.playBuySynth());
+        this.playFile('assets/som comprar.mp3', () => this.playBuySynth());
     },
 
     playBuySynth() {
@@ -1025,7 +1025,7 @@ const SoundFX = {
     },
 
     playRent() {
-        this.playFile('assets/som_aluguel.wav', () => this.playRentSynth());
+        this.playFile('assets/somaluguel.mp3', () => this.playRentSynth());
     },
 
     playRentSynth() {
@@ -1079,7 +1079,7 @@ const SoundFX = {
     },
 
     playJail() {
-        this.playFile('assets/som_prisao.wav', () => this.playJailSynth());
+        this.playFile('assets/somprisao.mp3', () => this.playJailSynth());
     },
 
     playJailSynth() {
@@ -1106,7 +1106,7 @@ const SoundFX = {
     },
 
     playPortal() {
-        this.playFile('assets/som_portal.wav', () => this.playPortalSynth());
+        this.playFile('assets/somportal.mp3', () => this.playPortalSynth());
     },
 
     playPortalSynth() {
