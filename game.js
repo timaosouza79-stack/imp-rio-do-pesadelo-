@@ -1316,6 +1316,13 @@ const PERSONAGENS_JOGADORES = [
         cor: "#4169e1",
         perkNome: "Liderança de Capitão",
         perkDesc: "Recebe 20% de desconto nos aluguéis que paga e tem 30% de chance de anular efeitos ruins da Pandora."
+    },
+    {
+        charNome: "Enzo",
+        avatar: "assets/peaoenzo.png",
+        cor: "#ff8c00",
+        perkNome: "Reflexos Rápidos",
+        perkDesc: "Tem 20% de chance de escapar de qualquer aluguel ao cair na propriedade de um adversário."
     }
 ];
 
