@@ -1319,7 +1319,7 @@ const PERSONAGENS_JOGADORES = [
     },
     {
         charNome: "Enzo",
-        avatar: "assets/peaoenzo.png",
+        avatar: "assets/enzopeao1.png",
         cor: "#ff8c00",
         perkNome: "Reflexos Rápidos",
         perkDesc: "Tem 20% de chance de escapar de qualquer aluguel ao cair na propriedade de um adversário."
