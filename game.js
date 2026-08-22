@@ -1181,8 +1181,8 @@ const PERSONAGENS_JOGADORES = [
         charNome: "Jason",
         avatar: "assets/jasonpeao.png",
         cor: "#00ffff",
-        perkNome: "Territorialista",
-        perkDesc: "Imune à Prisão e não paga aluguel no Acamp. Crystal Lake."
+        perkNome: "Caçada Implacável",
+        perkDesc: "Toda vez que rola um 7 nos dados, rouba $50 de um jogador vivo aleatório."
     },
     {
         charNome: "Freddy",
@@ -1216,8 +1216,8 @@ const PERSONAGENS_JOGADORES = [
         charNome: "Jigsaw",
         avatar: "assets/peaojigsaw.png",
         cor: "#bc13fe",
-        perkNome: "Que Os Jogos Comecem",
-        perkDesc: "Tenta sair de graça da prisão girando os dados assim que entra."
+        perkNome: "Faça sua Escolha",
+        perkDesc: "Quando cobram aluguel, paga metade se tirou par ou o dobro se tirou ímpar!"
     },
     {
         charNome: "Leatherface",
@@ -1272,8 +1272,8 @@ const PERSONAGENS_JOGADORES = [
         charNome: "King Kong",
         avatar: "assets/peaokingkong.png",
         cor: "#ffaa00",
-        perkNome: "Passos de Gigante",
-        perkDesc: "Avança sempre +1 casa extra após rolar os dados."
+        perkNome: "Terremoto Gorila",
+        perkDesc: "Toda vez que tira números iguais (duplas), o jogador mais rico perde $50."
     },
     {
         charNome: "Meg",
@@ -1287,7 +1287,7 @@ const PERSONAGENS_JOGADORES = [
         avatar: "assets/peaomao.png",
         cor: "#dcdcdc",
         perkNome: "Furtividade Ágil",
-        perkDesc: "Ganha $10 extras ao tirar número ímpar nos dados."
+        perkDesc: "Ganha $30 extras ao tirar número ímpar nos dados."
     },
     {
         charNome: "Lisa",
@@ -1321,8 +1321,8 @@ const PERSONAGENS_JOGADORES = [
         charNome: "Enzo",
         avatar: "assets/enzopeao1.png",
         cor: "#ff8c00",
-        perkNome: "Visão de Jogo",
-        perkDesc: "Como um maestro do meio-campo, compra propriedades sem dono com 20% de desconto."
+        perkNome: "Assistência de Ouro",
+        perkDesc: "Quando cai em uma propriedade sem dono e não a compra, ganha $50 do Banco."
     }
 ];
 
@@ -2279,7 +2279,10 @@ function aplicarRegraRestante(j, casa) {
                             logMsg(`✅ Você comprou ${casa.nome}!`);
                         } else logMsg(`❌ Sem dinheiro suficiente!`);
                         encerrarTurno();
-                    }, encerrarTurno, "COMPRAR", "PASSAR");
+                    }, () => {
+                        window.triggerPerk(j, 'onPassProperty');
+                        encerrarTurno();
+                    }, "COMPRAR", "PASSAR");
                 }
             } else {
                 logMsg(`💔 ${j.nome} não tem dinheiro para comprar ${casa.nome}.`);
@@ -3339,17 +3342,6 @@ window.triggerPerk = function(jogador, evento, contexto = {}) {
 
     switch(evento) {
         case 'onJail':
-            if (jogador.charNome === "Jason") {
-                alertPerk("Imune à prisão! Continuará solto.");
-                return { prevented: true };
-            }
-            if (jogador.charNome === "Jigsaw") {
-                alertPerk("Sendo enviado para prisão, mas tem a chance de tentar sair agora mesmo!");
-                // Ele pode rolar na mesma rodada, então não setamos turnos_preso alto e removemos preso
-                // Deixaremos para aplicar isso no game.js diretamente ou aqui?
-                // Context será tratado por quem chama.
-                return { jigsawAttempt: true };
-            }
             break;
 
         case 'onPayRent':
@@ -3360,13 +3352,23 @@ window.triggerPerk = function(jogador, evento, contexto = {}) {
             // Pennywise (Flutuam Todos) - Cobra 15% mais caro
             if (dono && dono.charNome === "Pennywise") {
                 valorCalculado = Math.floor(valorCalculado * 1.15);
-                // Nao loga o alert sempre pra nao spamar, só aplica
             }
 
-            // Jason (Territorialista) - Não paga no Crystal Lake
-            if (jogador.charNome === "Jason" && casa && casa.nome.includes("Crystal Lake")) {
-                alertPerk("Este é o meu território. Ignorou o aluguel!");
-                return { newRent: 0 };
+            // Jigsaw (Faça sua Escolha)
+            if (dono && dono.charNome === "Jigsaw") {
+                const par = Math.random() < 0.5;
+                if (par) {
+                    valorCalculado = Math.floor(valorCalculado * 0.5);
+                    alertPerk("Você tirou a sorte grande (Par)! Vai pagar apenas metade do aluguel.");
+                } else {
+                    valorCalculado = valorCalculado * 2;
+                    alertPerk("O jogo virou contra você (Ímpar)! Vai pagar o dobro do aluguel!");
+                }
+            }
+
+            // Pietro (Liderança de Capitão)
+            if (jogador.charNome === "Pietro") {
+                valorCalculado = Math.floor(valorCalculado * 0.80);
             }
             
             // Michael Myers (Passos Silenciosos) - 15% ignorar
@@ -3485,6 +3487,12 @@ window.triggerPerk = function(jogador, evento, contexto = {}) {
                     return { valorAlteracao: 0 };
                 }
 
+                // Pietro (Liderança de Capitão)
+                if (jogador.charNome === "Pietro" && Math.random() < 0.30) {
+                    alertPerk("O capitão assumiu a responsabilidade e a diretoria anulou a multa!");
+                    return { valorAlteracao: 0 };
+                }
+
                 // Meg
                 if (jogador.charNome === "Meg") {
                     alertPerk("O banco rasgou a multa com pena da bebê!");
@@ -3526,17 +3534,46 @@ window.triggerPerk = function(jogador, evento, contexto = {}) {
 
         case 'onRollDice':
             let casaMoveExtras = 0;
-            // King Kong
-            if (jogador.charNome === "King Kong") {
-                alertPerk("Passos de Gigante deram +1 casa no movimento.");
-                casaMoveExtras = 1;
+            const soma = contexto.d1 + contexto.d2;
+            
+            // Jason (Caçada Implacável)
+            if (jogador.charNome === "Jason" && soma === 7) {
+                let vitima = null;
+                const jogadoresVivos = jogadores.filter(j => !j.falido && j !== jogador);
+                if (jogadoresVivos.length > 0) {
+                    vitima = jogadoresVivos[Math.floor(Math.random() * jogadoresVivos.length)];
+                    if (vitima.dinheiro >= 50) {
+                        vitima.dinheiro -= 50;
+                        jogador.dinheiro += 50;
+                        alertPerk(`Caçada implacável! Sorteou um 7 e roubou $50 de ${vitima.nome}!`);
+                        updateUI();
+                    }
+                }
             }
+
+            // King Kong (Terremoto Gorila)
+            if (jogador.charNome === "King Kong" && contexto.isDouble) {
+                let maisRico = null;
+                let maxDinheiro = -1;
+                jogadores.forEach(j => {
+                    if (!j.falido && j !== jogador && j.dinheiro > maxDinheiro) {
+                        maisRico = j;
+                        maxDinheiro = j.dinheiro;
+                    }
+                });
+                if (maisRico && maisRico.dinheiro >= 50) {
+                    maisRico.dinheiro -= 50;
+                    jogador.dinheiro += 50;
+                    alertPerk(`O terremoto dos passos assustou ${maisRico.nome}, que derrubou $50!`);
+                    updateUI();
+                }
+            }
+
             // Maozinha
             if (jogador.charNome === "Mãozinha") {
-                const soma = contexto.d1 + contexto.d2;
                 if (soma % 2 !== 0) {
-                    jogador.dinheiro += 10;
-                    alertPerk("Encontrou $10 perdidos pelo caminho (soma ímpar)!");
+                    jogador.dinheiro += 30;
+                    alertPerk("Com sua furtividade ágil, roubou $30 extras (soma ímpar)!");
                     updateUI();
                 }
             }
@@ -3557,6 +3594,14 @@ window.triggerPerk = function(jogador, evento, contexto = {}) {
             }
             return { casaMoveExtras };
             
+        case 'onPassProperty':
+            if (jogador.charNome === "Enzo") {
+                jogador.dinheiro += 50;
+                alertPerk("Assistência de Ouro! Deixou a casa para outro e ganhou $50 do Banco.");
+                updateUI();
+            }
+            break;
+
         case 'onBankruptByPlayer':
             if (jogador.charNome === "Predador") {
                 const credor = contexto.credor;
