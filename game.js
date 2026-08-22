@@ -3449,41 +3449,41 @@ window.triggerPerk = function(jogador, evento, contexto = {}) {
                         vitima.dinheiro -= metade;
                         alertPerk(`Ligação macabra repassou $${metade} da dívida para ${vitima.nome}!`);
                         updateUI();
-                        return { newValor: valorRuim + metade }; // Subtrai a metade que passou
+                        return { valorAlteracao: valorRuim + metade }; // Subtrai a metade que passou
                     }
                 }
                 
                 // Terrifier (Art) - 50% multas
                 if (jogador.charNome === "Terrifier") {
                     alertPerk("Riu da situação. A multa da Pandora foi reduzida pela metade!");
-                    return { newValor: Math.floor(valorRuim * 0.5) };
+                    return { valorAlteracao: Math.floor(valorRuim * 0.5) };
                 }
 
                 // Lisa
                 if (jogador.charNome === "Lisa" && Math.random() < 0.25) {
                     alertPerk("Mente Brilhante achou uma brecha na multa e anulou o efeito!");
-                    return { newValor: 0 };
+                    return { valorAlteracao: 0 };
                 }
 
-                // Maggie
-                if (jogador.charNome === "Maggie") {
+                // Meg
+                if (jogador.charNome === "Meg") {
                     alertPerk("O banco rasgou a multa com pena da bebê!");
-                    return { newValor: 0 };
+                    return { valorAlteracao: 0 };
                 }
             }
-            return { newValor: valorRuim };
+            return { valorAlteracao: valorRuim };
 
         case 'onOferenda':
-            // Oferenda = 100
+            let valorOf = contexto.valorOriginal;
             if (jogador.charNome === "Terrifier") {
                 alertPerk("Riu da oferenda! Vai pagar apenas metade.");
-                return { newValor: 50 };
+                valorOf = Math.floor(valorOf * 0.50);
             }
-            if (jogador.charNome === "Maggie") {
+            if (jogador.charNome === "Meg") {
                 alertPerk("Bebês não pagam oferenda. Rasgou o boleto.");
-                return { newValor: 0 };
+                valorOf = 0;
             }
-            return { newValor: 100 };
+            return { newCost: valorOf };
 
         case 'onBuyProperty':
             if (jogador.charNome === "Annabelle") {
