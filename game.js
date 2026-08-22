@@ -2221,8 +2221,9 @@ function mostrarVideoModal(videoSrc, callback) {
 
     // Em navegadores WebKit/Safari, alterar dinamicamente a tag <source> frequentemente trava o vídeo.
     // A forma correta e recomendada pela MDN é setar o src diretamente na tag <video>.
+    const safeSrc = encodeURI(videoSrc);
     videoEl.innerHTML = ''; 
-    videoEl.src = videoSrc;
+    videoEl.src = safeSrc;
     videoEl.load();
     modal.style.display = 'flex';
 
