@@ -2167,7 +2167,7 @@ function aplicarRegraRestante(j, casa) {
                 const imgUrl = imgKey && URLS_IMAGENS[imgKey] ? URLS_IMAGENS[imgKey] : null;
                 const topColor = getTileColor(casa) || '#333333';
                 const dummyCasa = { nome: casa.nome, topColor: topColor, imgUrl: imgUrl };
-                mostrarPropertyCard(dummyCasa, `💸 Você perdeu $${casa.valor}! O crime compensa... para os outros.`, encerrarTurno, encerrarTurno, "ENTENDIDO", null);
+                mostrarPropertyCard(dummyCasa, `💸 Você pagou $${casa.valor} de oferenda para fugir do espírito.`, encerrarTurno, encerrarTurno, "ENTENDIDO", null);
             } else {
                 encerrarTurno();
             }
