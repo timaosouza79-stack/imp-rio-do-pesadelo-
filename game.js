@@ -2230,7 +2230,11 @@ function mostrarVideoModal(videoSrc, callback) {
     // Ao terminar o vídeo, tentar não fechar automaticamente (mas o usuário pode fechar)
     // Se o usuário clicar no X
     btnClose.onclick = () => {
-        try { videoEl.pause(); } catch(e){}
+        try { 
+            videoEl.pause(); 
+            videoEl.removeAttribute('src');
+            videoEl.load();
+        } catch(e){}
         modal.style.display = 'none';
         if(callback) callback();
     };
