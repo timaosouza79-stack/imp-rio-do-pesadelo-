@@ -1309,6 +1309,13 @@ const PERSONAGENS_JOGADORES = [
         cor: "#ff3300",
         perkNome: "Vândalo",
         perkDesc: "Tem 15% de chance de pichar a casa e pagar só 50% do aluguel."
+    },
+    {
+        charNome: "Pietro",
+        avatar: "assets/peaopietro.png",
+        cor: "#4169e1",
+        perkNome: "Sorte Mística",
+        perkDesc: "Ganha $50 extras ao cair em uma casa de sorte ou na Partida."
     }
 ];
 
