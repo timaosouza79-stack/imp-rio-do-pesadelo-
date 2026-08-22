@@ -1170,26 +1170,146 @@ const SoundFX = {
 
 // Mapeamento Exato dos Ficheiros de Peões para Jogadores e CPUs
 const PERSONAGENS_JOGADORES = [
-    { charNome: "Chucky", avatar: "assets/chuckypeao.png", cor: "#bfff00" }, // Verde Limão Neon
-    { charNome: "Jason", avatar: "assets/jasonpeao.png", cor: "#00ffff" }, // Ciano Electric
-    { charNome: "Freddy", avatar: "assets/freddypeao.png", cor: "#ff007f" }, // Pink Neon
-    { charNome: "Annabelle", avatar: "assets/annabellepeao.png", cor: "#ff00ff" }, // Magenta Bright
-    { charNome: "Homer", avatar: "assets/homerpeao.png", cor: "#00ff99" }, // Menta Neon
-    { charNome: "Pennywise", avatar: "assets/peaoitacoisa.png", cor: "#ffd700" }, // Ouro Neon
-    { charNome: "Jigsaw", avatar: "assets/peaojigsaw.png", cor: "#bc13fe" }, // Violeta Neon
-    { charNome: "Leatherface", avatar: "assets/peaomassacredaserra.png", cor: "#ff6600" }, // Laranja Fogo Neon
-    { charNome: "Michael Myers", avatar: "assets/peaomichaelmyers.png", cor: "#00e5ff" }, // Azul Neon
-    { charNome: "Predador", avatar: "assets/peaopredador.png", cor: "#39ff14" }, // Verde Laser
-    { charNome: "Terrifier", avatar: "assets/peaoterrifier.png", cor: "#7df9ff" }, // Azul Gelo
-    { charNome: "Zumbi", avatar: "assets/peaozumbi.png", cor: "#ff3366" }, // Coral Neon
-    { charNome: "Eleven", avatar: "assets/peao11.png", cor: "#ff0055" }, // Vermelho Stranger
-    { charNome: "Ghostface", avatar: "assets/peaopanico.png", cor: "#ffffff" }, // Branco Fantasma
-    { charNome: "King Kong", avatar: "assets/peaokingkong.png", cor: "#ffaa00" }, // Laranja Kong
-    { charNome: "Meg", avatar: "assets/peaomeg.png", cor: "#ff99cc" }, // Rosa Chiclete
-    { charNome: "Mãozinha", avatar: "assets/peaomao.png", cor: "#dcdcdc" }, // Cinza Claro
-    { charNome: "Lisa", avatar: "assets/peaoliza.png", cor: "#ffcc00" }, // Amarelo Lisa
-    { charNome: "Marge", avatar: "assets/peaomarge.png", cor: "#3366ff" }, // Azul Marge
-    { charNome: "Bart", avatar: "assets/peaobart.png", cor: "#ff3300" } // Laranja Bart
+    {
+        charNome: "Chucky",
+        avatar: "assets/chuckypeao.png",
+        cor: "#bfff00",
+        perkNome: "Boneco Ladrão",
+        perkDesc: "Sempre que cair na mesma casa que alguém, rouba $50 da pessoa."
+    },
+    {
+        charNome: "Jason",
+        avatar: "assets/jasonpeao.png",
+        cor: "#00ffff",
+        perkNome: "Territorialista",
+        perkDesc: "Imune à Prisão e não paga aluguel no Acamp. Crystal Lake."
+    },
+    {
+        charNome: "Freddy",
+        avatar: "assets/freddypeao.png",
+        cor: "#ff007f",
+        perkNome: "Mestre dos Pesadelos",
+        perkDesc: "Ao rolar dados iguais (duplas), suga $20 de todos os jogadores vivos."
+    },
+    {
+        charNome: "Annabelle",
+        avatar: "assets/annabellepeao.png",
+        cor: "#ff00ff",
+        perkNome: "Presença Poltergeist",
+        perkDesc: "Toda vez que comprar uma casa, os outros pagam a ela $15 de proteção."
+    },
+    {
+        charNome: "Homer",
+        avatar: "assets/homerpeao.png",
+        cor: "#00ff99",
+        perkNome: "Sorte de Bêbado",
+        perkDesc: "Ganha $50 se passar/cair pelo Bar do Moe, Casa do Homer ou Usina."
+    },
+    {
+        charNome: "Pennywise",
+        avatar: "assets/peaoitacoisa.png",
+        cor: "#ffd700",
+        perkNome: "Flutuam Todos",
+        perkDesc: "O aluguel cobrado das suas propriedades é 15% mais caro pros outros."
+    },
+    {
+        charNome: "Jigsaw",
+        avatar: "assets/peaojigsaw.png",
+        cor: "#bc13fe",
+        perkNome: "Que Os Jogos Comecem",
+        perkDesc: "Tenta sair de graça da prisão girando os dados assim que entra."
+    },
+    {
+        charNome: "Leatherface",
+        avatar: "assets/peaomassacredaserra.png",
+        cor: "#ff6600",
+        perkNome: "Motosserra de Desconto",
+        perkDesc: "Todas as melhorias que você compra custam 20% a menos."
+    },
+    {
+        charNome: "Michael Myers",
+        avatar: "assets/peaomichaelmyers.png",
+        cor: "#00e5ff",
+        perkNome: "Passos Silenciosos",
+        perkDesc: "Tem 15% de chance de ignorar completamente o aluguel ao cair numa casa."
+    },
+    {
+        charNome: "Predador",
+        avatar: "assets/peaopredador.png",
+        cor: "#39ff14",
+        perkNome: "Autodestruição",
+        perkDesc: "Se for à falência, explode! O jogador que te faliu perde $300."
+    },
+    {
+        charNome: "Terrifier",
+        avatar: "assets/peaoterrifier.png",
+        cor: "#7df9ff",
+        perkNome: "Humor Sádico",
+        perkDesc: "Paga sempre metade do valor nas Oferendas e multas da Pandora."
+    },
+    {
+        charNome: "Zumbi",
+        avatar: "assets/peaozumbi.png",
+        cor: "#ff3366",
+        perkNome: "Infecção Viral",
+        perkDesc: "Ao passar pelo Início, quem estiver num raio de 3 casas perde $20."
+    },
+    {
+        charNome: "Eleven",
+        avatar: "assets/peao11.png",
+        cor: "#ff0055",
+        perkNome: "Controle Mental",
+        perkDesc: "Todos os aluguéis que você paga recebem 10% de desconto."
+    },
+    {
+        charNome: "Ghostface",
+        avatar: "assets/peaopanico.png",
+        cor: "#ffffff",
+        perkNome: "Telefonema Macabro",
+        perkDesc: "Ao tirar carta ruim em Pandora, passa 50% do prejuízo para o mais rico."
+    },
+    {
+        charNome: "King Kong",
+        avatar: "assets/peaokingkong.png",
+        cor: "#ffaa00",
+        perkNome: "Passos de Gigante",
+        perkDesc: "Avança sempre +1 casa extra após rolar os dados."
+    },
+    {
+        charNome: "Meg",
+        avatar: "assets/peaomeg.png",
+        cor: "#ff99cc",
+        perkNome: "Imunidade Infantil",
+        perkDesc: "Nunca paga Oferenda Sobrenatural e anula multas ruins de Pandora."
+    },
+    {
+        charNome: "Mãozinha",
+        avatar: "assets/peaomao.png",
+        cor: "#dcdcdc",
+        perkNome: "Furtividade Ágil",
+        perkDesc: "Ganha $10 extras ao tirar número ímpar nos dados."
+    },
+    {
+        charNome: "Lisa",
+        avatar: "assets/peaoliza.png",
+        cor: "#ffcc00",
+        perkNome: "Mente Brilhante",
+        perkDesc: "Tem 25% de chance de anular completamente os efeitos ruins da Pandora."
+    },
+    {
+        charNome: "Marge",
+        avatar: "assets/peaomarge.png",
+        cor: "#3366ff",
+        perkNome: "Economia Doméstica",
+        perkDesc: "Ao passar pelo Ponto de Partida, ganha $250 ao invés de $200."
+    },
+    {
+        charNome: "Bart",
+        avatar: "assets/peaobart.png",
+        cor: "#ff3300",
+        perkNome: "Vândalo",
+        perkDesc: "Tem 15% de chance de pichar a casa e pagar só 50% do aluguel."
+    }
 ];
 
 let selectedCharIndex = 0;
@@ -1231,7 +1351,11 @@ function renderCharSelectMenu() {
                      loading="eager"
                      onerror="this.style.opacity='0';">
             </div>
-            <div class="char-card-name">${p.charNome}</div>
+            <div class="char-card-name" style="margin-bottom: 2px;">${p.charNome}</div>
+            <div class="char-perk-info" style="font-size: 0.6rem; color: #aaa; text-align: center; padding: 0 5px; line-height: 1.1;">
+                <strong style="color: ${p.cor}; font-size: 0.65rem;">${p.perkNome}</strong><br>
+                ${p.perkDesc}
+            </div>
         `;
         grid.appendChild(card);
     });
@@ -1468,7 +1592,15 @@ function getNomeMelhoria(casa) {
 // Retorna o custo da próxima melhoria baseado no nível atual (escalonado)
 function getCustoMelhoria(casa) {
     const nivel = casa.melhorias || 0;
-    return Math.round(casa.preco_melhoria * (nivel + 1));
+    let custoOriginal = Math.round(casa.preco_melhoria * (nivel + 1));
+    if (casa.dono && typeof jogadores !== 'undefined') {
+        let donoObj = jogadores.find(x => x.nome === casa.dono);
+        if (donoObj) {
+            let ctx = window.triggerPerk(donoObj, 'onBuyUpgrade', { custoOriginal });
+            return ctx.newCost;
+        }
+    }
+    return custoOriginal;
 }
 
 class Jogador {
@@ -2003,8 +2135,11 @@ function animateAndMove(d1, d2) {
         if (d1El) d1El.innerHTML = renderDiceFaceHTML(d1);
         if (d2El) d2El.innerHTML = renderDiceFaceHTML(d2);
 
-        const total = d1 + d2;
+        let total = d1 + d2;
         const duplas = d1 === d2;
+        
+        let rollCtx = window.triggerPerk(j, 'onRollDice', { d1: d1, d2: d2, isDouble: duplas });
+        if (rollCtx.casaMoveExtras) total += rollCtx.casaMoveExtras;
 
         if (duplas) {
             j.duplas_seguidas = (j.duplas_seguidas || 0) + 1;
@@ -2013,11 +2148,17 @@ function animateAndMove(d1, d2) {
         }
 
         if (j.duplas_seguidas === 3) {
-            logMsg(`🚓 3 DUPLAS SEGUIDAS! ${j.nome} foi para o Arkham!`);
             j.duplas_seguidas = 0;
+            let jailCtx2 = window.triggerPerk(j, 'onJail', {});
+            if (jailCtx2.prevented) {
+                 logMsg(`🚨 ${j.nome} tirou 3 duplas mas é IMUNE a prisão!`);
+                 encerrarTurno();
+                 return;
+            }
+            logMsg(`🚨 3 DUPLAS SEGUIDAS! ${j.nome} foi para o Arkham!`);
             j.posicao = INDICE_PRISAO;
             j.preso = true;
-            j.turnos_preso = 0;
+            if (jailCtx2.jigsawAttempt) j.turnos_preso = 0; else j.turnos_preso = 0;
             updateUI();
             encerrarTurno();
         } else {
@@ -2039,9 +2180,10 @@ function animateAndMove(d1, d2) {
             const stepTimer = setInterval(() => {
                 j.posicao = (j.posicao + 1) % TABULEIRO.length;
                 if (j.posicao === 0) {
-                    j.dinheiro += 200;
+                    let startCtx = window.triggerPerk(j, 'onCrossStart', { salary: 200 });
+                    j.dinheiro += startCtx.salary;
                     SoundFX.playPortal();
-                    logMsg(`🌀 ${j.nome} cruzou o Portal e recebeu $200!`);
+                    if (startCtx.salary > 0) logMsg(`🌀 ${j.nome} cruzou o Portal e recebeu $${startCtx.salary}!`);
                 }
                 updateUI();
                 passos--;
@@ -2077,10 +2219,17 @@ function aplicarRegra() {
 }
 
 function aplicarRegraRestante(j, casa) {
+    window.triggerPerk(j, 'onLand', { casa: casa });
     if (casa.tipo === "va_para_prisao") {
+        let jailCtx = window.triggerPerk(j, 'onJail', {});
+        if (jailCtx.prevented) {
+             encerrarTurno();
+             return;
+        }
         j.posicao = INDICE_PRISAO;
         j.preso = true;
         j.turnos_preso = 0;
+        if (jailCtx.jigsawAttempt) j.preso = true; // manteremos a logica do jigsaw depois na rolarDados
         SoundFX.playJail();
         logMsg(`🚔 ${j.nome} foi enviado para o Asilo Arkham!`);
         updateUI();
@@ -2091,6 +2240,7 @@ function aplicarRegraRestante(j, casa) {
                 if (j.is_cpu) {
                     j.dinheiro -= casa.preco;
                     casa.dono = j.nome;
+                    window.triggerPerk(j, 'onBuyProperty', { casa: casa });
                     logMsg(`🏠 ${j.nome} comprou ${casa.nome} por $${casa.preco}!`);
                     encerrarTurno();
                 } else {
@@ -2098,6 +2248,8 @@ function aplicarRegraRestante(j, casa) {
                         if (j.dinheiro >= casa.preco) {
                             j.dinheiro -= casa.preco;
                             casa.dono = j.nome;
+                            j.ultimo_credor = casa.dono; // Guardar quem cobrou aluguel
+                            window.triggerPerk(j, 'onBuyProperty', { casa: casa });
                             SoundFX.playBuy();
                             logMsg(`✅ Você comprou ${casa.nome}!`);
                         } else logMsg(`❌ Sem dinheiro suficiente!`);
@@ -2111,6 +2263,18 @@ function aplicarRegraRestante(j, casa) {
         } else if (casa.dono !== j.nome) {
             let nivel = casa.melhorias || 0;
             let al = casa.alugueis ? casa.alugueis[nivel] : Math.floor(casa.preco * 0.5);
+            let donoObj = jogadores.find(x => x.nome === casa.dono);
+            let contextRent = window.triggerPerk(j, 'onPayRent', { valorOriginal: al, dono: donoObj, casa: casa });
+            al = contextRent.newRent;
+            j.ultimo_credor = casa.dono;
+            if (al === 0) {
+                if (!j.is_cpu) {
+                    mostrarPropertyCard(casa, "Sua Habilidade Passiva evitou o aluguel!", encerrarTurno, encerrarTurno, "Uhu!", null);
+                } else {
+                    encerrarTurno();
+                }
+                return;
+            }
             
             const pagarAluguelFinal = () => {
                 SoundFX.playRent();
@@ -2399,6 +2563,10 @@ function encerrarTurno() {
     const j = jogadores[idxJogador];
     if (j.dinheiro < 0) {
         logMsg(`🚨 ${j.nome} (${j.charNome}) FALIU E ESTÁ FORA DA PARTIDA!`);
+        if (j.charNome === "Predador" && j.ultimo_credor) {
+             let credorObj = jogadores.find(x => x.nome === j.ultimo_credor);
+             window.triggerPerk(j, 'onBankruptByPlayer', { credor: credorObj });
+        }
         j.ativo = false;
         TABULEIRO.forEach(c => {
             if (c.dono === j.nome) {
@@ -3117,4 +3285,254 @@ function cobrarDivida(j, valor, callbackPagamento) {
             mostrarModalVenda(j, valor, callbackPagamento);
         }
     }
+}
+
+
+// ==========================================
+// SISTEMA DE PERKS (HABILIDADES PASSIVAS)
+// ==========================================
+window.triggerPerk = function(jogador, evento, contexto = {}) {
+    if (!jogador || jogador.falido) return contexto;
+    
+    // Mostra um aviso bonitinho no log
+    const alertPerk = (msg) => {
+        logMsg(`<span style="color:${jogador.cor}">[Perk ${jogador.charNome}]</span> ${msg}`);
+    };
+
+    switch(evento) {
+        case 'onJail':
+            if (jogador.charNome === "Jason") {
+                alertPerk("Imune à prisão! Continuará solto.");
+                return { prevented: true };
+            }
+            if (jogador.charNome === "Jigsaw") {
+                alertPerk("Sendo enviado para prisão, mas tem a chance de tentar sair agora mesmo!");
+                // Ele pode rolar na mesma rodada, então não setamos turnos_preso alto e removemos preso
+                // Deixaremos para aplicar isso no game.js diretamente ou aqui?
+                // Context será tratado por quem chama.
+                return { jigsawAttempt: true };
+            }
+            break;
+
+        case 'onPayRent':
+            let valorCalculado = contexto.valorOriginal;
+            const dono = contexto.dono;
+            const casa = contexto.casa;
+            
+            // Pennywise (Flutuam Todos) - Cobra 15% mais caro
+            if (dono && dono.charNome === "Pennywise") {
+                valorCalculado = Math.floor(valorCalculado * 1.15);
+                // Nao loga o alert sempre pra nao spamar, só aplica
+            }
+
+            // Jason (Territorialista) - Não paga no Crystal Lake
+            if (jogador.charNome === "Jason" && casa && casa.nome.includes("Crystal Lake")) {
+                alertPerk("Este é o meu território. Ignorou o aluguel!");
+                return { newRent: 0 };
+            }
+            
+            // Michael Myers (Passos Silenciosos) - 15% ignorar
+            if (jogador.charNome === "Michael Myers" && Math.random() < 0.15) {
+                alertPerk("Passou silenciosamente e evadiu 100% do aluguel!");
+                return { newRent: 0 };
+            }
+
+            // Eleven (Controle Mental) - 10% de desconto
+            if (jogador.charNome === "Eleven") {
+                valorCalculado = Math.floor(valorCalculado * 0.90);
+            }
+
+            // Bart (Vândalo) - 15% chance de pagar metade (o resto é limpeza)
+            if (jogador.charNome === "Bart" && Math.random() < 0.15) {
+                alertPerk("Pichou a casa! O dono ficou com metade do aluguel para custear a limpeza.");
+                valorCalculado = Math.floor(valorCalculado * 0.50);
+            }
+
+            return { newRent: valorCalculado };
+
+        case 'onBuyUpgrade':
+            // Leatherface - 20% desconto nas melhorias
+            if (jogador.charNome === "Leatherface") {
+                return { newCost: Math.floor(contexto.custoOriginal * 0.80) };
+            }
+            return { newCost: contexto.custoOriginal };
+
+        case 'onLand':
+            // Chucky (Boneco Ladrão) - Rouba 50 se tiver alguém na mesma casa
+            if (jogador.charNome === "Chucky") {
+                let alguemRoubado = false;
+                jogadores.forEach(j => {
+                    if (!j.falido && j !== jogador && j.posicao === jogador.posicao) {
+                        if (j.dinheiro >= 50) {
+                            j.dinheiro -= 50;
+                            jogador.dinheiro += 50;
+                            alguemRoubado = true;
+                            alertPerk(`Roubou furtivamente $50 de ${j.nome}!`);
+                        }
+                    }
+                });
+                if (alguemRoubado) atualizarHUD();
+            }
+
+            // Homer (Sorte de Bêbado)
+            if (jogador.charNome === "Homer" && contexto.casa) {
+                const n = contexto.casa.nome.toLowerCase();
+                if (n.includes("bar do moe") || n.includes("casa do homer") || n.includes("usina nuclear")) {
+                    jogador.dinheiro += 50;
+                    alertPerk("Passou em um de seus lugares favoritos e ganhou $50!");
+                    atualizarHUD();
+                }
+            }
+            break;
+
+        case 'onCrossStart':
+            // Marge (Economia) - Ganha 250 ao invés de 200
+            if (jogador.charNome === "Marge") {
+                alertPerk("Economia Doméstica rendeu bem! Levou $250 ao invés de $200.");
+                return { salary: 250 };
+            }
+
+            // Zumbi (Infecção Viral)
+            if (jogador.charNome === "Zumbi") {
+                let infectou = false;
+                jogadores.forEach(j => {
+                    if (!j.falido && j !== jogador) {
+                        // Distância circular
+                        let dist1 = Math.abs(j.posicao - jogador.posicao);
+                        let dist2 = TABULEIRO.length - dist1;
+                        let dist = Math.min(dist1, dist2);
+                        if (dist <= 3) {
+                            j.dinheiro -= 20; // Perde pro banco
+                            infectou = true;
+                            logMsg(`<span style="color:${jogador.cor}">[Perk Zumbi]</span> Assustou e infectou ${j.nome}, que perdeu $20 na fuga.`);
+                        }
+                    }
+                });
+                if (infectou) atualizarHUD();
+            }
+            return { salary: 200 };
+
+        case 'onDrawPandora':
+            const valorRuim = contexto.valorAlteracao;
+            // Só ativa em cartas ruins
+            if (valorRuim < 0) {
+                // Ghostface
+                if (jogador.charNome === "Ghostface") {
+                    let vitima = null;
+                    let maiorGrana = -1;
+                    jogadores.forEach(j => {
+                        if (!j.falido && j !== jogador && j.dinheiro > maiorGrana) {
+                            vitima = j;
+                            maiorGrana = j.dinheiro;
+                        }
+                    });
+                    if (vitima) {
+                        let metade = Math.floor(Math.abs(valorRuim) * 0.5);
+                        vitima.dinheiro -= metade;
+                        alertPerk(`Ligação macabra repassou $${metade} da dívida para ${vitima.nome}!`);
+                        atualizarHUD();
+                        return { newValor: valorRuim + metade }; // Subtrai a metade que passou
+                    }
+                }
+                
+                // Terrifier (Art) - 50% multas
+                if (jogador.charNome === "Terrifier") {
+                    alertPerk("Riu da situação. A multa da Pandora foi reduzida pela metade!");
+                    return { newValor: Math.floor(valorRuim * 0.5) };
+                }
+
+                // Lisa
+                if (jogador.charNome === "Lisa" && Math.random() < 0.25) {
+                    alertPerk("Mente Brilhante achou uma brecha na multa e anulou o efeito!");
+                    return { newValor: 0 };
+                }
+
+                // Maggie
+                if (jogador.charNome === "Maggie") {
+                    alertPerk("O banco rasgou a multa com pena da bebê!");
+                    return { newValor: 0 };
+                }
+            }
+            return { newValor: valorRuim };
+
+        case 'onOferenda':
+            // Oferenda = 100
+            if (jogador.charNome === "Terrifier") {
+                alertPerk("Riu da oferenda! Vai pagar apenas metade.");
+                return { newValor: 50 };
+            }
+            if (jogador.charNome === "Maggie") {
+                alertPerk("Bebês não pagam oferenda. Rasgou o boleto.");
+                return { newValor: 0 };
+            }
+            return { newValor: 100 };
+
+        case 'onBuyProperty':
+            if (jogador.charNome === "Annabelle") {
+                let cobrou = false;
+                jogadores.forEach(j => {
+                    if (!j.falido && j !== jogador) {
+                        if (j.dinheiro >= 15) {
+                            j.dinheiro -= 15;
+                            jogador.dinheiro += 15;
+                            cobrou = true;
+                        }
+                    }
+                });
+                if (cobrou) {
+                    alertPerk("Presença poltergeist na nova casa! Cobrou $15 de proteção de cada jogador.");
+                    atualizarHUD();
+                }
+            }
+            break;
+
+        case 'onRollDice':
+            let casaMoveExtras = 0;
+            // King Kong
+            if (jogador.charNome === "King Kong") {
+                alertPerk("Passos de Gigante deram +1 casa no movimento.");
+                casaMoveExtras = 1;
+            }
+            // Maozinha
+            if (jogador.charNome === "Mãozinha") {
+                const soma = contexto.d1 + contexto.d2;
+                if (soma % 2 !== 0) {
+                    jogador.dinheiro += 10;
+                    alertPerk("Encontrou $10 perdidos pelo caminho (soma ímpar)!");
+                    atualizarHUD();
+                }
+            }
+            // Freddy
+            if (jogador.charNome === "Freddy" && contexto.isDouble) {
+                let sugou = false;
+                jogadores.forEach(j => {
+                    if (!j.falido && j !== jogador && j.dinheiro >= 20) {
+                        j.dinheiro -= 20;
+                        jogador.dinheiro += 20;
+                        sugou = true;
+                    }
+                });
+                if (sugou) {
+                    alertPerk("Mestre dos Pesadelos atacou nas duplas! Sugou $20 de cada sobrevivente.");
+                    atualizarHUD();
+                }
+            }
+            return { casaMoveExtras };
+            
+        case 'onBankruptByPlayer':
+            if (jogador.charNome === "Predador") {
+                const credor = contexto.credor;
+                if (credor && credor.dinheiro >= 300) {
+                    credor.dinheiro -= 300;
+                    alertPerk(`Ativou autodestruição! ${credor.nome} sofreu dano colateral de $300.`);
+                    atualizarHUD();
+                } else if (credor) {
+                    credor.dinheiro = 0;
+                    alertPerk(`Ativou autodestruição devastadora contra ${credor.nome}!`);
+                    atualizarHUD();
+                }
+            }
+            break;
+    }
+    return contexto;
 }
