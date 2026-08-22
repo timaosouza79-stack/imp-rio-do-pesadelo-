@@ -61,7 +61,7 @@ const TABULEIRO = [
   {
     "nome": "Shopping Center - Madrugada dos Mortos",
     "tipo": "transporte",
-    "preco": 90,
+    "preco": 100,
     "alugueis": [
       45,
       50,
@@ -84,7 +84,7 @@ const TABULEIRO = [
   {
     "nome": "Bates Motel - Psicose",
     "tipo": "propriedade",
-    "preco": 100,
+    "preco": 120,
     "alugueis": [
       50,
       100,
@@ -111,7 +111,7 @@ const TABULEIRO = [
   {
     "nome": "Pânico",
     "tipo": "propriedade",
-    "preco": 120,
+    "preco": 140,
     "alugueis": [
       60,
       110,
@@ -134,7 +134,7 @@ const TABULEIRO = [
   {
     "nome": "Alexandria - The Walking Dead",
     "tipo": "propriedade",
-    "preco": 120,
+    "preco": 160,
     "alugueis": [
       60,
       110,
@@ -157,12 +157,12 @@ const TABULEIRO = [
   {
     "nome": "Asilo Arkham",
     "tipo": "prisao",
-    "preco": 150
+    "preco": 180
   },
   {
     "nome": "Laboratório Hawkins - Stranger Things",
     "tipo": "propriedade",
-    "preco": 160,
+    "preco": 200,
     "alugueis": [
       80,
       180,
@@ -185,7 +185,7 @@ const TABULEIRO = [
   {
     "nome": "Laboratório de Frankenstein",
     "tipo": "servico",
-    "preco": 170,
+    "preco": 220,
     "alugueis": [
       85,
       185,
@@ -208,7 +208,7 @@ const TABULEIRO = [
   {
     "nome": "Casa do Sorria",
     "tipo": "propriedade",
-    "preco": 180,
+    "preco": 240,
     "alugueis": [
       90,
       190,
@@ -231,7 +231,7 @@ const TABULEIRO = [
   {
     "nome": "Castelo do Drácula",
     "tipo": "propriedade",
-    "preco": 200,
+    "preco": 260,
     "alugueis": [
       100,
       200,
@@ -254,7 +254,7 @@ const TABULEIRO = [
   {
     "nome": "Território do Predador",
     "tipo": "transporte",
-    "preco": 200,
+    "preco": 280,
     "alugueis": [
       100,
       250,
@@ -277,7 +277,7 @@ const TABULEIRO = [
   {
     "nome": "Armazém do Art - Terrifier",
     "tipo": "propriedade",
-    "preco": 220,
+    "preco": 300,
     "alugueis": [
       110,
       210,
@@ -304,7 +304,7 @@ const TABULEIRO = [
   {
     "nome": "Jurassic Park",
     "tipo": "propriedade",
-    "preco": 240,
+    "preco": 320,
     "alugueis": [
       120,
       220,
@@ -327,7 +327,7 @@ const TABULEIRO = [
   {
     "nome": "Ilha da Caveira - King Kong",
     "tipo": "propriedade",
-    "preco": 260,
+    "preco": 340,
     "alugueis": [
       130,
       230,
@@ -354,7 +354,7 @@ const TABULEIRO = [
   {
     "nome": "Casa dos Myers - Michael Myers",
     "tipo": "propriedade",
-    "preco": 280,
+    "preco": 360,
     "alugueis": [
       140,
       290,
@@ -381,7 +381,7 @@ const TABULEIRO = [
   {
     "nome": "Esgotos de Derry - Pennywise",
     "tipo": "propriedade",
-    "preco": 300,
+    "preco": 380,
     "alugueis": [
       150,
       300,
@@ -404,7 +404,7 @@ const TABULEIRO = [
   {
     "nome": "Banheiro Abandonado - Jigsaw",
     "tipo": "propriedade",
-    "preco": 320,
+    "preco": 400,
     "alugueis": [
       160,
       310,
@@ -427,7 +427,7 @@ const TABULEIRO = [
   {
     "nome": "Exorcista",
     "tipo": "propriedade",
-    "preco": 340,
+    "preco": 420,
     "alugueis": [
       170,
       320,
@@ -450,7 +450,7 @@ const TABULEIRO = [
   {
     "nome": "Rua Elm - Freddy Krueger",
     "tipo": "propriedade",
-    "preco": 360,
+    "preco": 440,
     "alugueis": [
       180,
       330,
@@ -473,7 +473,7 @@ const TABULEIRO = [
   {
     "nome": "Acampamento Crystal Lake - Jason Voorhees",
     "tipo": "propriedade",
-    "preco": 380,
+    "preco": 460,
     "alugueis": [
       190,
       340,
@@ -496,7 +496,7 @@ const TABULEIRO = [
   {
     "nome": "Caminhão do Creeper - Olhos Famintos",
     "tipo": "transporte",
-    "preco": 390,
+    "preco": 480,
     "alugueis": [
       195,
       50,
@@ -519,7 +519,7 @@ const TABULEIRO = [
   {
     "nome": "O Massacre da Serra Elétrica",
     "tipo": "propriedade",
-    "preco": 400,
+    "preco": 500,
     "alugueis": [
       200,
       350,
@@ -542,12 +542,12 @@ const TABULEIRO = [
   {
     "nome": "Transporte de Prisioneiros",
     "tipo": "va_para_prisao",
-    "preco": 415
+    "preco": 520
   },
   {
     "nome": "Bar do Moe - Os Simpsons",
     "tipo": "propriedade",
-    "preco": 430,
+    "preco": 540,
     "alugueis": [
       215,
       415,
@@ -570,7 +570,7 @@ const TABULEIRO = [
   {
     "nome": "Casa do Homer Simpson",
     "tipo": "propriedade",
-    "preco": 460,
+    "preco": 560,
     "alugueis": [
       230,
       430,
@@ -597,7 +597,7 @@ const TABULEIRO = [
   {
     "nome": "Usina Nuclear de Springfield",
     "tipo": "propriedade",
-    "preco": 490,
+    "preco": 580,
     "alugueis": [
       245,
       445,
@@ -620,7 +620,7 @@ const TABULEIRO = [
   {
     "nome": "Sinal de TV - O Chamado",
     "tipo": "servico",
-    "preco": 250,
+    "preco": 600,
     "alugueis": [
       125,
       275,
@@ -652,7 +652,7 @@ const TABULEIRO = [
   {
     "nome": "Casa de Cera - A Casa de Cera",
     "tipo": "propriedade",
-    "preco": 530,
+    "preco": 620,
     "alugueis": [
       265,
       465,
@@ -675,7 +675,7 @@ const TABULEIRO = [
   {
     "nome": "Mansão da Família Addams",
     "tipo": "propriedade",
-    "preco": 600,
+    "preco": 640,
     "alugueis": [
       300,
       500,

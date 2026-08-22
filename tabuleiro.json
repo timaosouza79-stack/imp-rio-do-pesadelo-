@@ -16,7 +16,13 @@
       280
     ],
     "melhorias": 0,
-    "nome_melhoria": "Símbolos Ocultos",
+    "nome_melhoria": [
+      "Símbolos Ocultos",
+      "Boneca Amaldiçoada",
+      "Altar das Trevas",
+      "Possessão Demoníaca",
+      "Invocação Maligna"
+    ],
     "preco_melhoria": 50,
     "dono": null
   },
@@ -27,46 +33,58 @@
   {
     "nome": "Fábrica Good Guys - Chucky",
     "tipo": "propriedade",
-    "preco": 60,
+    "preco": 80,
     "alugueis": [
-      30,
-      80,
-      130,
-      180,
-      230,
-      280
+      40,
+      90,
+      140,
+      190,
+      240,
+      290
     ],
     "melhorias": 0,
-    "nome_melhoria": "Caixas de Bonecos",
+    "nome_melhoria": [
+      "Caixas de Bonecos",
+      "Facas Ensanguentadas",
+      "Oficina de Chucky",
+      "Feitiços Vudus",
+      "Fábrica de Pesadelos"
+    ],
     "preco_melhoria": 50,
     "dono": null
   },
   {
     "nome": "Assalto no Beco do Crime",
     "tipo": "imposto",
-    "valor": 200
+    "valor": 180
   },
   {
     "nome": "Shopping Center - Madrugada dos Mortos",
     "tipo": "transporte",
-    "preco": 200,
+    "preco": 100,
     "alugueis": [
+      45,
+      50,
       100,
-      250,
-      400,
-      550,
-      700,
-      850
+      200,
+      200,
+      200
     ],
     "melhorias": 0,
-    "nome_melhoria": "Barricadas",
+    "nome_melhoria": [
+      "Barricadas",
+      "Mortos-Vivos no Corredor",
+      "Horda Zumbi",
+      "Bunker Anti-Apocalipse",
+      "Fortaleza dos Mortos"
+    ],
     "preco_melhoria": 50,
     "dono": null
   },
   {
     "nome": "Bates Motel - Psicose",
     "tipo": "propriedade",
-    "preco": 100,
+    "preco": 120,
     "alugueis": [
       50,
       100,
@@ -76,7 +94,13 @@
       300
     ],
     "melhorias": 0,
-    "nome_melhoria": "Chaves de Quarto",
+    "nome_melhoria": [
+      "Chaves de Quarto",
+      "Espreita no Chuveiro",
+      "Cacos de Espelho",
+      "Identidades Partidas",
+      "Motel dos Horrores"
+    ],
     "preco_melhoria": 50,
     "dono": null
   },
@@ -87,24 +111,7 @@
   {
     "nome": "Pânico",
     "tipo": "propriedade",
-    "preco": 100,
-    "alugueis": [
-      50,
-      100,
-      150,
-      200,
-      250,
-      300
-    ],
-    "melhorias": 0,
-    "nome_melhoria": "Máscaras Ghostface",
-    "preco_melhoria": 50,
-    "dono": null
-  },
-  {
-    "nome": "Alexandria - The Walking Dead",
-    "tipo": "propriedade",
-    "preco": 120,
+    "preco": 140,
     "alugueis": [
       60,
       110,
@@ -114,69 +121,48 @@
       310
     ],
     "melhorias": 0,
-    "nome_melhoria": "Muros Fortificados",
+    "nome_melhoria": [
+      "Máscaras Ghostface",
+      "Facas do Pânico",
+      "Câmeras de Vigilância",
+      "Armadilhas Mortais",
+      "Maldição de Woodsboro"
+    ],
+    "preco_melhoria": 50,
+    "dono": null
+  },
+  {
+    "nome": "Alexandria - The Walking Dead",
+    "tipo": "propriedade",
+    "preco": 160,
+    "alugueis": [
+      60,
+      110,
+      160,
+      210,
+      260,
+      310
+    ],
+    "melhorias": 0,
+    "nome_melhoria": [
+      "Muros Fortificados",
+      "Torres de Guarda",
+      "Arame Farpado",
+      "Armas Anti-Zumbi",
+      "Bastião da Sobrevivência"
+    ],
     "preco_melhoria": 50,
     "dono": null
   },
   {
     "nome": "Asilo Arkham",
-    "tipo": "prisao"
+    "tipo": "prisao",
+    "preco": 180
   },
   {
     "nome": "Laboratório Hawkins - Stranger Things",
     "tipo": "propriedade",
-    "preco": 140,
-    "alugueis": [
-      70,
-      170,
-      270,
-      370,
-      470,
-      570
-    ],
-    "melhorias": 0,
-    "nome_melhoria": "Fitas K7",
-    "preco_melhoria": 100,
-    "dono": null
-  },
-  {
-    "nome": "Laboratório de Frankenstein",
-    "tipo": "servico",
-    "preco": 170,
-    "alugueis": [
-      85,
-      185,
-      285,
-      385,
-      485,
-      585
-    ],
-    "melhorias": 0,
-    "nome_melhoria": "Geradores",
-    "preco_melhoria": 75,
-    "dono": null
-  },
-  {
-    "nome": "Mundo Invertido - Stranger Things",
-    "tipo": "propriedade",
-    "preco": 140,
-    "alugueis": [
-      70,
-      170,
-      270,
-      370,
-      470,
-      570
-    ],
-    "melhorias": 0,
-    "nome_melhoria": "Demogorgons",
-    "preco_melhoria": 100,
-    "dono": null
-  },
-  {
-    "nome": "Castelo do Drácula",
-    "tipo": "propriedade",
-    "preco": 160,
+    "preco": 200,
     "alugueis": [
       80,
       180,
@@ -186,31 +172,43 @@
       580
     ],
     "melhorias": 0,
-    "nome_melhoria": "Estacas de Madeira",
+    "nome_melhoria": [
+      "Fitas K7",
+      "Laboratório de Experimentos",
+      "Portal do Avesso",
+      "Mente Colmeia",
+      "Domínio do Demogorgon"
+    ],
     "preco_melhoria": 100,
     "dono": null
   },
   {
-    "nome": "Território do Predador",
-    "tipo": "transporte",
-    "preco": 200,
+    "nome": "Laboratório de Frankenstein",
+    "tipo": "servico",
+    "preco": 220,
     "alugueis": [
-      100,
-      250,
-      400,
-      550,
-      700,
-      850
+      85,
+      185,
+      285,
+      385,
+      485,
+      585
     ],
     "melhorias": 0,
-    "nome_melhoria": "Camuflagem Óptica",
-    "preco_melhoria": 50,
+    "nome_melhoria": [
+      "Geradores Elétricos",
+      "Mesa de Experimentos",
+      "Cérebro Artificial",
+      "Relâmpagos Controlados",
+      "Monstro de Frankenstein"
+    ],
+    "preco_melhoria": 75,
     "dono": null
   },
   {
-    "nome": "Armazém do Art - Terrifier",
+    "nome": "Casa do Sorria",
     "tipo": "propriedade",
-    "preco": 180,
+    "preco": 240,
     "alugueis": [
       90,
       190,
@@ -220,7 +218,82 @@
       590
     ],
     "melhorias": 0,
-    "nome_melhoria": "Sacos de Lixo Pretos",
+    "nome_melhoria": [
+      "Sorriso Perturbador",
+      "Visões Malditas",
+      "Espírito do Sorriso",
+      "Maldição Transmitida",
+      "Entidade das Trevas"
+    ],
+    "preco_melhoria": 100,
+    "dono": null
+  },
+  {
+    "nome": "Castelo do Drácula",
+    "tipo": "propriedade",
+    "preco": 260,
+    "alugueis": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600
+    ],
+    "melhorias": 0,
+    "nome_melhoria": [
+      "Estacas de Madeira",
+      "Caixões de Prata",
+      "Morcegos Guardiões",
+      "Bruma Carmesim",
+      "Trono de Drácula"
+    ],
+    "preco_melhoria": 100,
+    "dono": null
+  },
+  {
+    "nome": "Território do Predador",
+    "tipo": "transporte",
+    "preco": 280,
+    "alugueis": [
+      100,
+      250,
+      400,
+      550,
+      700,
+      850
+    ],
+    "melhorias": 0,
+    "nome_melhoria": [
+      "Camuflagem Óptica",
+      "Lasers de Plasma",
+      "Crânios de Troféu",
+      "Armadura Alienígena",
+      "Canhão de Plasma"
+    ],
+    "preco_melhoria": 50,
+    "dono": null
+  },
+  {
+    "nome": "Armazém do Art - Terrifier",
+    "tipo": "propriedade",
+    "preco": 300,
+    "alugueis": [
+      110,
+      210,
+      310,
+      410,
+      510,
+      610
+    ],
+    "melhorias": 0,
+    "nome_melhoria": [
+      "Sacos de Lixo Pretos",
+      "Maquiagem Aterrorizante",
+      "Foices do Art",
+      "Palhaço de Sangue",
+      "Matadouro do Terrifier"
+    ],
     "preco_melhoria": 100,
     "dono": null
   },
@@ -231,34 +304,46 @@
   {
     "nome": "Jurassic Park",
     "tipo": "propriedade",
-    "preco": 180,
+    "preco": 320,
     "alugueis": [
-      90,
-      190,
-      290,
-      390,
-      490,
-      590
+      120,
+      220,
+      320,
+      420,
+      520,
+      620
     ],
     "melhorias": 0,
-    "nome_melhoria": "Cercas Elétricas",
+    "nome_melhoria": [
+      "Cercas Elétricas",
+      "Ovos de Dinossauro",
+      "Laboratório de DNA",
+      "T-Rex Solto",
+      "Parque do Caos"
+    ],
     "preco_melhoria": 100,
     "dono": null
   },
   {
     "nome": "Ilha da Caveira - King Kong",
     "tipo": "propriedade",
-    "preco": 200,
+    "preco": 340,
     "alugueis": [
-      100,
-      200,
-      300,
-      400,
-      500,
-      600
+      130,
+      230,
+      330,
+      430,
+      530,
+      630
     ],
     "melhorias": 0,
-    "nome_melhoria": "Sinalizadores",
+    "nome_melhoria": [
+      "Sinalizadores de Perigo",
+      "Bunkers Subterrâneos",
+      "Ninho de Kong",
+      "Guardiões da Ilha",
+      "Rugido de King Kong"
+    ],
     "preco_melhoria": 100,
     "dono": null
   },
@@ -269,17 +354,23 @@
   {
     "nome": "Casa dos Myers - Michael Myers",
     "tipo": "propriedade",
-    "preco": 220,
+    "preco": 360,
     "alugueis": [
-      110,
-      260,
-      410,
-      560,
-      710,
-      860
+      140,
+      290,
+      440,
+      590,
+      740,
+      890
     ],
     "melhorias": 0,
-    "nome_melhoria": "Máscaras Brancas",
+    "nome_melhoria": [
+      "Facas de Cozinha",
+      "Máscara de Halloween",
+      "Porão dos Horrores",
+      "Sombra de Myers",
+      "A Forma nas Trevas"
+    ],
     "preco_melhoria": 150,
     "dono": null
   },
@@ -290,157 +381,212 @@
   {
     "nome": "Esgotos de Derry - Pennywise",
     "tipo": "propriedade",
-    "preco": 220,
+    "preco": 380,
     "alugueis": [
-      110,
-      260,
-      410,
-      560,
-      710,
-      860
+      150,
+      300,
+      450,
+      600,
+      750,
+      900
     ],
     "melhorias": 0,
-    "nome_melhoria": "Balões Vermelhos",
+    "nome_melhoria": [
+      "Balões Vermelhos",
+      "Galerias dos Esgotos",
+      "Risos do Pennywise",
+      "Câmara do Medo",
+      "Palhaço Primordial"
+    ],
     "preco_melhoria": 150,
     "dono": null
   },
   {
     "nome": "Banheiro Abandonado - Jigsaw",
     "tipo": "propriedade",
-    "preco": 240,
+    "preco": 400,
     "alugueis": [
-      120,
-      270,
-      420,
-      570,
-      720,
-      870
+      160,
+      310,
+      460,
+      610,
+      760,
+      910
     ],
     "melhorias": 0,
-    "nome_melhoria": "Fitas Cassete",
+    "nome_melhoria": [
+      "Fitas Cassete",
+      "Serras Enferrujadas",
+      "Câmaras de Tortura",
+      "Jogos Mortais",
+      "Julgamento de Jigsaw"
+    ],
     "preco_melhoria": 150,
     "dono": null
   },
   {
-    "nome": "Impala 1967 - Supernatural",
-    "tipo": "transporte",
-    "preco": 200,
+    "nome": "Exorcista",
+    "tipo": "propriedade",
+    "preco": 420,
     "alugueis": [
-      100,
-      250,
-      400,
-      550,
-      700,
-      850
+      170,
+      320,
+      470,
+      620,
+      770,
+      920
     ],
     "melhorias": 0,
-    "nome_melhoria": "Sal Grosso",
-    "preco_melhoria": 50,
+    "nome_melhoria": [
+      "Água Benta",
+      "Crucifixo Sagrado",
+      "Pentagramas Invertidos",
+      "Possessão Total",
+      "Exorcismo Final"
+    ],
+    "preco_melhoria": 150,
     "dono": null
   },
   {
     "nome": "Rua Elm - Freddy Krueger",
     "tipo": "propriedade",
-    "preco": 260,
+    "preco": 440,
     "alugueis": [
-      130,
-      280,
-      430,
-      580,
-      730,
-      880
+      180,
+      330,
+      480,
+      630,
+      780,
+      930
     ],
     "melhorias": 0,
-    "nome_melhoria": "Pesadelos",
+    "nome_melhoria": [
+      "Pesadelos Recorrentes",
+      "Garras Afiadas",
+      "Caldeira do Inferno",
+      "Sonho Mortal",
+      "Freddy no Seu Sono"
+    ],
     "preco_melhoria": 150,
     "dono": null
   },
   {
     "nome": "Acampamento Crystal Lake - Jason Voorhees",
     "tipo": "propriedade",
-    "preco": 400,
+    "preco": 460,
     "alugueis": [
-      200,
-      400,
-      600,
-      800,
-      1000,
-      1200
+      190,
+      340,
+      490,
+      640,
+      790,
+      940
     ],
     "melhorias": 0,
-    "nome_melhoria": "Armadilhas de Urso",
-    "preco_melhoria": 200,
+    "nome_melhoria": [
+      "Armadilhas de Urso",
+      "Machado Ensanguentado",
+      "Máscara de Hóquei",
+      "Lago das Almas",
+      "Vingança de Jason"
+    ],
+    "preco_melhoria": 150,
     "dono": null
   },
   {
     "nome": "Caminhão do Creeper - Olhos Famintos",
     "tipo": "transporte",
-    "preco": 200,
+    "preco": 480,
     "alugueis": [
+      195,
+      50,
       100,
-      250,
-      400,
-      550,
-      700,
-      850
+      200,
+      200,
+      200
     ],
     "melhorias": 0,
-    "nome_melhoria": "Placas de Carro",
+    "nome_melhoria": [
+      "Placas de Carro",
+      "Garras do Creeper",
+      "Asas Cortantes",
+      "Faro de Sangue",
+      "Terror nos Céus"
+    ],
     "preco_melhoria": 50,
     "dono": null
   },
   {
     "nome": "O Massacre da Serra Elétrica",
     "tipo": "propriedade",
-    "preco": 240,
+    "preco": 500,
     "alugueis": [
-      120,
-      270,
-      420,
-      570,
-      720,
-      870
+      200,
+      350,
+      500,
+      650,
+      800,
+      950
     ],
     "melhorias": 0,
-    "nome_melhoria": "Serras Elétricas",
+    "nome_melhoria": [
+      "Serras Elétricas",
+      "Ganchos de Açougue",
+      "Poço de Sangue",
+      "Família Sawyer",
+      "Matadouro de Leatherface"
+    ],
     "preco_melhoria": 150,
     "dono": null
   },
   {
     "nome": "Transporte de Prisioneiros",
-    "tipo": "va_para_prisao"
+    "tipo": "va_para_prisao",
+    "preco": 520
   },
   {
     "nome": "Bar do Moe - Os Simpsons",
     "tipo": "propriedade",
-    "preco": 300,
+    "preco": 540,
     "alugueis": [
-      150,
-      350,
-      550,
-      750,
-      950,
-      1150
+      215,
+      415,
+      615,
+      815,
+      1015,
+      1215
     ],
     "melhorias": 0,
-    "nome_melhoria": "Canecas de Chopp",
+    "nome_melhoria": [
+      "Canecas de Chopp",
+      "Drinks Envenenados",
+      "Retratos de Terror",
+      "Fantasmas do Bar",
+      "Taverna Amaldiçoada"
+    ],
     "preco_melhoria": 200,
     "dono": null
   },
   {
     "nome": "Casa do Homer Simpson",
     "tipo": "propriedade",
-    "preco": 300,
+    "preco": 560,
     "alugueis": [
-      150,
-      350,
-      550,
-      750,
-      950,
-      1150
+      230,
+      430,
+      630,
+      830,
+      1030,
+      1230
     ],
     "melhorias": 0,
-    "nome_melhoria": "Fardos de Duff",
+    "nome_melhoria": [
+      "Cervejas Duff Malditas",
+      "Porão Radioativo",
+      "Fantasmas de Springfield",
+      "Monstros da Vizinhança",
+      "Maldição de Homer"
+    ],
     "preco_melhoria": 200,
     "dono": null
   },
@@ -451,24 +597,30 @@
   {
     "nome": "Usina Nuclear de Springfield",
     "tipo": "propriedade",
-    "preco": 320,
+    "preco": 580,
     "alugueis": [
-      160,
-      360,
-      560,
-      760,
-      960,
-      1160
+      245,
+      445,
+      645,
+      845,
+      1045,
+      1245
     ],
     "melhorias": 0,
-    "nome_melhoria": "Barras de Urânio",
+    "nome_melhoria": [
+      "Barras de Urânio",
+      "Vazamento Nuclear",
+      "Mutação Radioativa",
+      "Zona de Exclusão",
+      "Fusão do Reator"
+    ],
     "preco_melhoria": 200,
     "dono": null
   },
   {
     "nome": "Sinal de TV - O Chamado",
     "tipo": "servico",
-    "preco": 250,
+    "preco": 600,
     "alugueis": [
       125,
       275,
@@ -478,7 +630,13 @@
       875
     ],
     "melhorias": 0,
-    "nome_melhoria": "Fitas VHS",
+    "nome_melhoria": [
+      "Fitas VHS Malditas",
+      "Poço das Trevas",
+      "Sinal Amaldiçoado",
+      "Visão de Samara",
+      "Chamado da Morte"
+    ],
     "preco_melhoria": 100,
     "dono": null
   },
@@ -494,35 +652,47 @@
   {
     "nome": "Casa de Cera - A Casa de Cera",
     "tipo": "propriedade",
-    "preco": 350,
+    "preco": 620,
     "alugueis": [
-      175,
-      375,
-      575,
-      775,
-      975,
-      1175
+      265,
+      465,
+      665,
+      865,
+      1065,
+      1265
     ],
     "melhorias": 0,
-    "nome_melhoria": "Estátuas de Cera",
+    "nome_melhoria": [
+      "Estátuas de Cera",
+      "Câmara de Derreter",
+      "Cera Humana",
+      "Exposição Macabra",
+      "Museu do Horror"
+    ],
     "preco_melhoria": 200,
     "dono": null
   },
   {
     "nome": "Mansão da Família Addams",
     "tipo": "propriedade",
-    "preco": 260,
+    "preco": 640,
     "alugueis": [
-      130,
-      280,
-      430,
-      580,
-      730,
-      880
+      300,
+      500,
+      700,
+      900,
+      1100,
+      1300
     ],
     "melhorias": 0,
-    "nome_melhoria": "Plantas Carnívoras",
-    "preco_melhoria": 150,
+    "nome_melhoria": [
+      "Plantas Carnívoras",
+      "Poção de Mortem",
+      "Mão Decepada",
+      "Espírito de Lurch",
+      "Família Addams Completa"
+    ],
+    "preco_melhoria": 200,
     "dono": null
   }
 ]
