@@ -2062,8 +2062,12 @@ function aplicarRegra() {
     // Identificar a chave da imagem/vídeo da casa para buscar na associação
     const imgKey = getTileImgKey(casa, j.posicao);
     
-    // Se a casa tiver um vídeo associado, reproduz antes de aplicar a regra
-    if (imgKey && URLS_VIDEOS[imgKey] && !j.is_cpu) {
+    // Se a casa tiver um vídeo associado, reproduz antes de aplicar a regra (limite de 5 vezes por casa)
+    if (!window.contagemVideosCasas) window.contagemVideosCasas = {};
+    if (!window.contagemVideosCasas[j.posicao]) window.contagemVideosCasas[j.posicao] = 0;
+    
+    if (imgKey && URLS_VIDEOS[imgKey] && !j.is_cpu && window.contagemVideosCasas[j.posicao] < 5) {
+        window.contagemVideosCasas[j.posicao]++;
         mostrarVideoModal(URLS_VIDEOS[imgKey], () => {
              aplicarRegraRestante(j, casa);
         });
