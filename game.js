@@ -2338,15 +2338,18 @@ function aplicarRegraRestante(j, casa) {
         }
     } else if (casa.tipo === "imposto") {
         const pagarImposto = () => {
+            let valorImposto = casa.valor;
+            let ofCtx = window.triggerPerk(j, 'onOferenda', { valorOriginal: valorImposto });
+            valorImposto = ofCtx.newCost !== undefined ? ofCtx.newCost : valorImposto;
             SoundFX.playRent();
-            j.dinheiro -= casa.valor;
-            logMsg(`🧾 ${j.nome} pagou $${casa.valor} de imposto.`);
+            j.dinheiro -= valorImposto;
+            logMsg(`🧾 ${j.nome} pagou $${valorImposto} de imposto/oferenda.`);
             if (!j.is_cpu) {
                 const imgKey = getTileImgKey(casa, j.posicao);
                 const imgUrl = imgKey && URLS_IMAGENS[imgKey] ? URLS_IMAGENS[imgKey] : null;
                 const topColor = getTileColor(casa) || '#333333';
                 const dummyCasa = { nome: casa.nome, topColor: topColor, imgUrl: imgUrl };
-                mostrarPropertyCard(dummyCasa, `💸 Você pagou $${casa.valor} de oferenda para fugir do espírito.`, encerrarTurno, encerrarTurno, "ENTENDIDO", null);
+                mostrarPropertyCard(dummyCasa, `💸 Você pagou $${valorImposto} de oferenda para fugir do espírito.`, encerrarTurno, encerrarTurno, "ENTENDIDO", null);
             } else {
                 encerrarTurno();
             }
@@ -2367,8 +2370,12 @@ function aplicarRegraRestante(j, casa) {
         };
 
         const processarPandora = () => {
-            if (c.valor_alteracao < 0) SoundFX.playRent();
-            j.dinheiro += c.valor_alteracao;
+            let altVal = c.valor_alteracao;
+            let pCtx = window.triggerPerk(j, 'onDrawPandora', { valorAlteracao: altVal });
+            altVal = pCtx.valorAlteracao !== undefined ? pCtx.valorAlteracao : altVal;
+            
+            if (altVal < 0) SoundFX.playRent();
+            j.dinheiro += altVal;
             logMsg(`📦 Carta de Pandora: ${c.texto}`);
             if (c.ir_prisao) { j.posicao = 10; j.is_preso = true; logMsg(`🚨 ${j.nome} foi para a Prisão!`); }
             
@@ -3382,7 +3389,7 @@ window.triggerPerk = function(jogador, evento, contexto = {}) {
                         }
                     }
                 });
-                if (alguemRoubado) atualizarHUD();
+                if (alguemRoubado) updateUI();
             }
 
             // Homer (Sorte de Bêbado)
@@ -3391,7 +3398,7 @@ window.triggerPerk = function(jogador, evento, contexto = {}) {
                 if (n.includes("bar do moe") || n.includes("casa do homer") || n.includes("usina nuclear")) {
                     jogador.dinheiro += 50;
                     alertPerk("Passou em um de seus lugares favoritos e ganhou $50!");
-                    atualizarHUD();
+                    updateUI();
                 }
             }
             break;
@@ -3419,7 +3426,7 @@ window.triggerPerk = function(jogador, evento, contexto = {}) {
                         }
                     }
                 });
-                if (infectou) atualizarHUD();
+                if (infectou) updateUI();
             }
             return { salary: 200 };
 
@@ -3441,7 +3448,7 @@ window.triggerPerk = function(jogador, evento, contexto = {}) {
                         let metade = Math.floor(Math.abs(valorRuim) * 0.5);
                         vitima.dinheiro -= metade;
                         alertPerk(`Ligação macabra repassou $${metade} da dívida para ${vitima.nome}!`);
-                        atualizarHUD();
+                        updateUI();
                         return { newValor: valorRuim + metade }; // Subtrai a metade que passou
                     }
                 }
@@ -3492,7 +3499,7 @@ window.triggerPerk = function(jogador, evento, contexto = {}) {
                 });
                 if (cobrou) {
                     alertPerk("Presença poltergeist na nova casa! Cobrou $15 de proteção de cada jogador.");
-                    atualizarHUD();
+                    updateUI();
                 }
             }
             break;
@@ -3510,7 +3517,7 @@ window.triggerPerk = function(jogador, evento, contexto = {}) {
                 if (soma % 2 !== 0) {
                     jogador.dinheiro += 10;
                     alertPerk("Encontrou $10 perdidos pelo caminho (soma ímpar)!");
-                    atualizarHUD();
+                    updateUI();
                 }
             }
             // Freddy
@@ -3525,7 +3532,7 @@ window.triggerPerk = function(jogador, evento, contexto = {}) {
                 });
                 if (sugou) {
                     alertPerk("Mestre dos Pesadelos atacou nas duplas! Sugou $20 de cada sobrevivente.");
-                    atualizarHUD();
+                    updateUI();
                 }
             }
             return { casaMoveExtras };
@@ -3536,11 +3543,11 @@ window.triggerPerk = function(jogador, evento, contexto = {}) {
                 if (credor && credor.dinheiro >= 300) {
                     credor.dinheiro -= 300;
                     alertPerk(`Ativou autodestruição! ${credor.nome} sofreu dano colateral de $300.`);
-                    atualizarHUD();
+                    updateUI();
                 } else if (credor) {
                     credor.dinheiro = 0;
                     alertPerk(`Ativou autodestruição devastadora contra ${credor.nome}!`);
-                    atualizarHUD();
+                    updateUI();
                 }
             }
             break;
