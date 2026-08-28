@@ -2403,7 +2403,17 @@ function aplicarRegraRestante(j, casa) {
             if (c.ir_prisao) { j.posicao = 10; j.is_preso = true; logMsg(`🚨 ${j.nome} foi para a Prisão!`); }
             
             if (c.texto.includes("Chucky sabotou") && !j.is_cpu) {
-                mostrarVideoModal("assets/chuckfreios.MP4", finishPandora);
+                mostrarVideoModal("assets/videochuckcortouosfreiospague100.MP4", finishPandora);
+            } else if (c.texto.includes("Vaticano te recompensou") && !j.is_cpu) {
+                mostrarVideoModal("assets/videosortevaticanopagou300.MP4", finishPandora);
+            } else if (c.texto.includes("filhote de T-Rex") && !j.is_cpu) {
+                mostrarVideoModal("assets/videovendeuumtirexreceba250.MP4", finishPandora);
+            } else if (c.texto.includes("visita ao Asilo Arkham") && !j.is_cpu) {
+                mostrarVideoModal("assets/videorevessuavisitaterminounoasilopague200.MP4", finishPandora);
+            } else if (c.texto.includes("Homer Simpson deixou cair") && !j.is_cpu) {
+                mostrarVideoModal("assets/homerdeixoucairreceba50.MP4", finishPandora);
+            } else if (c.texto.includes("ingressos VIP para uma tour segura na Ilha da Caveira") && !j.is_cpu) {
+                mostrarVideoModal("assets/videosorteilhadacaveirareceba150.MP4", finishPandora);
             } else {
                 finishPandora();
             }
