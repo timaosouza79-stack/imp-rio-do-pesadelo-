@@ -2,7 +2,7 @@
 // sw.js — Service Worker · Souza Finanças
 // ============================================================
 
-const CACHE_NAME = 'souzafinancas-v4';
+const CACHE_NAME = 'souzafinancas-v5';
 
 const ARQUIVOS = [
   '/',

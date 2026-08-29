@@ -4,8 +4,8 @@
 
 const DB = {
   TRANSACOES:  'sf_transacoes',
-  CATEGORIAS:  'sf_categorias',
-  CONTAS:      'sf_contas',
+  CATEGORIAS:  'sf_categorias_v2', // Chave atualizada para forçar reload dos novos ícones SVG
+  CONTAS:      'sf_contas_v2',     // Atualizando também as contas para usar SVG
   MOEDA:       'sf_moeda',
 };
 
@@ -105,9 +105,9 @@ function formatarValor(valor) {
 }
 
 function getCategoriaById(id) {
-  return getCategorias().find(c => c.id === id) || { nome: 'Outros', icone: '📦', cor: '#7f8c8d' };
+  return getCategorias().find(c => c.id === id) || { nome: 'Outros', icon: 'package', cor: '#7f8c8d' };
 }
 
 function getContaById(id) {
-  return getContas().find(c => c.id === id) || { nome: 'Dinheiro', icone: '💵' };
+  return getContas().find(c => c.id === id) || { nome: 'Dinheiro', icon: 'dollar-sign' };
 }

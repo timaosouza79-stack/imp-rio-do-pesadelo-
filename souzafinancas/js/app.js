@@ -207,7 +207,7 @@ function popularSelectCategorias(tipo) {
   const sel = document.getElementById('modal-categoria');
   const cats = getCategorias().filter(c => c.tipo === tipo);
   sel.innerHTML = cats.map(c =>
-    `<option value="${c.id}">${c.icone} ${c.nome}</option>`
+    `<option value="${c.id}">${c.nome}</option>`
   ).join('');
 }
 
@@ -215,7 +215,7 @@ function popularSelectContas() {
   const sel = document.getElementById('modal-conta');
   const contas = getContas();
   sel.innerHTML = contas.map(c =>
-    `<option value="${c.id}">${c.icone} ${c.nome}</option>`
+    `<option value="${c.id}">${c.nome}</option>`
   ).join('');
 }
 
@@ -255,14 +255,14 @@ function renderizarCategorias() {
     titulo.textContent = tipo === 'despesa' ? '🔴 Despesas' : '🟢 Receitas';
     lista.appendChild(titulo);
 
-    cats.filter(c => c.tipo === tipo).forEach(cat => {
+    getCategorias().filter(c => c.tipo === tipo).forEach(cat => {
       const div = document.createElement('div');
       div.className = 'lista-item';
-      div.style.setProperty('--cat-cor', cat.cor);
+      const svg = featherSVG(cat.icon || 'package', '#fff', 20);
       div.innerHTML = `
-        <span class="li-icone" style="background:${cat.cor}">${cat.icone}</span>
+        <div class="li-icone" style="background:${cat.cor}">${svg}</div>
         <span class="li-nome">${cat.nome}</span>
-        <button class="li-del" onclick="confirmarDeleteCategoria('${cat.id}')">🗑</button>
+        <button class="li-del" onclick="confirmarDeleteCategoria('${cat.id}')">×</button>
       `;
       lista.appendChild(div);
     });
@@ -337,8 +337,9 @@ function renderizarHistorico() {
     const dataFmt = data.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' });
     const div = document.createElement('div');
     div.className = 'hist-item';
+    const svg = featherSVG(cat.icon || 'package', '#fff', 20);
     div.innerHTML = `
-      <span class="hist-icone" style="background:${cat.cor}">${cat.icone}</span>
+      <div class="hist-icone" style="background:${cat.cor}">${svg}</div>
       <div class="hist-info">
         <span class="hist-cat">${cat.nome}</span>
         <span class="hist-detalhe">${conta.nome} · ${dataFmt}</span>
@@ -368,7 +369,7 @@ function abrirDetalheCategoria(item) {
     .filter(t => t.categoriaId === item.categoriaId);
   const total = transacoes.reduce((s, t) => s + Number(t.valor), 0);
 
-  document.getElementById('det-titulo').textContent = item.icone + ' ' + item.nome;
+  document.getElementById('det-titulo').textContent = item.nome;
   document.getElementById('det-total').textContent = formatarValor(total);
   document.getElementById('det-qtd').textContent = transacoes.length + ' transações';
 
