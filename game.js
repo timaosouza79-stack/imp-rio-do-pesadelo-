@@ -2420,6 +2420,12 @@ function aplicarRegraRestante(j, casa) {
                 mostrarVideoModal("assets/videopedagiobatesmotelreceba80.MP4", finishPandora);
             } else if (c.texto.includes("A prefeitura de Hawkins pagou") && !j.is_cpu) {
                 mostrarVideoModal("assets/A prefeitura de Hawkins pagou 200.MP4", finishPandora);
+            } else if (c.texto.includes("Família Addams pagou adiantado") && !j.is_cpu) {
+                mostrarVideoModal("assets/videosorteourevesfamiliaadanspagoupelafetsa200.MP4", finishPandora);
+            } else if (c.texto.includes("não estava amaldiçoada pela Samara") && !j.is_cpu) {
+                mostrarVideoModal("assets/sorteourevesfitanaoalmodicoadapelasamarareceba120.MP4", finishPandora);
+            } else if (c.texto.includes("abandonados em Alexandria") && !j.is_cpu) {
+                mostrarVideoModal("assets/sorteourevesvideoEncontrou suprimentos valiosos abandonados em Alexandria (The Walking Dead). Receba $100.MP4", finishPandora);
             } else {
                 finishPandora();
             }
