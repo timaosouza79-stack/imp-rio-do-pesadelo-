@@ -119,11 +119,12 @@ function renderizarCatsCol(dados) {
 
   dados.forEach(item => {
     const pct = total > 0 ? Math.round((item.valor / total) * 100) : 0;
+    const svg = featherSVG(item.icon || 'package', item.cor, 26);
     const div = document.createElement('div');
     div.className = 'cat-float';
     div.style.setProperty('--cat-cor', item.cor);
     div.innerHTML = `
-      <div class="cf-icone-wrap">${item.icone}</div>
+      <div class="cf-icone-wrap">${svg}</div>
       <span class="cf-pct">${pct}%</span>
       <span class="cf-nome">${item.nome}</span>
     `;
