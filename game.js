@@ -2426,6 +2426,14 @@ function aplicarRegraRestante(j, casa) {
                 mostrarVideoModal("assets/sorteourevesfitanaoalmodicoadapelasamarareceba120.MP4", finishPandora);
             } else if (c.texto.includes("abandonados em Alexandria") && !j.is_cpu) {
                 mostrarVideoModal("assets/sorteourevesvideoEncontrou suprimentos valiosos abandonados em Alexandria (The Walking Dead). Receba $100.MP4", finishPandora);
+            } else if (c.texto.includes("indenização por exposição à radiação") && !j.is_cpu) {
+                mostrarVideoModal("assets/videosoretusainanuclearpagou200.MP4", finishPandora);
+            } else if (c.texto.includes("sobrevivência na Madrugada dos Mortos") && !j.is_cpu) {
+                mostrarVideoModal("assets/videosortesobreviveuamadrugadadadosmortosreceba150.MP4", finishPandora);
+            } else if (c.texto.includes("esconderijo de armas do Predador") && !j.is_cpu) {
+                mostrarVideoModal("assets/videosortearmasdopredadorreceba180.MP4", finishPandora);
+            } else if (c.texto.includes("desativou a armadilha do Jigsaw") && !j.is_cpu) {
+                mostrarVideoModal("assets/videosortedesativouaamrmadilhajigsaw, receba150.MP4", finishPandora);
             } else {
                 finishPandora();
             }

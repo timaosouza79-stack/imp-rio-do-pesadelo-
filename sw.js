@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pesadelos-v95';
+const CACHE_NAME = 'pesadelos-v96';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
