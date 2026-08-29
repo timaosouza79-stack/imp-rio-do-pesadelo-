@@ -2434,6 +2434,12 @@ function aplicarRegraRestante(j, casa) {
                 mostrarVideoModal("assets/videosortearmasdopredadorreceba180.MP4", finishPandora);
             } else if (c.texto.includes("desativou a armadilha do Jigsaw") && !j.is_cpu) {
                 mostrarVideoModal("assets/videosortedesativouaamrmadilhajigsaw, receba150.MP4", finishPandora);
+            } else if (c.texto.includes("Escapou do Caminhão do Creeper") && !j.is_cpu) {
+                mostrarVideoModal("assets/videosorteescapoudocaminhaoreceba100.MP4", finishPandora);
+            } else if (c.texto.includes("estátua hiper-realista da Casa de Cera") && !j.is_cpu) {
+                mostrarVideoModal("assets/videosortevendeuumaestatuadacasadecerareceba120.MP4", finishPandora);
+            } else if (c.texto.includes("Freddy Krueger invadiu seus sonhos") && !j.is_cpu) {
+                mostrarVideoModal("assets/videorevesfreddyinvadiuseussonhospague150.MP4", finishPandora);
             } else {
                 finishPandora();
             }
