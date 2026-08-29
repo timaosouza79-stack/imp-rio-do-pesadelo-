@@ -7,7 +7,7 @@
   <meta name="description" content="Souza Finanças — Controlo financeiro pessoal" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Souza Finanças" />
   <title>Souza Finanças</title>
   <link rel="manifest" href="manifest.json" />
@@ -17,139 +17,176 @@
 
 <div id="app">
 
-  <!-- ── HEADER ─────────────────────────────────────────── -->
+  <!-- ══ HEADER estilo Monefy ══════════════════════════════ -->
   <header>
     <div class="header-left">
-      <span style="font-size:22px">💰</span>
-      <div>
+      <button class="hdr-icon-btn" id="btn-filtro" title="Filtro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+      </button>
+      <div class="hdr-titulo">
         <h1>Souza Finanças</h1>
-        <div class="header-sub">Todas as contas</div>
+        <span class="header-sub">Todas as contas</span>
       </div>
     </div>
     <div class="header-actions">
-      <button class="icon-btn" id="btn-historico" data-nav="historico" title="Histórico">📋</button>
-      <button class="icon-btn" id="btn-menu" title="Menu">☰</button>
+      <button class="hdr-icon-btn" id="btn-historico" title="Histórico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button class="hdr-icon-btn" title="Transferir">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4 4 4M17 8v12m0 0 4-4m-4 4-4-4"/></svg>
+      </button>
+      <button class="hdr-icon-btn" id="btn-menu" title="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+      </button>
     </div>
   </header>
 
-  <!-- ── BARRA PERÍODO ──────────────────────────────────── -->
-  <div class="periodo-bar">
-    <button class="periodo-btn" id="btn-mes-ant">‹</button>
-    <span id="periodo-label">Agosto 2026</span>
-    <button class="periodo-btn" id="btn-mes-seg">›</button>
+  <!-- ══ PÁGINA INÍCIO ══════════════════════════════════════ -->
+  <div id="pagina-inicio" class="pagina">
+
+    <!-- Área principal: ícones + donut -->
+    <div class="main-area">
+
+      <!-- Coluna de ícones das categorias (esquerda) -->
+      <div class="cats-col" id="cats-col"></div>
+
+      <!-- Donut chart (centro/direita) -->
+      <div class="donut-area">
+        <canvas id="donut-canvas" width="240" height="240"></canvas>
+      </div>
+
+    </div>
+
+    <!-- Barra de período e tabs -->
+    <div class="mid-bar">
+      <div class="tabs-tipo">
+        <button class="tab-tipo ativo" data-tipo="despesa">Despesas</button>
+        <button class="tab-tipo" data-tipo="receita">Receitas</button>
+      </div>
+      <div class="periodo-nav">
+        <button class="periodo-btn" id="btn-mes-ant">‹</button>
+        <span id="periodo-label">Agosto 2026</span>
+        <button class="periodo-btn" id="btn-mes-seg">›</button>
+      </div>
+    </div>
+
+  </div><!-- fim pagina-inicio -->
+
+  <!-- ══ PÁGINAS SECUNDÁRIAS ════════════════════════════════ -->
+
+  <div id="pagina-categorias" class="pagina hidden">
+    <div class="pagina-header">
+      <button class="btn-back">←</button>
+      <h2>Categorias</h2>
+      <button class="btn-add-item" id="btn-nova-cat">+</button>
+    </div>
+    <div id="lista-categorias"></div>
   </div>
 
-  <!-- ── TABS DESPESA / RECEITA ─────────────────────────── -->
-  <div class="tabs-tipo">
-    <button class="tab-tipo ativo" data-tipo="despesa">− Despesas</button>
-    <button class="tab-tipo" data-tipo="receita">+ Receitas</button>
+  <div id="pagina-contas" class="pagina hidden">
+    <div class="pagina-header">
+      <button class="btn-back">←</button>
+      <h2>Contas</h2>
+    </div>
+    <div id="lista-contas"></div>
   </div>
 
-  <!-- ── CONTEÚDO ───────────────────────────────────────── -->
-  <div class="conteudo">
-
-    <!-- ═══ PÁGINA: INÍCIO ════════════════════════════════ -->
-    <div id="pagina-inicio" class="pagina">
-
-      <!-- Gráfico Donut -->
-      <div class="donut-wrapper">
-        <canvas id="donut-canvas" width="220" height="220"></canvas>
-      </div>
-
-      <!-- Grid categorias -->
-      <div id="categorias-grid"></div>
-
-      <!-- Saldo -->
-      <div class="saldo-section">
-        <div class="saldo-bar positivo" id="saldo-bar">
-          <span class="saldo-label">Saldo do mês</span>
-          <span id="saldo-valor" class="positivo">R$ 0,00</span>
-        </div>
-        <div class="resumo-row">
-          <div class="resumo-item receita">
-            <span class="resumo-val" id="resumo-receita">R$ 0,00</span>
-            <span class="resumo-lab">↑ Receitas</span>
-          </div>
-          <div class="resumo-item despesa">
-            <span class="resumo-val" id="resumo-despesa">R$ 0,00</span>
-            <span class="resumo-lab">↓ Despesas</span>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- fim pagina-inicio -->
-
-    <!-- ═══ PÁGINA: CATEGORIAS ════════════════════════════ -->
-    <div id="pagina-categorias" class="pagina hidden">
-      <div class="pagina-header">
-        <button class="btn-back">←</button>
-        <h2>Categorias</h2>
-        <button class="btn-add-item" id="btn-nova-cat">+</button>
-      </div>
-      <div id="lista-categorias"></div>
+  <div id="pagina-historico" class="pagina hidden">
+    <div class="pagina-header">
+      <button class="btn-back">←</button>
+      <h2>Histórico</h2>
     </div>
+    <div id="lista-historico"></div>
+  </div>
 
-    <!-- ═══ PÁGINA: CONTAS ════════════════════════════════ -->
-    <div id="pagina-contas" class="pagina hidden">
-      <div class="pagina-header">
-        <button class="btn-back">←</button>
-        <h2>Contas</h2>
-      </div>
-      <div id="lista-contas"></div>
-    </div>
+  <!-- ══ BARRA DE SALDO (fundo, estilo Monefy) ═════════════ -->
+  <div class="saldo-bottom" id="saldo-bar">
+    <span id="saldo-valor" class="sb-valor">R$ 0,00</span>
+    <button class="sb-menu-btn" id="btn-sb-menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+  </div>
 
-    <!-- ═══ PÁGINA: HISTÓRICO ════════════════════════════ -->
-    <div id="pagina-historico" class="pagina hidden">
-      <div class="pagina-header">
-        <button class="btn-back">←</button>
-        <h2>Histórico</h2>
-      </div>
-      <div id="lista-historico"></div>
-    </div>
-
-  </div><!-- fim conteudo -->
-
-  <!-- ── FAB Botões ─────────────────────────────────────── -->
-  <div class="fab-container">
-    <button class="fab fab-despesa" id="btn-fab-despesa" title="Nova Despesa">−</button>
-    <button class="fab fab-receita" id="btn-fab-receita" title="Nova Receita">+</button>
+  <!-- ══ FAB único estilo Monefy ════════════════════════════ -->
+  <div class="fab-wrap">
+    <button class="fab-main" id="btn-fab-despesa" title="Adicionar gasto">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </button>
   </div>
 
 </div><!-- fim #app -->
 
-<!-- ═══════ OVERLAY DRAWER ════════════════════════════════ -->
+<!-- ══ OVERLAY DRAWER ═════════════════════════════════════ -->
 <div id="overlay-drawer"></div>
 
-<!-- ═══════ DRAWER LATERAL ════════════════════════════════ -->
+<!-- ══ DRAWER LATERAL estilo Monefy ══════════════════════ -->
 <aside id="drawer">
-  <div class="drawer-header">
-    <h2>💰 Souza Finanças</h2>
-    <p>Gestão financeira pessoal</p>
-  </div>
   <ul class="drawer-menu">
+
     <li data-nav="categorias">
-      <div class="dm-icone">📓</div>
-      Categorias
+      <div class="dm-icone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="2" width="13" height="20" rx="2"/>
+          <line x1="4" y1="7" x2="4" y2="7"/>
+          <line x1="9" y1="2" x2="9" y2="22"/>
+          <line x1="13" y1="7" x2="17" y2="7"/>
+          <line x1="13" y1="11" x2="17" y2="11"/>
+          <line x1="13" y1="15" x2="17" y2="15"/>
+        </svg>
+      </div>
+      <span>Categorias</span>
     </li>
+
     <li data-nav="contas">
-      <div class="dm-icone">👛</div>
-      Contas
+      <div class="dm-icone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="7" width="20" height="13" rx="2"/>
+          <path d="M16 16a1 1 0 1 0 2 0 1 1 0 0 0-2 0z" fill="#2ecc71"/>
+          <path d="M22 11V9a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2"/>
+          <line x1="2" y1="11" x2="22" y2="11"/>
+        </svg>
+      </div>
+      <span>Contas</span>
     </li>
-    <li data-nav="historico">
-      <div class="dm-icone">📋</div>
-      Histórico
+
+    <li data-nav="moedas">
+      <div class="dm-icone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 7v1m0 8v1"/>
+          <path d="M9.5 9.5A2.5 2.5 0 0 1 12 8a2.5 2.5 0 0 1 0 5 2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 0 2.5-1.5"/>
+        </svg>
+      </div>
+      <span>Moedas</span>
     </li>
-    <li data-nav="inicio">
-      <div class="dm-icone">🏠</div>
-      Início
+
+    <li id="li-configuracoes">
+      <div class="dm-icone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </div>
+      <span>Configurações</span>
     </li>
+
+    <li id="li-guias">
+      <div class="dm-icone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5"/>
+        </svg>
+      </div>
+      <span>Guias</span>
+    </li>
+
   </ul>
 </aside>
 
-<!-- ═══════ OVERLAY MODAL ═════════════════════════════════ -->
+<!-- ══ OVERLAY MODAL ══════════════════════════════════════ -->
 <div id="overlay-modal"></div>
 
-<!-- ═══════ MODAL: NOVA TRANSAÇÃO ═════════════════════════ -->
+<!-- ══ MODAL: NOVA TRANSAÇÃO (calculadora) ═══════════════ -->
 <div id="modal-transacao" class="modal">
   <div class="modal-handle"></div>
   <h2>
@@ -157,13 +194,11 @@
     <button class="btn-fechar-modal" id="btn-fechar-modal">×</button>
   </h2>
 
-  <!-- Display da calculadora -->
   <div class="calc-display" id="calc-display">
     <span class="calc-moeda" id="calc-moeda-simbolo">R$</span>
     <span class="calc-valor" id="calc-valor-display">0</span>
   </div>
 
-  <!-- Campos extra em linha -->
   <div class="form-row">
     <div class="form-group" style="flex:1">
       <label>Categoria</label>
@@ -186,7 +221,6 @@
     </div>
   </div>
 
-  <!-- Teclado numérico -->
   <div class="calc-teclado">
     <button class="calc-btn" data-val="7">7</button>
     <button class="calc-btn" data-val="8">8</button>
@@ -207,33 +241,28 @@
     <button class="calc-btn" data-val=",">,</button>
   </div>
 
-  <!-- Campo oculto para compatibilidade com app.js -->
   <input type="hidden" id="modal-valor" />
 </div>
 
-<!-- ═══════ MODAL: NOVA CATEGORIA ═════════════════════════ -->
+<!-- ══ MODAL: NOVA CATEGORIA ═════════════════════════════ -->
 <div id="modal-nova-cat" class="modal">
   <div class="modal-handle"></div>
   <h2>
     Nova Categoria
     <button class="btn-fechar-modal" id="btn-fechar-nova-cat">×</button>
   </h2>
-
   <div class="form-group">
     <label>Nome</label>
     <input type="text" id="nova-cat-nome" placeholder="Ex: Academia" />
   </div>
-
   <div class="form-group">
     <label>Ícone (emoji)</label>
     <input type="text" id="nova-cat-icone" placeholder="🏋️" maxlength="2" style="text-align:center;font-size:28px" />
   </div>
-
   <div class="form-group">
     <label>Cor</label>
     <input type="color" id="nova-cat-cor" value="#2ecc71" style="height:44px;padding:4px" />
   </div>
-
   <div class="form-group">
     <label>Tipo</label>
     <select id="nova-cat-tipo">
@@ -241,11 +270,10 @@
       <option value="receita">Receita</option>
     </select>
   </div>
-
   <button class="btn-primario" id="btn-salvar-cat">Criar Categoria</button>
 </div>
 
-<!-- ═══════ MODAL: DETALHE CATEGORIA ══════════════════════ -->
+<!-- ══ MODAL: DETALHE CATEGORIA ══════════════════════════ -->
 <div id="modal-detalhe" class="modal">
   <div class="modal-handle"></div>
   <div style="display:flex;justify-content:flex-end">
@@ -259,10 +287,10 @@
   <div id="det-lista"></div>
 </div>
 
-<!-- ═══════ TOAST ══════════════════════════════════════════ -->
+<!-- ══ TOAST ══════════════════════════════════════════════ -->
 <div id="toast"></div>
 
-<!-- ═══════ SCRIPTS ════════════════════════════════════════ -->
+<!-- ══ SCRIPTS ════════════════════════════════════════════ -->
 <script src="js/data.js"></script>
 <script src="js/storage.js"></script>
 <script src="js/chart.js"></script>
@@ -270,6 +298,12 @@
 <script>
   // Botão histórico no header
   document.getElementById('btn-historico').addEventListener('click', () => navegarPara('historico'));
+  // Botão de saldo (hamburger) abre drawer
+  document.getElementById('btn-sb-menu').addEventListener('click', abrirDrawer);
+  // Moedas (placeholder)
+  document.querySelector('[data-nav="moedas"]')?.addEventListener('click', () => {
+    fecharDrawer(); mostrarToast('Moeda: R$ (Real Brasileiro)');
+  });
 
   // Service Worker
   if ('serviceWorker' in navigator) {

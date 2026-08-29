@@ -100,17 +100,18 @@ function renderizarInicio() {
   const total = dados.reduce((s, d) => s + d.valor, 0);
 
   desenharDonut('donut-canvas', dados, total);
-  renderizarCategoriasGrid(dados);
+  renderizarCatsCol(dados);
   atualizarSaldoBar(transacoes);
 }
 
-function renderizarCategoriasGrid(dados) {
-  const grid = document.getElementById('categorias-grid');
-  if (!grid) return;
-  grid.innerHTML = '';
+// ── Coluna de ícones estilo Monefy ────────────────────────
+function renderizarCatsCol(dados) {
+  const col = document.getElementById('cats-col');
+  if (!col) return;
+  col.innerHTML = '';
 
   if (dados.length === 0) {
-    grid.innerHTML = '<p class="sem-dados">Nenhuma transação este mês.</p>';
+    col.innerHTML = '<p class="sem-dados" style="font-size:11px;grid-column:1/-1">Sem dados</p>';
     return;
   }
 
@@ -119,15 +120,15 @@ function renderizarCategoriasGrid(dados) {
   dados.forEach(item => {
     const pct = total > 0 ? Math.round((item.valor / total) * 100) : 0;
     const div = document.createElement('div');
-    div.className = 'cat-item';
+    div.className = 'cat-float';
     div.style.setProperty('--cat-cor', item.cor);
     div.innerHTML = `
-      <span class="cat-icone">${item.icone}</span>
-      <span class="cat-nome">${item.nome}</span>
-      <span class="cat-pct">${pct}%</span>
+      <div class="cf-icone-wrap">${item.icone}</div>
+      <span class="cf-pct">${pct}%</span>
+      <span class="cf-nome">${item.nome}</span>
     `;
     div.addEventListener('click', () => abrirDetalheCategoria(item));
-    grid.appendChild(div);
+    col.appendChild(div);
   });
 }
 
@@ -137,21 +138,12 @@ function atualizarSaldoBar(transacoes) {
   const saldo = receitas - despesas;
 
   const elSaldo = document.getElementById('saldo-valor');
-  const elBar = document.getElementById('saldo-bar');
-  if (elSaldo) {
-    elSaldo.textContent = formatarValor(Math.abs(saldo));
-    elSaldo.className = saldo >= 0 ? 'positivo' : 'negativo';
-  }
-  if (elBar) {
-    elBar.className = 'saldo-bar ' + (saldo >= 0 ? 'positivo' : 'negativo');
-  }
-
-  // Resumo receita/despesa
-  const elReceita = document.getElementById('resumo-receita');
-  const elDespesa = document.getElementById('resumo-despesa');
-  if (elReceita) elReceita.textContent = formatarValor(receitas);
-  if (elDespesa) elDespesa.textContent = formatarValor(despesas);
+  const elBar   = document.getElementById('saldo-bar');
+  if (elSaldo) elSaldo.textContent = formatarValor(Math.abs(saldo));
+  if (elBar)   elBar.className = 'saldo-bottom ' + (saldo >= 0 ? 'positivo' : 'negativo');
 }
+
+
 
 // ── Período (mês) ─────────────────────────────────────────
 function atualizarPeriodoLabel() {
@@ -431,8 +423,8 @@ function bindEventos() {
   });
 
   // Botões FAB (+ / -)
-  document.getElementById('btn-fab-despesa').addEventListener('click', () => abrirModal('despesa'));
-  document.getElementById('btn-fab-receita').addEventListener('click', () => abrirModal('receita'));
+  // FAB único — abre modal com o tipo ativo (despesa ou receita)
+  document.getElementById('btn-fab-despesa').addEventListener('click', () => abrirModal(estado.tipoAtivo));
 
   // Modal transação
   document.getElementById('btn-salvar-transacao').addEventListener('click', salvarTransacao);
