@@ -2414,6 +2414,12 @@ function aplicarRegraRestante(j, casa) {
                 mostrarVideoModal("assets/homerdeixoucairreceba50.MP4", finishPandora);
             } else if (c.texto.includes("ingressos VIP para uma tour segura na Ilha da Caveira") && !j.is_cpu) {
                 mostrarVideoModal("assets/videosorteilhadacaveirareceba150.MP4", finishPandora);
+            } else if (c.texto.includes("Drácula comprou sangue artificial") && !j.is_cpu) {
+                mostrarVideoModal("assets/videoDrácula comprou sangue artificial do seu laboratório. Receba $100.MP4", finishPandora);
+            } else if (c.texto.includes("pedágio no estacionamento do Bates Motel") && !j.is_cpu) {
+                mostrarVideoModal("assets/videopedagiobatesmotelreceba80.MP4", finishPandora);
+            } else if (c.texto.includes("A prefeitura de Hawkins pagou") && !j.is_cpu) {
+                mostrarVideoModal("assets/A prefeitura de Hawkins pagou 200.MP4", finishPandora);
             } else {
                 finishPandora();
             }
