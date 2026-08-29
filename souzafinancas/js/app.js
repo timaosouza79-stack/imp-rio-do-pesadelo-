@@ -10,6 +10,57 @@ let estado = {
   paginaAtiva: 'inicio',  // 'inicio' | 'categorias' | 'contas' | 'historico'
 };
 
+// ── Estado da calculadora ─────────────────────────────────
+let calc = {
+  valor: '0',        // string com o número atual
+  temVirgula: false, // já usou vírgula?
+};
+
+function calcReset() {
+  calc.valor = '0';
+  calc.temVirgula = false;
+  atualizarDisplay();
+}
+
+function calcDigito(digito) {
+  if (digito === ',') {
+    if (calc.temVirgula) return;
+    calc.temVirgula = true;
+    calc.valor += ',';
+  } else {
+    // Limitar casas decimais a 2
+    if (calc.temVirgula) {
+      const partes = calc.valor.split(',');
+      if (partes[1] && partes[1].length >= 2) return;
+    }
+    if (calc.valor === '0') calc.valor = digito;
+    else calc.valor += digito;
+    // Limite de 10 dígitos antes da vírgula
+    const inteiro = calc.valor.split(',')[0];
+    if (inteiro.length > 10) return;
+  }
+  atualizarDisplay();
+}
+
+function calcApagar() {
+  if (calc.valor.length <= 1) { calc.valor = '0'; calc.temVirgula = false; }
+  else {
+    const ultimo = calc.valor[calc.valor.length - 1];
+    if (ultimo === ',') calc.temVirgula = false;
+    calc.valor = calc.valor.slice(0, -1);
+  }
+  atualizarDisplay();
+}
+
+function atualizarDisplay() {
+  const el = document.getElementById('calc-valor-display');
+  if (el) el.textContent = calc.valor;
+  // Sincroniza campo oculto
+  const hidden = document.getElementById('modal-valor');
+  if (hidden) hidden.value = calc.valor.replace(',', '.');
+}
+
+
 // ── Init ──────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   inicializarDados();
@@ -143,11 +194,15 @@ function abrirModal(tipo) {
   document.getElementById('modal-data').value = new Date().toISOString().split('T')[0];
   popularSelectCategorias(tipo);
   popularSelectContas();
+  // Atualizar símbolo da moeda no display
+  const moeda = getMoeda();
+  const elMoeda = document.getElementById('calc-moeda-simbolo');
+  if (elMoeda) elMoeda.textContent = moeda.simbolo;
+  // Resetar calculadora
+  calcReset();
+  document.getElementById('modal-nota').value = '';
   document.getElementById('modal-transacao').classList.add('visivel');
   document.getElementById('overlay-modal').classList.add('visivel');
-  document.getElementById('modal-valor').value = '';
-  document.getElementById('modal-nota').value = '';
-  document.getElementById('modal-valor').focus();
 }
 
 function fecharModal() {
@@ -415,8 +470,25 @@ function bindEventos() {
   // Fechar detalhe
   document.getElementById('btn-fechar-det')?.addEventListener('click', fecharDetalhe);
 
-  // Teclado: Enter no campo valor
-  document.getElementById('modal-valor')?.addEventListener('keydown', e => {
-    if (e.key === 'Enter') salvarTransacao();
+  // ── Calculadora: botões numéricos ────────────────────────
+  document.querySelectorAll('.calc-btn[data-val]').forEach(btn => {
+    btn.addEventListener('click', () => calcDigito(btn.dataset.val));
+  });
+
+  document.getElementById('calc-apagar')?.addEventListener('click', calcApagar);
+  document.getElementById('calc-limpar')?.addEventListener('click', calcReset);
+
+  // Teclado físico também funciona
+  document.addEventListener('keydown', e => {
+    const modal = document.getElementById('modal-transacao');
+    if (!modal.classList.contains('visivel')) return;
+    // Ignorar quando está num input de texto
+    if (['INPUT','SELECT','TEXTAREA'].includes(document.activeElement.tagName) &&
+        document.activeElement.type !== 'hidden') return;
+    if (e.key >= '0' && e.key <= '9') calcDigito(e.key);
+    else if (e.key === ',' || e.key === '.') calcDigito(',');
+    else if (e.key === 'Backspace') calcApagar();
+    else if (e.key === 'Delete') calcReset();
+    else if (e.key === 'Enter') salvarTransacao();
   });
 }

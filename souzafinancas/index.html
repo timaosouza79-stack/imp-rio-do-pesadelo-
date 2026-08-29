@@ -157,32 +157,58 @@
     <button class="btn-fechar-modal" id="btn-fechar-modal">×</button>
   </h2>
 
-  <div class="form-group">
-    <label>Valor</label>
-    <input type="number" id="modal-valor" placeholder="0,00" min="0" step="0.01" inputmode="decimal" />
+  <!-- Display da calculadora -->
+  <div class="calc-display" id="calc-display">
+    <span class="calc-moeda" id="calc-moeda-simbolo">R$</span>
+    <span class="calc-valor" id="calc-valor-display">0</span>
   </div>
 
-  <div class="form-group">
-    <label>Categoria</label>
-    <select id="modal-categoria"></select>
+  <!-- Campos extra em linha -->
+  <div class="form-row">
+    <div class="form-group" style="flex:1">
+      <label>Categoria</label>
+      <select id="modal-categoria"></select>
+    </div>
+    <div class="form-group" style="flex:1">
+      <label>Conta</label>
+      <select id="modal-conta"></select>
+    </div>
   </div>
 
-  <div class="form-group">
-    <label>Conta</label>
-    <select id="modal-conta"></select>
+  <div class="form-row">
+    <div class="form-group" style="flex:1">
+      <label>Data</label>
+      <input type="date" id="modal-data" />
+    </div>
+    <div class="form-group" style="flex:1">
+      <label>Nota</label>
+      <input type="text" id="modal-nota" placeholder="Opcional..." />
+    </div>
   </div>
 
-  <div class="form-group">
-    <label>Data</label>
-    <input type="date" id="modal-data" />
+  <!-- Teclado numérico -->
+  <div class="calc-teclado">
+    <button class="calc-btn" data-val="7">7</button>
+    <button class="calc-btn" data-val="8">8</button>
+    <button class="calc-btn" data-val="9">9</button>
+    <button class="calc-btn calc-btn-apagar" id="calc-apagar">⌫</button>
+
+    <button class="calc-btn" data-val="4">4</button>
+    <button class="calc-btn" data-val="5">5</button>
+    <button class="calc-btn" data-val="6">6</button>
+    <button class="calc-btn calc-btn-limpar" id="calc-limpar">C</button>
+
+    <button class="calc-btn" data-val="1">1</button>
+    <button class="calc-btn" data-val="2">2</button>
+    <button class="calc-btn" data-val="3">3</button>
+    <button class="calc-btn calc-btn-ok" id="btn-salvar-transacao">✓</button>
+
+    <button class="calc-btn calc-btn-zero" data-val="0">0</button>
+    <button class="calc-btn" data-val=",">,</button>
   </div>
 
-  <div class="form-group">
-    <label>Nota (opcional)</label>
-    <input type="text" id="modal-nota" placeholder="Ex: Almoço com a família" />
-  </div>
-
-  <button class="btn-primario" id="btn-salvar-transacao">Guardar Transação</button>
+  <!-- Campo oculto para compatibilidade com app.js -->
+  <input type="hidden" id="modal-valor" />
 </div>
 
 <!-- ═══════ MODAL: NOVA CATEGORIA ═════════════════════════ -->
