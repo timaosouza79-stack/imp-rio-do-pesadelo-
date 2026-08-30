@@ -403,8 +403,41 @@ function mostrarToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
   t.classList.add('visivel');
-  setTimeout(() => t.classList.remove('visivel'), 2500);
+  setTimeout(() => t.classList.remove('visivel'), 3000);
 }
+
+// ── Moedas (Modal) ───────────────────────────────────────
+function abrirModalMoedas() {
+  const lista = document.getElementById('lista-moedas-modal');
+  const moedaAtual = getMoeda();
+  lista.innerHTML = MOEDAS.map(m => `
+    <div class="lista-item" onclick="selecionarMoeda('${m.codigo}')" style="cursor:pointer">
+      <div class="li-icone" style="background:#2ecc71;color:#fff">${m.simbolo}</div>
+      <span class="li-nome">${m.nome}</span>
+      ${m.codigo === moedaAtual.codigo ? '<span style="color:#2ecc71">✔</span>' : ''}
+    </div>
+  `).join('');
+
+  document.getElementById('modal-moedas').classList.add('visivel');
+  document.getElementById('overlay-modal').classList.add('visivel');
+}
+
+function fecharModalMoedas() {
+  document.getElementById('modal-moedas').classList.remove('visivel');
+  document.getElementById('overlay-modal').classList.remove('visivel');
+}
+
+window.selecionarMoeda = function(codigo) {
+  const moeda = MOEDAS.find(m => m.codigo === codigo);
+  if (moeda) {
+    setMoeda(moeda);
+    fecharModalMoedas();
+    mostrarToast('Moeda alterada para ' + moeda.nome);
+    renderizarPaginaAtiva(); // atualiza a tela
+    if (estado.paginaAtiva === 'inicio') renderizarInicio();
+  }
+};
+
 
 function shake(el) {
   el.classList.add('shake');
@@ -461,8 +494,9 @@ function bindEventos() {
   document.getElementById('btn-salvar-cat')?.addEventListener('click', salvarNovaCategoria);
   document.getElementById('btn-fechar-nova-cat')?.addEventListener('click', fecharModalNovaCategoria);
 
-  // Fechar detalhe
+  // Fechar detalhe e moedas
   document.getElementById('btn-fechar-det')?.addEventListener('click', fecharDetalhe);
+  document.getElementById('btn-fechar-moedas')?.addEventListener('click', fecharModalMoedas);
 
   // ── Calculadora: botões numéricos ────────────────────────
   document.querySelectorAll('.calc-btn[data-val]').forEach(btn => {

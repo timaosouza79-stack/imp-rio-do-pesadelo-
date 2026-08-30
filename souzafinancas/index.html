@@ -287,6 +287,16 @@
   <div id="det-lista"></div>
 </div>
 
+<!-- ══ MODAL: SELECIONAR MOEDA ═══════════════════════════ -->
+<div id="modal-moedas" class="modal">
+  <div class="modal-handle"></div>
+  <h2>
+    Selecionar Moeda
+    <button class="btn-fechar-modal" id="btn-fechar-moedas">×</button>
+  </h2>
+  <div id="lista-moedas-modal"></div>
+</div>
+
 <!-- ══ TOAST ══════════════════════════════════════════════ -->
 <div id="toast"></div>
 
@@ -301,9 +311,10 @@
   document.getElementById('btn-historico').addEventListener('click', () => navegarPara('historico'));
   // Botão de saldo (hamburger) abre drawer
   document.getElementById('btn-sb-menu').addEventListener('click', abrirDrawer);
-  // Moedas (placeholder)
+  // Moedas
   document.querySelector('[data-nav="moedas"]')?.addEventListener('click', () => {
-    fecharDrawer(); mostrarToast('Moeda: R$ (Real Brasileiro)');
+    fecharDrawer();
+    abrirModalMoedas();
   });
 
   // Service Worker
