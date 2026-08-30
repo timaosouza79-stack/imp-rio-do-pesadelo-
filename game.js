@@ -2440,6 +2440,14 @@ function aplicarRegraRestante(j, casa) {
                 mostrarVideoModal("assets/videosortevendeuumaestatuadacasadecerareceba120.MP4", finishPandora);
             } else if (c.texto.includes("Freddy Krueger invadiu seus sonhos") && !j.is_cpu) {
                 mostrarVideoModal("assets/videorevesfreddyinvadiuseussonhospague150.MP4", finishPandora);
+            } else if (c.texto.includes("Pennywise arrastou seus pertences") && !j.is_cpu) {
+                mostrarVideoModal("assets/pennywisearrastouseuspertencespague120.MP4", finishPandora);
+            } else if (c.texto.includes("Jason Voorhees destruiu sua barraca") && !j.is_cpu) {
+                mostrarVideoModal("assets/jasondestruiusuabarracapague80.MP4", finishPandora);
+            } else if (c.texto.includes("Annabelle causou atividade poltergeist") && !j.is_cpu) {
+                mostrarVideoModal("assets/annabellecausouedestruiupague150.MP4", finishPandora);
+            } else if (c.texto.includes("Assalto no Beco do Crime") && !j.is_cpu) {
+                mostrarVideoModal("assets/vocefoipegonobecodocrimepague200.MP4", finishPandora);
             } else {
                 finishPandora();
             }
